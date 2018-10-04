@@ -1,0 +1,64 @@
+.icon-font {
+    display: inline-block;
+    color: $color-primary;
+    font-size: 8rem;
+    margin-bottom: 1rem;
+}
+
+.heading {
+    text-transform: uppercase;
+    justify-content: center;
+    margin-bottom: 20rem;
+    &-name {
+        color: $color-tertiary;
+        display: block;
+        justify-content: center;
+        letter-spacing: 3.2rem;
+        margin-bottom: 10rem;
+        font-weight: 900;
+        .point-color {
+            color: red;
+            font-size: 8rem;
+        }
+    }
+    &-main {
+        font-size: 1.6rem;
+        font-weight: 900;
+        letter-spacing: .8rem;
+        color: $color-tertiary;
+    }
+    &-secondary {
+        text-transform: uppercase;
+        font-family: "Lato";
+        letter-spacing: 3rem;
+        margin-bottom: $margin-sm;
+        transition: all .2s;
+        color: transparent;
+        &:hover {
+            transform: scale(1.4) skew(-23deg);
+        }
+    }
+    &-tertiary {
+        text-transform: uppercase;
+        font-family: "Lato";
+        margin-bottom: $margin-sm;
+    }
+    &-rol {
+        position: absolute;
+        text-shadow: -.1rem 0 $color-background-gray, 0 .1rem $color-background-gray, .1rem 0 $color-background-gray, 0 -.1rem $color-background-gray;
+        top: 40%;
+        left: 50%;
+        font-size: 4rem;
+        transition: all .2s;
+        -moz-transition: all .2s;
+        -ms-transition: all .2s;
+        -o-transition: all .2s;
+        -webkit-transition: all .1s;
+        letter-spacing: 1rem;
+        transform: rotate(-90deg) translate(-50%, 30%);
+        -webkit-transform: rotate(-90deg) translate(-50%, 30%);
+        -moz-transform: rotate(-90deg) translate(-50%, 30%);
+        -ms-transform: rotate(-90deg) translate(-50%, 30%);
+        -o-transform: rotate(-90deg) translate(-50%, 30%);
+    }
+}

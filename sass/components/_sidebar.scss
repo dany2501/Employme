@@ -1,0 +1,29 @@
+.sidebar-navigation {
+    font-size: 1.6rem;
+    list-style: none;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    &-item {
+        padding: 2rem;
+    }
+    &-link {
+        display: flex;
+        align-content: center;
+        &:link,
+        &:visited {
+            color: #eee;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: block;
+            padding: 2rem 3rem;
+        }
+    }
+    &-icon {
+        height: 1.6rem;
+        width: 1.6rem;
+        fill: currentColor;
+    }
+    &-description {
+        margin-left: 4rem;
+    }
+}

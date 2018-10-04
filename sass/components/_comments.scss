@@ -1,0 +1,9 @@
+.comments {
+    background-color: pink;
+    height: 50%;
+    padding: 3rem;
+    &-area {
+        height: 100%;
+        width: 100%;
+    }
+}

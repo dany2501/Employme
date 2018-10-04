@@ -1,0 +1,39 @@
+.header-navigation {
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    &-icon-box {
+        padding: 0 1.5rem;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        position: relative;
+        &:last-child {
+            margin-right: 2rem;
+        }
+        &:hover {
+            background-color: #ddd;
+        }
+    }
+    &-icon {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+    &-notification {
+        border-radius: 100px;
+        font-size: 1rem;
+        font-weight: 700;
+        background-color: red;
+        height: 1.5rem;
+        width: 1.5rem;
+        color: #eee;
+        position: absolute;
+        top: 1.8rem;
+        right: 1.5rem;
+        text-align: center;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+    }
+}

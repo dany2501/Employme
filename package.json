@@ -1,0 +1,27 @@
+{
+  "name": "employ.me",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "debug": "SET DEBUG=Employ.me:* & npm start",
+    "debug-automatico": "nodemon debug",
+    "compile:sass": "node-sass sass/main.scss css/styles.css -w",
+    "compile:icon": "node-sass sass/icons.scss css/icons.css -w"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "crypto-js": "^3.1.9-1",
+    "debug": "^2.6.9",
+    "express": "^4.16.3",
+    "express-fileupload": "^1.0.0-alpha.1",
+    "http-errors": "^1.6.3",
+    "morgan": "^1.9.1",
+    "mysql": "^2.16.0",
+    "node-sass": "^4.9.3",
+    "nodemon": "^1.18.4",
+    "pug": "^2.0.0-beta11"
+  }
+}

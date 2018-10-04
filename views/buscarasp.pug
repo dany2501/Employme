@@ -1,0 +1,112 @@
+doctype html
+html(lang='es')
+  head
+    title Buscar aspirantes
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', type='text/css', href='CSS/Busacrasp.css')
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+  body.bg-light
+    header
+      .container
+        nav.navbar.navbar-expand-sm.bg-dark.navbar-dark.fixed-top
+          a.navbar-brand(href='index')
+            b Employ.me
+          ul.navbar-nav
+            li.navbar-item.dropdown
+              a#navbardrop.nav-link.dropdown-toggle(href='', data-toggle='dropdown')  Menu 
+              .dropdown-menu
+                a.dropdown-item(href='#') Modifcar cuenta
+                a.dropdown-item(href='#') Hola
+                a.dropdown-item(href='#') Caminar a la playa
+            li.nav-item
+              a.nav-link(href='')  Aspirantes 
+            li.nav-item
+              a.nav-link(href='')  mmmmmm... 
+    br
+    br
+    br
+    .container
+      input#myInput.form-control(type='text', placeholder='Search..')
+      br
+      table.table.table-dark.table-striped
+        thead
+          tr
+            th Imagen
+            th Nombre
+            th Carrera
+            th Ubicacion
+            th Descripcion
+        tbody#myTable
+          
+
+          each aspirante in aspirantes
+             tr
+              td
+                center
+                  img.rounded-circle(src='images/person-icon.png', width='30', height='30')
+              td= aspirante.nom_asp
+              td=aspirante.id_asp
+              td=aspirante.usu_asp
+              td=aspirante.psw_asp
+    script.
+      $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+      });
+      });
+    br
+    aside.bg-dark
+      br
+      .row.bg-secondary
+        .col-sm-6
+          h3.text-white
+            center HOLA
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            | tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            | quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            | consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            | cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            | proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        .col-sm-6
+          h3.text-white
+            center ADIOS
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            | tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            | quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            | consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            | cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            | proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      br
+    br
+    br
+    footer.bg-dark
+      br
+      div(align='center')
+        button.btn.btn-danger(type='button', data-toggle='modal', data-target='#myModal') Aviso de privacidad
+      #myModal.modal.fade
+        .modal-dialog
+          .modal-content
+            .modal-header
+              h4.modal-title Aviso de privacidad
+              button.close(type='button', data-dismiss='modal') ×
+            .modal-body
+              p.text-important Aviso de privacidad
+              |                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              |                       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              |                       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              |                       consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              |                       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              |                       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            .modal-footer
+              button.btn.btn-danger(type='button', data-dismiss='modal') Cerrar
+      br
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')

@@ -1,0 +1,108 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    link(rel='stylesheet', href='stylesheets/icon-font-arrow.css')
+    link(rel='stylesheet', href='stylesheets/styles.css')
+    link(href='https://fonts.googleapis.com/css?family=Mukta+Malar:200,300,400,500,600,700,800|Noto+Serif:400,700|Roboto:100,300,400,500,700,900', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Lato:400,700,900', rel='stylesheet')
+    title Employ.me
+  body
+    main
+      header.header
+        img.logo(src='', alt='')
+        .text-box
+          h1.heading
+            span.heading-name.u-color-white
+              | Employ
+              span.point-color .
+              | me
+            span.heading-main.u-color-white
+              | Encuentra tu trabajo ideal.
+          a.btn.btn-arrow.icon-arrows-down-double(href='#')
+      section.section-features
+        h2.heading-secondary.u-color-black ¿Que ofrecemos?
+        .row
+          .col-1-of-3-m
+            .feature-container.secondary-feature
+              i.icon-font.icon-arrows-check
+              h3.heading-tertiary.u-color-black Sube tu curriculum
+              p.feature-text
+                | Lorem ipsum dolor sit amet consectetur adipiscing elit facilisi, fermentum malesuada arcu praesent interdum ornare mattis eleifend, facilisis convallis rhoncus aenean urna vitae euismod.
+          .col-1-of-3-m
+            .feature-container.principal-feature
+              i.icon-font.icon-arrows-check
+              h3.heading-tertiary.u-color-black Personal Calificado
+              p.feature-text
+                | Lorem ipsum dolor sit amet consectetur adipiscing elit facilisi, fermentum malesuada arcu praesent interdum ornare mattis eleifend, facilisis convallis rhoncus aenean urna vitae euismod.
+          .col-1-of-3-m
+            .feature-container.tertiary-feature
+              i.icon-font.icon-arrows-check
+              h3.heading-tertiary.u-color-black Informacion Asegurada
+              p.feature-text
+                | Lorem ipsum dolor sit amet consectetur adipiscing elit facilisi, fermentum malesuada arcu praesent interdum ornare mattis eleifend, facilisis convallis rhoncus aenean urna vitae euismod.
+        .row
+          .col-1-of-3-m
+            .feature-container.secondary-feature
+              i.icon-font.icon-arrows-check
+              h3.heading-tertiary.u-color-black Compatibilidad con GitHub
+              p.feature-text
+                | Lorem ipsum dolor sit amet consectetur adipiscing elit facilisi, fermentum malesuada arcu praesent interdum ornare mattis eleifend, facilisis convallis rhoncus aenean urna vitae euismod.
+          .col-1-of-3-m
+            .feature-container.principal-feature
+              i.icon-font.icon-arrows-check
+              h3.heading-tertiary.u-color-black Video solicitud
+              p.feature-text
+                | Lorem ipsum dolor sit amet consectetur adipiscing elit facilisi, fermentum malesuada arcu praesent interdum ornare mattis eleifend, facilisis convallis rhoncus aenean urna vitae euismod.
+          .col-1-of-3-m
+            .feature-container.tertiary-feature
+              i.icon-font.icon-arrows-check
+              h3.heading-tertiary.u-color-black Informacion en tiempo real
+              p.feature-text
+                | Lorem ipsum dolor sit amet consectetur adipiscing elit facilisi, fermentum malesuada arcu praesent interdum ornare mattis eleifend, facilisis convallis rhoncus aenean urna vitae euismod.
+      section.section-start
+        h2.heading-secondary.u-color-black ¿Que eres?
+        .row
+          .col-1-of-2-z
+            input#empresa-round-button.start-radio(type='radio', name='rol')
+            label(for='empresa-round-button')
+              .start-company.start-rol
+                h3.heading-tertiary.heading-rol Empresa
+                a.btn(href='') Registrate
+                form.start-sign-up(action='')
+                  input(type='text', name='', id='', placeholder='Nombre de la Empresa')
+                  input(type='text', name='', id='', placeholder='Contraseña')
+                  input(type='text', name='', id='', placeholder='Contacto')
+                  input(type='text', name='', id='', placeholder='Usuario')
+                  input(type='submit', value='Finalizar')
+                a.btn(href='') Inicia Sesion
+                form.start-sign-in(action='')
+                  input(type='text', name='', id='', placeholder='Nombre de la Empresa')
+                  input(type='text', name='', id='', placeholder='Contraseña')
+                  input(type='submit', value='Iniciar Sesion')
+          .col-1-of-2-z
+            input#aspirante-round-button.start-radio-employee(type='radio', name='rol')
+            label(for='aspirante-round-button')
+              .start-employee.start-rol
+                h3.heading-tertiary.heading-rol Aspirante
+                a.btn(href='') Registrate
+          form.start-sign-up(action='/regasp' method='post')
+            input(type='text', name='nombre', id='', placeholder='Nombre', onkeypress="return isalpha(event)")
+            input(type='text', name='apt', id='', placeholder='Apellido Paterno')
+            input(type='text', name='apm', id='', placeholder='Apellidos Materno')
+            input(type='text', name='email', id='', placeholder='Email')
+            input(type='text', name='usuario', id='', placeholder='Usuario')
+            input(type='text', name='password', id='', placeholder='Contraseña')
+            input(type='text', name='confpass', id='', placeholder='Confirmar Contraseña')
+            input(type='date', name='fn', id='', placeholder='Fecha de Nacimeinto')
+            input(type='combo', name='sexo', id='', placeholder='Sexo')
+            input(type='submit', value='Finalizar')
+          a.btn(href='') Inicia Sesion
+          form.start-sign-in(action='/loginasp' method='post')
+            input(type='text', name='usu', id='', placeholder='Usuario o Correo')
+            input(type='text', name='contra', id='', placeholder='Contraseña')
+            input(type='submit', value='Iniciar Sesion')
+    footer.footer
+    
