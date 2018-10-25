@@ -1,0 +1,95 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    link(rel='stylesheet', href='stylesheets/styles.css')
+    title Especialidades
+  body
+    header.profile-header
+      img.logo(src='images/logo.png', alt='Logo')
+      form.search(action='')
+        input.search-input(type='text', placeholder='Buscar')
+        button.search-btn
+          svg.search-icon
+            use(xlink:href='images/sprite.svg#icon-search')
+      nav.header-navigation
+        .header-navigation-icon-box
+          svg.header-navigation-icon
+            use(xlink:href='images/sprite.svg#icon-comments', x='', y='')
+          span.header-navigation-notification
+            | 9
+        .header-navigation-icon-box
+          svg.header-navigation-icon
+            use(xlink:href='images/sprite.svg#icon-sign-in', x='', y='')
+    .container
+      nav.sidebar
+        ul.sidebar-navigation
+          li.sidebar-navigation-item
+            a.sidebar-navigation-link(href='/perfilasp')
+              svg.sidebar-navigation-icon
+                use(xlink:href='images/sprite.svg#icon-user', x='', y='')
+              span.sidebar-navigation-description Perfil
+          li.sidebar-navigation-item
+            a.sidebar-navigation-link(href='')
+              svg.sidebar-navigation-icon
+                use(xlink:href='images/sprite.svg#icon-heart', x='', y='')
+              span.sidebar-navigation-description Interesados
+          li.sidebar-navigation-item
+            a.sidebar-navigation-link(href='')
+              svg.sidebar-navigation-icon
+                use(xlink:href='images/sprite.svg#icon-address-card', x='', y='')
+              span.sidebar-navigation-description Portafolio
+          li.sidebar-navigation-item
+            a.sidebar-navigation-link(href='/especialidad')
+              svg.sidebar-navigation-icon
+                use(xlink:href='images/sprite.svg#icon-bookmark', x='', y='')
+              span.sidebar-navigation-description Especialidad
+          li.sidebar-navigation-item
+            a.sidebar-navigation-link(href='/cerrarsesion')
+              svg.sidebar-navigation-icon
+                use(xlink:href='images/sprite.svg#icon-sign-in', x='', y='')
+              span.sidebar-navigation-description Salir
+      main.specialty
+        .category
+          span.category-name Programacion
+          .category-tools-container
+            .tool
+              span.tool-name Java
+              p.tool-text
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum dicta eveniet, nihil iure ducimus maiores nam accusantium cum odit? Praesentium quis vel iure nostrum alias similique doloribus quod cumque consequatur.
+            .tool
+              span.tool-name JavaScript
+              p.tool-text
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum dicta eveniet, nihil iure ducimus maiores nam accusantium cum odit? Praesentium quis vel iure nostrum alias similique doloribus quod cumque consequatur.
+            .tool
+              span.tool-name Node.js
+              p.tool-text
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum dicta eveniet, nihil iure ducimus maiores nam accusantium cum odit? Praesentium quis vel iure nostrum alias similique doloribus quod cumque consequatur.
+        .category
+          span.category-name Diseñado Web
+          .category-tools-container
+            .tool
+              span.tool-name Photoshop
+              p.tool-text
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum dicta eveniet, nihil iure ducimus maiores nam accusantium cum odit? Praesentium quis vel iure nostrum alias similique doloribus quod cumque consequatur.
+            .tool
+              span.tool-name CSS
+              p.tool-text
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum dicta eveniet, nihil iure ducimus maiores nam accusantium cum odit? Praesentium quis vel iure nostrum alias similique doloribus quod cumque consequatur.
+            .tool
+              span.tool-name Sass
+              p.tool-text
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum dicta eveniet, nihil iure ducimus maiores nam accusantium cum odit? Praesentium quis vel iure nostrum alias similique doloribus quod cumque consequatur.
+        .category
+          span.category-name Bases de Datos
+          .category-tools-container
+            .tool
+              span.tool-name MongoDB
+              p.tool-text
+                | Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus dolore cupiditate expedita accusantium culpa iure ab, aperiam, veritatis sunt eum, dolores eaque dolorem nobis delectus placeat odit distinctio a minus.
+            .tool
+              span.tool-name MySQL
+              p.tool-text
+                | Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus dolore cupiditate expedita accusantium culpa iure ab, aperiam, veritatis sunt eum, dolores eaque dolorem nobis delectus placeat odit distinctio a minus.

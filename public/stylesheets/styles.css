@@ -10,7 +10,7 @@ html {
 
 body {
   font-family: "Noto Serif", sans-serif;
-  color: #2c3e50;
+  color: #222831;
   font-size: 1.6rem;
   box-sizing: border-box; }
 
@@ -25,7 +25,7 @@ body {
   justify-content: center;
   margin-bottom: 20rem; }
   .heading-name {
-    color: #eeeeee;
+    color: #2c3e50;
     display: block;
     justify-content: center;
     letter-spacing: 3.2rem;
@@ -38,7 +38,7 @@ body {
     font-size: 1.6rem;
     font-weight: 900;
     letter-spacing: .8rem;
-    color: #eeeeee; }
+    color: #2c3e50; }
   .heading-secondary {
     text-transform: uppercase;
     font-family: "Lato";
@@ -54,24 +54,16 @@ body {
     margin-bottom: 3rem; }
   .heading-rol {
     position: absolute;
-    text-shadow: -0.1rem 0 #f7f7f7, 0 0.1rem #f7f7f7, 0.1rem 0 #f7f7f7, 0 -0.1rem #f7f7f7;
+    text-shadow: -0.1rem 0 #dfdbdb, 0 0.1rem #dfdbdb, 0.1rem 0 #dfdbdb, 0 -0.1rem #dfdbdb;
     top: 40%;
     left: 50%;
     font-size: 4rem;
     transition: all .2s;
-    -moz-transition: all .2s;
-    -ms-transition: all .2s;
-    -o-transition: all .2s;
-    -webkit-transition: all .1s;
     letter-spacing: 1rem;
-    transform: rotate(-90deg) translate(-50%, 30%);
-    -webkit-transform: rotate(-90deg) translate(-50%, 30%);
-    -moz-transform: rotate(-90deg) translate(-50%, 30%);
-    -ms-transform: rotate(-90deg) translate(-50%, 30%);
-    -o-transform: rotate(-90deg) translate(-50%, 30%); }
+    transform: rotate(-90deg) translate(-50%, 30%); }
 
 .u-color-white {
-  color: #eeeeee; }
+  color: #eee; }
 
 .u-color-black {
   background-image: linear-gradient(to right, #2c3e50, rgba(41, 128, 185, 0.6));
@@ -94,7 +86,7 @@ body {
 
 .btn-arrow {
   display: inline-block;
-  color: #eeeeee;
+  color: #eee;
   font-size: 5rem;
   font-family: "linea-arrows-10"; }
   .btn-arrow:hover {
@@ -114,19 +106,22 @@ body {
     z-index: -1;
     transition: all .2s; }
 
-.comments {
-  background-color: pink;
+.github {
+  background-color: #f2f4fb;
   height: 50%;
-  padding: 3rem; }
-  .comments-area {
+  padding: 3rem;
+  margin-bottom: 3.5rem; }
+  .github-area {
     height: 100%;
     width: 100%; }
 
 .curriculum {
   border: dotted;
-  height: 100%; }
+  height: 100%;
+  position: relative;
+  display: flex; }
   .curriculum-container {
-    background-color: orangered;
+    background-color: #f2f4fb;
     flex-grow: 1;
     height: 80rem;
     padding: 3rem; }
@@ -202,32 +197,57 @@ body {
   margin-left: 2rem; }
 
 .portfolio-information {
-  background-color: cyan;
   display: flex; }
 
 .portfolio-curriculum {
-  background-color: yellow;
-  display: flex; }
+  background-image: linear-gradient(to right bottom, rgba(201, 214, 255, 0.4), rgba(226, 226, 226, 0.6)), url(../images/stripes-light.png);
+  display: flex;
+  padding: 3rem;
+  position: relative; }
 
 .information-photo-container {
   background-color: white;
+  position: relative;
   flex: 0 0 33%;
   display: flex;
   align-items: center; }
 
 .information-photo {
-  height: 25rem;
-  margin: auto; }
+  max-width: 100%;
+  max-height: 100%; }
+  .information-photo-container:hover .information-photo-pick {
+    visibility: visible; }
+  .information-photo-pick {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    visibility: hidden;
+    cursor: pointer; }
+  .information-photo-icon {
+    width: 8rem;
+    height: 8rem; }
+  .information-photo-select {
+    padding: 2rem;
+    background-color: #000;
+    letter-spacing: .4rem;
+    color: #fff;
+    font-size: 1.6rem;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; }
 
 .information-data {
-  background-color: green;
   flex-grow: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center; }
   .information-data-field {
-    background-color: pink;
+    background-color: #f2f4fb;
     padding: .5rem 1rem;
     flex: 0 0 40%;
     margin-bottom: 3rem;
@@ -246,17 +266,19 @@ body {
     border-radius: 100px;
     width: 95%;
     transition: all .3s;
-    margin-right: -4rem; }
+    margin-right: -4rem;
+    background-color: #f7f7f7; }
     .search-input:focus {
       outline: none;
-      width: 100%; }
+      width: 100%;
+      color: #dfdbdb; }
     .search-input::-webkit-input-placeholder {
-      color: #ddd; }
+      color: #cacaca; }
   .search-btn {
     border: none;
-    background-color: white;
+    background-color: #f7f7f7;
     margin-right: -8rem;
-    fill: #ddd; }
+    fill: #cacaca; }
     .search-btn:focus {
       outline: none; }
     .search-btn:active {
@@ -289,7 +311,7 @@ body {
     margin-left: 4rem; }
 
 .video {
-  background-color: powderblue;
+  background-color: #f2f4fb;
   height: 50%; }
 
 .row {
@@ -335,7 +357,8 @@ body {
 .flex-col-1-of-2--col,
 .flex-col-1-of-2--row {
   display: flex;
-  flex: 0 0 50%; }
+  flex: 0 1 50%;
+  margin-right: 3.5rem; }
 
 .flex-col-1-of-2--col {
   flex-direction: column; }
@@ -366,26 +389,26 @@ body {
   background-color: #f7f7f7;
   justify-content: center; }
 
-.start-sign-up,
-.start-sign-in {
+.start-sign-up, .start-sign-in {
   display: block; }
 
 .start-employee {
-  background-image: linear-gradient(to right bottom, rgba(243, 14, 92, 0.1), rgba(252, 58, 82, 0.1)), url(../images/employee2.jpg);
-  background-size: cover;
-  background-position: center;
-  height: 90vh;
-  position: relative; }
+  background-image: url(../images/employee2.jpg); }
 
 .start-company {
-  background-image: linear-gradient(to left bottom, rgba(120, 116, 242, 0.1), rgba(142, 152, 245, 0.1)), url(../images/company2.jpg);
+  background-image: url(../images/company2.jpg); }
+
+.start-employee, .start-company {
   background-size: cover;
   background-position: center;
   height: 90vh;
   position: relative; }
 
+.start-radio-employee:checked .start-employee:hover {
+  transform: rotate(-90deg) translate(-50%, 30%) scale(0); }
+
 .profile-header {
-  background-color: greenyellow;
+  background-color: #fff;
   height: 7rem;
   display: flex;
   justify-content: space-between;
@@ -395,9 +418,53 @@ body {
   display: flex; }
 
 .sidebar {
-  background-color: #4d4d4d;
+  background-color: #222831;
   flex: 0 0 20%; }
 
 .portfolio {
-  background-color: purple;
   flex-grow: 1; }
+
+.test-curriculum {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.specialty {
+  display: flex;
+  background-image: linear-gradient(to right bottom, rgba(201, 214, 255, 0.4), rgba(226, 226, 226, 0.6)), url(../images/stripes-light.png);
+  flex-grow: 1;
+  flex-direction: column;
+  padding: 3rem; }
+
+.category {
+  display: flex;
+  padding: 3rem;
+  flex-direction: column; }
+  .category:not(:last-child) {
+    margin-bottom: 4rem; }
+  .category-name {
+    margin-bottom: 2rem;
+    margin-left: 5rem; }
+  .category-tools-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll; }
+    .category-tools-container:not(:last-child) {
+      margin-right: 1rem; }
+
+.tool {
+  background-color: #fff;
+  height: 30rem;
+  width: 40rem;
+  padding: 5rem;
+  color: #2c3e50;
+  cursor: pointer; }
+  .tool:not(:last-child) {
+    margin-right: 2.5rem; }
+  .tool-name {
+    font-size: 1.6; }
+  .tool-text {
+    margin-top: 3rem;
+    font-size: 1.4rem;
+    line-height: 2.7rem; }

@@ -15,6 +15,7 @@ exports.iniciarSesion = async function (req, res, next) {
             var obj = {
                 id: result[0].id_emp,
                 usuario: result[0].usu_emp,
+                nom:result[0].nom_emp
             }
             req.session.usuario = obj;
 

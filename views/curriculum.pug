@@ -5,11 +5,6 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
     link(rel='stylesheet', href='stylesheets/styles.css')
-    link(rel='stylesheet', href='https://bootswatch.com/4/lux/bootstrap.min.css')
-    script(defer='', src='https://use.fontawesome.com/releases/v5.0.13/js/all.js', integrity='sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe', crossorigin='anonymous')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-
     title Mi perfil
   body
     header.profile-header
@@ -22,75 +17,65 @@ html(lang='en')
       nav.header-navigation
         .header-navigation-icon-box
           svg.header-navigation-icon
-            use(xlink:href='images/sprite.svg#icon-comments')
-          span.header-navigation-notification 9
+            use(xlink:href='images/sprite.svg#icon-comments', x='', y='')
+          span.header-navigation-notification
+            | 9
         .header-navigation-icon-box
           svg.header-navigation-icon
-            use(xlink:href='images/sprite.svg#icon-sign-in')
+            use(xlink:href='images/sprite.svg#icon-sign-in', x='', y='')
     .container
       nav.sidebar
         ul.sidebar-navigation
           li.sidebar-navigation-item
             a.sidebar-navigation-link(href='/perfilasp')
               svg.sidebar-navigation-icon
-                use(xlink:href='images/sprite.svg#icon-user')
+                use(xlink:href='images/sprite.svg#icon-user', x='', y='')
               span.sidebar-navigation-description Perfil
           li.sidebar-navigation-item
             a.sidebar-navigation-link(href='')
               svg.sidebar-navigation-icon
-                use(xlink:href='images/sprite.svg#icon-heart')
+                use(xlink:href='images/sprite.svg#icon-heart', x='', y='')
               span.sidebar-navigation-description Interesados
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/portafolio')
+            a.sidebar-navigation-link(href='')
               svg.sidebar-navigation-icon
-                use(xlink:href='images/sprite.svg#icon-address-card')
+                use(xlink:href='images/sprite.svg#icon-address-card', x='', y='')
               span.sidebar-navigation-description Portafolio
           li.sidebar-navigation-item
             a.sidebar-navigation-link(href='/especialidad')
               svg.sidebar-navigation-icon
-                use(xlink:href='images/sprite.svg#icon-bookmark')
+                use(xlink:href='images/sprite.svg#icon-bookmark', x='', y='')
               span.sidebar-navigation-description Especialidad
           li.sidebar-navigation-item
             a.sidebar-navigation-link(href='/cerrarsesion')
               svg.sidebar-navigation-icon
-                use(xlink:href='images/sprite.svg#icon-sign-in')
+                use(xlink:href='images/sprite.svg#icon-sign-in', x='', y='')
               span.sidebar-navigation-description Salir
       main.portfolio
         .portfolio-information
           .information-photo-container
-            .information-photo-container
-              form.information-photo-pick(action='/fotoasp', method='post', enctype='multipart/form-data')
-                svg.information-photo-icon
-                  use(xlink:href='img/sprite.svg#icon-camera')
-                input#file.information-photo-select-hidden(type='file', name='file', value='Seleccionar foto')
-                label.information-photo-select(for='file') Seleccionar foto
-                input.information-photo-hidden(type='submit', value='Subir')
-              img.information-photo(src='/'+f)
+            button.information-photo-pick
+              svg.information-photo-icon
+                use(xlink:href='images/sprite.svg#icon-camera', x='', y='')
+              span.information-photo-select Seleccionar foto
+            img.information-photo(src='/'+f )
           .information-data
-            .information-data-field Nombre: #{nombre}
+            .information-data-field Nombre:  #{nombre}
             .information-data-field Email: #{email}
             .information-data-field Fecha de Nacimiento:  #{fn}
-            .information-data-field Sexo: #{sex}
+            .information-data-field Sexo: 
             .information-data-field Telefono: 
-        .specialty-container
-          .specialty-information
-          .specialty-information
-          .specialty-information
         .portfolio-curriculum
           .flex-col-1-of-2--row
             .curriculum-container
               .curriculum
-                img.test-curriculum(src='images/curriculum.jpg')
+                img.test-curriculum(src='images/curriculum.jpg', alt='')
           .flex-col-1-of-2--col
             .github
-
+              | github
             .video
               .curriculum-required
                 a.curriculum-required-link(href='')
                   svg.curriculum-required-icon
-                    use(xlink:href='img/sprite.svg#icon-youtube')
+                    use(xlink:href='images/sprite.svg#icon-youtube', x='', y='')
                   span.curriculum-required-link-text Agregar video
-                form(action='/video', method='post')
-                  input(type='text', name='link')
-                  button(type='submit') Agregar
-                #player
