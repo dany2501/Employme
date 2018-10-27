@@ -1,12 +1,13 @@
 doctype html
-html(lang='en')
+html(lang='es')
   head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='javascripts/boton.js')
     link(rel='stylesheet', href='stylesheets/styles.css')
-    script(type='text/javascript', src='js/validaciones.js')
-    title Mi perfil
+    title Employ.me
   body
     header.profile-header
       img.logo(src='images/logo.png', alt='Logo')
@@ -19,7 +20,7 @@ html(lang='en')
         .header-navigation-icon-box
           svg.header-navigation-icon
             use(xlink:href='images/sprite.svg#icon-comments')
-          span.header-navigation-notification 9
+          span.header-navigation-notification
         .header-navigation-icon-box
           svg.header-navigation-icon
             use(xlink:href='images/sprite.svg#icon-sign-in')
@@ -37,7 +38,7 @@ html(lang='en')
                 use(xlink:href='images/sprite.svg#icon-heart')
               span.sidebar-navigation-description Interesados
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='')
+            a.sidebar-navigation-link(href='/portafolio')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-address-card')
               span.sidebar-navigation-description Portafolio
@@ -51,38 +52,43 @@ html(lang='en')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-sign-in')
               span.sidebar-navigation-description Salir
-      main.portfolio
-        .portfolio-information
-          .information-photo-container
-            .information-photo-container
-              img.information-photo(src='/'+f)
-          .information-data
-            .information-data-field Nombre: #{nombre}
-            .information-data-field Email: #{email}
-            .information-data-field Fecha de Nacimiento:  #{fn}
-            .information-data-field Sexo: #{sex}
-            .information-data-field Telefono: 
-        .specialty-container
-          .specialty-information
-          .specialty-information
-          .specialty-information
-        .portfolio-curriculum
-          .flex-col-1-of-2--row
-            .curriculum-container
-              .curriculum
-                img.test-curriculum(src='images/curriculum.jpg')
-          .flex-col-1-of-2--col
-            .github github
-                br
-                span.curriculum-required-link-text Usuario de Gitub
-                form(action='/portafolio', method='post')
-                  input(type='text', name='userGH')
-                  br
-                  button(type='submit') Añadir
-            .video
-              .curriculum-required
-                a.curriculum-required-link(href='')
-                  svg.curriculum-required-icon
-                    use(xlink:href='img/sprite.svg#icon-youtube')
-                  
-                #player
+      main.about-you
+        .progress-bar-container
+          #progress-bar.progress-bar
+            span 0%
+        .about-you-sections
+          section.about-you-studies
+            h3 Estudios
+            .about-you-container#contenedor
+              #modal.about-you-modal-container
+                .about-you-modal
+                  h2.heading-tertiary
+                    | Gradro Academico
+                  input.about-you-modal-input(type='text', name='', id='input', placeholder='Ingresar....')
+                  .about-you-btn-container
+                    a.btn.btn-blue() Cerrar
+                    a#guardar.btn.btn-blue() Guardar
+                    a.btn.btn-blue() Eliminar
+              a#but.test(href='#modal')
+                .about-you-feature.selected-feature(href='#modal')
+                  .about-you-feature-information
+                    p.about-you-add-feature-information-text
+                      | Agregar
+            .about-you-btn-container
+              a.btn.btn-blue(href='') Siguiente
+              a.btn.btn-blue(href='') Anterior
+          section.about-you-experience
+            button.about-you-add-feature.selected-feature
+              svg.about-you-add-feature-icon
+                use(xlink:href='images/sprite.svg#icon-plus ')
+            .about-you-feature.selected-feature
+          section.about-you-references
+            button.about-you-add-feature.selected-feature
+              svg.about-you-add-feature-icon
+                use(xlink:href='images/sprite.svg#icon-plus')
+            .about-you-feature.selected-feature
+          section.about-you-extra-comments
+            button.about-you-add-feature.selected-feature
+              svg.about-you-add-feature-icon
+                use(xlink:href='images/sprite.svg#icon-plus')
+            .about-you-feature.selected-feature

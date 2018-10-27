@@ -1,29 +1,25 @@
 doctype html
-html(lang='en')
+html(lang='es')
   head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
     link(rel='stylesheet', href='stylesheets/styles.css')
-    link(rel='stylesheet', href='https://bootswatch.com/4/lux/bootstrap.min.css')
-    script(defer='', src='https://use.fontawesome.com/releases/v5.0.13/js/all.js', integrity='sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe', crossorigin='anonymous')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css')
+    script#www-widgetapi-script(type='text/javascript', src='https://s.ytimg.com/yts/jsbin/www-widgetapi-vflY6gPjD/www-widgetapi.js', async='')
+    script(src='https://www.youtube.com/iframe_api')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='javascripts/perfilasp.js')
 
     title Mi perfil
   body
     header.profile-header
       img.logo(src='images/logo.png', alt='Logo')
-      form.search(action='')
-        input.search-input(type='text', placeholder='Buscar')
-        button.search-btn
-          svg.search-icon
-            use(xlink:href='images/sprite.svg#icon-search')
+      
       nav.header-navigation
         .header-navigation-icon-box
           svg.header-navigation-icon
             use(xlink:href='images/sprite.svg#icon-comments')
-          span.header-navigation-notification 9
+          span.header-navigation-notification 
         .header-navigation-icon-box
           svg.header-navigation-icon
             use(xlink:href='images/sprite.svg#icon-sign-in')
@@ -61,7 +57,7 @@ html(lang='en')
             .information-photo-container
               form.information-photo-pick(action='/fotoasp', method='post', enctype='multipart/form-data')
                 svg.information-photo-icon
-                  use(xlink:href='img/sprite.svg#icon-camera')
+                  use(xlink:href='images/sprite.svg#icon-camera')
                 input#file.information-photo-select-hidden(type='file', name='file', value='Seleccionar foto')
                 label.information-photo-select(for='file') Seleccionar foto
                 input.information-photo-hidden(type='submit', value='Subir')
@@ -82,15 +78,8 @@ html(lang='en')
               .curriculum
                 img.test-curriculum(src='images/curriculum.jpg')
           .flex-col-1-of-2--col
-            .github
-
-            .video
-              .curriculum-required
-                a.curriculum-required-link(href='')
-                  svg.curriculum-required-icon
-                    use(xlink:href='img/sprite.svg#icon-youtube')
-                  span.curriculum-required-link-text Agregar video
-                form(action='/video', method='post')
-                  input(type='text', name='link')
-                  button(type='submit') Agregar
-                #player
+            h1 Proyectos desarrollados por mí.
+            #github.github
+            h1 Video muestra / presentación
+            #video.video
+        a(href='/portafolio') Modificar portafolio. 

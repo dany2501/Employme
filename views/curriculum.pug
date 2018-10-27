@@ -1,81 +1,99 @@
 doctype html
-html(lang='en')
+html(lang='es')
   head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
-    link(rel='stylesheet', href='stylesheets/styles.css')
-    title Mi perfil
+    link(rel='stylesheet', href='CSS/styles.css')
+    title Employ.me
   body
     header.profile-header
-      img.logo(src='images/logo.png', alt='Logo')
+      img.logo(src='img/logo.png', alt='Logo')
       form.search(action='')
         input.search-input(type='text', placeholder='Buscar')
         button.search-btn
           svg.search-icon
-            use(xlink:href='images/sprite.svg#icon-search')
+            use(xlink:href='img/sprite.svg#icon-search')
       nav.header-navigation
         .header-navigation-icon-box
           svg.header-navigation-icon
-            use(xlink:href='images/sprite.svg#icon-comments', x='', y='')
+            use(xlink:href='img/sprite.svg#icon-comments', x='', y='')
           span.header-navigation-notification
             | 9
         .header-navigation-icon-box
           svg.header-navigation-icon
-            use(xlink:href='images/sprite.svg#icon-sign-in', x='', y='')
+            use(xlink:href='img/sprite.svg#icon-sign-in', x='', y='')
     .container
       nav.sidebar
         ul.sidebar-navigation
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/perfilasp')
+            a.sidebar-navigation-link(href='asp-profile.html')
               svg.sidebar-navigation-icon
-                use(xlink:href='images/sprite.svg#icon-user', x='', y='')
+                use(xlink:href='img/sprite.svg#icon-user', x='', y='')
               span.sidebar-navigation-description Perfil
           li.sidebar-navigation-item
             a.sidebar-navigation-link(href='')
               svg.sidebar-navigation-icon
-                use(xlink:href='images/sprite.svg#icon-heart', x='', y='')
+                use(xlink:href='img/sprite.svg#icon-heart', x='', y='')
               span.sidebar-navigation-description Interesados
           li.sidebar-navigation-item
             a.sidebar-navigation-link(href='')
               svg.sidebar-navigation-icon
-                use(xlink:href='images/sprite.svg#icon-address-card', x='', y='')
-              span.sidebar-navigation-description Portafolio
+                use(xlink:href='img/sprite.svg#icon-address-card', x='', y='')
+              span.sidebar-navigation-description Agregar curriculum
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/especialidad')
+            a.sidebar-navigation-link(href='asp-specialty.html')
               svg.sidebar-navigation-icon
-                use(xlink:href='images/sprite.svg#icon-bookmark', x='', y='')
+                use(xlink:href='img/sprite.svg#icon-bookmark', x='', y='')
               span.sidebar-navigation-description Especialidad
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/cerrarsesion')
+            a.sidebar-navigation-link(href='')
               svg.sidebar-navigation-icon
-                use(xlink:href='images/sprite.svg#icon-sign-in', x='', y='')
+                use(xlink:href='img/sprite.svg#icon-sign-in', x='', y='')
               span.sidebar-navigation-description Salir
-      main.portfolio
-        .portfolio-information
-          .information-photo-container
-            button.information-photo-pick
-              svg.information-photo-icon
-                use(xlink:href='images/sprite.svg#icon-camera', x='', y='')
-              span.information-photo-select Seleccionar foto
-            img.information-photo(src='/'+f )
-          .information-data
-            .information-data-field Nombre:  #{nombre}
-            .information-data-field Email: #{email}
-            .information-data-field Fecha de Nacimiento:  #{fn}
-            .information-data-field Sexo: 
-            .information-data-field Telefono: 
-        .portfolio-curriculum
-          .flex-col-1-of-2--row
-            .curriculum-container
-              .curriculum
-                img.test-curriculum(src='images/curriculum.jpg', alt='')
-          .flex-col-1-of-2--col
-            .github
-              | github
-            .video
-              .curriculum-required
-                a.curriculum-required-link(href='')
-                  svg.curriculum-required-icon
-                    use(xlink:href='images/sprite.svg#icon-youtube', x='', y='')
-                  span.curriculum-required-link-text Agregar video
+      main.about-you
+        .progress-bar-container
+          #progress-bar.progress-bar
+            span 0%
+        .about-you-sections
+          section.about-you-studies
+            h3 Estudios
+            .about-you-container
+              #modal.about-you-modal-container
+                .about-you-modal
+                  h2.heading-tertiary
+                    | Gradro Academico
+                  input.about-you-modal-input(type='text', name='', id='', placeholder='Ingresar....')
+                  .about-you-btn-container
+                    a.btn.btn-blue(href='') Cerrar
+                    a.btn.btn-blue(href='') Guardar
+                    a.btn.btn-blue(href='') Eliminar
+              button.about-you-add-feature.selected-feature
+                svg.about-you-add-feature-icon
+                  use(xlink:href='img/sprite.svg#icon-plus', x='', y='')
+              a.test(href='#modal')
+                .about-you-feature.selected-feature(href='#modal')
+                  .about-you-feature-check
+                    svg.about-you-feature-check-icon
+                      use(xlink:href='img/sprite.svg#icon-check', x='', y='')
+                  .about-you-feature-information
+                    p.about-you-add-feature-information-text
+                      | Cecyt 9
+            .about-you-btn-container
+              a.btn.btn-blue(href='') Siguiente
+              a.btn.btn-blue(href='') Anterior
+          section.about-you-experience
+            button.about-you-add-feature.selected-feature
+              svg.about-you-add-feature-icon
+                use(xlink:href='img/sprite.svg#icon-plus ', x=' ', y=' ')
+            .about-you-feature.selected-feature
+          section.about-you-references
+            button.about-you-add-feature.selected-feature
+              svg.about-you-add-feature-icon
+                use(xlink:href='img/sprite.svg#icon-plus', x='', y='')
+            .about-you-feature.selected-feature
+          section.about-you-extra-comments
+            button.about-you-add-feature.selected-feature
+              svg.about-you-add-feature-icon
+                use(xlink:href='img/sprite.svg#icon-plus', x=' ', y=' ')
+            .about-you-feature.selected-feature

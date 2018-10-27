@@ -6,8 +6,6 @@ html(lang='en')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
     link(rel='stylesheet', href='stylesheets/icon-font-arrow.css')
     link(rel='stylesheet', href='stylesheets/styles.css')
-    link(href='https://fonts.googleapis.com/css?family=Mukta+Malar:200,300,400,500,600,700,800|Noto+Serif:400,700|Roboto:100,300,400,500,700,900', rel='stylesheet')
-    link(href='https://fonts.googleapis.com/css?family=Lato:400,700,900', rel='stylesheet')
     title Employ.me
   body
     main
@@ -66,7 +64,6 @@ html(lang='en')
         h2.heading-secondary.u-color-black ¿Que eres?
         .row
           .col-1-of-2-z
-            input#empresa-round-button.start-radio(type='radio', name='rol')
             label(for='empresa-round-button')
               .start-company.start-rol
                 h3.heading-tertiary.heading-rol Empresa
@@ -84,11 +81,9 @@ html(lang='en')
                   input(type='text', name='', id='', placeholder='Contraseña')
                   input(type='submit', value='Iniciar Sesion')
           .col-1-of-2-z
-            input#aspirante-round-button.start-radio-employee(type='radio', name='rol')
             label(for='aspirante-round-button')
               .start-employee.start-rol
                 h3.heading-tertiary.heading-rol Aspirante
-                a.btn(href='') Registrate
           form.start-sign-up(action='/regasp' method='post')
             input(type='text', name='nombre', id='', placeholder='Nombre', onkeypress="return isalpha(event)")
             input(type='text', name='apt', id='', placeholder='Apellido Paterno')
@@ -97,11 +92,8 @@ html(lang='en')
             input(type='text', name='usuario', id='', placeholder='Usuario')
             input(type='password', name='password', id='', placeholder='Contraseña')
             input(type='password', name='confpass', id='', placeholder='Confirmar Contraseña')
-            input(type='date', name='fn', id='', placeholder='Fecha de Nacimeinto')
-            select(class='selectpicker')
-              option(value='Seleccionar') Seleccionar Sexo
-              option(value='Masculino',name='Masculino') Masculino
-              option(value='Femenino',name='Femenino') Femenino
+            input(type='date', name='fn', id='', placeholder='Fecha de Nacimiento')
+            input(type='text', name='sexo', id='', placeholder='Sexo')
             input(type='submit', value='Finalizar')
           a.btn(href='') Inicia Sesion
           form.start-sign-in(action='/loginasp' method='post')
