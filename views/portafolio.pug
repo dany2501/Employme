@@ -58,22 +58,21 @@ html(lang='es')
             span 0%
         .about-you-sections
           section.about-you-studies
-            h3 Estudios
-            .about-you-container#contenedor
-              #modal.about-you-modal-container
-                .about-you-modal
-                  h2.heading-tertiary
-                    | Gradro Academico
-                  input.about-you-modal-input(type='text', name='', id='input', placeholder='Ingresar....')
-                  .about-you-btn-container
-                    a.btn.btn-blue() Cerrar
-                    a#guardar.btn.btn-blue() Guardar
-                    a.btn.btn-blue() Eliminar
-              a#but.test(href='#modal')
-                .about-you-feature.selected-feature(href='#modal')
+            h3
+              | Estudios
+              #modal.about-you-modal
+                h2.heading-tertiary Gradro Academico
+                input#input.about-you-modal-input(type='text', name='', placeholder='Ingresar....')
+                .about-you-btn-container
+                  a.btn.btn-blue Cerrar
+                  a#guardar.btn.btn-blue Guardar
+                  a.btn.btn-blue Eliminar
+            .about-you-container
+              a.test
+                #but.about-you-feature.selected-feature
                   .about-you-feature-information
-                    p.about-you-add-feature-information-text
-                      | Agregar
+                    p.about-you-add-feature-information-text Agregar
+            #contenedor
             .about-you-btn-container
               a.btn.btn-blue(href='') Siguiente
               a.btn.btn-blue(href='') Anterior
