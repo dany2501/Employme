@@ -3,22 +3,26 @@ $(document).ready(function(){
     var form=$('#modal');
     var boton=$('#but');
     var agregar=$('#guardar');
+    var save=$('#save');
     var template="";
     var escuelas =[];
     var i=0;
 
+    save.on('click',function(){
+        $.ajax({})
+    });
+
     boton.click(function(){
         form.slideDown("slow",function(){
-            console.log('Debió de haber bajado');
         });
 
     });
 
     
     agregar.click(function(){
-
         var contenedor=$('#contenedor');
         var dato=($('#input').val());
+             
         escuelas[i]=dato;
         i++;
         template+=`
@@ -29,11 +33,9 @@ $(document).ready(function(){
             </p>
 
         </div>
-    </div>`;
-    console.log(escuelas);  
+    </div>`; 
     form.slideUp("fast",function(){
-        console.log('Debió de haber subido');
-    })
+    });
     contenedor.html(template);
     });
 

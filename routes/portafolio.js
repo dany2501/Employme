@@ -13,7 +13,7 @@ var noSesion = function(req, res, next){
 
 router.get('/',noSesion, function(req,res,next){
     res.render('index');
-})
+});
 
 router.post('/',function(req,res,next){
     porta.agregarGH(req, res, next);

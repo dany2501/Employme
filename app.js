@@ -18,6 +18,10 @@ var fotoasp=require('./routes/fotoasp');
 var cerrarsesion=require('./routes/cerrarsesion');
 var esp=require('./routes/especialidad');
 var vid=require('./routes/video');
+var asp=require('./routes/aspirante');
+var aspirantes=require('./routes/aspirantes');
+var aspint=require('./routes/asp-interested');
+var update=require('./routes/mod-asp');
 
 
 var app = express();
@@ -51,6 +55,10 @@ app.use('/users', usersRouter);
 app.use('/cerrarsesion',cerrarsesion);
 app.use('/especialidad',esp);
 app.use('/video',vid);
+app.use('/aspirante',asp);
+app.use('/aspirantes',aspirantes);
+app.use('/asp-interested',aspint);
+app.use('/update',update);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

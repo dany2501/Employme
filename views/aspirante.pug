@@ -8,9 +8,9 @@ html(lang='es')
     script#www-widgetapi-script(type='text/javascript', src='https://s.ytimg.com/yts/jsbin/www-widgetapi-vflY6gPjD/www-widgetapi.js', async='')
     script(src='https://www.youtube.com/iframe_api')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-    script(src='javascripts/perfilasp.js')
+    script(src='javascripts/aspirantes.js')
 
-    title Mi perfil
+    title Perfil de #{nombre}
   body
     header.profile-header
       img.logo(src='images/logo.png', alt='Logo')
@@ -32,7 +32,7 @@ html(lang='es')
                 use(xlink:href='images/sprite.svg#icon-user')
               span.sidebar-navigation-description Perfil
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/asp-interested')
+            a.sidebar-navigation-link(href='')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-heart')
               span.sidebar-navigation-description Interesados
@@ -55,19 +55,15 @@ html(lang='es')
         .portfolio-information
           .information-photo-container
             .information-photo-container
-              form.information-photo-pick(action='/fotoasp', method='post', enctype='multipart/form-data')
-                svg.information-photo-icon
-                  use(xlink:href='images/sprite.svg#icon-camera')
-                input#file.information-photo-select-hidden(type='file', name='file', value='Seleccionar foto')
-                label.information-photo-select(for='file') Seleccionar foto
-                input.information-photo-hidden(type='submit', value='Subir')
               img.information-photo(src='/'+f)
           .information-data
+            .id(style='display: none') #{id}
             .information-data-field Nombre: #{nombre}
             .information-data-field Email: #{email}
-            .information-data-field Fecha de Nacimiento:  #{fn}
+            .information-data-field Edad:  #{edad} años
             .information-data-field Sexo: #{sex}
             .information-data-field Telefono: 
+            a#guardar.btn.btn-blue Me interesa.
         .specialty-container
           .specialty-information
           .specialty-information
@@ -81,4 +77,6 @@ html(lang='es')
             h1 Proyectos desarrollados por mí.
             #github.github
             h1 Video muestra / presentación
-            #video.video
+            #video.video 
+    
+    

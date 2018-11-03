@@ -10,7 +10,6 @@ exports.iniciarSesion = async function (req, res, next) {
         //Se consulta a la bd para buscar el usuario de la empresa 
         var result = await db.consultaBd(sqlQuery, sqlData);
         if (req.body.usu_e == result[0].usu_emp && req.body.pass_e == result[0].psw_emp) {
-            //de ser correctos los datos se crea un objeto con el id y el usuario para crear la sesion
 
             var obj = {
                 id: result[0].id_emp,
@@ -18,12 +17,13 @@ exports.iniciarSesion = async function (req, res, next) {
                 nom:result[0].nom_emp
             }
             req.session.usuario = obj;
-
-            //Se obtienen y se muestran todos los aspirantes registrados
-            db.getAspirantes()
-             .then((respuesta)=>{
-                 res.render('buscarasp', {aspirantes: respuesta});
-             })
+            const Query = "select id_pasp,id_asp,ruta_imga,nom_asp,FN_asp,sex_asp,email_asp from imgaspirante natural join perfilaspirante natural join datosaspirante;";
+            var asp=await db.consultaBd(Query);
+            req.session.aspirantes=asp;
+            res.redirect('/aspirantes')
+            /* .then((respuesta)=>{
+                 res.render('aspirantes', {aspirantes:respuesta});
+             });*/
 
         } else if (result[0].usu_asp == undefined || result[0].psw_asp == undefined) {
             res.json('Datos incorrectos')

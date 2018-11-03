@@ -1,28 +1,41 @@
 $(document).ready(function(){
+  
+    var interes=$('#guardar');
     var area = $('#github');
     var error="";
     var repositories = "";
     var areav=$('#video');
 
-    $.post("http://localhost:3000/perfilasp", function(data){
+    interes.on('click',()=>{
+      $.ajax({
+        url:'http://localhost:3000/aspirante',
+        type:'post',
+        dataType:'json'
+      });
+      var url = "http://localhost:3000/aspirantes";
+      $(location).attr('href',url);
+
+
+    });
+
+   /*$.post("http://localhost:3000/aspirante", function(data){
       if(data=='Ocurrió un error')
       {
-        repositories=`<div>
-        <p>Parece que no haz enlazado tus repositorios de Github.<br> <div id="git">Enlazar ahora.</div></p>
+        repositories=`<div class="col-md-6">
+        <p>Parece que este usuario no ha enlazado sus repositorios de Github.<br></p>
       </div>`;
       area.html(repositories);
       }else
       {
         data.map((repository)=>{
-          console.log(repository);
           repositories += `
-          <div>
-            <div>
-              <div>
+          <div class="card card-body mt-2 animated bounceInUp">
+            <div class="row">
+              <div class="col-md-6">
                 <a href="${repository.html_url}" target="_blank">${repository.name}</a>
               </div>
-              <div>
-                  <span>
+              <div class="col-md-6">
+                  <span class="badge badge-primary">
                     Language: ${repository.language}
                   </span>
               </div>
@@ -33,10 +46,12 @@ $(document).ready(function(){
       area.html(repositories)
       }
         
-    })
+    });*/
+
+
 
     $.ajax({
-      url:'http://localhost:3000/perfilasp',
+      url:'http://localhost:3000/aspirante',
       type:'put',
       dataType:'json',
       success : function(json) {
@@ -44,13 +59,12 @@ $(document).ready(function(){
       if(url==null)
       {
         error=`<div class="col-md-6">
-        <p>Parece que no haz enlazado algún video.<br> <a id="youtube">Agregar ahora.</a></p>
+        <p>Parece que este usuario no ha enlazado algún video.<br></p>
       </div>`;
 
         areav.html(error);
       }
       else{
-        console.log(url);
         var player;
         function onYouTubeIframeAPIReady() {
           player = new YT.Player('video', {
@@ -82,6 +96,5 @@ $(document).ready(function(){
         alert('Existió un problema');
     }
     })
-
 
 });

@@ -35,21 +35,19 @@ html(lang='es')
           tr
             th Imagen
             th Nombre
-            th Carrera
-            th Ubicacion
+            th Email
+            th Sexo
             th Descripcion
         tbody#myTable
-          
-
           each aspirante in aspirantes
              tr
               td
                 center
-                  img.rounded-circle(src='images/person-icon.png', width='30', height='30')
-              td= aspirante.nom_asp
-              td=aspirante.id_asp
-              td=aspirante.usu_asp
-              td=aspirante.psw_asp
+                  img.rounded-circle(src='/'+aspirante.ruta_imga, width='30', height='30')
+              td=aspirante.nom_asp
+              td=aspirante.email_asp
+              td=aspirante.sex_asp
+              td=aspirante.FN_asp
     script.
       $(document).ready(function(){
       $("#myInput").on("keyup", function() {

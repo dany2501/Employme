@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-var loginemp = require('../controlador/loginemp');
+var mod = require('../controlador/mod-asp');
 
     var noSesion = function(req, res, next){
         if(!req.session.usuario){
             next();
         }else{
-            res.redirect('/aspirantes');
+            res.redirect('/perfilasp');
         }
     }
     
@@ -16,7 +16,7 @@ var loginemp = require('../controlador/loginemp');
         res.render('index');
     })
     router.post('/',function(req,res,next){
-        loginemp.iniciarSesion(req, res, next);
+        mod.modificarDatos(req, res, next);
     });
 
    
