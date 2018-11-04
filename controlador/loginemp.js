@@ -2,8 +2,9 @@ var db =require('../conexionsql/conexion');
 
 
 exports.iniciarSesion = async function (req, res, next) {
+    var settings = {password: 'HECD010225HMCRRNA6'}
 
-    const sqlQuery = "SELECT id_emp,usu_emp,psw_emp,nom_emp FROM datosempresa WHERE usu_emp = ? AND psw_emp= ?";
+    const sqlQuery = "SELECT id_emp,(AES_DECRYPT(usu_emp, '"+settings.password+"')) as usu_emp,(AES_DECRYPT(psw_emp, '"+settings.password+"')) as psw_emp,nom_emp FROM datosempresa WHERE (AES_DECRYPT(usu_emp, '"+settings.password+"')) = ? AND (AES_DECRYPT(psw_emp, '"+settings.password+"'))= ?";
     const sqlData = [req.body.usu_e, req.body.pass_e];
 
     try {

@@ -17,4 +17,7 @@ router.get('/',noSesion, function(req,res,next){
 router.post('/', function (req, res, next) {
     fotoasp.subirFoto(req,res,next);
 });
+router.put('/', function (req, res, next) {
+    fotoasp.mostrarFoto(req,res,next);
+});
 module.exports = router; 

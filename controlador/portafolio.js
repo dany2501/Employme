@@ -3,7 +3,7 @@ var con = require('../conexionsql/conexion');
 exports.agregarGH = async function (req, res, next) {
     var id=req.session.usuario;
 
-    const userData=[req.body.userGH,id.id];
+    const userData=[req.body.usuario,id.id];
     const sqlQuery= 'update perfilaspirante set usugh_pasp=? where id_asp=?';
     
 

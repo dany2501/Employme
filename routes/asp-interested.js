@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var interes=require('../controlador/interes'); 
+
 var noSesion = function(req, res, next){
     if(!req.session.usuario){
         next();
@@ -16,5 +18,7 @@ var noSesion = function(req, res, next){
 router.get('/',noSesion, function(req,res,next){
     
 });
+
+router.post('/',noSesion,interes.interesado);
    
 module.exports = router; 

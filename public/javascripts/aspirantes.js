@@ -8,7 +8,7 @@ $(document).ready(function(){
 
     interes.on('click',()=>{
       $.ajax({
-        url:'http://localhost:3000/aspirante',
+        url:'http://localhost:3000/asp-interested',
         type:'post',
         dataType:'json'
       });
@@ -18,7 +18,7 @@ $(document).ready(function(){
 
     });
 
-   /*$.post("http://localhost:3000/aspirante", function(data){
+   $.post("http://localhost:3000/aspirante", function(data){
       if(data=='Ocurrió un error')
       {
         repositories=`<div class="col-md-6">
@@ -44,9 +44,8 @@ $(document).ready(function(){
         `;
       });
       area.html(repositories)
-      }
-        
-    });*/
+      }        
+    });
 
 
 

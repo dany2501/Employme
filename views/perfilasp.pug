@@ -1,6 +1,6 @@
 doctype html
-html(lang='es')
-  head
+html(lang='en')
+  head    
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
@@ -9,17 +9,22 @@ html(lang='es')
     script(src='https://www.youtube.com/iframe_api')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
     script(src='javascripts/perfilasp.js')
-
-    title Mi perfil
+    script(src='javascripts/modificar.js')
+    title Employ.me
   body
     header.profile-header
       img.logo(src='images/logo.png', alt='Logo')
-      
+      form.search(action='')
+        input.search-input(type='text', placeholder='Buscar')
+        button.search-btn
+          svg.search-icon
+            use(xlink:href='images/sprite.svg#icon-search')
       nav.header-navigation
         .header-navigation-icon-box
           svg.header-navigation-icon
             use(xlink:href='images/sprite.svg#icon-comments')
-          span.header-navigation-notification 
+          span.header-navigation-notification
+            | 9
         .header-navigation-icon-box
           svg.header-navigation-icon
             use(xlink:href='images/sprite.svg#icon-sign-in')
@@ -52,22 +57,99 @@ html(lang='es')
                 use(xlink:href='images/sprite.svg#icon-sign-in')
               span.sidebar-navigation-description Salir
       main.portfolio
-        .portfolio-information
+        .portfolio-information-users
           .information-photo-container
-            .information-photo-container
-              form.information-photo-pick(action='/fotoasp', method='post', enctype='multipart/form-data')
-                svg.information-photo-icon
+            form.information-photo-pick(action='/fotoasp', method='post', enctype='multipart/form-data')
+              input#file.information-photo-select-hidden(type='file', name='file', value='Seleccionar foto')
+              label.information-photo-select(for='file')
+                svg#camara.information-photo-icon
                   use(xlink:href='images/sprite.svg#icon-camera')
-                input#file.information-photo-select-hidden(type='file', name='file', value='Seleccionar foto')
-                label.information-photo-select(for='file') Seleccionar foto
-                input.information-photo-hidden(type='submit', value='Subir')
-              img.information-photo(src='/'+f)
-          .information-data
-            .information-data-field Nombre: #{nombre}
-            .information-data-field Email: #{email}
-            .information-data-field Fecha de Nacimiento:  #{fn}
-            .information-data-field Sexo: #{sex}
-            .information-data-field Telefono: 
+                input#submit.information-photo-hidden(type='submit', value='Cambiar foto')
+            img.information-photo(src='/'+f, alt='')
+          #modal1.modal.modal-edit
+            h3.modal-heading
+              svg.information-data-icon
+                use(xlink:href='images/sprite.svg#icon-pencil ')
+              |  Editar Informacion
+            .modal-information
+              hr
+              .edit-info-block-
+                span.edit-info-span Telefono:
+                input#numero.edit-info-input(type='text',required="required")
+                span.edit-info-span Correo Electronico:
+                input#correo.edit-info-input(type='text',required="required")
+            .modal-btn-container
+              a#guardar.btn-blue.btn Guardar
+
+          #modal2.modal.modal-edit
+            h3.modal-heading
+              svg.information-data-icon
+                use(xlink:href='images/sprite.svg#icon-pencil ')
+              |  Añadir Respositorios
+            .modal-information
+              hr
+              .edit-info-block-
+                span.edit-info-span Usuario de Github:
+                input#usuario.edit-info-input(type='text')
+            .modal-btn-container
+              a#guardar2.btn-blue.btn Guardar    
+
+          #modal3.modal.modal-edit
+            h3.modal-heading
+              svg.information-data-icon
+                use(xlink:href='images/sprite.svg#icon-pencil ')
+              |  Añadir Video Presentación
+            .modal-information
+              hr
+              .edit-info-block-
+                span.edit-info-span Link del vídeo:
+                input#vid.edit-info-input(type='text')
+            .modal-btn-container
+              a#guardar3.btn-blue.btn Guardar    
+
+          //
+            <div class="information-data-specialty">
+            <h2 class="heading-portfolio-90deg">Especialidades</h2>
+            <div class="row-flex" style="transform: translateX(-15rem)">
+            <div class="specialty-percent">
+            <span class="specialty-name">JavaScript</span>
+            <span class="specialty-number">50</span>
+            </div>
+            <div class="specialty-percent">
+            <span class="specialty-name">CSS</span>
+            <span class="specialty-number">0 :(</span>
+            </div>
+            <div class="specialty-percent">
+            <span class="specialty-name">MySql</span>
+            <span class="specialty-number">68</span>
+            </div>
+            </div>
+            </div>
+        .portfolio-information-self
+          .information-data-field
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-user')
+            span #{nombre}
+          .information-data-field
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-mobile')
+            span #{num}
+          .information-data-field
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-envelope')
+            span #{email}
+          .information-data-field
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-birthday-cake')
+            span #{fn}
+          .information-data-field
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-male')
+            span Sexo: #{sex}
+          a.information-edit-btn
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-pencil ')
+            span#link Editar
         .specialty-container
           .specialty-information
           .specialty-information
@@ -79,6 +161,6 @@ html(lang='es')
                 img.test-curriculum(src='images/curriculum.jpg')
           .flex-col-1-of-2--col
             h1 Proyectos desarrollados por mí.
-            #github.github
+            #github.github  
             h1 Video muestra / presentación
             #video.video

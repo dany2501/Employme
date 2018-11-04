@@ -140,39 +140,62 @@ body {
   background-color: #f2f4fb;
   height: 50%;
   padding: 3rem;
-  margin-bottom: 3.5rem; }
-  .github-area {
-    height: 100%;
-    width: 100%; }
+  margin-bottom: 3.5rem;
+  overflow-y: scroll;
+  border-radius: 5px 20px; }
+  .github-element {
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    display: block;
+    text-decoration: none;
+    position: relative;
+    color: #222831; }
+    .github-element:not(:last-child) {
+      margin-bottom: .6rem; }
+    .github-element:hover::after {
+      content: "Ver en GitHub";
+      color: #fff;
+      height: 100%;
+      background-color: rgba(34, 40, 49, 0.9);
+      position: absolute;
+      right: 0;
+      transform: translateY(-1rem);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem;
+      width: 16rem;
+      text-align: right;
+      clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%); }
+  .github-link {
+    display: none; }
 
 .curriculum {
-  border: dotted;
-  height: 100%;
   position: relative;
-  display: flex; }
-  .curriculum-container {
-    background-color: #f2f4fb;
-    flex-grow: 1;
-    height: 80rem;
-    padding: 3rem; }
+  display: flex;
+  background-color: #f2f4fb;
+  flex-grow: 1;
+  height: 80rem;
+  padding: 3rem;
+  border-radius: 20px 5px; }
   .curriculum-required {
     display: flex;
     align-items: center;
-    justify-items: center;
-    height: 100%; }
+    justify-content: center;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    color: #393e46;
+    font-weight: 700; }
+    .curriculum-required:hover {
+      color: #63686e; }
     .curriculum-required-link {
-      display: flex;
-      transform: rotate(-60deg) translateX(7rem);
-      align-items: center;
-      justify-content: center;
-      letter-spacing: 1rem; }
-      .curriculum-required-link:link, .curriculum-required-link:visited {
-        text-decoration: none;
-        text-transform: uppercase; }
+      display: block; }
     .curriculum-required-icon {
-      height: 5rem;
-      width: 5rem;
-      fill: currentColor; }
+      height: 15rem;
+      width: 15rem;
+      fill: currentColor;
+      margin-bottom: 5rem; }
 
 .feature-box {
   background-size: cover;
@@ -298,8 +321,8 @@ body {
   fill: #fff; }
 
 .information-map {
-  height: 23rem;
-  width: 80rem;
+  height: 22.5rem;
+  width: 40rem;
   transform: translateX(-2rem); }
 
 .map {
@@ -377,13 +400,17 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between; }
+    justify-content: space-between;
+    background-image: url(../images/wall10.jpg);
+    background-size: cover; }
   .portfolio-information-self {
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: 100%;
     height: 7rem;
-    padding: 0 3rem; }
+    padding: 0 3rem;
+    position: relative; }
     .portfolio-information-self:hover .information-edit-btn {
       display: flex; }
 
@@ -448,13 +475,11 @@ body {
   justify-content: center;
   align-content: center; }
   .information-data-field {
-    background-color: #f2f4fb;
     padding: .5rem 1rem;
     flex: 0 0 17%;
-    margin-bottom: 3rem;
     transform: translateY(1.5rem);
     display: flex;
-    align-items: center;
+    align-content: center;
     color: #63686e; }
   .information-data-specialty {
     display: flex;
@@ -467,14 +492,19 @@ body {
     margin-right: 2rem; }
 
 .information-edit-btn {
-  background-color: #f2f4fb;
   padding: .5rem 1rem;
+  background-color: #45b7b8;
+  position: absolute;
+  border-radius: 5px;
   flex: 0 0 15%;
   margin-bottom: 3rem;
+  text-decoration: none;
   transform: translateY(1.5rem);
   display: flex;
   align-items: center;
-  color: #63686e; }
+  color: #fff;
+  right: 2rem;
+  display: none; }
 
 .progress-bar {
   background-color: red;
@@ -559,7 +589,7 @@ body {
 .specialty-name, .specialty-number {
   font-size: 1.7rem; }
 
-.video {
+.digital-potfolio {
   background-color: #f2f4fb;
   height: 50%; }
 
@@ -645,8 +675,7 @@ body {
   flex: 0 0 13%; }
 
 .portfolio {
-  flex-grow: 1;
-  background-color: #45b7b8; }
+  flex-grow: 1; }
 
 .test-curriculum {
   width: 100%;

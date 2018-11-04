@@ -10,7 +10,7 @@ var noSesion = function(req, res, next){
 }
 router.get('/',noSesion, function(req,res,next){
     var respuesta= req.session.aspirantes;
-    res.render('aspirantes', {aspirantes:respuesta});
+    res.render('emp-aspirantes', {aspirantes:respuesta});
 });
 
 router.post('/',noSesion,interes.interesado);

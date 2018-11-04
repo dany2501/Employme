@@ -27,22 +27,22 @@ html(lang='en')
       nav.sidebar
         ul.sidebar-navigation
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='asp-profile.html')
+            a.sidebar-navigation-link(href='/perfilemp')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-user')
               span.sidebar-navigation-description Perfil
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='com-listasp.html')
+            a.sidebar-navigation-link(href='')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-heart')
               span.sidebar-navigation-description Interesados
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='complete-curriculum.html')
+            a.sidebar-navigation-link(href='/portafolio')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-address-card')
               span.sidebar-navigation-description Portafolio
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='asp-specialty.html')
+            a.sidebar-navigation-link(href='/especialidad')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-bookmark')
               span.sidebar-navigation-description Especialidad
@@ -90,7 +90,6 @@ html(lang='en')
         each aspirante in aspirantes
           .information-tr
             .information-td-data
-              .information-td-speciality=aspirante.id_asp
               .information-td-data-photo
                 img.data-user-photo(src='/'+aspirante.ruta_imga, alt=' ')
               .information-td-data-name=aspirante.nom_asp

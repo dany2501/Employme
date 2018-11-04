@@ -18,13 +18,11 @@ var con = require('../conexionsql/conexion');
     exports.subirFoto= async function (req, res, next) {
         
         var ds= req.session.usuario;
-        const query= 'select id_pasp from perfilaspirante where id_asp=?';
-        const sqlQuery='update imgaspirante set ruta_imga=? where id_pasp=?';
-        const sqlData=[req.session.usuario.id];
+        const sqlQuery='update imgaspirante set ruta_imga=? where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)';
+        const sqlData=[ds.id];
 try {
-          var id= await con.consultaBd(query,sqlData);
           subirArchivo(req).then((ruta) => {
-          var result= con.consultaBd(sqlQuery,[ruta,id[0].id_pasp]);
+          var result= con.consultaBd(sqlQuery,[ruta,ds.id]);
             res.redirect('/perfilasp');
           })
         } catch (err) {
@@ -33,3 +31,18 @@ try {
       }
 
   }
+
+  exports.mostrarFoto= async function (req, res, next) {
+        
+    var ds= req.session.usuario;
+    const query='select ruta_imga from imgaspirante where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)';
+    
+try {
+      var result3=await con.consultaBd(query,ds.id);
+      res.json(result3);
+    } catch (err) {
+      console.log(err);
+      res.redirect("/login");
+  }
+
+}

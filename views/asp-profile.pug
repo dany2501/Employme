@@ -1,6 +1,6 @@
 doctype html
 html(lang='en')
-  head    
+  head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
@@ -8,7 +8,7 @@ html(lang='en')
     script#www-widgetapi-script(type='text/javascript', src='https://s.ytimg.com/yts/jsbin/www-widgetapi-vflY6gPjD/www-widgetapi.js', async='')
     script(src='https://www.youtube.com/iframe_api')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-    script(src='javascripts/perfilasp.js')
+    //script(src='javascripts/perfilasp.js')
     script(src='javascripts/modificar.js')
     title Employ.me
   body
@@ -65,7 +65,11 @@ html(lang='en')
                 svg.information-photo-icon
                   use(xlink:href='images/sprite.svg#icon-camera', x='', y='')
               input.information-photo-hidden(type='submit', value='Seleccionar foto')
-            img.information-photo(src='/'+f, alt='')
+            img.information-photo
+          h1.user-name
+            | #{nombre}
+          .information-map
+            #video
           #modal1.modal.modal-edit
             h3.modal-heading
               svg.information-data-icon
@@ -75,16 +79,17 @@ html(lang='en')
               hr
               .edit-info-block-
                 span.edit-info-span Telefono:
-                input#numero.edit-info-input(type='text')
+                input#numero.edit-info-input(type='text',required="required")
                 span.edit-info-span Correo Electronico:
-                input#correo.edit-info-input(type='text')
+                input#correo.edit-info-input(type='text',required="required")
             .modal-btn-container
               a#guardar.btn-blue.btn Guardar
+              a#cerrar.btn-blue.btn Cerrar
 
           #modal2.modal.modal-edit
             h3.modal-heading
               svg.information-data-icon
-                use(xlink:href='images/sprite.svg#icon-pencil ', x=' ', y=' ')
+                use(xlink:href='images/sprite.svg#icon-pencil ')
               |  Añadir Respositorios
             .modal-information
               hr
@@ -92,21 +97,22 @@ html(lang='en')
                 span.edit-info-span Usuario de Github:
                 input#usuario.edit-info-input(type='text')
             .modal-btn-container
-              a#guardar.btn-blue.btn Guardar    
+              a#guardar2.btn-blue.btn Guardar
+              a#cerrar2.btn-blue.btn Cerrar   
 
           #modal3.modal.modal-edit
             h3.modal-heading
               svg.information-data-icon
-                use(xlink:href='images/sprite.svg#icon-pencil ', x=' ', y=' ')
+                use(xlink:href='images/sprite.svg#icon-pencil ')
               |  Añadir Video Presentación
             .modal-information
               hr
               .edit-info-block-
                 span.edit-info-span Link del vídeo:
-                input#usuario.edit-info-input(type='text')
+                input#vid.edit-info-input(type='text')
             .modal-btn-container
-              a#guardar.btn-blue.btn Guardar    
-
+              a#guardar3.btn-blue.btn Guardar
+              a#cerrar2.btn-blue.btn Cerrar
           //
             <div class="information-data-specialty">
             <h2 class="heading-portfolio-90deg">Especialidades</h2>
@@ -128,27 +134,23 @@ html(lang='en')
         .portfolio-information-self
           .information-data-field
             svg.information-data-icon
-              use(xlink:href='images/sprite.svg#icon-user', x='', y='')
-            span #{nombre}
-          .information-data-field
-            svg.information-data-icon
-              use(xlink:href='images/sprite.svg#icon-mobile', x='', y='')
+              use(xlink:href='images/sprite.svg#icon-mobile')
             span #{num}
           .information-data-field
             svg.information-data-icon
-              use(xlink:href='images/sprite.svg#icon-envelope', x='', y='')
+              use(xlink:href='images/sprite.svg#icon-envelope')
             span #{email}
           .information-data-field
             svg.information-data-icon
-              use(xlink:href='images/sprite.svg#icon-birthday-cake', x='', y='')
+              use(xlink:href='images/sprite.svg#icon-birthday-cake')
             span #{fn}
           .information-data-field
             svg.information-data-icon
-              use(xlink:href='images/sprite.svg#icon-male', x='', y='')
+              use(xlink:href='images/sprite.svg#icon-male')
             span Sexo: #{sex}
           a.information-edit-btn
             svg.information-data-icon
-              use(xlink:href='images/sprite.svg#icon-pencil ', x=' ', y=' ')
+              use(xlink:href='images/sprite.svg#icon-pencil ')
             span#link Editar
         .specialty-container
           .specialty-information
@@ -156,11 +158,77 @@ html(lang='en')
           .specialty-information
         .portfolio-curriculum
           .flex-col-1-of-2--row
-            .curriculum-container
-              .curriculum
-                img.test-curriculum(src='images/curriculum.jpg')
+            .curriculum
+              a.curriculum-required(href='')
+                svg.curriculum-required-icon
+                  use(xlink:href='images/sprite.svg#icon-address-card ', x=' ', y=' ')
+                span.curriculum-required-link
+                  | Crear Curriculum
           .flex-col-1-of-2--col
             h1 Proyectos desarrollados por mí.
             #github.github
-            h1 Video muestra / presentación
-            #video.video
+              a#git.curriculum-required
+                svg.curriculum-required-icon
+                  use(xlink:href='images/sprite.svg#icon-github-square', x='', y='')
+                span.curriculum-required-link
+                  | Vincular cuenta de Github
+              //
+                <a href="" class="github-element">
+                GitHub
+                <span class="github-link">Ver en GitHub</span>
+                </a>
+                <a href="" class="github-element">
+                JavaScript
+                <span class="github-link">Ver en GitHub</span>
+                </a>
+                <a href="" class="github-element">
+                El del Benja
+                <span class="github-link">Ver en GitHub</span>
+                </a>
+                <a href="" class="github-element">
+                El del Benja y Croquer
+                <span class="github-link">Ver en GitHub</span>
+                </a>
+                <a href="" class="github-element">
+                La Galliza
+                <span class="github-link">Ver en GitHub</span>
+                </a>
+                <a href="" class="github-element">
+                Rap Vive sin drogas
+                <span class="github-link">Ver en GitHub</span>
+                </a>
+                <a href="" class="github-element">
+                Despacito 2
+                <span class="github-link">Ver en GitHub</span>
+                </a>
+                <a href="" class="github-element">
+                GitHub
+                <span class="github-link">Ver en GitHub</span>
+                </a>
+                <a href="" class="github-element">
+                JavaScript
+                <span class="github-link">Ver en GitHub</span>
+                </a>
+                <a href="" class="github-element">
+                El del Benja
+                <span class="github-link">Ver en GitHub</span>
+                </a>
+                <a href="" class="github-element">
+                El del Benja y Croquer
+                <span class="github-link">Ver en GitHub</span>
+                </a>
+                <a href="" class="github-element">
+                La Galliza
+                <span class="github-link">Ver en GitHub</span>
+                </a>
+                <a href="" class="github-element">
+                Rap Vive sin drogas
+                <span class="github-link">Ver en GitHub</span>
+                </a>
+                <a href="" class="github-element">
+                Despacito 2
+                <span class="github-link">Ver en GitHub</span>
+                </a>
+            a.digital-potfolio(href='')
+              div(lass='curriculum-required ')
+                span.curriculum-required-link-text Enlaza tu portafolio digital aqui

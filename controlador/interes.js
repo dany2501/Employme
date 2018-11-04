@@ -10,13 +10,12 @@ exports.interesado = async function (req, res, next) {
     
 
     try{
-
          con.consultaBd(sqlQuery,userData);
          res.redirect('/aspirantes');
 
     }catch(err)
     {
         console.log(err);
-        res.json('Ocurrio un error al registrarse');
+        res.json('Ocurrió un error.');
     }
 }

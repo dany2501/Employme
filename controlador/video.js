@@ -6,7 +6,7 @@ var con = require('../conexionsql/conexion');
     exports.registrarVideo = async function (req, res, next) 
     {
       var id=req.session.usuario;
-        const userData=[req.body.link,id.id];
+        const userData=[req.body.video,id.id];
         const sqlQuery= 'update perfilaspirante set vyt_pasp=? where id_asp=?';
 
         try{
