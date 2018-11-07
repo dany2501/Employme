@@ -22,6 +22,8 @@ var asp=require('./routes/aspirante');
 var aspirantes=require('./routes/aspirantes');
 var aspint=require('./routes/asp-interested');
 var update=require('./routes/mod-asp');
+var cv=require('./routes/asp-curriculum');
+var addcv=require('./routes/asp-a-curriculum');
 
 
 var app = express();
@@ -59,6 +61,8 @@ app.use('/aspirante',asp);
 app.use('/aspirantes',aspirantes);
 app.use('/asp-interested',aspint);
 app.use('/update',update);
+app.use('/asp-cv',cv);
+app.use('/add-cv',addcv);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

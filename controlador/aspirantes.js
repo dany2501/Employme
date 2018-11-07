@@ -30,7 +30,7 @@ exports.aspirantes = async function (req, res, next) {
         {
             var edad=(fecha.getFullYear())-(array[3]);
         }
-        res.render('aspirante',{id:obj.id,nombre:obj.nom,email:obj.email,sex:obj.sexo,f:obj.foto,edad:edad})
+        res.render('emp-aspirante',{id:obj.id,nombre:obj.nom,email:obj.email,sex:obj.sexo,f:obj.foto,edad:edad})
     
     /*var result=await db.consultaBd(Query,id).then((respuesta)=>{
         

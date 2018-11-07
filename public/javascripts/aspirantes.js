@@ -8,12 +8,10 @@ $(document).ready(function(){
 
     interes.on('click',()=>{
       $.ajax({
-        url:'http://localhost:3000/asp-interested',
+        url:'http://localhost:3000/aspirantes',
         type:'post',
-        dataType:'json'
+        dataType:'json',success: function(respone){console.log('Se realizó con exito')},error:function(err){console.log(err)}
       });
-      var url = "http://localhost:3000/aspirantes";
-      $(location).attr('href',url);
 
 
     });
@@ -29,18 +27,14 @@ $(document).ready(function(){
       {
         data.map((repository)=>{
           repositories += `
-          <div class="card card-body mt-2 animated bounceInUp">
-            <div class="row">
-              <div class="col-md-6">
-                <a href="${repository.html_url}" target="_blank">${repository.name}</a>
-              </div>
-              <div class="col-md-6">
-                  <span class="badge badge-primary">
-                    Language: ${repository.language}
-                  </span>
-              </div>
-            </div>
-          </div>
+          <div class="repo">
+          <a href="${repository.html_url}" class="github-element" target="_blank">
+          ${repository.name}
+                </a>
+                  <div class="github-link">
+                    Programado en: ${repository.language}
+                  </div>
+                  </div><br>
         `;
       });
       area.html(repositories)
@@ -67,8 +61,8 @@ $(document).ready(function(){
         var player;
         function onYouTubeIframeAPIReady() {
           player = new YT.Player('video', {
-            height: '200',
-            width: '600',
+            height: '100%',
+            width: '100%',
             videoId: url,
             events: {
               'onReady': onPlayerReady,

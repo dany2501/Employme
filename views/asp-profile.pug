@@ -8,7 +8,7 @@ html(lang='en')
     script#www-widgetapi-script(type='text/javascript', src='https://s.ytimg.com/yts/jsbin/www-widgetapi-vflY6gPjD/www-widgetapi.js', async='')
     script(src='https://www.youtube.com/iframe_api')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-    //script(src='javascripts/perfilasp.js')
+    script(src='javascripts/perfilasp.js')
     script(src='javascripts/modificar.js')
     title Employ.me
   body
@@ -22,12 +22,12 @@ html(lang='en')
       nav.header-navigation
         .header-navigation-icon-box
           svg.header-navigation-icon
-            use(xlink:href='images/sprite.svg#icon-comments', x='', y='')
+            use(xlink:href='images/sprite.svg#icon-comments')
           span.header-navigation-notification
             | 9
         .header-navigation-icon-box
           svg.header-navigation-icon
-            use(xlink:href='images/sprite.svg#icon-sign-in', x='', y='')
+            use(xlink:href='images/sprite.svg#icon-sign-in')
     .container
       nav.sidebar
         ul.sidebar-navigation
@@ -42,7 +42,7 @@ html(lang='en')
                 use(xlink:href='images/sprite.svg#icon-heart')
               span.sidebar-navigation-description Interesados
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/portafolio')
+            a.sidebar-navigation-link(href='/asp-cv')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-address-card')
               span.sidebar-navigation-description Portafolio
@@ -62,9 +62,9 @@ html(lang='en')
             form.information-photo-pick(action='/fotoasp', method='post', enctype='multipart/form-data')
               input#file.information-photo-select-hidden(type='file', name='file', value='Seleccionar foto')
               label.information-photo-select(for='file')
-                svg.information-photo-icon
-                  use(xlink:href='images/sprite.svg#icon-camera', x='', y='')
-              input.information-photo-hidden(type='submit', value='Seleccionar foto')
+                svg#camara.information-photo-icon
+                  use(xlink:href='images/sprite.svg#icon-camera')
+                input#submit.information-photo-hidden(type='submit', value='Cambiar foto')
             img.information-photo
           h1.user-name
             | #{nombre}
@@ -73,7 +73,7 @@ html(lang='en')
           #modal1.modal.modal-edit
             h3.modal-heading
               svg.information-data-icon
-                use(xlink:href='images/sprite.svg#icon-pencil ', x=' ', y=' ')
+                use(xlink:href='images/sprite.svg#icon-pencil ')
               |  Editar Informacion
             .modal-information
               hr
@@ -81,7 +81,7 @@ html(lang='en')
                 span.edit-info-span Telefono:
                 input#numero.edit-info-input(type='text',required="required")
                 span.edit-info-span Correo Electronico:
-                input#correo.edit-info-input(type='text',required="required")
+                input#correo.edit-info-input(type='text',required="required",placeholder=""+email)
             .modal-btn-container
               a#guardar.btn-blue.btn Guardar
               a#cerrar.btn-blue.btn Cerrar
@@ -113,24 +113,6 @@ html(lang='en')
             .modal-btn-container
               a#guardar3.btn-blue.btn Guardar
               a#cerrar2.btn-blue.btn Cerrar
-          //
-            <div class="information-data-specialty">
-            <h2 class="heading-portfolio-90deg">Especialidades</h2>
-            <div class="row-flex" style="transform: translateX(-15rem)">
-            <div class="specialty-percent">
-            <span class="specialty-name">JavaScript</span>
-            <span class="specialty-number">50</span>
-            </div>
-            <div class="specialty-percent">
-            <span class="specialty-name">CSS</span>
-            <span class="specialty-number">0 :(</span>
-            </div>
-            <div class="specialty-percent">
-            <span class="specialty-name">MySql</span>
-            <span class="specialty-number">68</span>
-            </div>
-            </div>
-            </div>
         .portfolio-information-self
           .information-data-field
             svg.information-data-icon
@@ -139,7 +121,7 @@ html(lang='en')
           .information-data-field
             svg.information-data-icon
               use(xlink:href='images/sprite.svg#icon-envelope')
-            span #{email}
+            span#correo #{email}
           .information-data-field
             svg.information-data-icon
               use(xlink:href='images/sprite.svg#icon-birthday-cake')
@@ -161,7 +143,7 @@ html(lang='en')
             .curriculum
               a.curriculum-required(href='')
                 svg.curriculum-required-icon
-                  use(xlink:href='images/sprite.svg#icon-address-card ', x=' ', y=' ')
+                  use(xlink:href='images/sprite.svg#icon-address-card ')
                 span.curriculum-required-link
                   | Crear Curriculum
           .flex-col-1-of-2--col
@@ -169,66 +151,9 @@ html(lang='en')
             #github.github
               a#git.curriculum-required
                 svg.curriculum-required-icon
-                  use(xlink:href='images/sprite.svg#icon-github-square', x='', y='')
+                  use(xlink:href='images/sprite.svg#icon-github-square')
                 span.curriculum-required-link
                   | Vincular cuenta de Github
-              //
-                <a href="" class="github-element">
-                GitHub
-                <span class="github-link">Ver en GitHub</span>
-                </a>
-                <a href="" class="github-element">
-                JavaScript
-                <span class="github-link">Ver en GitHub</span>
-                </a>
-                <a href="" class="github-element">
-                El del Benja
-                <span class="github-link">Ver en GitHub</span>
-                </a>
-                <a href="" class="github-element">
-                El del Benja y Croquer
-                <span class="github-link">Ver en GitHub</span>
-                </a>
-                <a href="" class="github-element">
-                La Galliza
-                <span class="github-link">Ver en GitHub</span>
-                </a>
-                <a href="" class="github-element">
-                Rap Vive sin drogas
-                <span class="github-link">Ver en GitHub</span>
-                </a>
-                <a href="" class="github-element">
-                Despacito 2
-                <span class="github-link">Ver en GitHub</span>
-                </a>
-                <a href="" class="github-element">
-                GitHub
-                <span class="github-link">Ver en GitHub</span>
-                </a>
-                <a href="" class="github-element">
-                JavaScript
-                <span class="github-link">Ver en GitHub</span>
-                </a>
-                <a href="" class="github-element">
-                El del Benja
-                <span class="github-link">Ver en GitHub</span>
-                </a>
-                <a href="" class="github-element">
-                El del Benja y Croquer
-                <span class="github-link">Ver en GitHub</span>
-                </a>
-                <a href="" class="github-element">
-                La Galliza
-                <span class="github-link">Ver en GitHub</span>
-                </a>
-                <a href="" class="github-element">
-                Rap Vive sin drogas
-                <span class="github-link">Ver en GitHub</span>
-                </a>
-                <a href="" class="github-element">
-                Despacito 2
-                <span class="github-link">Ver en GitHub</span>
-                </a>
-            a.digital-potfolio(href='')
+            a.digital-potfolio
               div(lass='curriculum-required ')
                 span.curriculum-required-link-text Enlaza tu portafolio digital aqui

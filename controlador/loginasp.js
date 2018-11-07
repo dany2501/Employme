@@ -3,6 +3,7 @@ var db =require('../conexionsql/conexion');
 exports.iniciarSesion = async function (req, res, next) {
     var settings = {
         password: 'HECD010225HMCRRNA6'
+        
     }
     const sqlQuery = "SELECT id_asp,nom_asp,apt_asp,apm_asp,sex_asp,email_asp,(AES_DECRYPT(usu_asp,'"+settings.password+"')) as usu_asp,(AES_DECRYPT(psw_asp, '"+settings.password+"')) as psw_asp FROM datosaspirante WHERE AES_DECRYPT(usu_asp, '"+settings.password+"')=? AND AES_DECRYPT(psw_asp, '"+settings.password+"')= ?";
     const sqlData = [req.body.usu, req.body.contra];

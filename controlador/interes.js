@@ -2,6 +2,7 @@ var con = require('../conexionsql/conexion');
 
 exports.interesado = async function (req, res, next) {
     var e=req.session.usuario;
+    console.log(e);
     var uno=e.id
     var id=req.session.asp;
     var dos=id.id

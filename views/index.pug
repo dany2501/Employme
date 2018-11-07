@@ -6,7 +6,10 @@ html(lang='en')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
     link(rel='stylesheet', href='stylesheets/icon-font-arrow.css')
     link(rel='stylesheet', href='stylesheets/styles.css')
-    title Employ.me
+    link(href='https://fonts.googleapis.com/css?family=Mukta+Malar:200,300,400,500,600,700,800|Noto+Serif:400,700|Roboto:100,300,400,500,700,900', rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css?family=Lato:400,700,900', rel='stylesheet')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='javascripts/animacion.js')
   body
     main
       header.header
@@ -19,7 +22,7 @@ html(lang='en')
               | me
             span.heading-main.u-color-white
               | Encuentra tu trabajo ideal.
-          a.btn.btn-arrow.icon-arrows-down-double(href='#')
+          a.btn.btn-arrow.icon-arrows-down-double(href='com-listasp.html')
       section.section-features
         h2.heading-secondary.u-color-black ¿Que ofrecemos?
         .row
@@ -47,7 +50,7 @@ html(lang='en')
               i.icon-font.icon-arrows-check
               h3.heading-tertiary.u-color-black Compatibilidad con GitHub
               p.feature-text
-                | Lorem ipsum dolor sit amet consectetur adipiscing elit facilisi, fermentum malesuada arcu praesent interdum ornare mattis eleifend, facilisis convallis rhoncus aenean urna vitae euismod.
+                | Como aspirante ahora puedes anexar a tu perfil tus proyectos mas relevantes enlazando tu cuenta de GitHub para demostrar tus conocimientos.
           .col-1-of-3-m
             .feature-container.principal-feature
               i.icon-font.icon-arrows-check
@@ -63,14 +66,14 @@ html(lang='en')
       section.section-start
         h2.heading-secondary.u-color-black ¿Que eres?
         .row
-          .col-1-of-2-z
-            label(for='empresa-round-button')
-              .start-company.start-rol
-                h3.heading-tertiary.heading-rol Empresa
-                a.btn(href='') Registrate
+          .col-1-of-2-m
+            .card
+              .card-side.card-side--front.card-side--front-company
+                h3.heading-rol Empresa
+              .card-side.card-side--back
                 form.start-sign-up(action='/regemp' method='post')
-                  input(type='text', name='nombre_e', id='', placeholder='Nombre de la Empresa')
-                  input(type='text', name='usuario_e', id='', placeholder='Usuario')
+                  input(type='text', name='nombre_e',  placeholder='Nombre de la Empresa')
+                  input(type='text', name='usuario_e',  placeholder='Usuario')
                   input(type='password', name='password_e', placeholder='Contraseña')
                   input(type='password', name='cpassword_e', placeholder='Confirmar Contraseña')
                   input(type='text', name='email_e', placeholder='Email')
@@ -80,25 +83,24 @@ html(lang='en')
                   input(type='text', name='usu_e',placeholder='Nombre de usuario')
                   input(type='password', name='pass_e',placeholder='Contraseña')
                   input(type='submit', value='Iniciar Sesion')
-          .col-1-of-2-z
-            label(for='aspirante-round-button')
-              .start-employee.start-rol
-                h3.heading-tertiary.heading-rol Aspirante
-          form.start-sign-up(action='/regasp' method='post')
-            input(type='text', name='nombre', id='', placeholder='Nombre', onkeypress="return isalpha(event)")
-            input(type='text', name='apt', id='', placeholder='Apellido Paterno', required)
-            input(type='text', name='apm', id='', placeholder='Apellidos Materno', required)
-            input(type='email', name='email', id='', placeholder='Email', required)
-            input(type='text', name='usuario', id='', placeholder='Usuario', required)
-            input(type='password', name='password', id='', placeholder='Contraseña', required)
-            input(type='password', name='confpass', id='', placeholder='Confirmar Contraseña', required)
-            input(type='date', name='fn', id='', placeholder='Fecha de Nacimiento', required)
-            input(type='text', name='sexo', id='', placeholder='Sexo', required)
-            input(type='submit', value='Finalizar')
-          a.btn(href='') Inicia Sesion
-          form.start-sign-in(action='/loginasp' method='post')
-            input(type='text', name='usu', id='', placeholder='Usuario o Correo', required)
-            input(type='password', name='contra', id='', placeholder='Contraseña', required)
-            input(type='submit', value='Iniciar Sesion')
+                input(type="button",class="btn", value="Regresar")
+          .col-1-of-2-m
+            .start-employee.start-rol
+              h3.heading-tertiary.heading-rol Aspirante
+              form.start-sign-up(action='/regasp' method='post')
+                input(type='text', name='nombre',  placeholder='Nombre', required)
+                input(type='text', name='apt',  placeholder='Apellido Paterno', required)
+                input(type='text', name='apm',  placeholder='Apellidos Materno', required)
+                input(type='email', name='email',  placeholder='Email', required)
+                input(type='text', name='usuario',  placeholder='Usuario', required)
+                input(type='password', name='password',  placeholder='Contraseña', required)
+                input(type='password', name='confpass',  placeholder='Confirmar Contraseña', required)
+                input(type='date', name='fn',  placeholder='Fecha de Nacimiento', required)
+                input(type='text', name='sexo',  placeholder='Sexo', required)
+                input(type='submit', value='Finalizar')
+            a.btn(href='') Inicia Sesion
+            form.start-sign-in(action='/loginasp' method='post')
+              input(type='text', name='usu',  placeholder='Usuario o Correo', required)
+              input(type='password', name='contra',  placeholder='Contraseña', required)
+              input(type='submit', value='Iniciar Sesion')
     footer.footer
-    

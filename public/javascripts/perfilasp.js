@@ -11,7 +11,7 @@ $(document).ready(function(){
                 url:'http://localhost:3000/fotoasp',
                 method:'put',
                 dataType:'json',
-                success:function(response){console.log(response);
+                success:function(response){
                   var ruta=(response[0].ruta_imga);
                   foto.attr("src",ruta);
                 
@@ -19,38 +19,26 @@ $(document).ready(function(){
             });
 
 
-    $.post("http://localhost:3000/perfilasp", function(data){
-      if(data=='Ocurrió un error')
-      {
-        repositories=`<div>
-                          <p>Parece que no haz enlazado tus repositorios de Github.<br> <div id="git">Enlazar ahora.</div></p>
-                      </div>`;
-      area.html(repositories);
-      }else
-      {
-        data.map((repository)=>{
-          repositories +=`
-
-          <a href="${repository.html_url}" class="github-element" target="_blank">
-          ${repository.name}
-                </a>
-                `/*`
-            <div>
-              <div>
-                <a href="${repository.html_url}">${repository.name}</a>
-              </div>
-              <div>
-                  <span>
-                    Language: ${repository.language}
-                  </span>
-              </div>
-            </div>
-        `*/;
-      });
-      area.html(repositories)
-      }
-        
-    })
+    $.post("http://localhost:3000/perfilasp", function(data)
+    {if(data=='Ocurrió un error')
+    {
+    }else
+    {
+      data.map((repository)=>{
+        repositories += `
+        <div class="repo">
+        <a href="${repository.html_url}" class="github-element" target="_blank">
+        ${repository.name}
+              </a>
+                <div class="github-link">
+                  Programado en: ${repository.language}
+                </div>
+                </div><br>
+      `;
+    });
+    area.html(repositories)
+    }        
+  });
 
     $.ajax({
       url:'http://localhost:3000/perfilasp',

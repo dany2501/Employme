@@ -19,6 +19,8 @@ router.get('/',noSesion, function(req,res,next){
     
 });
 
-router.post('/',noSesion,interes.interesado);
+router.post('/',noSesion,function(req,res,next){
+    interes.interesado(req,res,next)
+});
    
 module.exports = router; 

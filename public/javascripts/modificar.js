@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    var email=$('#correo')
     var close=$('#cerrar');
     var close2=$('#cerrar2');
     var close3=$('#cerrar3');
@@ -22,16 +23,20 @@ $(document).ready(function(){
     close.on('click',()=>{
             form.slideUp("fast",function(){
             });
+            correo.empty();
+            numero.empty();
     });
 
     close2.on('click',()=>{
         form2.slideUp("fast",function(){
         });
+        u.empty();
     });
 
     close3.on('click',()=>{
         form3.slideUp("fast",function(){
         });
+         v.empty();
                     });
 
 
@@ -82,6 +87,8 @@ $(document).ready(function(){
                 },
                 success:function(response){console.log(response) }
             });
+
+            
             form.slideUp("fast",function(){
             });
             
@@ -97,7 +104,7 @@ $(document).ready(function(){
 
 
     agregar2.on('click',()=>{
-        
+        console.log("Diste click")
         var usu=u.val();
         console.log(usu);
         if(usu.length==0)

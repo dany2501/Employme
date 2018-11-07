@@ -1,5 +1,5 @@
 doctype html
-html(lang='es')
+html(lang='en')
   head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
@@ -9,30 +9,34 @@ html(lang='es')
     script(src='https://www.youtube.com/iframe_api')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
     script(src='javascripts/aspirantes.js')
-
-    title Perfil de #{nombre}
+    title Perfil de #{nombre} | Employ.me
   body
     header.profile-header
       img.logo(src='images/logo.png', alt='Logo')
-      
+      form.search(action='')
+        input.search-input(type='text', placeholder='Buscar')
+        button.search-btn
+          svg.search-icon
+            use(xlink:href='images/sprite.svg#icon-search')
       nav.header-navigation
         .header-navigation-icon-box
           svg.header-navigation-icon
-            use(xlink:href='images/sprite.svg#icon-comments')
-          span.header-navigation-notification 
+            use(xlink:href='images/sprite.svg#icon-comments', x='', y='')
+          span.header-navigation-notification
+            | 9
         .header-navigation-icon-box
           svg.header-navigation-icon
-            use(xlink:href='images/sprite.svg#icon-sign-in')
+            use(xlink:href='images/sprite.svg#icon-sign-in', x='', y='')
     .container
       nav.sidebar
         ul.sidebar-navigation
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/perfilemp')
+            a.sidebar-navigation-link(href='/perfilasp')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-user')
               span.sidebar-navigation-description Perfil
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='')
+            a.sidebar-navigation-link(href='/asp-interested')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-heart')
               span.sidebar-navigation-description Interesados
@@ -52,31 +56,52 @@ html(lang='es')
                 use(xlink:href='images/sprite.svg#icon-sign-in')
               span.sidebar-navigation-description Salir
       main.portfolio
-        .portfolio-information
+        .portfolio-information-users
           .information-photo-container
-            .information-photo-container
               img.information-photo(src='/'+f)
-          .information-data
-            .id(style='display: none') #{id}
-            .information-data-field Nombre: #{nombre}
-            .information-data-field Email: #{email}
-            .information-data-field Edad:  #{edad} años
-            .information-data-field Sexo: #{sex}
-            .information-data-field Telefono: 
-            a#guardar.btn.btn-blue Me interesa.
+          h1.user-name
+            | #{nombre}
+          .information-map
+            #video
+        .portfolio-information-self
+          .information-data-field
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-mobile')
+            span #{num}
+          .information-data-field
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-envelope')
+            span #{email}
+          .information-data-field
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-birthday-cake')
+            span Edad:  #{edad} años
+          .information-data-field
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-male')
+            span Sexo: #{sex}
+          .information-data-field
+          a#guardar.btn.btn-blue Me interesa.
         .specialty-container
           .specialty-information
           .specialty-information
           .specialty-information
         .portfolio-curriculum
           .flex-col-1-of-2--row
-            .curriculum-container
-              .curriculum
-                img.test-curriculum(src='images/curriculum.jpg')
+            .curriculum
+              a.curriculum-required(href='')
+                svg.curriculum-required-icon
+                  use(xlink:href='images/sprite.svg#icon-address-card ', x=' ', y=' ')
+                span.curriculum-required-link
+                  | Crear Curriculum
           .flex-col-1-of-2--col
             h1 Proyectos desarrollados por mí.
             #github.github
-            h1 Video muestra / presentación
-            #video.video 
-    
-    
+              a#git.curriculum-required
+                svg.curriculum-required-icon
+                  use(xlink:href='images/sprite.svg#icon-github-square', x='', y='')
+                span.curriculum-required-link
+                  | Vincular cuenta de Github
+            a.digital-potfolio(href='')
+              div(lass='curriculum-required ')
+                span.curriculum-required-link-text Enlaza tu portafolio digital aqui
