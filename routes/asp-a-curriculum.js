@@ -21,4 +21,20 @@ router.post('/software',function(req,res,next){
     add.addSoftware(req, res, next);
 });  
 
+router.get('/showSoft',function(req,res,next){
+    add.showSoftware(req, res, next);
+}); 
+
+router.get('/showRef',function(req,res,next){
+    add.showReferences(req, res, next);
+}); 
+
+router.get('/showProj',function(req,res,next){
+    add.showProjects(req, res, next);
+}); 
+
+router.get('/showLeng',function(req,res,next){
+    add.showLenguages(req, res, next);
+});
+
 module.exports = router; 

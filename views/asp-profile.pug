@@ -86,6 +86,16 @@ html(lang='en')
               a#guardar.btn-blue.btn Guardar
               a#cerrar.btn-blue.btn Cerrar
 
+          #modal-github.modal-background
+            .modal.modal-github
+              svg.card-exit.card-exit--employee
+                use(xlink:href='images/sprite.svg#icon-close ')
+              svg.modal-github-icon
+                use(xlink:href='images/sprite.svg#icon-github')
+              form.github-form(action='')
+                input.form-input.form-input-dark(type='text', placeholder='Usuario de Github')
+                a.btn.form-btn.form-btn-dark Enlazar    
+
           #modal2.modal.modal-edit
             h3.modal-heading
               svg.information-data-icon

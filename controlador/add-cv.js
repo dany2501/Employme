@@ -98,3 +98,120 @@ exports.addSoftware = async function(req,res,next)
     }
 
 }
+
+
+
+exports.showSoftware = async function(req,res,next)
+{
+    var nombres=[];
+    var output=[];
+    var data={};
+    var user=req.session.usuario;
+    try{
+        var sqlQuery="select id_soft,manejo_soft, AES_DECRYPT(nom_soft,'"+settings.password+"')as nom_soft from software where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
+        var sqlData=[user.id];
+        var result=await db.consultaBd(sqlQuery,sqlData);
+        for(var i=0;i<result.length;i++)
+        {
+            output[i]=new Buffer.from(result[i].nom_soft, 'hex');
+            nombres[i]=output[i].toString()
+            data[i]={id:result[i].id_soft,nombre:nombres[i],mane:result[i].manejo_soft}
+            
+        }
+        res.json(data);
+    }
+    catch(err){
+        console.log(err);
+        res.json('Ocurrió un error');
+
+    }
+
+}
+
+exports.showReferences = async function(req,res,next)
+{
+    var emails=[];
+    var output=[];
+    var tels=[];
+    var data={};
+    var user=req.session.usuario;
+    try{
+        var sqlQuery="select id_ref,AES_DECRYPT(nom_ref,'"+settings.password+"')as nom_ref,AES_DECRYPT(tel_ref,'"+settings.password+"')as tel_ref,AES_DECRYPT(email_ref,'"+settings.password+"')as email_ref from referencias where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
+        var sqlData=[user.id];
+        var result=await db.consultaBd(sqlQuery,sqlData);
+        for(var i=0;i<result.length;i++)
+        {
+            tels[i]=new Buffer.from(result[i].tel_ref,'hex');
+            output[i]=new Buffer.from(result[i].nom_ref, 'hex');
+            emails[i]= new Buffer.from(result[i].email_ref,'hex');
+            data[i]={id:result[i].id_ref,nombre:(output[i]).toString(),tel:(tels[i]).toString(),email:(emails[i]).toString()}
+            
+        }
+        res.json(data);
+    }
+    catch(err){
+        console.log(err);
+        res.json('Ocurrió un error');
+
+    }
+    
+}
+
+exports.showProjects = async function(req,res,next)
+{
+    var emps=[];
+    var output=[];
+    var puestos=[];
+    var data={};
+    var user=req.session.usuario;
+    
+    try{
+        var sqlQuery="select id_pro,AES_DECRYPT(nom_pro,'"+settings.password+"')as nom_pro,AES_DECRYPT(puesto_pro,'"+settings.password+"')as puesto_pro,AES_DECRYPT(emp_pro,'"+settings.password+"')as emp_pro from proyectos where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
+        var sqlData=[user.id];
+        var result=await db.consultaBd(sqlQuery,sqlData);
+        for(var i=0;i<result.length;i++)
+        {
+            emps[i]=new Buffer.from(result[i].emp_pro,'hex');
+            output[i]=new Buffer.from(result[i].nom_pro, 'hex');
+            puestos[i]= new Buffer.from(result[i].puesto_pro,'hex');
+            data[i]={id:result[i].id_pro,nombre:(output[i]).toString(),tel:(emps[i]).toString(),puesto:(puestos[i]).toString()}
+            
+        }
+        res.json(data);
+    }
+    catch(err){
+        console.log(err);
+        res.json('Ocurrió un error');
+
+    }
+    
+}
+
+// id_pasp,idioma_idio
+
+exports.showLenguages = async function(req,res,next)
+{
+    var ids=[];
+    var idiomas=[];
+    var data={};
+    var user=req.session.usuario;
+    
+    try{
+        var sqlQuery="select id_idio,AES_DECRYPT(idioma_idio,'"+settings.password+"')as idioma_idio from idiomas where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
+        var sqlData=[user.id];
+        var result=await db.consultaBd(sqlQuery,sqlData);
+        for(var i=0;i<result.length;i++)
+        {
+            idiomas[i]=new Buffer.from(result[i].idioma_idio, 'hex');
+            data[i]={id:result[i].id_idio,idioma:(idiomas[i]).toString()}
+            
+        }
+        res.json(data);
+    }
+    catch(err){
+        console.log(err);
+        res.json('Ocurrió un error');
+
+    }
+    
+}

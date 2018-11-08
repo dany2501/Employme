@@ -10,6 +10,7 @@ html(lang='en')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
     script(src='javascripts/perfilasp.js')
     script(src='javascripts/cv.js')
+    script(src='javascripts/jspdf.min.js')
     title Employ.me
   body
     header.profile-header
@@ -60,7 +61,7 @@ html(lang='en')
         .portfolio-information-users
           .information-photo-container
             img.information-photo
-          h1.user-name
+          h1.user-name#name
             | #{nombre}
           .information-map
         .portfolio-information-self
@@ -82,48 +83,49 @@ html(lang='en')
             span Sexo: #{sex}
         form.start-sign-up(action='/asp-cv' method='post')
           h5 Escribe una descripción de ti, que sea breve y concisa describiendo las habilidades que tengas.  
-          textarea(name="descripcion",maxlength="1000")
+          textarea.form-textarea(name="descripcion",maxlength="1000", placeholder='Descripción...')
           br
           br
           h5 Ahora, habiendo tus datos como correo electrónico y número telefónico, ingrea tu dirección para completar datos de contacto.
-          input(type='text', name='direccion',  placeholder='Dirección.')
+          input.form-input.form-input-dark(type='text', name='direccion',  placeholder='Dirección.')
           br
           br
-          input(type='submit', class="botoncito", value="Añadir")
+          input.btn-blue.btn(type='submit', class="botoncito", value="Añadir")
 
         br 
         br  
         h5 Ingresa los idiomas que hablas.
-        input(type='text', id='lenguage', placeholder='Idioma')
+        input.form-input.form-input-dark(type='text', id='lenguage', placeholder='Idioma')
         br
-        input(type='button',id='botn',value="Agregar otro idioma")
+        input.btn-blue.btn(type='button',id='botn',value="Agregar otro idioma")
         br
         br
         h5 Para complementar, agrega proyectos en los que haz participado, la empresa en la cual fue desarrollado, el puesto que ocupaste.
-        input(type='text', id='projectName', placeholder='Nombre del proyecto')
+        input.form-input.form-input-dark(type='text', id='projectName', placeholder='Nombre del proyecto')
         br
-        input(type='text', id='companyName', placeholder='Nombre de la empresa')
+        input.form-input.form-input-dark(type='text', id='companyName', placeholder='Nombre de la empresa')
         br
-        input(type='text', id='position', placeholder='Puesto ocupado')
+        input.form-input.form-input-dark(type='text', id='position', placeholder='Puesto ocupado')
         br
-        input(type='button', id="pBtn", value="Agregar otro proyecto")
+        input.btn-blue.btn(type='button', id="pBtn", value="Agregar otro proyecto")
         br
         br
         h5 Agrega referencias de tu trabajao, es decir contactos que puedan respaldar tu trabajo.
-        input(type='text', id='refName', placeholder='Nombre de la persona')
+        input.form-input.form-input-dark(type='text', id='refName', placeholder='Nombre de la persona')
         br
-        input(type='text', id='telRef', placeholder='Número telefónico')
+        input.form-input.form-input-dark(type='text', id='telRef', placeholder='Número telefónico')
         br
-        input(type='text', id='emailRef', placeholder='Correo Electrónico')
+        input.form-input.form-input-dark(type='text', id='emailRef', placeholder='Correo Electrónico')
         br
-        input(type='button', id="refBtn", value="Agregar otra referencia")
+        input.btn-blue.btn(type='button', id="refBtn", value="Agregar otra referencia")
         br
         br
         h5 Agrega los softwares que sepas usar y en que porcentaje. No ingreses número décimales
-        input(type='text', id='softName', placeholder='Nombre del software')
+        input.form-input.form-input-dark(type='text', id='softName', placeholder='Nombre del software')
         br
-        input(type='text', id='softPor', placeholder='Porcentaje')
+        input.form-input.form-input-dark(type='text', id='softPor', placeholder='Porcentaje')
         br
-        input(type='button', id="softBtn", value="Agregar otra software")
+        input.btn-blue.btn(type='button', id="softBtn", value="Agregar otra software")
         br
         br
+        input.btn-blue.btn(type='button', id="cvBtn", value="Generar curriculum")

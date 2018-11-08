@@ -5,6 +5,20 @@ $(document).ready(function(){
     var f="";
     var areav=$('#video');
     var foto=$('.information-photo');
+    var screen=$('#loader');
+
+    configureLoadingScreen(screen);
+
+    function configureLoadingScreen(screen)
+{
+	$(document)
+            .ajaxStart(()=>{
+            screen.fadeIn()
+            })
+            .ajaxStop(()=>{
+            screen.fadeOut;
+            });
+}
 
 
     $.ajax({
