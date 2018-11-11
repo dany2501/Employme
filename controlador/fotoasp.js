@@ -39,6 +39,7 @@ try {
     
 try {
       var result3=await con.consultaBd(query,ds.id);
+      console.log(result3);
       res.json(result3);
     } catch (err) {
       console.log(err);

@@ -1,6 +1,8 @@
 doctype html
 html(lang='en')
   head
+    script(src='https://code.jquery.com/jquery-1.10.2.js')
+    script(src='javascripts/validaciones.js')
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
@@ -8,8 +10,9 @@ html(lang='en')
     link(rel='stylesheet', href='stylesheets/styles.css')
     link(href='https://fonts.googleapis.com/css?family=Mukta+Malar:200,300,400,500,600,700,800|Noto+Serif:400,700|Roboto:100,300,400,500,700,900', rel='stylesheet')
     link(href='https://fonts.googleapis.com/css?family=Lato:400,700,900', rel='stylesheet')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-    script(src='javascripts/animacion.js')
+    script(src='javascripts/card-animation.js')
+    
+    title Employ.me
   body
     main
       header.header
@@ -69,38 +72,85 @@ html(lang='en')
           .col-1-of-2-m
             .card
               .card-side.card-side--front.card-side--front-company
-                h3.heading-rol Empresa
-              .card-side.card-side--back
-                form.start-sign-up(action='/regemp' method='post')
-                  input(type='text', name='nombre_e',  placeholder='Nombre de la Empresa')
-                  input(type='text', name='usuario_e',  placeholder='Usuario')
-                  input(type='password', name='password_e', placeholder='Contraseña')
-                  input(type='password', name='cpassword_e', placeholder='Confirmar Contraseña')
-                  input(type='text', name='email_e', placeholder='Email')
-                  input(type='submit', value='Finalizar')
-                a.btn(href='') Inicia Sesion
-                form.start-sign-in(action='/loginemp',method='post')
-                  input(type='text', name='usu_e',placeholder='Nombre de usuario')
-                  input(type='password', name='pass_e',placeholder='Contraseña')
-                  input(type='submit', value='Iniciar Sesion')
-                input(type="button",class="btn", value="Regresar")
+                h3.heading-rol.heading-tertiary Empresa
+              .card-side.card-side--back.card-side--back-company
+                .form-organizer
+                  svg.card-exit.card-exit--company
+                    use(xlink:href='img/sprite.svg#icon-close ')
+                    #btn-form-1.btn.btn-form Inicia Sesion
+                    #btn-form-2.btn.btn-form.btn-form-active Registrate
+                  form#form1Emp.index-form.index-form-1(action='/regemp' method='post')
+                    input.form-input.form-input-light(type='text', name='nombre_e',  placeholder='Nombre de la Empresa',onkeypress='return soloLetras(event)')
+                    input.form-input.form-input-light(type='text', name='usuario_e',  placeholder='Usuario',onkeypress="return soloGit(event)")
+                    input.form-input.form-input-light(type='password', name='password_e', placeholder='Contraseña',onkeypress="return soloContra(event)")
+                    input.form-input.form-input-light(type='password', name='cpassword_e', placeholder='Confirmar Contraseña',onkeypress=`soloContra(event)`)
+                    input.form-input.form-input-light(type='text', name='email_e', placeholder='Email',onkeypress="return soloCorreo(event)")
+                    button.btn.form-btn.form-btn-light(type='submit',value='Registrarse') 
+                  form#form2Emp.index-form.index-form-2(action='/loginemp',method='post')
+                    input.form-input.form-input-light(type='text', name='usu_e',placeholder='Nombre de usuario',onkeypress="return soloGit(event)")
+                    input.form-input.form-input-light(type='password', name='pass_e',placeholder='Contraseña',onkeypress="return soloContra(event)")
+                    button.btn.form-btn.form-btn-light(type='submit',value='Iniciar Sesion') 
           .col-1-of-2-m
-            .start-employee.start-rol
-              h3.heading-tertiary.heading-rol Aspirante
-              form.start-sign-up(action='/regasp' method='post')
-                input(type='text', name='nombre',  placeholder='Nombre', required)
-                input(type='text', name='apt',  placeholder='Apellido Paterno', required)
-                input(type='text', name='apm',  placeholder='Apellidos Materno', required)
-                input(type='email', name='email',  placeholder='Email', required)
-                input(type='text', name='usuario',  placeholder='Usuario', required)
-                input(type='password', name='password',  placeholder='Contraseña', required)
-                input(type='password', name='confpass',  placeholder='Confirmar Contraseña', required)
-                input(type='date', name='fn',  placeholder='Fecha de Nacimiento', required)
-                input(type='text', name='sexo',  placeholder='Sexo', required)
-                input(type='submit', value='Finalizar')
-            a.btn(href='') Inicia Sesion
-            form.start-sign-in(action='/loginasp' method='post')
-              input(type='text', name='usu',  placeholder='Usuario o Correo', required)
-              input(type='password', name='contra',  placeholder='Contraseña', required)
-              input(type='submit', value='Iniciar Sesion')
+            .card
+              .card-side.card-side--front.card-side--front-employee()
+                h3.heading-rol.heading-tertiary Aspirante
+              .card-side.card-side--back.card-side--back-employee
+                .form-organizer
+                  svg.card-exit.card-exit--employee
+                    use(xlink:href='img/sprite.svg#icon-close ')
+                  a#btn-form-1A.btn.btn-form Inicia Sesion
+                  a#btn-form-2A.btn.btn-form.btn-form-active Registrate
+                  form#form1Asp.index-form.index-form-2(action='/regasp' method='post')
+                    input.form-input.form-input-light(type='text', name='nombre',  placeholder='Nombre', required,onkeypress="return soloLetras(event)")
+                    input.form-input.form-input-light(type='text', name='apt',  placeholder='Apellido Paterno', required,onkeypress="return soloLetras(event)")
+                    input.form-input.form-input-light(type='text', name='apm',  placeholder='Apellidos Materno', required,onkeypress="return soloLetras(event)")
+                    input.form-input.form-input-light(type='email', name='email',  placeholder='Email', required,onkeypress="return soloCorreo(event)")
+                    input.form-input.form-input-light(type='text', name='usuario',  placeholder='Usuario', required,onkeypress="return soloGit(event)")
+                    input.form-input.form-input-light(type='password', name='password',  placeholder='Contraseña', required,onkeypress="return soloContra(event)")
+                    input.form-input.form-input-light(type='password', name='confpass',  placeholder='Confirmar Contraseña', required,onkeypress="return soloContra(event)")
+                    input.form-input.form-input-light(type='date', name='fn',  placeholder='Fecha de Nacimiento', required)
+                    input.form-input.form-input-light(type='text', name='sexo',  placeholder='Sexo', required)
+                    button.btn.form-btn.form-btn-light(type='submit') Registrarse 
+                  form#form2Asp.index-form.index-form-1(action='/loginasp' method='post')
+                    input.form-input.form-input-light(type='text', name='usu',  placeholder='Usuario o Correo', required,onkeypress="return soloCorreo(event)")
+                    input.form-input.form-input-light(type='password', name='contra',  placeholder='Contraseña', require,onkeypress="return soloContra(event)")
+                    button.btn.form-btn.form-btn-light(type='submit') Iniciar Sesion
     footer.footer
+      span.footer-heading
+        | Employ
+        span.point-color .
+        | me
+      ul.footer-section
+        li.footer-element
+          span.footer-element-title Acerca de Nosotros
+          ul.footer-list
+            li.footer-list-elemt
+              i Elemento 1
+            li.footer-list-elemt
+              i Elemento 2
+            li.footer-list-elemt
+              i Elemento 3
+            li.footer-list-elemt
+              i Elemento 4
+        li.footer-element
+          span.footer-element-title Contacto
+          ul.footer-list
+            li.footer-list-elemt
+              i Elemento 1
+            li.footer-list-elemt
+              i Elemento 2
+            li.footer-list-elemt
+              i Elemento 3
+            li.footer-list-elemt
+              i Elemento 4
+        li.footer-element
+          span.footer-element-title Servicios
+          ul.footer-list
+            li.footer-list-elemt
+              i Elemento 1
+            li.footer-list-elemt
+              i Elemento 2
+            li.footer-list-elemt
+              i Elemento 3
+            li.footer-list-elemt
+              i Elemento 4

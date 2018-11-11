@@ -5,20 +5,33 @@ $(document).ready(function(){
     var f="";
     var areav=$('#video');
     var foto=$('.information-photo');
-    var screen=$('#loader');
+    var pdfcv=$('#cv');
 
-    configureLoadingScreen(screen);
+    $("#pdf").on('change',function() {
+      var filesSelected = document.getElementById("pdf").files;
+      tipo=filesSelected[0].type;
+      if(tipo!='application/pdf')
+      {
+          alert("Formato no soportado");
+          this.value = '';
+      }
+  });
 
-    function configureLoadingScreen(screen)
-{
-	$(document)
-            .ajaxStart(()=>{
-            screen.fadeIn()
-            })
-            .ajaxStop(()=>{
-            screen.fadeOut;
-            });
-}
+  $.ajax({
+    url:'http://localhost:3000/curriculum/showCv',
+    method:'get',
+    dataType:'json',
+    success:function(response){
+      var cvpdf=`<embed src="${response}" type="application/pdf" style="height: 100%;
+      width: 100%;"></embed>`;
+      
+      pdfcv.html(cvpdf);
+    },error:function(err){
+      console.log(err);
+    }
+
+  })
+  
 
 
     $.ajax({
@@ -62,11 +75,6 @@ $(document).ready(function(){
       var url = json;
       if(url==null)
       {
-        error=`<div>
-        <p>Parece que no haz enlazado algún video.<br> <a id="youtube">Agregar ahora.</a></p>
-      </div>`;
-
-        areav.html(error);
       }
       else{
         var player;

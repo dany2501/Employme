@@ -8,8 +8,7 @@ $(document).ready(()=>{
     var btnIdioma=$('#agregarI');
 
     oidioma.on('click',()=>{
-        idiomas=idioma.val();
-        console.log(idiomas); 
+        idiomas=idioma.val(); 
         $.ajax({
             url:'http://localhost:3000/add-cv',
             method:'post',
@@ -37,7 +36,6 @@ $(document).ready(()=>{
         empresa=emp.val();
         puesto=pos.val();
 
-        console.log("Proyecto: "+nomPro+" desarrollado en: "+empresa+" con el puesto de: "+puesto);
         $.ajax({
             url:'http://localhost:3000/add-cv',
             method:'put',
@@ -73,7 +71,6 @@ $(document).ready(()=>{
         ref=refName.val();
         tel=telRef.val();
         email=emailRef.val();
-console.log("Nombre de la referencia: "+ref+" su telefono es: "+tel+" y su email es: "+email);
 
         $.ajax({
             url:'http://localhost:3000/add-cv/referencias',
@@ -107,8 +104,6 @@ console.log("Nombre de la referencia: "+ref+" su telefono es: "+tel+" y su email
     softBtn.on('click',()=>{
         nameSoft=softName.val();
         percentage=softPor.val();
-
-        console.log("Maneja: "+nameSoft+" al "+percentage+" %");
         $.ajax({
             url:'http://localhost:3000/add-cv/software',
             method:'post',
@@ -134,7 +129,30 @@ console.log("Nombre de la referencia: "+ref+" su telefono es: "+tel+" y su email
     var p;
     var j;
     var l;
-    cvBtn.on('click',()=>{
+    var tipo;
+    var base="";
+    var du="";
+            $("#inputFileToLoad").on('change',function() {
+                var filesSelected = document.getElementById("inputFileToLoad").files;
+                tipo=filesSelected[0].type;
+                if(tipo!='image/jpeg')
+                {
+                    alert("Formato no soportado");
+                    this.value = '';
+                }else
+                if (filesSelected.length > 0) {
+                    var fileToLoad = filesSelected[0];
+                    var fileReader = new FileReader();
+                    fileReader.onload = function(fileLoadedEvent) {
+                        var base64value = fileLoadedEvent.target.result;
+                        base=base64value;
+                    };
+                    fileReader.readAsDataURL(fileToLoad);	 
+                }
+            });
+            
+            
+            cvBtn.on('click',()=>{
         (async ()=>{
             async function leng(){
                 return $.ajax({
@@ -178,6 +196,19 @@ console.log("Nombre de la referencia: "+ref+" su telefono es: "+tel+" y su email
              r= await ref();
              //console.log(r);
 
+             async function DU(){
+                return $.ajax({
+                    url:'http://localhost:3000/add-cv/showDU',
+                    method:'get',
+                    dataType:'json',
+                    success:function(response){
+                    return response;
+                     }
+                });
+            }
+
+            du=await DU();
+
 
              async function sof(){
                 return $.ajax({
@@ -194,14 +225,14 @@ console.log("Nombre de la referencia: "+ref+" su telefono es: "+tel+" y su email
              //console.log(s);
              
 
-            await generar(s,p,r,l);
+            
 
-             async function generar(s,p,r,l)
+            
+             
+            await generar(s,p,r,l,du);
+             async function generar(s,p,r,l,du)
              {
-                 console.log(s);
-                 console.log(p);
-                 console.log(r);
-                 console.log(l);
+                 
                 var doc = new jsPDF();
 		doc.setDrawColor(0);
 		doc.setFillColor(165, 235, 247);
@@ -209,7 +240,7 @@ console.log("Nombre de la referencia: "+ref+" su telefono es: "+tel+" y su email
 		doc.setFillColor(204, 201, 201);
 		doc.rect(0, 20, 230, 26, 'F');
 		doc.setFontSize(22);
-		doc.text(80, 30, 'NOMBRE APELLIDOS');
+		doc.text(80, 30,`${du.nom}`);
 
 		doc.setFontSize(14);
 		doc.text(82, 40, 'PUESTO OCUPADO/BUSCADO');
@@ -229,50 +260,36 @@ console.log("Nombre de la referencia: "+ref+" su telefono es: "+tel+" y su email
 
 
 		doc.setFontSize(12);
-		doc.text(10,70,'Dirección: XXXXXXXX');
-		doc.text(10,76,'Telefono: XXXXXXXX');
-		doc.text(10,82,'Email: XXXXXXXX');
-		doc.text(10,98,'Español: Natal');
-		doc.text(10,104,`Idioma: ${l[0].idioma}`);
-        doc.text(10,110,`Idioma: ${l[1].idioma}`);
-        if(l[2].idioma!=null)
-        {
-            console.log(l[2].idioma)
-		doc.text(10,116,`Idioma: ${l[2].idioma}`);
-        }else if(l[3].idioma!=null)
-        {
-            console.log(l[3].idioma);
-            doc.text(10,122,`Idioma: ${l[3].idioma}`);
-        }
-        else if(l[4].idioma!=null)
-        {
-        
-            console.log( l[4].idioma);
-            doc.text(10,128,`Idioma: ${l[4].idioma}`);
-
-        }else
-        {
-
-        
-		doc.text(10,150,'^ Excel : Experto');
-		doc.text(10,156,'^ Word: Experto');
-		doc.text(10,162,'^ JSP: Excelperto');
-		doc.text(10,168,'^ JSP: Excelperto');
-		doc.text(10,174,'^ JSP: Excelperto');
+		doc.text(10,70,`Dirección: ${du.ubi}`);
+		doc.text(10,76,`Telefóno: ${du.tel}`);
+		doc.text(10,82,`Email: ${du.email}`);
+        doc.text(10,98,'Español: Natal');
+                var seg=104;
+        for (var i in l) {
+            doc.text(10,seg,`Idioma: ${l[i].idioma}`);
+            seg+=6;
 
         }
-        doc.text(10,144,`Software: ${s[0].nombre} al ${s[0].mane} `);
-		
-		doc.text(10,190,'Nombre:');
-		doc.text(10,196,'Dirección:');
-		doc.text(10,202,'Correo:');
-		doc.text(10,208,'Teléfono');
-		doc.text(10,214,'Empresa');
-		doc.text(10,220,'Cargo');
-		doc.text(10,226,'Nacionalidad');
-		doc.text(10,232,'Facebook');
-		doc.text(10,238,'Twitter');
-		doc.text(10,244 ,'Whatsapp');
+        var se=144;
+        for (var i in s)
+
+        {
+            doc.text(10,se,`${s[i].nombre} al ${s[i].mane}% `);
+            se+=6;
+        }
+        var s= 190;
+        for(var i in r)
+        {
+            doc.text(2,s,`Nombre: ${r[i].nombre}`);
+            s+=6;
+            doc.text(2,s,`Correo: ${r[i].email}`);
+            s+=6;
+            doc.text(2,s,`Telefono: ${r[i].tel}`);
+            s+=12;
+        }
+
+
+        
 		doc.text(65,130,'Año');
 		doc.text(65,135,'País,Estado,Ciudad');
 		doc.text(120,130,'Título:XXXXXXXXXXXX');
@@ -287,42 +304,44 @@ console.log("Nombre de la referencia: "+ref+" su telefono es: "+tel+" y su email
 		doc.text(120,165,'Universidad o Institución');
 		doc.text(65,180,'De XX/XX/XXXX');
 		doc.text(65,185,'A XX/XX/XXXX');
-		doc.text(65,190,'País, Ciudad');
-		doc.text(110,180,'Nombre de la empresa');
-		doc.text(110,185,'Cargo o puesto en la empresa');
+        doc.text(65,190,'País, Ciudad');
+        
+
+        var sec=180;
+        for (var i in p)
+        {
+            doc.text(110,sec,`Nombre del proyecto: ${p[i].nombre}`);
+            sec+=6;
+            doc.text(110,sec,`Nombre de la empresa: ${p[i].emps}`);
+            sec+=6;
+            doc.text(110,sec,`Puesto ocupado: ${p[i].puesto}`);
+            sec+=12;
+        }
 		
-		doc.text(65,215,'De XX/XX/XXXX');
-		doc.text(65,220,'A XX/XX/XXXX');
-		doc.text(65,225,'País, Ciudad');
-		doc.text(110,215,'Nombre de la empresa');
-		doc.text(110,220,'Cargo o puesto en la empresa');
-		
-		doc.text(65,250,'De XX/XX/XXXX');
-		doc.text(65,255,'A XX/XX/XXXX');
-		doc.text(65,260,'País, Ciudad');
-		doc.text(110,250,'Nombre de la empresa');
-		doc.text(110,255,'Cargo o puesto en la empresa');
 		
 		
 
-		loremipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id eros turpis. Vivamus tempor urna vitae sapien mollis molestie. Vestibulum in lectus non enim bibendum laoreet at at libero. Etiam malesuada erat sed sem blandit in varius orci porttitor. Sed at sapien urna. Fusce augue ipsum, molestie et adipiscing at, varius quis enim. Morbi sed magna est, vel vestibulum urna. Sed tempor ipsum vel mi pretium at elementum urna tempor. Nulla faucibus consectetur felis, elementum venenatis mi mollis gravida. Aliquam mi ante, accumsan eu tempus vitae, viverra quis justo.\n\nProin feugiat augue in augue rhoncus eu cursus tellus laoreet. Pellentesque eu sapien at diam porttitor venenatis nec vitae velit. Donec ultrices volutpat lectus eget vehicula. Nam eu erat mi, in pulvinar eros. Mauris viverra porta orci, et vehicula lectus sagittis id. Nullam at magna vitae nunc fringilla posuere. Duis volutpat malesuada ornare. Nulla in eros metus. Vivamus a posuere libero.'
+		loremipsum =du.des;
 		doc.setFontSize(11);
 		//lineas = doc.splitTextToSize(palabra,número de letras) //Nota: por alguna extraña razón no concuenrda el valor de número de letras...
     	lines = doc.splitTextToSize(loremipsum, 138);
-    	doc.text(66, 59, lines);
+    	doc.text(66, 60, lines);
 
 
     	loremipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id eros turpis. Vivamus tempor urna vitae sapien mollis molestie. Vestibulum in lectus non enim bibendum laoreet at at libero. Etiam malesuada erat sed sem blandit in varius orci porttitor.';
 
     	lines = doc.splitTextToSize(loremipsum, 100);
-    	doc.text(110, 190, lines);
-    	lines = doc.splitTextToSize(loremipsum, 100);
     	doc.text(110, 225, lines);
     	lines = doc.splitTextToSize(loremipsum, 100);
     	doc.text(110, 260, lines);
-		/*var imgData = base;
-		doc.addImage(imgData, 'JPEG', 9, 15, 45, 50);*/
-        doc.save('test.pdf');
+        var imgData = base;
+        if(tipo=='image/jpeg')
+        {
+            console.log("JPEG");
+            doc.addImage(imgData, 'JPEG', 9, 15, 45, 50);
+            doc.save('test.pdf');
+        }
+        
     } 
 
 

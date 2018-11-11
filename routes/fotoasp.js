@@ -20,4 +20,7 @@ router.post('/', function (req, res, next) {
 router.put('/', function (req, res, next) {
     fotoasp.mostrarFoto(req,res,next);
 });
+router.get('/foto', function (req, res, next) {
+    fotoasp.mostrarFoto(req,res,next);
+});
 module.exports = router; 

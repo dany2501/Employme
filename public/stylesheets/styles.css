@@ -853,11 +853,129 @@ body {
               .form-input-dark {
                 border-bottom: 2px solid #222831;
                 color: #222831; }
+                .company-radio {
+                  display: none; }
+                  .btn-form {
+                    color: #fff;
+                    border-radius: 20px;
+                    padding: 2rem 3.5rem;
+                    display: inline-block;
+                    border: 6px solid #fff;
+                    margin-top: 4rem; }
+                    .btn-form-active {
+                      color: #393e46;
+                      background-color: #fff; }
+                      
+.btn:link, .btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all .4s;
+  position: relative;
+  display: inline-block; }
+
+.btn:active {
+  transform: translateY(-0.1rem);
+  text-decoration: none; }
+  .index-form {
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); }
+    .index-form-1 {
+      display: flex; }
+    .index-form-2 {
+      display: none; }
+
+  .footer {
+    background-color: #222831;
+    color: #fff;
+    padding: 3rem;
+    font-size: 4.75rem;
+    display: flex;
+    justify-content: space-between; }
+    .footer-heading {
+      letter-spacing: 1rem;
+      flex: 0 0 30%; }
+      .footer-heading .point-color {
+        color: red;
+        font-size: 8rem; }
+    .footer-section {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 900;
+      flex-grow: 1; }
+    .footer-element {
+      list-style: none; }
+      .footer-element-title {
+        color: #c6c6c6;
+        font-size: 2.5rem; }
+    .footer-list {
+      list-style: none;
+      margin-top: 2rem;
+      font-size: 2rem; }
+      .footer-list-element:not(:last-child) {
+        margin-bottom: 2rem; }
 
                 .form-heading {
                   margin: 2.5rem 0;
                   text-transform: uppercase;
                   font-size: 2rem; }
+
+                  .card {
+                    perspective: 200rem;
+                    -webkit-perspective: 200rem;
+                    position: relative;
+                    height: 95vh; }
+                    .card-side {
+                      height: 95vh;
+                      transition: all 1s;
+                      background-size: cover;
+                      background-position: center;
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      backface-visibility: hidden;
+                      border-radius: 8px; }
+                      .card-side--front:hover {
+                        animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) 2s;
+                        animation-iteration-count: 2, infinite; }
+                      .card-side--front-company {
+                        background-image: url(../images/company2.jpg); }
+                      .card-side--front-employee {
+                        background-image: url(../images/employee2.jpg); }
+                      .card-side--back {
+                        background-image: radial-gradient(ellipse, rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.9), #2c3e50);
+                        transform: rotateY(180deg);
+                        padding: 1rem; }
+                    .card-exit {
+                      width: 4.25rem;
+                      height: 4.25rem;
+                      fill: #fff;
+                      position: absolute;
+                      top: 2rem;
+                      right: 2rem;
+                      cursor: pointer; }
+
+
+                      .form-input {
+                        max-width: 40rem;
+                        font-size: 2.3rem;
+                        background-color: transparent;
+                        border: none;
+                        margin: 1.20rem 0; }
+                        .form-input-dark {
+                          border-bottom: 2px solid #222831;
+                          color: #222831; }
+                        .form-input-light {
+                          border-bottom: 2px solid #fff;
+                          color: #fff; }
+                        .form-input:first-child {
+                          margin-top: 3rem; }
+                        .form-input:focus {
+                          outline: none; }
+
 
 .start-employee {
   background-image: url(../images/employee2.jpg); }

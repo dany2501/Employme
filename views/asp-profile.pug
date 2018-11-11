@@ -10,6 +10,7 @@ html(lang='en')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
     script(src='javascripts/perfilasp.js')
     script(src='javascripts/modificar.js')
+    script(src='javascripts/validaciones.js')
     title Employ.me
   body
     header.profile-header
@@ -69,7 +70,7 @@ html(lang='en')
           h1.user-name
             | #{nombre}
           .information-map
-            #video
+           
           #modal1.modal.modal-edit
             h3.modal-heading
               svg.information-data-icon
@@ -79,9 +80,9 @@ html(lang='en')
               hr
               .edit-info-block-
                 span.edit-info-span Telefono:
-                input#numero.edit-info-input(type='text',required="required")
+                input#numero.edit-info-input(type='text',required="required",onkeypress="return soloNum(event)" maxlength="10")
                 span.edit-info-span Correo Electronico:
-                input#correo.edit-info-input(type='text',required="required",placeholder=""+email)
+                input#correo.edit-info-input(type='text',required="required",placeholder=""+email,onkeypress="return soloCorreo(event)")
             .modal-btn-container
               a#guardar.btn-blue.btn Guardar
               a#cerrar.btn-blue.btn Cerrar
@@ -149,13 +150,19 @@ html(lang='en')
           .specialty-information
           .specialty-information
         .portfolio-curriculum
+          
           .flex-col-1-of-2--row
-            .curriculum
-              a.curriculum-required(href='')
+            #cv.curriculum
+            
+              a.curriculum-required    
                 svg.curriculum-required-icon
                   use(xlink:href='images/sprite.svg#icon-address-card ')
                 span.curriculum-required-link
-                  | Crear Curriculum
+                  | Subir Curriculum.
+                form(action='/curriculum', method='post', enctype='multipart/form-data') 
+                  input#pdf(type='file', name='pdf', value='Seleccionar Curriculum')
+                  br
+                  input(type='submit', name='btnCv', value='Subir')  
           .flex-col-1-of-2--col
             h1 Proyectos desarrollados por mí.
             #github.github
@@ -164,6 +171,5 @@ html(lang='en')
                   use(xlink:href='images/sprite.svg#icon-github-square')
                 span.curriculum-required-link
                   | Vincular cuenta de Github
-            a.digital-potfolio
-              div(lass='curriculum-required ')
-                span.curriculum-required-link-text Enlaza tu portafolio digital aqui
+            h1 Video muestra.
+            #video

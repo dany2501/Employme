@@ -81,6 +81,10 @@ html(lang='en')
             svg.information-data-icon
               use(xlink:href='images/sprite.svg#icon-male')
             span Sexo: #{sex}
+        h5 Selecciona una foto lo más formal posible, esto para que aparezca en tu curriculum
+        input#inputFileToLoad.form-control.form-input.form-input-dark(type='file', placeholder='photo', accept='image/*;capture=camera', name='userPhoto', single='')
+        br
+        br
         form.start-sign-up(action='/asp-cv' method='post')
           h5 Escribe una descripción de ti, que sea breve y concisa describiendo las habilidades que tengas.  
           textarea.form-textarea(name="descripcion",maxlength="1000", placeholder='Descripción...')
@@ -91,7 +95,6 @@ html(lang='en')
           br
           br
           input.btn-blue.btn(type='submit', class="botoncito", value="Añadir")
-
         br 
         br  
         h5 Ingresa los idiomas que hablas.

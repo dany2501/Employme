@@ -36,5 +36,8 @@ router.get('/showProj',function(req,res,next){
 router.get('/showLeng',function(req,res,next){
     add.showLenguages(req, res, next);
 });
+router.get('/showDU',function(req,res,next){
+    add.showDesUbi(req, res, next);
+});
 
 module.exports = router; 

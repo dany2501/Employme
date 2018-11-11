@@ -1,6 +1,8 @@
 var db=require('../conexionsql/conexion');
+
 var settings = {
     password: 'HECD010225HMCRRNA6'}
+
 exports.add = async function(req,res,next) {
    
     
@@ -174,7 +176,7 @@ exports.showProjects = async function(req,res,next)
             emps[i]=new Buffer.from(result[i].emp_pro,'hex');
             output[i]=new Buffer.from(result[i].nom_pro, 'hex');
             puestos[i]= new Buffer.from(result[i].puesto_pro,'hex');
-            data[i]={id:result[i].id_pro,nombre:(output[i]).toString(),tel:(emps[i]).toString(),puesto:(puestos[i]).toString()}
+            data[i]={id:result[i].id_pro,nombre:(output[i]).toString(),emps:(emps[i]).toString(),puesto:(puestos[i]).toString()}
             
         }
         res.json(data);
@@ -206,6 +208,35 @@ exports.showLenguages = async function(req,res,next)
             data[i]={id:result[i].id_idio,idioma:(idiomas[i]).toString()}
             
         }
+        res.json(data);
+    }
+    catch(err){
+        console.log(err);
+        res.json('Ocurrió un error');
+
+    }
+    
+}
+
+
+exports.showDesUbi = async function(req,res,next)
+{
+    var des="";
+    var ubi="";
+    var data={};
+    var user=req.session.usuario;
+    var name;
+    
+    try{
+        var sqlQuery="select AES_DECRYPT(des_cv,'"+settings.password+"')as des_cv,AES_DECRYPT(dir_pasp,'"+settings.password+"')as dir_pasp, nom_asp, apt_asp,apm_asp,numtel_asp, email_asp from descripcioncv natural join perfilaspirante natural join datosaspirante where id_asp=?";
+        
+        var sqlData=[user.id];
+        var result=await db.consultaBd(sqlQuery,sqlData);
+            name=result[0].nom_asp+" "+result[0].apt_asp+" "+result[0].apm_asp;
+            des=new Buffer.from(result[0].des_cv, 'hex');
+            ubi=new Buffer.from(result[0].dir_pasp,'hex');
+            data={des:(des.toString()),ubi:(ubi.toString()),nom:name,tel:result[0].numtel_asp, email:result[0].email_asp}
+            
         res.json(data);
     }
     catch(err){
