@@ -78,7 +78,7 @@ $(document).ready(function(){
         }else
         {
             $.ajax({
-                url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:8080/update',
+                url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/update',
                 method:'post',
                 dataType:'json',
                 data:{
@@ -92,7 +92,7 @@ $(document).ready(function(){
             form.slideUp("fast",function(){
             });
             
-            var url = "http://ec2-54-85-253-12.compute-1.amazonaws.com:8080/perfilasp";
+            var url = "http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/perfilasp";
             $(location).attr('href',url);
             
             correo.empty();
@@ -115,7 +115,7 @@ $(document).ready(function(){
         {
             
             $.ajax({
-                        url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:8080/portafolio',
+                        url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/portafolio',
                         method:'post',
                         dataType:'json',
                         data:{usuario:usu},
@@ -123,7 +123,7 @@ $(document).ready(function(){
                         }
                   });
                   
-            var url = "http://ec2-54-85-253-12.compute-1.amazonaws.com:8080/perfilasp";
+            var url = "http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/perfilasp";
             $(location).attr('href',url);
             u.empty();
             form2.slideUp("fast",function(){
@@ -149,7 +149,7 @@ $(document).ready(function(){
         {
             
             $.ajax({
-                        url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:8080/video',
+                        url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/video',
                         method:'post',
                         dataType:'json',
                         data:{video:vid},
@@ -157,7 +157,7 @@ $(document).ready(function(){
                         }
                   });
                   
-            var url = "http://ec2-54-85-253-12.compute-1.amazonaws.com:8080/perfilasp";
+            var url = "http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/perfilasp";
             $(location).attr('href',url);
             v.empty();
             form3.slideUp("fast",function(){
