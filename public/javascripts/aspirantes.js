@@ -8,7 +8,7 @@ $(document).ready(function(){
 
     interes.on('click',()=>{
       $.ajax({
-        url:'http://localhost:3000/aspirantes',
+        url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:8080/aspirantes',
         type:'post',
         dataType:'json',success: function(respone){console.log('Se realizó con exito')},error:function(err){console.log(err)}
       });
@@ -16,7 +16,7 @@ $(document).ready(function(){
 
     });
 
-   $.post("http://localhost:3000/aspirante", function(data){
+   $.post("http://ec2-54-85-253-12.compute-1.amazonaws.com:8080/aspirante", function(data){
       if(data=='Ocurrió un error')
       {
         repositories=`<div class="col-md-6">
@@ -44,7 +44,7 @@ $(document).ready(function(){
 
 
     $.ajax({
-      url:'http://localhost:3000/aspirante',
+      url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:8080/aspirante',
       type:'put',
       dataType:'json',
       success : function(json) {

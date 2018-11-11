@@ -1,8 +1,8 @@
 var mysql = require('mysql');
 var connection = mysql.createPool({
-    host: 'localhost',
+    host: 'employmeinstace.czuoutghzck0.us-east-1.rds.amazonaws.com',
     user: 'root',
-    password: 'n0m3l0',
+    password: 'n0m3l0em',
     database: 'employme'
 });
 
