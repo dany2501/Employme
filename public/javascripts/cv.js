@@ -10,7 +10,7 @@ $(document).ready(()=>{
     oidioma.on('click',()=>{
         idiomas=idioma.val(); 
         $.ajax({
-            url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/add-cv',
+            url:'http://54.85.253.12/add-cv',
             method:'post',
             dataType:'json',
             data:{
@@ -37,7 +37,7 @@ $(document).ready(()=>{
         puesto=pos.val();
 
         $.ajax({
-            url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/add-cv',
+            url:'http://54.85.253.12/add-cv',
             method:'put',
             dataType:'json',
             data:{
@@ -73,7 +73,7 @@ $(document).ready(()=>{
         email=emailRef.val();
 
         $.ajax({
-            url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/add-cv/referencias',
+            url:'http://54.85.253.12/add-cv/referencias',
             method:'post',
             dataType:'json',
             data:{
@@ -105,7 +105,7 @@ $(document).ready(()=>{
         nameSoft=softName.val();
         percentage=softPor.val();
         $.ajax({
-            url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/add-cv/software',
+            url:'http://54.85.253.12/add-cv/software',
             method:'post',
             dataType:'json',
             data:{
@@ -156,7 +156,7 @@ $(document).ready(()=>{
         (async ()=>{
             async function leng(){
                 return $.ajax({
-                    url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/add-cv/showLeng',
+                    url:'http://54.85.253.12/add-cv/showLeng',
                     method:'get',
                     dataType:'json',
                     success:function(response){
@@ -170,7 +170,7 @@ $(document).ready(()=>{
 
              async function proj(){
                 return $.ajax({
-                    url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/add-cv/showProj',
+                    url:'http://54.85.253.12/add-cv/showProj',
                     method:'get',
                     dataType:'json',
                     success:function(response){
@@ -184,7 +184,7 @@ $(document).ready(()=>{
              
              async function ref(){
                 return $.ajax({
-                    url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/add-cv/showRef',
+                    url:'http://54.85.253.12/add-cv/showRef',
                     method:'get',
                     dataType:'json',
                     success:function(response){
@@ -198,7 +198,7 @@ $(document).ready(()=>{
 
              async function DU(){
                 return $.ajax({
-                    url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/add-cv/showDU',
+                    url:'http://54.85.253.12/add-cv/showDU',
                     method:'get',
                     dataType:'json',
                     success:function(response){
@@ -212,7 +212,7 @@ $(document).ready(()=>{
 
              async function sof(){
                 return $.ajax({
-                    url:'http://ec2-54-85-253-12.compute-1.amazonaws.com:3000/add-cv/showSoft',
+                    url:'http://54.85.253.12/add-cv/showSoft',
                     method:'get',
                     dataType:'json',
                     success:function(response){
