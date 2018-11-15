@@ -18,7 +18,7 @@ $(document).ready(function(){
   });
 
   $.ajax({
-    url:'http://54.85.253.12/curriculum/showCv',
+    url:'http://54.85.253.12:8080/curriculum/showCv',
     method:'get',
     dataType:'json',
     success:function(response){
@@ -35,7 +35,7 @@ $(document).ready(function(){
 
 
     $.ajax({
-                url:'http://54.85.253.12/fotoasp',
+                url:'http://54.85.253.12:8080/fotoasp',
                 method:'put',
                 dataType:'json',
                 success:function(response){
@@ -46,7 +46,7 @@ $(document).ready(function(){
             });
 
 
-    $.post("http://54.85.253.12/perfilasp", function(data)
+    $.post("http://54.85.253.12:8080/perfilasp", function(data)
     {if(data=='Ocurrió un error')
     {
     }else
@@ -68,7 +68,7 @@ $(document).ready(function(){
   });
 
     $.ajax({
-      url:'http://54.85.253.12/perfilasp',
+      url:'http://54.85.253.12:8080/perfilasp',
       type:'put',
       dataType:'json',
       success : function(json) {
