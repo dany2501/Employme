@@ -1,15 +1,16 @@
-var express = require('express');
-var router = express.Router();
+    var express = require('express');
+    var router = express.Router();
 
-var registrar_aspirante = require('../controlador/regasp');
+    var registrar_aspirante = require('../controlador/regasp');
 
-router.route('/')
-    .get(function(req, res, next){
-    	res.render('index');
-    })
-    .post(function(req,res,next){
-    	registrar_aspirante.registrarAspirante(req, res, next);
-    })
+    router.route('/')
+        .get(function(req, res, next){
+            res.render('index');
+        });
+        
 
-   
-module.exports = router; 
+    router.post('/registro',function(req,res,next){
+    registrar_aspirante.registrarAspirante(req, res, next);
+    });      
+    
+    module.exports = router; 

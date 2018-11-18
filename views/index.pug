@@ -2,6 +2,7 @@ doctype html
 html(lang='en')
   head
     script(src='https://code.jquery.com/jquery-1.10.2.js')
+    script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
     script(src='javascripts/validaciones.js')
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
@@ -10,7 +11,9 @@ html(lang='en')
     link(rel='stylesheet', href='stylesheets/styles.css')
     link(href='https://fonts.googleapis.com/css?family=Mukta+Malar:200,300,400,500,600,700,800|Noto+Serif:400,700|Roboto:100,300,400,500,700,900', rel='stylesheet')
     link(href='https://fonts.googleapis.com/css?family=Lato:400,700,900', rel='stylesheet')
+    link(rel='stylesheet', href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')
     script(src='javascripts/card-animation.js')
+    script(src='javascripts/index.js')
     
     title Employ.me
   body
@@ -100,17 +103,24 @@ html(lang='en')
                     use(xlink:href='img/sprite.svg#icon-close ')
                   a#btn-form-1A.btn.btn-form Inicia Sesion
                   a#btn-form-2A.btn.btn-form.btn-form-active Registrate
-                  form#form1Asp.index-form.index-form-2(action='/regasp' method='post')
-                    input.form-input.form-input-light(type='text', name='nombre',  placeholder='Nombre', required,onkeypress="return soloLetras(event)")
-                    input.form-input.form-input-light(type='text', name='apt',  placeholder='Apellido Paterno', required,onkeypress="return soloLetras(event)")
-                    input.form-input.form-input-light(type='text', name='apm',  placeholder='Apellidos Materno', required,onkeypress="return soloLetras(event)")
-                    input.form-input.form-input-light(type='email', name='email',  placeholder='Email', required,onkeypress="return soloCorreo(event)")
-                    input.form-input.form-input-light(type='text', name='usuario',  placeholder='Usuario', required,onkeypress="return soloGit(event)")
-                    input.form-input.form-input-light(type='password', name='password',  placeholder='Contraseña', required,onkeypress="return soloContra(event)")
-                    input.form-input.form-input-light(type='password', name='confpass',  placeholder='Confirmar Contraseña', required,onkeypress="return soloContra(event)")
-                    input.form-input.form-input-light(type='date', name='fn',  placeholder='Fecha de Nacimiento', required)
-                    input.form-input.form-input-light(type='text', name='sexo',  placeholder='Sexo', required)
-                    button.btn.form-btn.form-btn-light(type='submit') Registrarse 
+                  form#form1Asp.index-form.index-form-2
+                    input.form-input.form-input-light(type='text', name='nombre', id='nombre',  placeholder='Nombre', required,onkeypress="return soloLetras(event)")
+                    input.form-input.form-input-light(type='text', name='apt',id='apt',  placeholder='Apellido Paterno', required,onkeypress="return soloLetras(event)")
+                    input.form-input.form-input-light(type='text', name='apm',id='apm'  placeholder='Apellidos Materno', required,onkeypress="return soloLetras(event)")
+                    input.form-input.form-input-light(type='email', name='email',id='email'  ,placeholder='Email', required,onkeypress="return soloCorreo(event)")
+                    input.form-input.form-input-light(type='text', name='usuario',id='usuario' ,placeholder='Usuario', required,onkeypress="return soloGit(event)")
+                    input.form-input.form-input-light(type='password', name='password', id='password' ,placeholder='Contraseña', required,onkeypress="return soloContra(event)")
+                    input.form-input.form-input-light(type='password', name='confpass', id='confpass' placeholder='Confirmar Contraseña', required,onkeypress="return soloContra(event)")
+                    //input.form-input.form-input-light(type='date', name='fn', id='fn' placeholder='Fecha de Nacimiento', required)
+                    input#datepicker(type='text',placeholder="Fecha de Nacimiento",required="required")
+                    br
+                    select(name='OS' id="sel")
+                     option(value='0') Seleccionar sexo.
+                     option(value='1') Masculino
+                     option(value='2') Femenino
+                    br
+                    br
+                    input.btn.form-btn.form-btn-light(type="button",id='submit', value="Registrarse")
                   form#form2Asp.index-form.index-form-1(action='/loginasp' method='post')
                     input.form-input.form-input-light(type='text', name='usu',  placeholder='Usuario o Correo', required,onkeypress="return soloCorreo(event)")
                     input.form-input.form-input-light(type='password', name='contra',  placeholder='Contraseña', require,onkeypress="return soloContra(event)")

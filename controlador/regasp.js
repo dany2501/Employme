@@ -1,4 +1,5 @@
 var con = require('../conexionsql/conexion');
+var nodemailer= require('nodemailer');
 
 exports.registrarAspirante = async function (req, res, next) {
 
@@ -6,19 +7,57 @@ exports.registrarAspirante = async function (req, res, next) {
         password: 'HECD010225HMCRRNA6'
     }
     const userData=[req.body.nombre, req.body.apt, req.body.apm, req.body.usuario, req.body.password, req.body.email, req.body.fn, req.body.sexo];
+    console.log(userData);
     const sqlQuery= "insert into datosaspirante (nom_asp,apt_asp,apm_asp,usu_asp,psw_asp,email_asp,FN_asp,sex_asp) values (?,?,?,AES_ENCRYPT(?,'"+[settings.password]+"'),AES_ENCRYPT(?,'"+[settings.password]+"'),?,?,?)";
 
+    const Query = "select (AES_DECRYPT(usu_asp,'"+settings.password+"')) as usu_asp,email_asp from datosaspirante;";
+    var asp=await con.consultaBd(Query);
+    var flag=false;
+    
+    
     if(req.body.password==req.body.confpass){
+        /*for (var i in asp) {
+            if(asp[i].usu_asp==req.body.usuario || asp[i].email_asp==req.body.email)
+            {
+                flag=true;
+            }
+    
+    
+        }*/
+        if(flag==true)
+        {
+            console.log("Usuario o email ya registrado");
+
+        }else{
 
     try{
+var transporter = nodemailer.createTransport({
+service:'outlook',
+auth:{
+    user:'aurantisoft@outlook.com',
+    pass: 'Correoempresa'
+}
+});
+
+var mailOptions= {
+    from: 'Employme <aurantisoft@outlook.com>',
+    to: req.body.email,
+    subject:'Prueba de correo',
+    text:'Se ha enviado la primer prueba',
+    html:'<h1> Se ha enviado la primer prueba con Nodemailer</h1> '
+
+};
+transporter.sendMail(mailOptions,function(err,info){
+});
+
          var result= await con.consultaBd(sqlQuery,userData);
-         res.redirect('/');
 
     }catch(err)
     {
         console.log(err);
         res.json('Ocurrio un error al registrarse');
     }
+}
 
       
 
