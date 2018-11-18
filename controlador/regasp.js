@@ -7,7 +7,7 @@ exports.registrarAspirante = async function (req, res, next) {
         password: 'HECD010225HMCRRNA6'
     }
     const userData=[req.body.nombre, req.body.apt, req.body.apm, req.body.usuario, req.body.password, req.body.email, req.body.fn, req.body.sexo];
-    console.log(userData);
+   
     const sqlQuery= "insert into datosaspirante (nom_asp,apt_asp,apm_asp,usu_asp,psw_asp,email_asp,FN_asp,sex_asp) values (?,?,?,AES_ENCRYPT(?,'"+[settings.password]+"'),AES_ENCRYPT(?,'"+[settings.password]+"'),?,?,?)";
 
     const Query = "select (AES_DECRYPT(usu_asp,'"+settings.password+"')) as usu_asp,email_asp from datosaspirante;";
@@ -16,14 +16,13 @@ exports.registrarAspirante = async function (req, res, next) {
     
     
     if(req.body.password==req.body.confpass){
-        /*for (var i in asp) {
+        for (var i in asp) {
             if(asp[i].usu_asp==req.body.usuario || asp[i].email_asp==req.body.email)
             {
                 flag=true;
             }
+        }
     
-    
-        }*/
         if(flag==true)
         {
             console.log("Usuario o email ya registrado");
@@ -51,6 +50,7 @@ transporter.sendMail(mailOptions,function(err,info){
 });
 
          var result= await con.consultaBd(sqlQuery,userData);
+         res.send(result);
 
     }catch(err)
     {
@@ -58,12 +58,12 @@ transporter.sendMail(mailOptions,function(err,info){
         res.json('Ocurrio un error al registrarse');
     }
 }
-
+        }
       
 
-}
+
 else{
     res.render('error')
 }
+    }
     
-}

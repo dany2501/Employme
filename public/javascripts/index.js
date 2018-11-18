@@ -9,7 +9,7 @@ var user_asp=$('#usuario');
 var fecha=$('#datepicker');
 
 $( function() {
-    fecha.datepicker();
+    fecha.datepicker({ dateFormat: 'yy/mm/dd' });
   } );
 
 var pass1_asp=$('#password');
@@ -40,16 +40,16 @@ submit_asp.on('click',()=>{
     var pass1=pass1_asp.val();
     var pass2=pass2_asp.val();
     var sexo=str;
-    var data={nombre:nom,apt:apt,apm:apm,usuario:user,password:pass1,email:mail,fn:fn,sexo:sexo};
+    var data={nombre:nom,apt:apt,apm:apm,usuario:user,password:pass1,confpass:pass2,email:mail,fn:fn,sexo:sexo};
     if(pass1==pass2)
     {
-        console.log(data);
 
         $.ajax({
-            url:'http://localhost:3000/regasp/registro',
+            url:'http://54.85.253.12:8080/regasp/registro',
             method:'post',
             dataType:'json',
-            data:{nombre:nom,apt:apt,apm:apm,usuario:user,password:pass1,email:mail,fn:fn,sexo:sexo}
+            data:data,
+            success:function(response){console.log(response)}
         });
     }
     else
