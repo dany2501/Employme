@@ -48,11 +48,17 @@ try {
         
         var result=await db.consultaBd(sqlQuery,session.id);
         console.log(result);
+        if(result[0].ruta_cv==null)
+        {
+
+        }
+        else
+        {
         var response=new Buffer.from(result[0].ruta_cv,'hex');
         res.json(response.toString());
+    }
         } catch (err) {
           console.log(err);
-          res.redirect("/login");
       }
 
     }

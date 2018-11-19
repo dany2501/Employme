@@ -1077,6 +1077,31 @@ body {
   flex-direction: column;
   padding: 3rem; }
 
+
+  .enterprise-info{
+    background-color: #f2f4fb;
+    height: 180px;
+  
+    margin-bottom: 3.5rem;
+    overflow-y: scroll;
+    border-radius: 5px 20px;
+      }
+  
+      .enterprise-text{
+          position: relative;
+          display: flex;
+          background-color: #f2f4fb;
+          flex-grow: 1;
+          height: 620px;
+          padding: 3rem;
+          border-radius: 20px 5px; 
+      }
+  
+      .infop{
+        color: darkmagenta;
+        font-size: 30px;
+      }
+
 .category {
   display: flex;
   padding: 3rem;

@@ -45,11 +45,22 @@ submit_asp.on('click',()=>{
     {
 
         $.ajax({
-            url:'http://54.85.253.12:8080/regasp/registro',
+            url:'http://localhost:3000/regasp/registro',
             method:'post',
             dataType:'json',
             data:data,
-            success:function(response){console.log(response)}
+            success:function(response){alert("Usuario registrado correctamente");
+            fecha.val("");
+            name_asp.val("");
+            apt_asp.val("");
+            apm_asp.val("");
+            user_asp.val("");
+            email_asp.val("");
+            pass1_asp.val("");
+            pass2_asp.val("");
+            $('#form1Asp').hide();
+            $('#form2Asp').slideDown("slow",()=>{});
+        }
         });
     }
     else
@@ -60,10 +71,59 @@ submit_asp.on('click',()=>{
         pass1_asp.focus();
     }
 
-    
 
 });
 
+//Para registrar empresas
+
+var nomEmp   =$('#nombre_e');
+var userEmp  =$('#usuario_e'); 
+var pass1_emp=$('#password_e'); 
+var pass2_emp=$('#cpassword_e');
+var email_emp=$('#email_e');
+var btnEmp=$('#submit_emp');
+
+btnEmp.on('click',()=>{
+
+    var nomE  = nomEmp.val();   
+    var userE = userEmp.val();  
+    var pass1E= pass1_emp.val();
+    var pass2E= pass2_emp.val();
+    var emailE= email_emp.val();
+    var data={nombre_e:nomE,usuario_e:userE,password_e:pass1E,email_e:emailE,cpassword_e:pass2E};
+    if(pass1E==pass2E)
+    {
+        console.log(data);
+        $.ajax({
+            
+            url:'http://localhost:3000/regemp/registroE',
+            method:'post',
+            dataType:'json',
+            data:data,
+            success:function(response)
+            {
+                alert("Usuario registrado correctamente");
+                nomEmp   .val("");
+                userEmp  .val("");
+                pass1_emp.val("");
+                pass2_emp.val("");
+                email_emp.val("");
+                $('#form1Emp').hide();
+                $('#form2Emp').slideDown("slow",()=>{});
+        
+            }
+        
+              });
+    }
+    else
+    {
+        alert("Las contraseñas no coinciden");
+        pass1_emp.val("");
+        pass2_emp.val("");
+        pass1_emp.focus();
+    }
+    
+        });
 
 
 

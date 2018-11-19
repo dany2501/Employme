@@ -6,10 +6,10 @@ var registrar_empresa = require('../controlador/regemp');
 router.route('/')
     .get(function(req, res, next){
     	res.render('index');
-    })
-    .post(function(req,res,next){
+    });
+    
+router.post('/registroE',function(req,res,next){
     	registrar_empresa.registrarEmpresa(req, res, next);
-    })
-
+    });
    
 module.exports = router; 

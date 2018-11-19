@@ -1,4 +1,5 @@
 var con = require('../conexionsql/conexion');
+var nodemailer=require('nodemailer');
 
 exports.registrarEmpresa = async function (req, res, next) {
     var settings = {
@@ -12,8 +13,27 @@ if(req.body.password_e==req.body.cpassword_e){
 
     try{
 
+        var transporter = nodemailer.createTransport({
+            service:'outlook',
+            auth:{
+                user:'aurantisoft@outlook.com',
+                pass: 'Correoempresa'
+            }
+            });
+            
+            var mailOptions= {
+                from: 'Employme <aurantisoft@outlook.com>',
+                to: req.body.email_e,
+                subject:'Prueba de correo en empresas',
+                text:'Se ha enviado la primer prueba en empresas',
+                html:'<h1> Se ha enviado la primer prueba para empresas con Nodemailer</h1> '
+            
+            };
+            transporter.sendMail(mailOptions,function(err,info){
+            });
+
          var result= await con.consultaBd(sqlQuery,userData);
-         res.redirect('/');
+
 
     }catch(err)
     {

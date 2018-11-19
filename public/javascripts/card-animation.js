@@ -21,20 +21,34 @@ $(document).ready(function() {
 
 
 
-
+//Iniciar Sesion
     $('#btn-form-1').click(function(){
+        $('#btn-form-1').attr('class',"btn btn-form btn-form-active ");
+        $('#btn-form-2').attr('class',"btn btn-form");
         $('#form1Emp').hide();
         $('#form2Emp').show();
      });
+//Registrarse      
      $('#btn-form-2').click(function(){
+        $('#btn-form-2').attr('class',"btn btn-form btn-form-active ");
+        $('#btn-form-1').attr('class',"btn btn-form");
         $('#form2Emp').hide();
         $('#form1Emp').show();
      });
+
+//Registrarse
      $('#btn-form-2A').click(function(){
+        $('#btn-form-2A').attr('class',"btn btn-form btn-form-active ");
+        $('#btn-form-1A').attr('class',"btn btn-form");
         $('#form2Asp').hide();
         $('#form1Asp').show();
+        
      });
+
+//Iniciar Sesion     
      $('#btn-form-1A').click(function(){
+        $('#btn-form-1A').attr('class',"btn btn-form btn-form-active ");
+        $('#btn-form-2A').attr('class',"btn btn-form");
         $('#form1Asp').hide();
         $('#form2Asp').show();
      });

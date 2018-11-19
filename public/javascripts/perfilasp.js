@@ -18,7 +18,7 @@ $(document).ready(function(){
   });
 
   $.ajax({
-    url:'http://54.85.253.12:8080/curriculum/showCv',
+    url:'http://localhost:3000/curriculum/showCv',
     method:'get',
     dataType:'json',
     success:function(response){
@@ -27,7 +27,6 @@ $(document).ready(function(){
       
       pdfcv.html(cvpdf);
     },error:function(err){
-      console.log(err);
     }
 
   })
@@ -35,7 +34,7 @@ $(document).ready(function(){
 
 
     $.ajax({
-                url:'http://54.85.253.12:8080/fotoasp',
+                url:'http://localhost:3000/fotoasp',
                 method:'put',
                 dataType:'json',
                 success:function(response){
@@ -46,7 +45,7 @@ $(document).ready(function(){
             });
 
 
-    $.post("http://54.85.253.12:8080/perfilasp", function(data)
+    $.post("http://localhost:3000/perfilasp", function(data)
     {if(data=='Ocurrió un error')
     {
     }else
@@ -68,7 +67,7 @@ $(document).ready(function(){
   });
 
     $.ajax({
-      url:'http://54.85.253.12:8080/perfilasp',
+      url:'http://localhost:3000/perfilasp',
       type:'put',
       dataType:'json',
       success : function(json) {
