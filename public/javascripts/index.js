@@ -36,22 +36,12 @@ submit_asp.on('click',()=>{
     {
 
         $.ajax({
-            url:'http://54.85.253.12:8080/regasp/registro',
+            url:'http://18.233.147.158:8080/regasp/registro',
             method:'post',
             dataType:'json',
             data:data,
             success:function(response){alert("Usuario registrado correctamente");
-            fecha.val("");
-            name_asp.val("");
-            apt_asp.val("");
-            apm_asp.val("");
-            user_asp.val("");
-            email_asp.val("");
-            pass1_asp.val("");
-            pass2_asp.val("");
-            $('#form1Asp').hide();
-            $('#form2Asp').slideDown("slow",()=>{});
-        }
+        },error:function(err){console.log(err);}
         });
     }
     else
@@ -61,6 +51,17 @@ submit_asp.on('click',()=>{
         pass2_asp.val("");
         pass1_asp.focus();
     }
+    
+    fecha.val("");
+    name_asp.val("");
+    apt_asp.val("");
+    apm_asp.val("");
+    user_asp.val("");
+    email_asp.val("");
+    pass1_asp.val("");
+    pass2_asp.val("");
+    $('#form1Asp').hide();
+    $('#form2Asp').slideDown("slow",()=>{});    
 
 
 });
@@ -86,7 +87,7 @@ btnEmp.on('click',()=>{
     {
         $.ajax({
             
-            url:'http://54.85.253.12:8080/regemp',
+            url:'http://18.233.147.158:8080/regemp',
             method:'post',
             dataType:'json',
             data:data,
