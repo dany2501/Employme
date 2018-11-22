@@ -50,11 +50,15 @@ html(lang='en')
     .container
       nav.sidebar
         ul.sidebar-navigation
+          br
+          br
           li.sidebar-navigation-item
             a.sidebar-navigation-link(href='/emp-profile')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-user')
               span.sidebar-navigation-description Perfil
+          br
+          br
           li.sidebar-navigation-item
             a.sidebar-navigation-link(href='/aspirantes')
               svg.sidebar-navigation-icon
@@ -70,6 +74,8 @@ html(lang='en')
                 svg.sidebar-navigation-icon
                   use(xlink:href='images/sprite.svg#icon-bookmark')
                 span.sidebar-navigation-description Especialidad
+          br
+          br
           li.sidebar-navigation-item
             a.sidebar-navigation-link(href='')
               svg.sidebar-navigation-icon
@@ -82,6 +88,21 @@ html(lang='en')
             img.information-photo(src='images/user2.png', alt='')
           h1.user-name
             | #{nombre}
+          #modal1.modal.modal-edit
+            h3.modal-heading
+              svg.information-data-icon
+                use(xlink:href='images/sprite.svg#icon-pencil ')
+              |  Editar Informacion
+            .modal-information
+              hr
+              .edit-info-block-
+                span.edit-info-span Telefono:
+                input#numero.edit-info-input(type='text',required="required",onkeypress="return soloNum(event)" maxlength="10")
+                span.edit-info-span Correo Electronico:
+                input#correo.edit-info-input(type='text',required="required",placeholder=""+email,onkeypress="return soloCorreo(event)")
+            .modal-btn-container
+              a#guardar.btn-blue.btn Guardar
+              a#cerrar.btn-blue.btn Cerrar  
         .specialty-container
           .specialty-information
           .specialty-information

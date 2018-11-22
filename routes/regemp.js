@@ -8,7 +8,7 @@ router.route('/')
     	res.render('index');
     });
     
-router.post('/registroE',function(req,res,next){
+router.post('/',function(req,res,next){
     	registrar_empresa.registrarEmpresa(req, res, next);
     });
    

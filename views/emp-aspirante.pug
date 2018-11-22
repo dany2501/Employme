@@ -30,28 +30,34 @@ html(lang='en')
     .container
       nav.sidebar
         ul.sidebar-navigation
+          br
+          br
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/perfilasp')
+            a.sidebar-navigation-link(href='/emp-profile')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-user')
               span.sidebar-navigation-description Perfil
+          br
+          br
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/asp-interested')
+            a.sidebar-navigation-link(href='/aspirantes')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-heart')
-              span.sidebar-navigation-description Interesados
-          li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/portafolio')
+              span.sidebar-navigation-description Aspirantes
+          //li.sidebar-navigation-item
+            a.sidebar-navigation-link(href='')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-address-card')
               span.sidebar-navigation-description Portafolio
+            li.sidebar-navigation-item
+              a.sidebar-navigation-link(href='asp-specialty.html')
+                svg.sidebar-navigation-icon
+                  use(xlink:href='images/sprite.svg#icon-bookmark')
+                span.sidebar-navigation-description Especialidad
+          br
+          br
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/especialidad')
-              svg.sidebar-navigation-icon
-                use(xlink:href='images/sprite.svg#icon-bookmark')
-              span.sidebar-navigation-description Especialidad
-          li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/cerrarsesion')
+            a.sidebar-navigation-link(href='')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-sign-in')
               span.sidebar-navigation-description Salir

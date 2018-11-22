@@ -25,23 +25,14 @@ $( "#sel" ).change(()=> {
 
       }
       else{
-      console.log(str);
     }});
 }).change();
 
 
 submit_asp.on('click',()=>{
-    var fn=fecha.val();
-    var nom=name_asp.val();
-    var apt=apt_asp.val();
-    var apm=apm_asp.val();
-    var user=user_asp.val();
-    var mail=email_asp.val();
-    var pass1=pass1_asp.val();
-    var pass2=pass2_asp.val();
-    var sexo=str;
-    var data={nombre:nom,apt:apt,apm:apm,usuario:user,password:pass1,confpass:pass2,email:mail,fn:fn,sexo:sexo};
-    if(pass1==pass2)
+    console.log("Dió click");
+    var data={nombre:name_asp.val(),apt:apt_asp.val(),apm:apm_asp.val(),usuario:user_asp.val(),password:pass1_asp.val(),confpass:pass2_asp.val(),email:email_asp.val(),fn:fecha.val(),sexo:str};
+    if(pass1_asp.val()==pass2_asp.val())
     {
 
         $.ajax({
@@ -93,10 +84,9 @@ btnEmp.on('click',()=>{
     var data={nombre_e:nomE,usuario_e:userE,password_e:pass1E,email_e:emailE,cpassword_e:pass2E};
     if(pass1E==pass2E)
     {
-        console.log(data);
         $.ajax({
             
-            url:'http://54.85.253.12:8080/regemp/registroE',
+            url:'http://54.85.253.12:8080/regemp',
             method:'post',
             dataType:'json',
             data:data,
