@@ -36,7 +36,7 @@ submit_asp.on('click',()=>{
     {
 
         $.ajax({
-            url:'http://localhost:3000/regasp/registro',
+            url:'http://18.233.147.158:8080/regasp/registro',
             method:'post',
             dataType:'json',
             data:data,
@@ -89,7 +89,7 @@ btnEmp.on('click',()=>{
         console.log("Antes de petición");
         $.ajax({
             
-            url:'http://localhost:3000/regemp/registro',
+            url:'http://18.233.147.158:8080/regemp/registro',
             type:'post',
             dataType:'json',
             data:data,

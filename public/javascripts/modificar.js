@@ -81,7 +81,7 @@ $(document).ready(function(){
         }else
         {
             $.ajax({
-                url:'http://localhost:3000/update',
+                url:'http://18.233.147.158:8080/update',
                 method:'post',
                 dataType:'json',
                 data:{
@@ -95,7 +95,7 @@ $(document).ready(function(){
             form.slideUp("fast",function(){
             });
             
-            var url = "http://localhost:3000/perfilasp";
+            var url = "http://18.233.147.158:8080/perfilasp";
             $(location).attr('href',url);
             
             correo.empty();
@@ -117,7 +117,7 @@ $(document).ready(function(){
         {
             
             $.ajax({
-                        url:'http://localhost:3000/portafolio',
+                        url:'http://18.233.147.158:8080/portafolio',
                         method:'post',
                         dataType:'json',
                         data:{usuario:usu},
@@ -125,7 +125,7 @@ $(document).ready(function(){
                         }
                   });
                   
-            var url = "http://localhost:3000/perfilasp";
+            var url = "http://18.233.147.158:8080/perfilasp";
             $(location).attr('href',url);
             u.empty();
             form2.slideUp("fast",function(){
@@ -151,7 +151,7 @@ $(document).ready(function(){
         {
             
             $.ajax({
-                        url:'http://localhost:3000/video',
+                        url:'http://18.233.147.158:8080/video',
                         method:'post',
                         dataType:'json',
                         data:{video:vid},
@@ -159,7 +159,7 @@ $(document).ready(function(){
                         }
                   });
                   
-            var url = "http://localhost:3000/perfilasp";
+            var url = "http://18.233.147.158:8080/perfilasp";
             $(location).attr('href',url);
             v.empty();
             form3.slideUp("fast",function(){
