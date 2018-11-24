@@ -28,19 +28,9 @@ CREATE TABLE `cv` (
   `id_pasp` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_cv`),
   KEY `id_pasp` (`id_pasp`),
-  CONSTRAINT `cv_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  CONSTRAINT `cv_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cv`
---
-
-LOCK TABLES `cv` WRITE;
-/*!40000 ALTER TABLE `cv` DISABLE KEYS */;
-INSERT INTO `cv` VALUES (1,'EGù…∞Û1\ÿ\nmØ∏ñ˘w?I\“Iö≠ñ\œz3Gïå.[',48),(2,'EGù…∞Û1\ÿ\nmØ∏ñ˘w?I\“Iö≠ñ\œz3Gïå.[',49),(3,'EGù…∞Û1\ÿ\nmØ∏ñ˘w?I\“Iö≠ñ\œz3Gïå.[',46);
-/*!40000 ALTER TABLE `cv` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `datosaspirante`
@@ -61,18 +51,8 @@ CREATE TABLE `datosaspirante` (
   `sex_asp` varchar(20) DEFAULT NULL,
   `numtel_asp` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id_asp`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `datosaspirante`
---
-
-LOCK TABLES `datosaspirante` WRITE;
-/*!40000 ALTER TABLE `datosaspirante` DISABLE KEYS */;
-INSERT INTO `datosaspirante` VALUES (48,'Daniel','Hern√°ndez','C√°rdenas','dany2501@live.com','¸Oﬂâcwz†Qy\›$ı\‚\Ì','å\«”ãÒg¯ÆÅ\Á?]\‰','2001-02-25','Masculino',NULL),(49,'Daniel','Hern√°ndez','C√°rdenas','erika_jocelynh2003@hotmail.com','å\«”ãÒg¯ÆÅ\Á?]\‰','¸Oﬂâcwz†Qy\›$ı\‚\Ì','2001-02-25','Masculino',NULL),(50,'Teni','Teni','Teni','dany2501@live.com','≠\À\ﬁ,O05µ/`\nGá\Ï(ç','µ˘G.D*k“ùU<|\“¡4','2000-12-02','cpss',5510638023),(51,'Rommel','Portillo','Vazquez','ropovaz@gmail.com','©Üá∂\–v\œw.L&6:\‡ï','€∑\\\Í-àOÄ\\R]¡Nˇ','2001-02-26','Masculino',NULL);
-/*!40000 ALTER TABLE `datosaspirante` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -126,18 +106,8 @@ CREATE TABLE `datosempresa` (
   `email_emp` varchar(100) NOT NULL,
   `nom_emp` varchar(150) NOT NULL,
   PRIMARY KEY (`id_emp`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `datosempresa`
---
-
-LOCK TABLES `datosempresa` WRITE;
-/*!40000 ALTER TABLE `datosempresa` DISABLE KEYS */;
-INSERT INTO `datosempresa` VALUES (15,'.A•∞9≠\·æ]\ÂÉ6|','\‹˚[\”{∏“æûk\’\‚Å{h¢','dany2501@live.com','Otis S.A de C.V'),(16,'\‰!äé©\Àz[\Z\∆\’\Â\"\‰ô\“','\‹˚[\”{∏“æûk\’\‚Å{h¢','dany2501@live.com','Aurantisoft'),(17,'TKF\ﬂ.≠Mπ®⁄Æ¸>ñ','TKF\ﬂ.≠Mπ®⁄Æ¸>ñ','@@@','');
-/*!40000 ALTER TABLE `datosempresa` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -171,19 +141,9 @@ CREATE TABLE `descripcioncv` (
   `id_pasp` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_cv`),
   KEY `id_pasp` (`id_pasp`),
-  CONSTRAINT `descripcioncv_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  CONSTRAINT `descripcioncv_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `descripcioncv`
---
-
-LOCK TABLES `descripcioncv` WRITE;
-/*!40000 ALTER TABLE `descripcioncv` DISABLE KEYS */;
-INSERT INTO `descripcioncv` VALUES (2,'~9Ü´∏∏\ÔV&TÒ\≈\“\ËCÑ¡\≈	b’†	qÙ\’1 ∑.Ò˝\’\Ÿ\”\÷\€d6\nø~á@!›ü/ö$kµ}æ\ÿ',47),(3,'ç\ËùÑãÀá\ÏÑ\€\ﬂ˝Ú',NULL),(4,'ç\ËùÑãÀá\ÏÑ\€\ﬂ˝Ú',NULL),(5,'ç\ËùÑãÀá\ÏÑ\€\ﬂ˝Ú',NULL),(6,'ç\ËùÑãÀá\ÏÑ\€\ﬂ˝Ú',NULL),(7,'ç\ËùÑãÀá\ÏÑ\€\ﬂ˝Ú',NULL),(8,'ç\ËùÑãÀá\ÏÑ\€\ﬂ˝Ú',NULL),(9,'ç\ËùÑãÀá\ÏÑ\€\ﬂ˝Ú',NULL),(10,'∏.möõY\‰T{>+µ',NULL),(11,'Bãõ§ï!ºQ!U^\∆Mß\·@8\"\÷?U◊êF\"¿y\∆\r≥ñ«•ä2L–Äfêî£\›- ™=´XîØbd)\À\∆8Ò≥f\‘\ﬂk\r≥gSu,\È0nÛÙµÖ\Ê*}\ÔN\ÍO\n\"Sæe=Ú¥Ô¢é£öˇ|!\ﬁ\Ï\Ê\‚H=ª\”\0\«}ÅL»Ñ∞8±;¶¢¶°ıL\ÓÿïØ#\–$Ω\Ët@h\¬fzëû\≈6ìΩ•ÀÅ\”ùë∑\«ˆ]\∆Úë =)í¡\ÿõñ¶≠*y;9\≈Y^\Ï∞Fæ∆ë|Øò§(¿à)øµÅ$#2^Ñh\ﬂ€ÖV3ˇ´•†£\rê\Îîf-Eé;$8\Ío\–i%êDdùp´`˜5⁄Ç0\Ï6Å?∞î\Ô˙Aå\Ìﬁß\€‚Øß3_õ\ 4Æ\Ë_â˝÷Øé£ú\Œ3ÄìMfxf‹®˘˛R≤\€Bµhé\‹\»\Ë%J¡Mo;ø-Y¶#`îß}∞H>a~9µ8f/e£∂≠@fúÄéQ^\◊¯zÛzVµ\ﬂ˛\Á5ø\‚î=Òo7éRó	W\‹aëZüì\À`à\ÏiMÛ\·<ûÑ\Ôùø\ÿı\—\0æ´x¯πíÉMC\‚^\Ë†¸Júr¨ˆúÛ-{$+∏ÍõîO=~Lü}WU\ÏL\ƒ^bK„éí™N•a#˙ƒà\œ{¿[[\ÕTzkÖLMsàΩ\Îò%\—',48),(12,NULL,49);
-/*!40000 ALTER TABLE `descripcioncv` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `escuelas`
@@ -198,19 +158,9 @@ CREATE TABLE `escuelas` (
   `nom_esc` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_pasp` (`id_pasp`),
-  CONSTRAINT `escuelas_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  CONSTRAINT `escuelas_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `escuelas`
---
-
-LOCK TABLES `escuelas` WRITE;
-/*!40000 ALTER TABLE `escuelas` DISABLE KEYS */;
-INSERT INTO `escuelas` VALUES (5,46,NULL),(6,47,NULL),(7,48,NULL),(8,49,NULL);
-/*!40000 ALTER TABLE `escuelas` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `idiomas`
@@ -225,19 +175,9 @@ CREATE TABLE `idiomas` (
   `idioma_idio` varbinary(150) DEFAULT NULL,
   PRIMARY KEY (`id_idio`),
   KEY `id_pasp` (`id_pasp`),
-  CONSTRAINT `idiomas_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  CONSTRAINT `idiomas_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `idiomas`
---
-
-LOCK TABLES `idiomas` WRITE;
-/*!40000 ALTER TABLE `idiomas` DISABLE KEYS */;
-INSERT INTO `idiomas` VALUES (2,NULL,'∂¸`:\”nBw\ÿo5S1'),(6,48,'∂¸`:\”nBw\ÿo5S1'),(7,48,'°}úÜ°ié§´¸oD}2O'),(8,48,'æyìUÅ\€\Î?∂/.F“î'),(9,NULL,'úrI`º\»Wcåäπô\€'),(10,NULL,'úrI`º\»Wcåäπô\€'),(11,48,'`Ω<[˙î\ÿ\Êz\Óì=\ŸB');
-/*!40000 ALTER TABLE `idiomas` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `imgaspirante`
@@ -252,19 +192,9 @@ CREATE TABLE `imgaspirante` (
   `id_pasp` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_imga`),
   KEY `id_pasp` (`id_pasp`),
-  CONSTRAINT `imgaspirante_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+  CONSTRAINT `imgaspirante_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `imgaspirante`
---
-
-LOCK TABLES `imgaspirante` WRITE;
-/*!40000 ALTER TABLE `imgaspirante` DISABLE KEYS */;
-INSERT INTO `imgaspirante` VALUES (16,'fotosasp/Perfil.jpg',46),(17,'images/usuario-2.png',47),(18,'fotosasp/fotomia.jpg',48),(19,'fotosasp/fotomia.jpg',49);
-/*!40000 ALTER TABLE `imgaspirante` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `imgempresa`
@@ -284,15 +214,6 @@ CREATE TABLE `imgempresa` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `imgempresa`
---
-
-LOCK TABLES `imgempresa` WRITE;
-/*!40000 ALTER TABLE `imgempresa` DISABLE KEYS */;
-/*!40000 ALTER TABLE `imgempresa` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `interes`
 --
 
@@ -308,18 +229,8 @@ CREATE TABLE `interes` (
   KEY `id_asp` (`id_asp`),
   CONSTRAINT `interes_ibfk_1` FOREIGN KEY (`id_emp`) REFERENCES `datosempresa` (`id_emp`),
   CONSTRAINT `interes_ibfk_2` FOREIGN KEY (`id_asp`) REFERENCES `datosaspirante` (`id_asp`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `interes`
---
-
-LOCK TABLES `interes` WRITE;
-/*!40000 ALTER TABLE `interes` DISABLE KEYS */;
-INSERT INTO `interes` VALUES (15,48,27),(16,48,28),(16,48,29),(15,50,30),(15,50,31),(15,50,32),(15,50,33),(15,50,34),(15,50,35),(15,50,36),(15,50,37),(15,50,38),(15,50,39),(15,50,40),(15,50,41),(15,50,42);
-/*!40000 ALTER TABLE `interes` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `perfilaspirante`
@@ -337,19 +248,9 @@ CREATE TABLE `perfilaspirante` (
   `dir_pasp` varbinary(500) DEFAULT NULL,
   PRIMARY KEY (`id_pasp`),
   KEY `id_asp` (`id_asp`),
-  CONSTRAINT `perfilaspirante_ibfk_1` FOREIGN KEY (`id_asp`) REFERENCES `datosaspirante` (`id_asp`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+  CONSTRAINT `perfilaspirante_ibfk_1` FOREIGN KEY (`id_asp`) REFERENCES `datosaspirante` (`id_asp`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `perfilaspirante`
---
-
-LOCK TABLES `perfilaspirante` WRITE;
-/*!40000 ALTER TABLE `perfilaspirante` DISABLE KEYS */;
-INSERT INTO `perfilaspirante` VALUES (46,48,NULL,'BenjaminGuzman','GM7_we-jpfc',NULL),(47,49,NULL,NULL,NULL,'≤)9qn\ÿˇ0—ívﬁîP'),(48,50,NULL,'dany2501','cfydcydrcydcy','J\\PY`(xπÏüΩì'),(49,51,NULL,'dany2501',NULL,NULL);
-/*!40000 ALTER TABLE `perfilaspirante` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -446,18 +347,8 @@ CREATE TABLE `perfilempresa` (
   KEY `id_imge` (`id_imge`),
   CONSTRAINT `perfilempresa_ibfk_1` FOREIGN KEY (`id_emp`) REFERENCES `datosempresa` (`id_emp`),
   CONSTRAINT `perfilempresa_ibfk_2` FOREIGN KEY (`id_imge`) REFERENCES `imgempresa` (`id_imge`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `perfilempresa`
---
-
-LOCK TABLES `perfilempresa` WRITE;
-/*!40000 ALTER TABLE `perfilempresa` DISABLE KEYS */;
-INSERT INTO `perfilempresa` VALUES (15,13,NULL,NULL,NULL,NULL),(16,14,NULL,NULL,NULL,NULL),(17,15,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `perfilempresa` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `proyectos`
@@ -474,19 +365,9 @@ CREATE TABLE `proyectos` (
   `id_pasp` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_pro`),
   KEY `id_pasp` (`id_pasp`),
-  CONSTRAINT `proyectos_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  CONSTRAINT `proyectos_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `proyectos`
---
-
-LOCK TABLES `proyectos` WRITE;
-/*!40000 ALTER TABLE `proyectos` DISABLE KEYS */;
-INSERT INTO `proyectos` VALUES (1,'eÎçøb\‹¿c¿†\«\Ô∂','sÉ\ﬁ/ö#\Ë^e?¯ìpÄ]≥˜K™<î\È,lí#¶','kY^Sizµ#û?â\"\‚L',48),(2,'É¨Ñï{\≈Hú`˝±Æúˇæ','Æ6¿\Á\ﬁ¡º\›Ôëûa	˙','kY^Sizµ#û?â\"\‚L',48);
-/*!40000 ALTER TABLE `proyectos` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `referencias`
@@ -503,19 +384,9 @@ CREATE TABLE `referencias` (
   `email_ref` varbinary(150) DEFAULT NULL,
   PRIMARY KEY (`id_ref`),
   KEY `id_pasp` (`id_pasp`),
-  CONSTRAINT `referencias_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  CONSTRAINT `referencias_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `referencias`
---
-
-LOCK TABLES `referencias` WRITE;
-/*!40000 ALTER TABLE `referencias` DISABLE KEYS */;
-INSERT INTO `referencias` VALUES (1,48,'\œ?√í˛Ù˙a2á§f´µ¯	\≈(ˇù1Æ\Î¬è´OÄì\’','E!\€LmE¥z\”SΩM˝i∞','\Ê]Ú˙(Ωö´sÑH5ù˛Kø~á@!›ü/ö$kµ}æ\ÿ'),(2,48,'\n˚ﬂπß6˙\\Sâü\›]\Ê\Ô\Ë=≠£Û!ˇô','ÇKDQB¯x\…¬µÉˇ\Â[è','mä¬Ö\ Sıﬂú†ï\∆2[]Ôªê“ü˜∫yL™º\rº'),(3,48,'D8j3˘¨∂<E£\ÀÚ/fr\ÂN5ÏìßFîÉq+±','-^[$È¶∂§ßu\Ôœ≥\÷99','j§ü≠n!%\¬=xÉ»©ç[]Ôªê“ü˜∫yL™º\rº'),(4,48,'TKF\ﬂ.≠Mπ®⁄Æ¸>ñ','TKF\ﬂ.≠Mπ®⁄Æ¸>ñ','TKF\ﬂ.≠Mπ®⁄Æ¸>ñ');
-/*!40000 ALTER TABLE `referencias` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `software`
@@ -531,19 +402,9 @@ CREATE TABLE `software` (
   `manejo_soft` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_soft`),
   KEY `id_pasp` (`id_pasp`),
-  CONSTRAINT `software_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  CONSTRAINT `software_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `software`
---
-
-LOCK TABLES `software` WRITE;
-/*!40000 ALTER TABLE `software` DISABLE KEYS */;
-INSERT INTO `software` VALUES (1,'@O™≤,\n˛H\Àv|ú§°Ú',48,100),(2,'-\n:äEaa∞Û¸+°\‰Cù)',48,50);
-/*!40000 ALTER TABLE `software` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -554,4 +415,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-11  0:10:33
+-- Dump completed on 2018-11-24 12:26:42
