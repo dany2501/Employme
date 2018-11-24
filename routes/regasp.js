@@ -9,7 +9,7 @@
         });
         
 
-    router.post('/registro',function(req,res,next){
+    router.post('/',function(req,res,next){
     registrar_aspirante.registrarAspirante(req, res, next);
     });      
     

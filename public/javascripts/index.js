@@ -36,7 +36,7 @@ submit_asp.on('click',()=>{
     {
 
         $.ajax({
-            url:'http://18.233.147.158:8080/regasp/registro',
+            url:'http://localhost:3000/regasp/registro',
             method:'post',
             dataType:'json',
             data:data,
@@ -83,12 +83,14 @@ btnEmp.on('click',()=>{
     var pass2E= pass2_emp.val();
     var emailE= email_emp.val();
     var data={nombre_e:nomE,usuario_e:userE,password_e:pass1E,email_e:emailE,cpassword_e:pass2E};
+    console.log(data);
     if(pass1E==pass2E)
     {
+        console.log("Antes de petición");
         $.ajax({
             
-            url:'http://18.233.147.158:8080/regemp',
-            method:'post',
+            url:'http://localhost:3000/regemp/registro',
+            type:'post',
             dataType:'json',
             data:data,
             success:function(response)

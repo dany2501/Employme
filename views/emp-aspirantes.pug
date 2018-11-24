@@ -83,7 +83,7 @@ html(lang='en')
               svg.list-asp-utilities-icon
                 use(xlink:href='images/sprite.svg#icon-filter', x='', y='')
             .list-asp-utilities-total
-              | 15736
+              | #{total}
         .information-th-con.h
           | Nombre
           span.information-th Correo
@@ -107,7 +107,7 @@ html(lang='en')
               .information-td-sex=aspirante.sex_asp
             .information-td-speciality-container
                 .information-td-tag 
-                  a(href="/aspirante?id="+aspirante.id_asp)  Ver perfil.
+                  a(href="/aspirante/"+aspirante.id_asp)  Ver perfil.
         h1(style='font-size:6rem; ') Tabla 2
         .information-table-block()
           .information-block 1

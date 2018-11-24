@@ -26,14 +26,15 @@ exports.registrarAspirante = async function (req, res, next) {
         if(flag==true)
         {
             console.log("Usuario o email ya registrado");
+            res.redirect('/error');
 
         }else{
 
     try{
 var transporter = nodemailer.createTransport({
-service:'outlook',
+service:'gmail',
 auth:{
-    user:'aurantisoft@outlook.com',
+    user:'aurantisoft@gmail.com',
     pass: 'Correoempresa'
 }
 });
@@ -47,10 +48,11 @@ var mailOptions= {
 
 };
 transporter.sendMail(mailOptions,function(err,info){
+    console.log(err);
 });
 
          var result= await con.consultaBd(sqlQuery,userData);
-         res.send(result);
+         res.redirect('/exito');
 
     }catch(err)
     {

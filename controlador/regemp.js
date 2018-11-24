@@ -8,15 +8,15 @@ exports.registrarEmpresa = async function (req, res, next) {
 
     const userData=[req.body.nombre_e,req.body.usuario_e,req.body.password_e,req.body.email_e];
     const sqlQuery= "insert into datosempresa (nom_emp,usu_emp,psw_emp,email_emp) values (?,AES_ENCRYPT(?,'"+[settings.password]+"'),AES_ENCRYPT(?,'"+[settings.password]+"'),?)"
-
+console.log(userData);
 if(req.body.password_e==req.body.cpassword_e){
 
     try{
 
         var transporter = nodemailer.createTransport({
-            service:'outlook',
+            service:'gmail',
             auth:{
-                user:'aurantisoft@outlook.com',
+                user:'aurantisoft@gmail.com',
                 pass: 'Correoempresa'
             }
             });
@@ -30,10 +30,11 @@ if(req.body.password_e==req.body.cpassword_e){
             
             };
             transporter.sendMail(mailOptions,function(err,info){
+                console.log(err);
             });
 
          var result= await con.consultaBd(sqlQuery,userData);
-
+         res.redirect('/exito');
 
     }catch(err)
     {

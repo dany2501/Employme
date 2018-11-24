@@ -333,6 +333,17 @@ body {
   height: 40rem;
   margin-right: 5rem; }
 
+  .mod {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60rem;
+    background-color: #fff;
+    border-radius: 10px;
+    display: block;
+    z-index: 2000; }
+
 .modal {
   position: fixed;
   top: 50%;

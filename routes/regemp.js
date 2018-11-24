@@ -5,10 +5,12 @@ var registrar_empresa = require('../controlador/regemp');
 
 router.route('/')
     .get(function(req, res, next){
-    	res.render('index');
+        res.render('index');
+        console.log("Aquí");
     });
     
 router.post('/',function(req,res,next){
+    console.log("Ahora aquí");
     	registrar_empresa.registrarEmpresa(req, res, next);
     });
    

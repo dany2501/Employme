@@ -10,7 +10,14 @@ var noSesion = function(req, res, next){
 }
 router.get('/',noSesion, function(req,res,next){
     var respuesta= req.session.aspirantes;
-    res.render('emp-aspirantes', {aspirantes:respuesta});
+    console.log(respuesta);
+    var total=0;
+    var x=1
+    for (var i in respuesta) {
+        total+=x;
+    }
+    console.log("Total: "+total);
+    res.render('emp-aspirantes', {aspirantes:respuesta,total:total});
 });
 
 router.post('/',noSesion,interes.interesado);

@@ -13,6 +13,11 @@ var noSesion = function(req, res, next){
 }
 
 router.get('/',noSesion,function(req,res,next){
+    var obj=req.session.asp;
+    res.render('emp-aspirante',{id:obj.id,nombre:obj.nom,email:obj.email,sex:obj.sexo,f:obj.foto,edad:obj.edad});
+});
+
+router.get('/:id',noSesion,function(req,res,next){
 
 asp.aspirantes(req,res);
 

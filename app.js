@@ -26,6 +26,8 @@ var cv=require('./routes/asp-curriculum');
 var addcv=require('./routes/asp-a-curriculum');
 var pdfCv=require('./routes/curriculum');
 var profileE=require('./routes/emp-profile');
+var fail=require('./routes/error');
+var exito=require('./routes/exito');
 
 
 var app = express();
@@ -47,6 +49,9 @@ app.use(cookie ({
 }));
 
 app.use('/', indexRouter);
+app.use('/exito',exito);
+app.use('/emp-profile',profileE);
+app.use('error',fail);
 app.use('/index',indexRouter);
 app.use('/regasp',registroa);
 app.use('/regemp',registroe);
@@ -66,7 +71,7 @@ app.use('/update',update);
 app.use('/asp-cv',cv);
 app.use('/add-cv',addcv);
 app.use('/curriculum',pdfCv);
-app.use('/emp-profile',profileE);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
