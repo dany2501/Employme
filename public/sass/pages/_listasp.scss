@@ -1,0 +1,82 @@
+            .list-asp {
+                display: flex;
+                background-image: $color-background-gradient;
+                flex-grow: 1;
+                flex-direction: column;
+                padding: 3rem;
+                &-utilities {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 1rem;
+                    color: $color-black-2;
+                    &-container {
+                        display: flex;
+                        align-items: center;
+                        position: relative;
+                    }
+                    &-order {
+                        display: flex;
+                        align-items: center;
+                    }
+                    &-total {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 2rem;
+                        margin-left: 4rem;
+                        &::before {
+                            content: "Total:";
+                            transform: translateX(-1rem);
+                        }
+                    }
+                    &-icon {
+                        width: 2rem;
+                        height: 2rem;
+                        fill: currentColor;
+                        &-container {
+                            margin-left: 3rem;
+                            padding: 1.5rem;
+                            border: 3px solid $color-black-2;
+                            background-color: $color-white-1;
+                            border-radius: 4px;
+                            &:hover {
+                                background-color: $color-white-2;
+                            }
+                        }
+                        &-font {
+                            width: 1.2rem;
+                            height: 1.2rem;
+                            fill: currentColor;
+                        }
+                    }
+                }
+                &-order {
+                    list-style: none;
+                    display: none;
+                    margin-top: .5rem;
+                    border: 3px solid $color-black-2;
+                    position: absolute;
+                    padding: 1.5rem;
+                    background-color: $color-white-1;
+                    // transform: translateX(2rem);
+                    top: 6rem;
+                    left: 3rem;
+                    &-element {
+                        padding: .5rem;
+                    }
+                    &-link:link,
+                    &-link:active,
+                    &-link:visited {
+                        text-decoration: none;
+                        color: $color-black-1;
+                    }
+                }
+            }
+            
+            .data {
+                &-user-photo {
+                    width: 7rem;
+                    height: 7rem;
+                    border-radius: 50%;
+                }
+            }

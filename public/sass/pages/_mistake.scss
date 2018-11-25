@@ -1,0 +1,15 @@
+.mistake {
+    background-color: $color-white-1;
+    flex-grow: 1;
+    height: 100%;
+    border-radius: 6px;
+    box-shadow: 0 1rem 1.5rem rgba($color-black-1, .4);
+    &-container {
+        height: 100vh;
+        background-image: $color-background-gradient;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5rem;
+    }
+}

@@ -1,0 +1,258 @@
+.modal {
+    position: fixed;
+    &-background {
+        padding: 4rem;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.85);
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        display: none;
+        z-index: 2000;
+    }
+    &-scroll {
+        flex-grow: 1;
+        overflow: auto;
+    }
+    &-heading {
+        color: $color-blue-8;
+        text-transform: uppercase;
+        font-size: 4rem;
+        letter-spacing: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+    &-information {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        height: 100%;
+        padding: 2rem;
+        // flex-wrap: wrap
+    }
+    &-exit {
+        width: 4.25rem;
+        height: 4.25rem;
+        fill: $color-white-1;
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        cursor: pointer;
+    }
+    &-input {
+        width: 20rem;
+        padding: 1rem 3rem;
+        background-color: #fff;
+        &:not(:last-child) {
+            margin-right: 2rem;
+        }
+    }
+    &-btn-container {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        margin-top: 1.5rem;
+        padding: 0 5rem
+    }
+    //Modal del curriculum
+    &-curriculum {
+        position: relative;
+        padding: 3rem;
+        border-radius: $border-width-1;
+        width: 80vw;
+        height: 80vh;
+        background-image: linear-gradient(110deg, $color-white-3 0%, $color-white-3 50%, $color-blue-6 50%);
+        display: flex;
+        flex-direction: column;
+        &::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: calc(-1 * #{$border-width-1});
+            left: calc(-1 * #{$border-width-1});
+            height: calc(100% + #{$border-width-1} * 2);
+            width: calc(100% + #{$border-width-1} * 2);
+            background-image: linear-gradient(110deg, $color-blue-6 0%, $color-blue-6 50%, $color-white-3 50%);
+            border-radius: $border-width-1;
+        }
+        .modal-list {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            flex: 0 0 auto;
+            margin-bottom: 2.5rem;
+            .modal-element {
+                display: flex;
+                align-items: center;
+                background-color: #fff;
+                padding: 1rem 3rem;
+                font-weight: 900;
+                border-radius: 5px;
+                background-color: $color-blue-7;
+                color: $color-white-1;
+                transition: all .2s;
+                &:hover {
+                    transform: translateY(-.5rem);
+                    box-shadow: 0px 31px 129px -4px rgba(0, 0, 0, 0.53);
+                }
+                &-active {
+                    transform: translateY(-.5rem);
+                    box-shadow: 0px 31px 129px -4px rgba(0, 0, 0, 0.53);
+                }
+                &-icon {
+                    width: 2.25rem;
+                    height: 2.25rem;
+                    fill: currentColor;
+                    margin-right: 1.75rem;
+                }
+            }
+        }
+    }
+    //Modal de GitHub
+    &-github {
+        position: relative;
+        border-radius: $border-width-1;
+        background-image: linear-gradient(110deg, $color-white-3 0%, $color-white-3 50%, $color-orange-1 50%);
+        width: 50vw;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem 0;
+        &::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: calc(-1 * #{$border-width-1});
+            left: calc(-1 * #{$border-width-1});
+            height: calc(100% + #{$border-width-1} * 2);
+            width: calc(100% + #{$border-width-1} * 2);
+            background-image: linear-gradient(110deg, $color-orange-1 0%, $color-orange-1 50%, $color-white-3 50%);
+            border-radius: $border-width-1;
+        }
+        &-icon {
+            width: 20rem;
+            height: 20rem;
+            fill: black;
+        }
+    }
+    //Modal de Editar
+    &-edit {
+        position: relative;
+        border-radius: $border-width-1;
+        background-image: linear-gradient(110deg, $color-white-3 0%, $color-white-3 50%, $color-green-1 50%);
+        width: 60vw;
+        height: 80vh;
+        display: flex;
+        &::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: calc(-1 * #{$border-width-1});
+            left: calc(-1 * #{$border-width-1});
+            height: calc(100% + #{$border-width-1} * 2);
+            width: calc(100% + #{$border-width-1} * 2);
+            background-image: linear-gradient(110deg, $color-green-1 0%, $color-green-1 50%, $color-white-3 50%);
+            border-radius: $border-width-1;
+        }
+    }
+    //Modal de Youtube
+    &-youtube {
+        position: relative;
+        border-radius: $border-width-1;
+        background-image: linear-gradient(110deg, $color-white-3 0%, $color-white-3 50%, $color-red-3 50%);
+        width: 50vw;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem 0;
+        &::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            top: calc(-1 * #{$border-width-1});
+            left: calc(-1 * #{$border-width-1});
+            height: calc(100% + #{$border-width-1} * 2);
+            width: calc(100% + #{$border-width-1} * 2);
+            background-image: linear-gradient(110deg, $color-red-3 0%, $color-red-3 50%, $color-white-3 50%);
+            border-radius: $border-width-1;
+        }
+        &-icon {
+            width: 20rem;
+            height: 20rem;
+            fill: black;
+        }
+    }
+}
+
+.edit-info {
+    &-block {
+        display: flex;
+        flex-direction: column;
+        align-content: flex-end;
+    }
+    &-span,
+    &-input {
+        display: block;
+        margin-bottom: 2rem;
+        margin-left: 5rem;
+    }
+}
+
+.section {
+    &-edit {
+        display: flex;
+    }
+}
+
+.add-curriculum {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .curriculum-label {
+        margin-top: 5rem;
+        font-weight: 900;
+        text-align: left;
+    }
+    &-input {
+        &-t,
+        &-n {
+            display: block;
+            background-color: transparent;
+            border-style: none;
+            height: 3rem;
+            width: 100%;
+            border-bottom: 2px solid $color-test;
+            font-size: 2rem;
+            color: $color-black-1;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    &-icon {
+        width: 4rem;
+        height: 4rem;
+        fill: $color-blue-4;
+    }
+}
+
+#modal {
+    &-curriculum:target {
+        display: flex;
+    }
+    &-github:target {
+        display: flex;
+    }
+    &-edit:target {
+        display: flex;
+    }
+    &-youtube:target {
+        display: flex;
+    }
+}

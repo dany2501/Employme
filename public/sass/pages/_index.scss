@@ -1,0 +1,141 @@
+.header {
+    height: 100vh;
+    background-image: radial-gradient(ellipse, rgba($color-blue-1, .85), rgba($color-blue-1, .9), rgba($color-blue-1, 1)), url(../img/wall3.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+}
+
+.section {
+    &-features,
+    &-start {
+        text-align: center;
+        padding: 5rem 0;
+        margin: 0 3rem;
+        position: relative;
+        background-color: $color-gray-light-5;
+        justify-content: center;
+        @include responsive(phone) {
+            margin: 0;
+        }
+        @include responsive(tab-port) {
+            margin: 0 1rem;
+        }
+        @include responsive(tab-land) {
+            margin: 0 2rem;
+        }
+        @include responsive(desktop) {
+            margin: 0 5rem;
+        }
+    }
+}
+
+//Carta
+.card {
+    perspective: 200rem;
+    -webkit-perspective: 200rem;
+    position: relative;
+    height: 90vh;
+    &-side {
+        height: 90vh;
+        transition: all 1s;
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        backface-visibility: hidden;
+        border-radius: 8px;
+        &--front {
+            &:hover {
+                animation: shake 2s cubic-bezier(.36, .07, .19, .97) 2s;
+                animation-iteration-count: infinite;
+            }
+            &-company {
+                background-image: url(../img/company2.jpg);
+            }
+            &-employee {
+                background-image: url(../img/employee2.jpg);
+            }
+        }
+        &--back {
+            background-image: radial-gradient(ellipse, rgba($color-blue-1, .85), rgba($color-blue-1, .9), rgba($color-blue-1, 1));
+            transform: rotateY(180deg);
+            padding: 1rem;
+        }
+    }
+}
+
+.footer {
+    background-color: $color-black-1;
+    color: $color-white-1;
+    padding: 3rem;
+    font-size: 4.75rem;
+    display: flex;
+    justify-content: space-between;
+    &-heading {
+        letter-spacing: 1rem;
+        flex: 0 0 30%;
+        .point-color {
+            color: red;
+            font-size: 8rem;
+        }
+    }
+    &-section {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 900;
+        flex-grow: 1;
+    }
+    &-element {
+        list-style: none;
+        &-title {
+            color: $color-gray-light-7;
+            font-size: 2.5rem;
+        }
+    }
+    &-list {
+        list-style: none;
+        margin-top: 2rem;
+        font-size: 2rem;
+        &-element {
+            &:not(:last-child) {
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0);
+    }
+    10% {
+        transform: rotate(.5deg);
+    }
+    15% {
+        transform: rotate(-.5deg);
+    }
+    20% {
+        transform: rotate(.4deg);
+    }
+    25% {
+        transform: rotate(-.4deg);
+    }
+    30% {
+        transform: rotate(.2deg);
+    }
+    35% {
+        transform: rotate(-.2deg);
+    }
+    40% {
+        transform: rotate(.1deg);
+    }
+    44% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}

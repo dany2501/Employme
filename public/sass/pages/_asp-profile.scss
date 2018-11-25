@@ -1,0 +1,27 @@
+.profile-header {
+    background-color: $color-white-1;
+    height: 7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    background-color: $color-black-1;
+    flex: 0 0 13%;
+}
+
+.portfolio {
+    flex-grow: 1;
+}
+
+.test-curriculum {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}

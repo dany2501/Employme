@@ -1,0 +1,58 @@
+.specialty {
+    display: flex;
+    background-image: $color-background-gradient;
+    flex-grow: 1;
+    flex-direction: column;
+    padding: 3rem;
+}
+
+.category {
+    display: flex;
+    padding: 3rem;
+    flex-direction: column;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: normal;
+    &:not(:last-child) {
+        margin-bottom: 4rem;
+    }
+    &-name {
+        margin-bottom: 2rem;
+        margin-left: 5rem;
+    }
+    &-tools-container {
+        display: flex;
+        flex-direction: row;
+        &:not(:last-child) {
+            margin-right: 1rem;
+        }
+    }
+}
+
+.tool {
+    background-color: $color-white-1;
+    height: 30rem;
+    width: 40rem;
+    padding: 5rem;
+    color: $color-blue-1;
+    transition: all .4s;
+    &:hover {
+        transform: scale(1.05);
+    }
+    // display: table;
+    // table-layout: fixed;
+    cursor: pointer;
+    &:not(:last-child) {
+        margin-right: 2.5rem;
+    }
+    &-name {
+        font-size: 1.6;
+    }
+    &-text {
+        margin: 3rem 0;
+        font-size: 1.4rem;
+        line-height: 2.7rem;
+        ;
+        height: 100%;
+    }
+}

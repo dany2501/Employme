@@ -1,0 +1,30 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+/*
+phone: 0-600px;
+tab-port: 600px-
+*/
+
+@mixin responsive($breakpoint) {
+    @if $breakpoint==phone {
+        @media (max-width: 37.5em) {
+            @content;
+        }
+    }
+    @else if $breakpoint==tab-port {
+        @media (max-width: 56.25em) {
+            @content;
+        }
+    }
+    @else if $breakpoint==tab-land {
+        @media (max-width: 75em) { @content; }
+    }
+    @else if $breakpoint == desktop {
+        @media (min-width: 112.5em) { @content; }
+    }
+}

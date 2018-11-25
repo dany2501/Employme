@@ -1,0 +1,35 @@
+.sidebar-navigation {
+    font-size: 1.2rem;
+    list-style: none;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    position: relative;
+    &-item {
+        padding: 2rem;
+        transition: font-size .2s;
+        // &:hover {
+        //     font-size: 1.6rem;
+        // }
+        // position: fixed;
+    }
+    &-link {
+        display: flex;
+        align-content: center;
+        &:link,
+        &:visited {
+            color: #eee;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: block;
+            padding: 2rem 0;
+        }
+    }
+    &-icon {
+        height: 1.5rem;
+        width: 1.5rem;
+        fill: currentColor;
+    }
+    &-description {
+        margin-left: 4rem;
+    }
+}

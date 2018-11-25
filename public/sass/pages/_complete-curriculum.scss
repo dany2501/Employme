@@ -1,0 +1,126 @@
+.about-you {
+    display: flex;
+    background-image: $color-background-gradient;
+    flex-grow: 1;
+    flex-direction: column;
+    padding: 3rem;
+    flex-wrap: wrap;
+    &-studies {
+        width: 100%;
+    }
+    &-container {
+        display: flex;
+        flex-direction: row;
+    }
+    &-btn-container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        margin-top: 1.5rem;
+    }
+    &-experience,
+    &-references,
+    &-extra-comments {
+        display: none;
+    }
+    &-sections {
+        display: flex;
+        flex-direction: row;
+    }
+    &-add-feature {
+        order: 5;
+        &-icon {
+            width: 20rem;
+            height: 20rem;
+            fill: $color-white-1;
+        }
+    }
+    &-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50rem;
+        background-color: $color-gray-light-3;
+        border-radius: 30px;
+        padding: 4rem;
+        display: none;
+        z-index: 30;
+        &-input {
+            font-family: inherit;
+            font-size: inherit;
+            padding: .5rem 2rem;
+            border: none;
+            border-radius: 100px;
+            width: 95%;
+            transition: all .3s;
+            margin-right: -4rem;
+            background-color: $color-gray-light-5;
+            &:focus {
+                outline: none;
+                width: 100%;
+                color: $color-gray-light-3;
+            }
+        }
+        &-container {
+            &::before {
+                content: "";
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, .4);
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+                z-index: 25;
+            }
+        }
+    }
+    &-feature {
+        &-check {
+            height: 100%;
+            position: relative;
+            width: 100%;
+            background-color: $color-red-1;
+            z-index: 20;
+            // -webkit-clip-path: polygon(55% 1%, 85% 0, 100% 15%, 100% 45%);
+            // clip-path: polygon(55% 0%, 85% 0, 100% 15%, 100% 45%);
+            -webkit-clip-path: polygon(55% 0, 100% 0, 100% 43%);
+            clip-path: polygon(55% 0, 100% 0, 100% 43%);
+            border-radius: 15px;
+            &-icon {
+                fill: $color-white-1;
+                width: 3rem;
+                height: 3rem;
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+            }
+        }
+        &-information {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: $color-white-1;
+            font-size: 2rem;
+        }
+    }
+}
+
+.selected-feature {
+    border-radius: 30px;
+    background-color: $color-blue-2;
+    border: 1.2rem solid $color-white-1;
+    height: 25rem;
+    width: 25rem;
+    position: relative;
+    cursor: pointer;
+    &:not(:first-child) {
+        margin-left: 8rem;
+    }
+    &:focus {
+        outline: none;
+    }
+}

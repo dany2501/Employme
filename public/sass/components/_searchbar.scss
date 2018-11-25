@@ -1,0 +1,41 @@
+.search {
+    flex: 0 0 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-input {
+        font-family: inherit;
+        font-size: inherit;
+        padding: .5rem 2rem;
+        border: none;
+        border-radius: 100px;
+        width: 95%;
+        transition: all .3s;
+        margin-right: -4rem;
+        background-color: $color-gray-light-5;
+        color: $color-gray-light-7;
+        &:focus {
+            outline: none;
+            width: 100%;
+        }
+        &::-webkit-input-placeholder {
+            color: $color-gray-light-2;
+        }
+    }
+    &-btn {
+        border: none;
+        background-color: $color-gray-light-5;
+        margin-right: -8rem;
+        fill: $color-gray-light-2;
+        &:focus {
+            outline: none;
+        }
+        &:active {
+            transform: translateY(3px);
+        }
+    }
+    &-icon {
+        height: 2rem;
+        width: 2rem;
+    }
+}
