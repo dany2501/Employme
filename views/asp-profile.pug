@@ -77,10 +77,14 @@ html(lang='en')
             .modal-information
               hr
               .edit-info-block-
-                span.edit-info-span Telefono:
-                input#numero.edit-info-input(type='text',required="required",onkeypress="return soloNum(event)" maxlength="10")
                 span.edit-info-span Correo Electronico:
                 input#correo.edit-info-input(type='text',required="required",placeholder=""+email,onkeypress="return soloCorreo(event)")
+                span.edit-info-span Contraseña:
+                input#contra.edit-info-input(type='text',required="required",onkeypress="return soloCorreo(event)")
+                span.edit-info-span Confirmar contraseña:
+                input#contrac.edit-info-input(type='text',required="required",onkeypress="return soloCorreo(event)")
+                span.edit-info-span Telefono:
+                input#numero.edit-info-input(type='text',placeholder=""+num,onkeypress="return soloNum(event)" maxlength="10")
             .modal-btn-container
               a#guardar.btn-blue.btn Guardar
               a#cerrar.btn-blue.btn Cerrar
@@ -121,7 +125,7 @@ html(lang='en')
                 input#vid.edit-info-input(type='text')
             .modal-btn-container
               a#guardar3.btn-blue.btn Guardar
-              a#cerrar2.btn-blue.btn Cerrar
+              a#cerrar3.btn-blue.btn Cerrar
         .portfolio-information-self
           .information-data-field
             svg.information-data-icon
@@ -172,7 +176,7 @@ html(lang='en')
             h1 Video muestra.
             #video
               .github
-                a#git.curriculum-required
+                a#yt.curriculum-required
                   svg.curriculum-required-icon
                     use(xlink:href='images/sprite.svg#icon-youtube')
                   span.curriculum-required-link Agregar vídeo.

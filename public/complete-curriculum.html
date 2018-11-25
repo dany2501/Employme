@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="CSS/styles.css">
+    <title>Employ.me</title>
+</head>
+
+<body>
+    <header class="profile-header">
+        <img src="img/logo.png" alt="Logo" class="logo">
+        <form action="" class="search">
+            <input type="text" class="search-input" placeholder="Buscar">
+            <button class="search-btn">
+                <svg class="search-icon">
+                    <use xlink:href="img/sprite.svg#icon-search">
+                </svg>
+            </button>
+        </form>
+        <nav class="header-navigation">
+            <div class="header-navigation-icon-box">
+                <svg class="header-navigation-icon">
+                    <use xlink:href="img/sprite.svg#icon-comments" x="" y="" />
+                </svg>
+                <span class="header-navigation-notification">
+                    9
+                </span>
+            </div>
+            <div class="header-navigation-icon-box">
+                <svg class="header-navigation-icon">
+                    <use xlink:href="img/sprite.svg#icon-sign-in" x="" y="" />
+                </svg>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <nav class="sidebar">
+            <ul class="sidebar-navigation">
+                <li class="sidebar-navigation-item">
+                    <a href="asp-profile.html" class="sidebar-navigation-link">
+                        <svg class="sidebar-navigation-icon">
+                            <use xlink:href="img/sprite.svg#icon-user" x="" y="" />
+                        </svg>
+                        <span class="sidebar-navigation-description">Perfil</span>
+                    </a>
+                </li>
+                <li class="sidebar-navigation-item">
+                    <a href="com-listasp..html" class="sidebar-navigation-link">
+                        <svg class="sidebar-navigation-icon">
+                            <use xlink:href="img/sprite.svg#icon-heart" x="" y="" />
+                        </svg>
+                        <span class="sidebar-navigation-description">Interesados</span>
+                    </a>
+                </li>
+                <li class="sidebar-navigation-item">
+                    <a href="" class="sidebar-navigation-link">
+                        <svg class="sidebar-navigation-icon">
+                                <use xlink:href="img/sprite.svg#icon-address-card" x="" y="" />
+                            </svg>
+                        <span class="sidebar-navigation-description">Portafolio</span>
+                    </a>
+                </li>
+                <li class="sidebar-navigation-item">
+                    <a href="asp-specialty.html" class="sidebar-navigation-link">
+                        <svg class="sidebar-navigation-icon">
+                            <use xlink:href="img/sprite.svg#icon-bookmark" x="" y="" />
+                        </svg>
+                        <span class="sidebar-navigation-description">Especialidad</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-navigation-item">
+                    <a href="" class="sidebar-navigation-link">
+                        <svg class="sidebar-navigation-icon">
+                            <use xlink:href="img/sprite.svg#icon-sign-in" x="" y="" />
+                        </svg>
+                        <span class="sidebar-navigation-description">Salir</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <main class="about-you">
+            <div class="progress-bar-container">
+
+                <div class="progress-bar" id="progress-bar">
+                    <span>0%</span>
+                </div>
+
+            </div>
+            <div class="about-you-sections">
+
+                <section class="about-you-studies">
+                    <h3>Estudios</h3>
+
+                    <div class="about-you-container">
+                        <div class="about-you-modal-container" id="modal">
+                            <div class="about-you-modal">
+                                <h2 class="heading-tertiary">
+                                    Gradro Academico
+                                </h2>
+                                <input class="about-you-modal-input" type="text" name="" id="" placeholder="Ingresar....">
+                                <div class="about-you-btn-container">
+                                    <a href="" class="btn btn-blue">Cerrar</a>
+                                    <a href="" class="btn btn-blue">Guardar</a>
+                                    <a href="" class="btn btn-blue">Eliminar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="about-you-add-feature selected-feature">
+                                <svg class="about-you-add-feature-icon"><use xlink:href="img/sprite.svg#icon-plus" x="" y="" /></svg>
+                            </button>
+                        <a href="#modal" class="test">
+                            <div class="about-you-feature selected-feature" href="#modal">
+                                <div class="about-you-feature-check">
+                                    <svg class="about-you-feature-check-icon"><use xlink:href="img/sprite.svg#icon-check" x="" y="" /></svg>
+                                </div>
+                                <div class="about-you-feature-information">
+                                    <p class="about-you-add-feature-information-text">
+                                        Cecyt 9
+                                    </p>
+
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="about-you-btn-container">
+
+                        <a href="" class="btn btn-blue">Siguiente</a>
+                        <a href="" class="btn btn-blue">Anterior</a>
+                    </div>
+
+
+                </section>
+                <section class="about-you-experience ">
+                    <button class="about-you-add-feature selected-feature ">
+                    <svg class="about-you-add-feature-icon "><use xlink:href="img/sprite.svg#icon-plus " x=" " y=" " /></svg>
+                        </button>
+                    <div class="about-you-feature selected-feature "></div>
+                </section>
+                <section class="about-you-references ">
+                    <button class="about-you-add-feature selected-feature">
+                        <svg class="about-you-add-feature-icon"><use xlink:href="img/sprite.svg#icon-plus" x="" y="" /></svg>
+                    </button>
+                    <div class="about-you-feature selected-feature"></div>
+                </section>
+                <section class="about-you-extra-comments ">
+                    <button class="about-you-add-feature selected-feature ">
+                    <svg class="about-you-add-feature-icon "><use xlink:href="img/sprite.svg#icon-plus" x=" " y=" " /></svg>
+                        </button>
+                    <div class="about-you-feature selected-feature "></div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -36,8 +36,8 @@ $(document).ready(function () {
     });
 
     close2.on('click', () => {
-        form2.slideUp("fast", function () {
-        });
+        console.log("Click boton");
+        form2.hide();
         u.empty();
     });
 
@@ -162,9 +162,7 @@ $(document).ready(function () {
     agregar3.on('click', () => {
 
         var vid = v.val();
-        console.log(vid);
         if (vid.length == 0) {
-            alert("No puedes dejar campos vacíos.");
 
         } else {
 
@@ -190,6 +188,13 @@ $(document).ready(function () {
         form3.slideUp("fast", function () {
         });
 
+    });
+
+    //para agregar YT
+    var iY=$('#yt');
+
+    iY.click(()=>{
+        console.log("Diste click")
     });
 
 

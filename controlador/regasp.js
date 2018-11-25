@@ -33,7 +33,7 @@ exports.registrarAspirante = async function (req, res, next) {
     try{
 var transporter = nodemailer.createTransport({
 service:'gmail',
-auth:{//hola :3
+auth:{
     user:'aurantisoft@gmail.com',
     pass: 'Correoempresa'
 }
