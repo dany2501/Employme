@@ -6,13 +6,12 @@ var interes=require('../controlador/empInt');
 
 var noSesion = function(req, res, next){
     if(!req.session.usuario){
-        res.render('index');
-    }else{ 
-        
+        res.redirect('/');
+    }else{
 
-interes.interesados(req,res,next);
+        interes.interesados(req,res,next);
         next();
-    } 
+    }
 }
 
 
@@ -26,5 +25,5 @@ router.post('/', noSesion,GitHub.github);
 
 
 
-   
-module.exports = router; 
+
+module.exports = router;

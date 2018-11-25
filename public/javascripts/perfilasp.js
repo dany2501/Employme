@@ -18,34 +18,34 @@ $(document).ready(function(){
   });
 
   $.ajax({
-    url:'http://18.233.147.158:8080/curriculum/showCv',
+    url:'http://localhost:8080/curriculum/showCv',
     method:'get',
     dataType:'json',
     success:function(response){
       var cvpdf=`<embed src="${response}" type="application/pdf" style="height: 100%;
       width: 100%;"></embed>`;
-      
+
       pdfcv.html(cvpdf);
     },error:function(err){
     }
 
   })
-  
+
 
 
     $.ajax({
-                url:'http://18.233.147.158:8080/fotoasp',
+                url:'http://localhost:8080/fotoasp',
                 method:'put',
                 dataType:'json',
                 success:function(response){
                   var ruta=(response[0].ruta_imga);
                   foto.attr("src",ruta);
-                
+
                 },
             });
 
 
-    $.post("http://18.233.147.158:8080/perfilasp", function(data)
+    $.post("http://localhost:8080/perfilasp", function(data)
     {if(data=='Ocurrió un error')
     {
     }else
@@ -63,17 +63,18 @@ $(document).ready(function(){
       `;
     });
     area.html(repositories)
-    }        
+    }
   });
 
     $.ajax({
-      url:'http://18.233.147.158:8080/perfilasp',
+      url:'http://localhost:8080/perfilasp',
       type:'put',
       dataType:'json',
       success : function(json) {
       var url = json;
       if(url==null)
       {
+
       }
       else{
         var player;
@@ -101,7 +102,7 @@ $(document).ready(function(){
 
 
       }
-      
+
     },
     error : function(xhr, status) {
         alert('Existió un problema');

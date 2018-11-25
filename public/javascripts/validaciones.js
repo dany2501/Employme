@@ -12,28 +12,6 @@ var pass1_asp=$('#password');
 var pass2_asp=$('#confpass');
 var fn=$("#fn");
 
-/*sa.click((e)=>{
-e.stopPropagation();
-alert("Se previno un cambio de pagina");
-    name_asp.val("");
-    apt_asp.val("");
-    apm_asp.val("");
-    user_asp.val("");
-    email_asp.val("");
-    pass1_asp.val("");
-    pass2_asp.val("");
-    fn.val("");
-    $('#form1Asp').hide();
-    $('#form2Asp').slideDown("slow",()=>{}); 
-
-
-});
-
-se.click((e)=>{
-e.preventDefault();
-
-});*/
-
 
 
 

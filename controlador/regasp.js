@@ -6,15 +6,15 @@ exports.registrarAspirante = async function (req, res, next) {
     var settings = {
         password: 'HECD010225HMCRRNA6'
     }
-    const userData=[req.body.nombre, req.body.apt, req.body.apm, req.body.usuario, req.body.password, req.body.email, req.body.fn, req.body.sexo];
-   
-    const sqlQuery= "insert into datosaspirante (nom_asp,apt_asp,apm_asp,usu_asp,psw_asp,email_asp,FN_asp,sex_asp) values (?,?,?,AES_ENCRYPT(?,'"+[settings.password]+"'),AES_ENCRYPT(?,'"+[settings.password]+"'),?,?,?)";
+    const userData=[req.body.nombre, req.body.apt, req.body.apm, req.body.usuario, req.body.password, req.body.email, req.body.fn, req.body.sexo,req.body.num];
+
+    const sqlQuery= "insert into datosaspirante (nom_asp,apt_asp,apm_asp,usu_asp,psw_asp,email_asp,FN_asp,sex_asp,numtel_asp) values (?,?,?,AES_ENCRYPT(?,'"+[settings.password]+"'),AES_ENCRYPT(?,'"+[settings.password]+"'),?,?,?,?)";
 
     const Query = "select (AES_DECRYPT(usu_asp,'"+settings.password+"')) as usu_asp,email_asp from datosaspirante;";
     var asp=await con.consultaBd(Query);
     var flag=false;
-    
-    
+
+
     if(req.body.password==req.body.confpass){
         for (var i in asp) {
             if(asp[i].usu_asp==req.body.usuario || asp[i].email_asp==req.body.email)
@@ -22,7 +22,7 @@ exports.registrarAspirante = async function (req, res, next) {
                 flag=true;
             }
         }
-    
+
         if(flag==true)
         {
             console.log("Usuario o email ya registrado");
@@ -33,7 +33,7 @@ exports.registrarAspirante = async function (req, res, next) {
     try{
 var transporter = nodemailer.createTransport({
 service:'gmail',
-auth:{
+auth:{//hola :3
     user:'aurantisoft@gmail.com',
     pass: 'Correoempresa'
 }
@@ -61,11 +61,10 @@ transporter.sendMail(mailOptions,function(err,info){
     }
 }
         }
-      
+
 
 
 else{
     res.render('error')
 }
     }
-    

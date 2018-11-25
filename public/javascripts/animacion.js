@@ -12,6 +12,6 @@ $(document).ready(function(){
          $('.card-side--back').css('transform','rotateY(180deg)');
 
     });
-        
+
 
 });

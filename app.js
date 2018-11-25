@@ -51,7 +51,7 @@ app.use(cookie ({
 app.use('/', indexRouter);
 app.use('/exito',exito);
 app.use('/emp-profile',profileE);
-app.use('error',fail);
+app.use('/error',fail);
 app.use('/index',indexRouter);
 app.use('/regasp',registroa);
 app.use('/regemp',registroe);

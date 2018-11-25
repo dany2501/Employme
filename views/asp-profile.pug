@@ -62,13 +62,13 @@ html(lang='en')
           .information-photo-container
             form.information-photo-pick(action='/fotoasp', method='post', enctype='multipart/form-data')
               input#file.information-photo-select-hidden(type='file', name='file', value='Seleccionar foto')
-              label.information-photo-select(for='file')
+              label(for='file')
                 svg#camara.information-photo-icon
                   use(xlink:href='images/sprite.svg#icon-camera')
                 input#submit.information-photo-hidden(type='submit', value='Cambiar foto')
             img.information-photo
           h1.user-name
-            | #{nombre}          
+            | #{nombre}
           #modal1.modal.modal-edit
             h3.modal-heading
               svg.information-data-icon
@@ -93,7 +93,7 @@ html(lang='en')
                 use(xlink:href='images/sprite.svg#icon-github')
               form.github-form(action='')
                 input.form-input.form-input-dark(type='text', placeholder='Usuario de Github')
-                a.btn.form-btn.form-btn-dark Enlazar    
+                a.btn.form-btn.form-btn-dark Enlazar
 
           #modal2.modal.modal-edit
             h3.modal-heading
@@ -107,7 +107,7 @@ html(lang='en')
                 input#usuario.edit-info-input(type='text')
             .modal-btn-container
               a#guardar2.btn-blue.btn Guardar
-              a#cerrar2.btn-blue.btn Cerrar   
+              a#cerrar2.btn-blue.btn Cerrar
 
           #modal3.modal.modal-edit
             h3.modal-heading
@@ -148,19 +148,19 @@ html(lang='en')
           .specialty-information
           .specialty-information
         .portfolio-curriculum
-          
+
           .flex-col-1-of-2--row
             #cv.curriculum
-            
-              a.curriculum-required    
+
+              a.curriculum-required
                 svg.curriculum-required-icon
                   use(xlink:href='images/sprite.svg#icon-address-card ')
                 span.curriculum-required-link
                   | Subir Curriculum.
-                form(action='/curriculum', method='post', enctype='multipart/form-data') 
+                form(action='/curriculum', method='post', enctype='multipart/form-data')
                   input#pdf(type='file', name='pdf', value='Seleccionar Curriculum')
                   br
-                  input(type='submit', name='btnCv', value='Subir')  
+                  input(type='submit', name='btnCv', value='Subir')
           .flex-col-1-of-2--col
             h1 Proyectos desarrollados por mí.
             #github.github
@@ -171,3 +171,9 @@ html(lang='en')
                   | Vincular cuenta de Github
             h1 Video muestra.
             #video
+              .github
+                a#git.curriculum-required
+                  svg.curriculum-required-icon
+                    use(xlink:href='images/sprite.svg#icon-youtube')
+                  span.curriculum-required-link Agregar vídeo.
+
