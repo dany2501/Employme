@@ -711,7 +711,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-image: url(../img/wall10.jpg);
+    background-image: url(../images/wall10.jpg);
     background-size: cover; }
   .portfolio-information-self {
     display: flex;
@@ -1079,7 +1079,7 @@ body {
 
 .header {
   height: 100vh;
-  background-image: radial-gradient(ellipse, rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.9), #2c3e50), url(../img/wall3.jpg);
+  background-image: radial-gradient(ellipse, rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.9), #2c3e50), url(../images/wall3.jpg);
   background-size: cover;
   background-position: top;
   position: relative; }
@@ -1124,9 +1124,9 @@ body {
       animation: shake 2s cubic-bezier(0.36, 0.07, 0.19, 0.97) 2s;
       animation-iteration-count: infinite; }
     .card-side--front-company {
-      background-image: url(../img/company2.jpg); }
+      background-image: url(../images/company2.jpg); }
     .card-side--front-employee {
-      background-image: url(../img/employee2.jpg); }
+      background-image: url(../images/employee2.jpg); }
     .card-side--back {
       background-image: radial-gradient(ellipse, rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.9), #2c3e50);
       transform: rotateY(180deg);
