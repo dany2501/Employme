@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "debug": "SET DEBUG=Employ.me:* & npm start",
     "debug-automatico": "nodemon debug",
-    "compile:sass": "node-sass sass/main.scss css/styles.css -w",
+    "compile:sass": "node-sass public/sass/main.scss public/css/styles.css -w",
     "compile:icon": "node-sass sass/icons.scss css/icons.css -w"
   },
   "dependencies": {

@@ -1,0 +1,13 @@
+.u-color-white {
+    color: $color-gray-light-1;
+}
+
+.u-color-black {
+    background-image: linear-gradient(to right, rgba($color-blue-1, 1), rgba($color-blue-3, .6));
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.u-maegin-zero {
+    margin: 0;
+}

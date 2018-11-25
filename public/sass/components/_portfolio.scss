@@ -1,0 +1,74 @@
+.portfolio {
+    &-information {
+        display: flex;
+        &-users {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-image: url(../img/wall10.jpg);
+            background-size: cover;
+        }
+        &-self {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            height: 7rem;
+            padding: 0 3rem;
+            position: relative;
+            &:hover .information-edit-btn {
+                display: flex;
+            }
+        }
+    }
+    &-curriculum {
+        background-image: $color-background-gradient;
+        display: flex;
+        padding: 3rem;
+        position: relative;
+    }
+}
+
+.information {
+    &-data {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        &-field {
+            padding: 0 1rem;
+            flex: 0 0 17%;
+            // margin-bottom: 3rem;
+            transform: translateY(1.5rem);
+            display: flex;
+            align-items: center;
+            color: $color-gray-dark-1;
+        }
+        &-specialty {
+            display: flex;
+            align-items: center;
+            flex: 0 0 30%;
+        }
+        &-icon {
+            width: 2.3rem;
+            height: 2.3rem;
+            fill: currentColor;
+            margin-right: 2rem;
+        }
+    }
+    &-edit-btn {
+        padding: .5rem 1rem;
+        background-color: $color-blue-2;
+        position: absolute;
+        border-radius: 5px;
+        flex: 0 0 15%;
+        margin-bottom: 3rem;
+        text-decoration: none;
+        transform: translateY(1.5rem);
+        display: flex;
+        align-items: center;
+        color: $color-white-1;
+        right: 2rem;
+        display: none;
+    }
+}
