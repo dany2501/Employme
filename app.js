@@ -15,6 +15,7 @@ var loginemp=require('./routes/loginemp');
 var perfilasp=require('./routes/perfilasp');
 var portafolio=require('./routes/portafolio');
 var fotoasp=require('./routes/fotoasp');
+var fotoemp=require('./routes/fotoemp');
 var cerrarsesion=require('./routes/cerrarsesion');
 var esp=require('./routes/especialidad');
 var vid=require('./routes/video');
@@ -28,6 +29,7 @@ var pdfCv=require('./routes/curriculum');
 var profileE=require('./routes/emp-profile');
 var fail=require('./routes/error');
 var exito=require('./routes/exito');
+var updateE=require('./routes/updateEmp');
 
 
 var app = express();
@@ -47,7 +49,7 @@ app.use(cookie ({
   secret: 'TaRoDaSeDo',
   name: 'cookie'
 }));
-
+app.use('/updateE',updateE);
 app.use('/', indexRouter);
 app.use('/exito',exito);
 app.use('/emp-profile',profileE);
@@ -60,6 +62,7 @@ app.use('/loginemp',loginemp);
 app.use('/perfilasp',perfilasp);
 app.use('/portafolio',portafolio);
 app.use('/fotoasp',fotoasp);
+app.use('/fotoemp',fotoemp);
 app.use('/users', usersRouter);
 app.use('/cerrarsesion',cerrarsesion);
 app.use('/especialidad',esp);

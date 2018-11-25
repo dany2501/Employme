@@ -29,13 +29,13 @@ $(document).ready(function(){
     },error:function(err){
     }
 
-  })
+  });
 
 
 
     $.ajax({
                 url:'http://localhost:8080/fotoasp',
-                method:'put',
+                method:'post',
                 dataType:'json',
                 success:function(response){
                   var ruta=(response[0].ruta_imga);

@@ -6,30 +6,11 @@ html(lang='en')
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
-<<<<<<< HEAD
     link(rel='stylesheet', href='stylesheets/styles.css')
     script(src='javascripts/empresa.js')
-=======
-    link(rel='stylesheet', href='stylesheets/styles.css')
->>>>>>> 6d6c6637c39e3395012eac7f8a12740e38c8b229
     title Employ.me
   body
-    #modal-edit.modal-background
-      .modal.modal-edit
-        svg.modal-exit.card-exit--employee
-          use(xlink:href='images/sprite.svg#icon-close')
-        .left-divided
-          img.information-photo(src='images/employee.jpg')
-          input#change-photo(type='file')
-          label.information-change-photo(for='change-photo')
-            svg.information-photo-icon
-              use(xlink:href='images/sprite.svg#icon-camera-retro')
-          a.btn.form-btn.form-btn-dark(href='') Guardar
-        .right-divided
-          input.form-input.form-input-light(type='text', placeholder='Correo Electronico...', onkeypress='return soloCorreo(event)')
-          input.form-input.form-input-light(type='text', placeholder='Telefono....', onkeypress='return soloNum(event)', maxlength='10')
-          input.form-input.form-input-light(type='text', placeholder='Contraseña...', onkeypress='return soloContra(event)', maxlength='25')
-          input.form-input.form-input-light(type='text', placeholder='Confirmar Contraseña...')
+    
     #modal-youtube.modal-background
       .modal
         svg.modal-exit.card-exit--employee
@@ -79,10 +60,16 @@ html(lang='en')
       main.portfolio
         .portfolio-information-users
           .information-photo-container
-            a.information-photo-redirect(href='#modal-edit')
-            img.information-photo(src='images/user2.png', alt='')
+            form.information-photo-pick(action='/fotoasp', method='post', enctype='multipart/form-data')
+              input#file.information-photo-select-hidden(type='file', name='file')
+              label(for='file')
+                svg#camara.information-photo-icon
+                  use(xlink:href='images/sprite.svg#icon-camera')
+                input#submit.information-photo-hidden(type='submit', value='Cambiar foto')
+            img.information-photo
           h1.user-name
             | #{nombre}
+          .information-map  
           #modal1.modal.modal-edit
             h3.modal-heading
               svg.information-data-icon
@@ -92,13 +79,13 @@ html(lang='en')
               hr
               .edit-info-block-
                 span.edit-info-span Correo Electronico:
-                input#correo.edit-info-input(type='text',required="required",placeholder="",onkeypress="return soloCorreo(event)")
+                input#correo.edit-info-input(type='text',name="mail",required="required",placeholder="",onkeypress="return soloCorreo(event)")
                 span.edit-info-span Sitio web:
-                input#sitio.edit-info-input(type='text',required="required",onkeypress="return soloCorreo(event)")
+                input#sitio.edit-info-input(type='text',name="sitio",required="required",onkeypress="return soloCorreo(event)")
                 span.edit-info-span Contraseña:
-                input#contra.edit-info-input(type='text',required="required",placeholder="Opcional",onkeypress="return soloCorreo(event)")
+                input#contra.edit-info-input(type='text',name="pass",required="required",placeholder="Opcional",onkeypress="return soloCorreo(event)")
                 span.edit-info-span Confirmar contraseña:
-                input#contrac.edit-info-input(type='text',required="required",placeholder="Opcional",onkeypress="return soloCorreo(event)")
+                input#contrac.edit-info-input(type='text',name="confirm",required="required",placeholder="Opcional",onkeypress="return soloCorreo(event)")
             .modal-btn-container
               a#guardar.btn-blue.btn Guardar
               a#cerrar.btn-blue.btn Cerrar 
@@ -131,9 +118,8 @@ html(lang='en')
           .specialty-information  
         .portfolio-curriculum
           .flex-col-1-of-2--row
-            .enterprise-text(style:width='')
-              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam delectus dolores natus, veniam repellendus temporibus explicabo voluptatibus et fuga tempore. Provident adipisci magni aut odio iusto facilis fugit, culpa debitis!
-              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam delectus dolores natus, veniam repellendus temporibus explicabo voluptatibus et fuga tempore. Provident adipisci magni aut odio iusto facilis fugit, culpa debitis!
+            .enterprise-text
+              h1 Acerca de nosotros
               | Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam delectus dolores natus, veniam repellendus temporibus explicabo voluptatibus et fuga tempore. Provident adipisci magni aut odio iusto facilis fugit, culpa debitis!
               | Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam delectus dolores natus, veniam repellendus temporibus explicabo voluptatibus et fuga tempore. Provident adipisci magni aut odio iusto facilis fugit, culpa debitis!
               | Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam delectus dolores natus, veniam repellendus temporibus explicabo voluptatibus et fuga tempore. Provident adipisci magni aut odio iusto facilis fugit, culpa debitis!
@@ -146,15 +132,11 @@ html(lang='en')
                 .information-data-field
                   svg.information-data-icon
                     use(xlink:href='images/sprite.svg#icon-mobile')
-                  span 55-3465-2989
-                .information-data-field
-                  svg.information-data-icon
-                    use(xlink:href='images/sprite.svg#icon-mobile')
-                  span 55-3465-2989
+                  span #{numero}
                 .information-data-field
                   svg.information-data-icon
                     use(xlink:href='images/sprite.svg#icon-envelope')
-                  span ejemplo@ejmplo.com
+                  span #{mail}
                 .information-data-field
                   svg.information-data-icon
                     use(xlink:href='images/sprite.svg#icon-envelope')
