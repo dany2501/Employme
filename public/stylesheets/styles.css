@@ -855,6 +855,11 @@ body {
             transform: translateY(-0.1rem);
             text-decoration: none; }
 
+            .form-inputt {
+              background-color: transparent;
+              border: none;
+            }
+
             .form-input {
               max-width: 40rem;
               font-size: 2.3rem;

@@ -29,7 +29,7 @@ CREATE TABLE `cv` (
   PRIMARY KEY (`id_cv`),
   KEY `id_pasp` (`id_pasp`),
   CONSTRAINT `cv_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,7 +51,7 @@ CREATE TABLE `datosaspirante` (
   `sex_asp` varchar(20) DEFAULT NULL,
   `numtel_asp` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id_asp`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -106,7 +106,7 @@ CREATE TABLE `datosempresa` (
   `email_emp` varchar(100) NOT NULL,
   `nom_emp` varchar(150) NOT NULL,
   PRIMARY KEY (`id_emp`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -142,7 +142,7 @@ CREATE TABLE `descripcioncv` (
   PRIMARY KEY (`id_cv`),
   KEY `id_pasp` (`id_pasp`),
   CONSTRAINT `descripcioncv_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -159,7 +159,7 @@ CREATE TABLE `escuelas` (
   PRIMARY KEY (`id`),
   KEY `id_pasp` (`id_pasp`),
   CONSTRAINT `escuelas_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,7 +193,7 @@ CREATE TABLE `imgaspirante` (
   PRIMARY KEY (`id_imga`),
   KEY `id_pasp` (`id_pasp`),
   CONSTRAINT `imgaspirante_ibfk_1` FOREIGN KEY (`id_pasp`) REFERENCES `perfilaspirante` (`id_pasp`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -205,12 +205,12 @@ DROP TABLE IF EXISTS `imgempresa`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `imgempresa` (
   `id_imge` int(11) NOT NULL AUTO_INCREMENT,
-  `ruta_imge` varchar(100) NOT NULL,
+  `ruta_imge` varchar(100) DEFAULT NULL,
   `id_pemp` int(11) NOT NULL,
   PRIMARY KEY (`id_imge`),
   KEY `id_pemp` (`id_pemp`),
   CONSTRAINT `imgempresa_ibfk_1` FOREIGN KEY (`id_pemp`) REFERENCES `perfilempresa` (`id_pemp`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,7 +229,7 @@ CREATE TABLE `interes` (
   KEY `id_asp` (`id_asp`),
   CONSTRAINT `interes_ibfk_1` FOREIGN KEY (`id_emp`) REFERENCES `datosempresa` (`id_emp`),
   CONSTRAINT `interes_ibfk_2` FOREIGN KEY (`id_asp`) REFERENCES `datosaspirante` (`id_asp`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,7 +249,7 @@ CREATE TABLE `perfilaspirante` (
   PRIMARY KEY (`id_pasp`),
   KEY `id_asp` (`id_asp`),
   CONSTRAINT `perfilaspirante_ibfk_1` FOREIGN KEY (`id_asp`) REFERENCES `datosaspirante` (`id_asp`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -338,17 +338,37 @@ DROP TABLE IF EXISTS `perfilempresa`;
 CREATE TABLE `perfilempresa` (
   `id_emp` int(11) NOT NULL,
   `id_pemp` int(11) NOT NULL AUTO_INCREMENT,
-  `des_emp` varchar(250) DEFAULT NULL,
+  `des_emp` varchar(1000) DEFAULT NULL,
   `ubi_pemp` varchar(200) DEFAULT NULL,
   `cat_pemp` varchar(200) DEFAULT NULL,
   `id_imge` int(11) DEFAULT NULL,
+  `sitio_pemp` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_pemp`),
   KEY `id_emp` (`id_emp`),
   KEY `id_imge` (`id_imge`),
   CONSTRAINT `perfilempresa_ibfk_1` FOREIGN KEY (`id_emp`) REFERENCES `datosempresa` (`id_emp`),
   CONSTRAINT `perfilempresa_ibfk_2` FOREIGN KEY (`id_imge`) REFERENCES `imgempresa` (`id_imge`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger setIdimge after insert on perfilempresa
+for each row
+begin
+insert into imgempresa (id_pemp) values (new.id_pemp);
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `proyectos`
@@ -415,4 +435,4 @@ CREATE TABLE `software` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-24 22:24:13
+-- Dump completed on 2018-11-26 22:25:18

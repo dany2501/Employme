@@ -74,18 +74,22 @@ html(lang='en')
             h3.modal-heading
               svg.information-data-icon
                 use(xlink:href='images/sprite.svg#icon-pencil ')
-              |  Completar / editar Informacion
+              |  Completar / Editar Informacion
             .modal-information
               hr
               .edit-info-block-
+                span.edit-info-span Número telefónico:
+                input#correo.edit-info-input(type='text',name="mail",required="required",placeholder="",onkeypress="return soloCorreo(event)")
+                span.edit-info-span Dirección:
+                input#sitio.edit-info-input(type='text',name="sitio",required="required",onkeypress="return soloCorreo(event)")
                 span.edit-info-span Correo Electronico:
                 input#correo.edit-info-input(type='text',name="mail",required="required",placeholder="",onkeypress="return soloCorreo(event)")
                 span.edit-info-span Sitio web:
                 input#sitio.edit-info-input(type='text',name="sitio",required="required",onkeypress="return soloCorreo(event)")
-                span.edit-info-span Contraseña:
-                input#contra.edit-info-input(type='text',name="pass",required="required",placeholder="Opcional",onkeypress="return soloCorreo(event)")
-                span.edit-info-span Confirmar contraseña:
-                input#contrac.edit-info-input(type='text',name="confirm",required="required",placeholder="Opcional",onkeypress="return soloCorreo(event)")
+                //  span.edit-info-span Contraseña:
+                  input#contra.edit-info-input(type='text',name="pass",required="required",placeholder="Opcional",onkeypress="return soloCorreo(event)")
+                  span.edit-info-span Confirmar contraseña:
+                  input#contrac.edit-info-input(type='text',name="confirm",required="required",placeholder="Opcional",onkeypress="return soloCorreo(event)")
             .modal-btn-container
               a#guardar.btn-blue.btn Guardar
               a#cerrar.btn-blue.btn Cerrar 
@@ -93,60 +97,46 @@ html(lang='en')
           .specialty-information
           .specialty-information
           .specialty-information
-        .portfolio-information-self
-          .information-data-field
-            svg.information-data-icon
-              use(xlink:href='')
-            span 
-          .information-data-field
-            svg.information-data-icon
-              use(xlink:href='')
-            span 
-          .information-data-field
-            svg.information-data-icon
-              use(xlink:href='')
-            span 
-            span
-              
-          .information-data-field
-          .information-data-field
-          
-          a#complete.btn.btn-blue Completar / editar perfil.
         .specialty-container
           .specialty-information
           .specialty-information
           .specialty-information  
         .portfolio-curriculum
           .flex-col-1-of-2--row
-            .enterprise-text
-              h1 Acerca de nosotros
-              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam delectus dolores natus, veniam repellendus temporibus explicabo voluptatibus et fuga tempore. Provident adipisci magni aut odio iusto facilis fugit, culpa debitis!
-              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam delectus dolores natus, veniam repellendus temporibus explicabo voluptatibus et fuga tempore. Provident adipisci magni aut odio iusto facilis fugit, culpa debitis!
-              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam delectus dolores natus, veniam repellendus temporibus explicabo voluptatibus et fuga tempore. Provident adipisci magni aut odio iusto facilis fugit, culpa debitis!
-              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam delectus dolores natus, veniam repellendus temporibus explicabo voluptatibus et fuga tempore. Provident adipisci magni aut odio iusto facilis fugit, culpa debitis!
+            #enterprise-text.enterprise-text 
+               .info
+                  h1
+                   center Acerca de nosotros como empresa.     
+                   textarea#des.form-textarea(maxlength="1000", placeholder='Agrega una descripcion breve de tu empresa')
+                   a#edit.btn.btn-blue(style="font-size:2.3rem;") Editar descripción.
+                  br
+                  a#save.btn.btn-blue(style="font-size:2.3rem;") Guardar
           .flex-col-1-of-2--col
             div
               .enterprise-info
-                .infop
-                  center Información
+                .info
+                  h1
+                   center Contacto.
                 .information-data-field
                   svg.information-data-icon
                     use(xlink:href='images/sprite.svg#icon-mobile')
-                  span #{numero}
+                  span#num Telefóno 
                 .information-data-field
                   svg.information-data-icon
                     use(xlink:href='images/sprite.svg#icon-envelope')
-                  span #{mail}
+                  span Email: 
+                    input.form-inputt(type="text", readonly="readonly")#em 
                 .information-data-field
                   svg.information-data-icon
                     use(xlink:href='images/sprite.svg#icon-envelope')
-                  span dirección:
+                  span#dir Dirección:
                 .information-data-field
                   svg.information-data-icon
                     use(xlink:href='images/sprite.svg#icon-envelope')
-                  span Página web: :
+                  span Página web: 
+                    input.form-inputt(type="text",readonly)#site
                 a.information-edit-btn(href='#modal-edit')
                   svg.information-data-icon
                     use(xlink:href='images/sprite.svg#icon-pencil ')
-                  span Editar
+              a#complete.btn.btn-blue Completar / editar perfil.
             

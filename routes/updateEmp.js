@@ -9,9 +9,19 @@ router.route('/')
         console.log("Aquí");
     });
     
-router.post('/',function(req,res,next){
+router.put('/',function(req,res,next){
     console.log("Ahora aquí");
     	update_empresa.update(req, res, next);
     });
+
+router.get('/show',function(req,res,next){
+        update_empresa.show(req, res, next);
+    });
+
+router.put('/add',function(req,res,next){
+    update_empresa.addDes(req, res, next);
+});
+
+        
    
 module.exports = router; 
