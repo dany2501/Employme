@@ -49,31 +49,35 @@ $(document).ready(function () {
 
 
 
-    foto.on('click', () => {
-    });
+    /*foto.on('click', () => {
+    });*/
 
 
     foto.on('change', () => {
         var formdata = new FormData();
-        var xhr = new XMLHttpRequest();
-        console.log(foto[0].files[0])
         formdata.append('file', foto[0].files[0]);
+
+        /*var xhr = new XMLHttpRequest();
+        console.log(foto[0].files[0])
+        console.log(formdata);
         xhr.open('POST', 'http://18.233.147.158:8080/fotoasp/', true);
         xhr.onreadystatechange = response => console.log(response);
         xhr.send(formdata);
-        var url = "http://18.233.147.158:8080/perfilasp";
-            $(location).attr('href', url);
+        console.log(formdata);
+        */
 
-        /*$.ajax({
-            url:'http://18.233.147.158:8080/fotoasp/',
+                $.ajax({
+                     url:'http://18.233.147.158:8080/fotoasp/',
                     method:'post',
-                    dataType:'json',
-                    data:fd,
+                    data:formdata,
+                    processData: false,contentType: false,
                     success:function(response){
                     console.log ("Se mandó");
-                     },error:function()
+                    var url = "http://18.233.147.158:8080/perfilasp";
+            $(location).attr('href', url);
+                     },error:function(err){console.log(err)}
 
-        });*/
+        });
 
     });
 
