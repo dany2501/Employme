@@ -11,19 +11,20 @@ $(document).ready(()=>{
 
     var correo=$('#correo');
     var sitio=$('#sitio');
-    var contra=$('#contra');
-    var contrac=$('#contrac');
+
+    // var contra=$('#contra');
+    // var contrac=$('#contrac');
 
     btn1.click(()=>{
 
 
-        // modal.slideDown("slow", function () {
+        modal.slideDown("slow", function () {
         });
     });
 
     //Petición AJAX 
     $.ajax({
-        url:'http://18.233.147.158:8080/fotoemp/foto',
+        url:'http://localhost:8080/fotoemp/foto',
         method:'post',
         dataType:'json',
         success:function(response){
@@ -35,15 +36,53 @@ $(document).ready(()=>{
     
     $.ajax({
 
-        url: 'http://18.233.147.158:8080/updateE/show',
+        url: 'http://localhost:8080/updateE/show',
         method: 'get',
         dataType: 'json',
         success: function (response) {
-            
+            console.log(response);
+            //Sitio
+             if(response[0].sitio_pemp==null)
+             {
+                $('#site').val("Agregar");
+                sitio.attr("placeholder","Agregar");
+             }
+             else
+             {
+                $('#site').val(response[0].sitio_pemp);
+                sitio.attr("value",response[0].sitio_pemp)
+             }
+
+             //Ubicación
+             if(response[0].ubi_pemp==null)
+             {
+                $('#ubi').val(" Agregar");
+                $('#dir').attr("placeholder","Agregar");
+             }
+             else
+             {
+                $('#ubi').val(response[0].ubi_pemp);
+                $('#dir').attr("value",response[0].ubi_pemp)
+             }
+             //Tel
+             if(response[0].numtel_pemp==null)
+             {
+                $('#num').val(" Agregar");
+                $('#tel').attr("placeholder","Agregar");
+             }
+             else
+             {
+                $('#num').val(response[0].numtel_pemp);
+                $('#tel').attr("value",response[0].numtel_pemp)
+             }
+
+             
         $('#em').val(response[0].email_emp);
         correo.attr("value",response[0].email_emp)
-        sitio.attr("value",response[0].sitio_pemp)
-        $('#site').val(response[0].sitio_pemp);
+            
+            $('#site').val(response[0].sitio_pemp);
+
+        
 
         if(response[0].des_emp==null)
         {
@@ -55,7 +94,7 @@ $(document).ready(()=>{
             $('#des').attr('readonly', true);;
             $('#save').hide();
         }
-        $('#num').val()
+        
         }
 
     });
@@ -69,14 +108,14 @@ $(document).ready(()=>{
         console.log(txtarea.val());
         $.ajax({
 
-            url: 'http://18.233.147.158:8080/updateE/add',
+            url: 'http://localhost:8080/updateE/add',
             method: 'put',
             dataType: 'json',
             data: {desc:txtarea.val()},
             success: function (response) { console.log(response) }
 
         });
-        var url = "http://18.233.147.158:8080/emp-profile";
+        var url = "http://localhost:8080/emp-profile";
             $(location).attr('href', url);
         alert('Datos actualizados');
 
@@ -96,13 +135,14 @@ $(document).ready(()=>{
 
     
 
-
+var nt=$('#tel');
+var dr=$('#dir');
 
 //Para demás datos
     save.click(()=>{
-        var data={mail:correo.val(),sitio:sitio.val(),contra:contra.val(),contrac:contrac.val()}
+        var data={mail:correo.val(),sitio:sitio.val(),num:nt.val(),dir:dr.val()}
         console.log(data);
-        if(correo.val()=="" && sitio.val()=="" && contra.val()=="" && contrac.val()=="")
+        if(correo.val()=="" && sitio.val()=="")
         {
             modal.slideUp("fast",()=>{});
             console.log("Campos vacíos");
@@ -110,20 +150,20 @@ $(document).ready(()=>{
         else {
         $.ajax({
 
-            url: 'http://18.233.147.158:8080/updateE',
+            url: 'http://localhost:8080/updateE',
             method: 'put',
             dataType: 'json',
             data: data,
             success: function (response) { console.log(response) }
 
         });
-        var url = "http://18.233.147.158:8080/emp-profile";
+        var url = "http://localhost:8080/emp-profile";
             $(location).attr('href', url);
         alert('Datos actualizados');
         correo.val("");
         sitio.val("");
-        contra.val("");
-        contrac.val("");
+        nt.val("");
+        dr.val("");
         modal.slideUp("fast",()=>{});
     }
     });
@@ -142,11 +182,11 @@ $(document).ready(()=>{
         var formdata = new FormData();
         var xhr = new XMLHttpRequest();
         formdata.append('file', file[0].files[0]);
-        xhr.open('POST', 'http://18.233.147.158:8080/fotoemp/', true);
+        xhr.open('POST', 'http://localhost:8080/fotoemp/', true);
         xhr.onreadystatechange = response => console.log(response);
         xhr.send(formdata);
         
-        var url = "http://18.233.147.158:8080/emp-profile";
+        var url = "http://localhost:8080/emp-profile";
             $(location).attr('href', url);
     
         });

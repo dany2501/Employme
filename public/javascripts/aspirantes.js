@@ -8,7 +8,7 @@ $(document).ready(function(){
 
     interes.on('click',()=>{
       $.ajax({
-        url:'http://18.233.147.158:8080/aspirantes',
+        url:'http://localhost:8080/aspirantes',
         type:'post',
         dataType:'json',success: function(respone){console.log('Se realizó con exito')},error:function(err){console.log(err)}
       });
@@ -16,7 +16,7 @@ $(document).ready(function(){
       interes.hide();
     });
 
-   $.post("http://18.233.147.158:8080/aspirante", function(data){
+   $.post("http://localhost:8080/aspirante", function(data){
       if(data=='Ocurrió un error')
       {
         repositories=`<div class="col-md-6">
@@ -32,9 +32,10 @@ $(document).ready(function(){
           ${repository.name}
                 </a>
                   <div class="github-link">
-                    Programado en: ${repository.language}
+                    <p>Programado en: ${repository.language}</p>
                   </div>
-                  </div><br>
+                  </div>
+                  <br>
         `;
       });
       area.html(repositories)
@@ -44,7 +45,7 @@ $(document).ready(function(){
 
 
     $.ajax({
-      url:'http://18.233.147.158:8080/aspirante',
+      url:'http://localhost:8080/aspirante',
       type:'put',
       dataType:'json',
       success : function(json) {
@@ -88,6 +89,37 @@ $(document).ready(function(){
     error : function(xhr, status) {
         alert('Existió un problema');
     }
+    });
+
+
+    //Para saber si ya hubo interés.
+var id=$('#id').val();
+var bandera=false;
+    $.ajax({
+      url:'http://localhost:8080/aspirantes/know',
+      type:'get',
+      dataType:'json',
+      success : function(json) {console.log(json);
+        
+        for (var i in json)
+        {
+          if(json[i].id_asp==id)
+      {
+        bandera=true;
+
+      }
+
+        }
+        if(bandera==true)
+
+        {
+        console.log("Ya está interesado");
+        interes.hide();
+
+  
+        }
+      
+      }
     })
 
 });

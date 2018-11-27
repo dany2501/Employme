@@ -78,14 +78,15 @@ html(lang='en')
             .modal-information
               hr
               .edit-info-block-
-                span.edit-info-span Número telefónico:
-                input#correo.edit-info-input(type='text',name="mail",required="required",placeholder="",onkeypress="return soloCorreo(event)")
-                span.edit-info-span Dirección:
-                input#sitio.edit-info-input(type='text',name="sitio",required="required",onkeypress="return soloCorreo(event)")
-                span.edit-info-span Correo Electronico:
+                span.edit-info-span Correo Electronico: 
                 input#correo.edit-info-input(type='text',name="mail",required="required",placeholder="",onkeypress="return soloCorreo(event)")
                 span.edit-info-span Sitio web:
                 input#sitio.edit-info-input(type='text',name="sitio",required="required",onkeypress="return soloCorreo(event)")
+                span.edit-info-span Dirección:
+                input#dir.edit-info-input(type='text',placeholder="Agregar",name="dir",required="required",onkeypress="return soloCorreo(event)")
+                span.edit-info-span Número telefónico:
+                input#tel.edit-info-input(type='text',name="num",required="required",placeholder="Agregar",onkeypress="return soloCorreo(event)")
+                
                 //  span.edit-info-span Contraseña:
                   input#contra.edit-info-input(type='text',name="pass",required="required",placeholder="Opcional",onkeypress="return soloCorreo(event)")
                   span.edit-info-span Confirmar contraseña:
@@ -120,7 +121,8 @@ html(lang='en')
                 .information-data-field
                   svg.information-data-icon
                     use(xlink:href='images/sprite.svg#icon-mobile')
-                  span#num Telefóno 
+                  span Telefóno 
+                    input.form-inputt(type="text",readonly)#num
                 .information-data-field
                   svg.information-data-icon
                     use(xlink:href='images/sprite.svg#icon-envelope')
@@ -129,7 +131,8 @@ html(lang='en')
                 .information-data-field
                   svg.information-data-icon
                     use(xlink:href='images/sprite.svg#icon-envelope')
-                  span#dir Dirección:
+                  span Dirección:
+                     input.form-inputt(type="text", readonly="readonly")#ubi
                 .information-data-field
                   svg.information-data-icon
                     use(xlink:href='images/sprite.svg#icon-envelope')
