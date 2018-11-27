@@ -1,6 +1,30 @@
 var db = require('../conexionsql/conexion');
 var requests = require('request');
 
+exports.user=async function(req,res,next)
+{
+    try
+    {
+        var d=req.session.usuario;
+        if (d != null || d != undefined || d != "") {
+            var sqlQuery = 'select usugh_pasp from perfilaspirante where id_asp=?';
+            var sqlData = [d.id];
+            var git_hub = await db.consultaBd(sqlQuery, sqlData);
+            res.json (git_hub[0].usugh_pasp);
+        }
+        else
+        {
+
+            res.json('error');
+        }
+    }
+    catch(err)
+    {
+        console.log(err);
+        res.json("Ocurrio un error");
+    }
+}
+
 exports.github = async function (req, res, next) {
     try {
         var d=req.session.usuario;

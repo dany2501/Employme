@@ -98,5 +98,20 @@ try {
 }
 
 }
+
+exports.mostrarEmp= async function (req, res, next) {
+        
+  var ds= req.body.id;
+  const query='select ruta_imge from imgempresa where id_pemp=(select id_pemp from perfilempresa where id_emp=?)';
+  
+try {
+    var result3=await con.consultaBd(query,ds);
+    res.json(result3);
+  } catch (err) {
+    console.log(err);
+    res.redirect("/login");
+}
+
+}
   
 

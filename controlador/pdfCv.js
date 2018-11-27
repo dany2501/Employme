@@ -6,15 +6,13 @@ var settings = {
     function subirArchivo(req) 
     {
         return new Promise(function (resolve, reject) {
-        let EDFile = req.files.pdf;
-        console.log(req.files.pdf.type);
+            console.log(req.files.file)
+        let EDFile = req.files.file;
         EDFile.mv(`./public/uploads/${EDFile.name}`, err => 
         {
-  
         if (err) reject();
         resolve(`uploads/${EDFile.name}`);
         console.log(EDFile.name);
-
         })
        });
 
@@ -55,7 +53,8 @@ try {
         else
         {
         var response=new Buffer.from(result[0].ruta_cv,'hex');
-        res.json(response.toString());
+        var link=response.toString();
+        res.json(link);
     }
         } catch (err) {
           console.log(err);

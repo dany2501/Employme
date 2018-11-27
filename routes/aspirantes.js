@@ -21,6 +21,7 @@ router.get('/',noSesion, function(req,res,next){
 });
 
 router.post('/',noSesion,interes.interesado);
+
 router.get('/know',noSesion,function(req,res,next){
 
     interes.intereses(req,res,next);

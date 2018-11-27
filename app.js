@@ -30,6 +30,7 @@ var profileE=require('./routes/emp-profile');
 var fail=require('./routes/error');
 var exito=require('./routes/exito');
 var updateE=require('./routes/updateEmp');
+var empProAsp=require('./routes/emp-profile-asp');
 
 
 var app = express();
@@ -49,6 +50,8 @@ app.use(cookie ({
   secret: 'TaRoDaSeDo',
   name: 'cookie'
 }));
+
+app.use('/empresa',empProAsp);
 app.use('/updateE',updateE);
 app.use('/', indexRouter);
 app.use('/exito',exito);

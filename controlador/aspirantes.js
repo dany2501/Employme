@@ -11,7 +11,7 @@ exports.aspirantes = async function (req, res, next) {
         else
         {
             try {
-                const Query = "select id_pasp,id_asp,ruta_imga,nom_asp,apt_asp,apm_asp,FN_asp,sex_asp,email_asp from imgaspirante natural join perfilaspirante natural join datosaspirante where id_asp= ?";
+                const Query = "select id_pasp,id_asp,ruta_imga,numtel_asp,nom_asp,apt_asp,apm_asp,FN_asp,sex_asp,email_asp from imgaspirante natural join perfilaspirante natural join datosaspirante where id_asp= ?";
                 const f= 'select DATE_FORMAT((select FN_asp from datosaspirante where id_asp=?)," %d %M %Y ") as fecha;';
                 var result=await db.consultaBd(Query,id);
                 var total;
@@ -33,13 +33,13 @@ exports.aspirantes = async function (req, res, next) {
                         }else
                         {
                              var edad=(fecha.getFullYear())-(array[3]);
-                             var obj={id:id,nom:nombre,email:result[0].email_asp,sexo:result[0].sex_asp,foto:result[0].ruta_imga,edad:edad}
+                             var obj={id:id,nom:nombre,email:result[0].email_asp,sexo:result[0].sex_asp,foto:result[0].ruta_imga,edad:edad,num:result[0].numtel_asp}
                             req.session.asp=obj;
                         }
                     }else
                     {
                         var edad=(fecha.getFullYear())-(array[3]);
-                        var obj={id:id,nom:nombre,email:result[0].email_asp,sexo:result[0].sex_asp,foto:result[0].ruta_imga,edad:edad}
+                        var obj={id:id,nom:nombre,email:result[0].email_asp,sexo:result[0].sex_asp,foto:result[0].ruta_imga,edad:edad,num:result[0].numtel_asp}
                         req.session.asp=obj;
                     }
                     res.redirect('/aspirante');

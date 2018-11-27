@@ -22,6 +22,7 @@ router.get('/',noSesion, function(req,res,next){
 
 router.put('/',noSesion,video.seleccionarVideo);
 router.post('/', noSesion,GitHub.github);
+router.get('/user',noSesion,GitHub.user);
 
 
 

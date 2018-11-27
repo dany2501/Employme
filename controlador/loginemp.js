@@ -4,7 +4,7 @@ var db =require('../conexionsql/conexion');
 exports.iniciarSesion = async function (req, res, next) {
     var settings = {password: 'HECD010225HMCRRNA6'}
 
-    const sqlQuery = "SELECT id_emp,(AES_DECRYPT(usu_emp, '"+settings.password+"')) as usu_emp,(AES_DECRYPT(psw_emp, '"+settings.password+"')) as psw_emp,nom_emp FROM datosempresa WHERE (AES_DECRYPT(usu_emp, '"+settings.password+"')) = ? AND (AES_DECRYPT(psw_emp, '"+settings.password+"'))= ?";
+    const sqlQuery = "SELECT id_emp,(AES_DECRYPT(usu_emp, '"+settings.password+"')) as usu_emp,(AES_DECRYPT(psw_emp, '"+settings.password+"')) as psw_emp,nom_emp,email_emp FROM datosempresa WHERE (AES_DECRYPT(usu_emp, '"+settings.password+"')) = ? AND (AES_DECRYPT(psw_emp, '"+settings.password+"'))= ?";
     const sqlData = [req.body.usu_e, req.body.pass_e];
 
     try {
@@ -15,10 +15,11 @@ exports.iniciarSesion = async function (req, res, next) {
             var obj = {
                 id: result[0].id_emp,
                 usuario: result[0].usu_emp,
-                nom:result[0].nom_emp
+                nom:result[0].nom_emp,
+                email:result[0].email_emp
             }
             req.session.usuario = obj;
-            const Query = "select id_pasp,id_asp,ruta_imga,nom_asp,FN_asp,sex_asp,email_asp from imgaspirante natural join perfilaspirante natural join datosaspirante;";
+            const Query = "select id_pasp,id_asp,ruta_imga,nom_asp,FN_asp,sex_asp,email_asp from imgaspirante natural join perfilaspirante natural join datosaspirante";
             var asp=await db.consultaBd(Query);
             console.log(asp);
             req.session.aspirantes=asp;

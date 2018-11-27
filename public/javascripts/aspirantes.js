@@ -8,7 +8,7 @@ $(document).ready(function(){
 
     interes.on('click',()=>{
       $.ajax({
-        url:'http://18.233.147.158:8080/aspirantes',
+        url:'http://localhost:8080/aspirantes',
         type:'post',
         dataType:'json',success: function(respone){console.log('Se realizó con exito')},error:function(err){console.log(err)}
       });
@@ -16,7 +16,7 @@ $(document).ready(function(){
       interes.hide();
     });
 
-   $.post("http://18.233.147.158:8080/aspirante", function(data){
+   $.post("http://localhost:8080/aspirante", function(data){
       if(data=='Ocurrió un error')
       {
         repositories=`<div class="col-md-6">
@@ -45,7 +45,7 @@ $(document).ready(function(){
 
 
     $.ajax({
-      url:'http://18.233.147.158:8080/aspirante',
+      url:'http://localhost:8080/aspirante',
       type:'put',
       dataType:'json',
       success : function(json) {
@@ -96,7 +96,7 @@ $(document).ready(function(){
 var id=$('#id').val();
 var bandera=false;
     $.ajax({
-      url:'http://18.233.147.158:8080/aspirantes/know',
+      url:'http://localhost:8080/aspirantes/know',
       type:'get',
       dataType:'json',
       success : function(json) {console.log(json);

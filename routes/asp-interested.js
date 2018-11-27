@@ -10,15 +10,12 @@ var noSesion = function(req, res, next){
     }else{ 
         
         var ds=req.session.empresas;
-        console.log(ds);
         res.render('asp-interested',{empresas:ds});
     } 
 }
 
 router.get('/',noSesion, function(req,res,next){
-    
 });
-
 router.post('/',noSesion,function(req,res,next){
     interes.interesado(req,res,next)
 });

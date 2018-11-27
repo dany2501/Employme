@@ -52,7 +52,7 @@ html(lang='en')
         .date-separator
           svg.date-separator-icon
         each empresa in empresas  
-            a.information-tr(href='')
+            a.information-tr(href="/empresa/"+empresa.id_emp)
                 .information-td-data
                     .information-td-data-photo
                     img.data-user-photo(src='images/user-photo.jpg')
