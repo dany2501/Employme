@@ -24,7 +24,7 @@ $(document).ready(()=>{
 
     //Petición AJAX 
     $.ajax({
-        url:'http://localhost:8080/fotoemp/foto',
+        url:'http://18.233.147.158:8080/fotoemp/foto',
         method:'post',
         dataType:'json',
         success:function(response){
@@ -36,7 +36,7 @@ $(document).ready(()=>{
     
     $.ajax({
 
-        url: 'http://localhost:8080/updateE/show',
+        url: 'http://18.233.147.158:8080/updateE/show',
         method: 'get',
         dataType: 'json',
         success: function (response) {
@@ -108,14 +108,14 @@ $(document).ready(()=>{
         console.log(txtarea.val());
         $.ajax({
 
-            url: 'http://localhost:8080/updateE/add',
+            url: 'http://18.233.147.158:8080/updateE/add',
             method: 'put',
             dataType: 'json',
             data: {desc:txtarea.val()},
             success: function (response) { console.log(response) }
 
         });
-        var url = "http://localhost:8080/emp-profile";
+        var url = "http://18.233.147.158:8080/emp-profile";
             $(location).attr('href', url);
         alert('Datos actualizados');
 
@@ -150,14 +150,14 @@ var dr=$('#dir');
         else {
         $.ajax({
 
-            url: 'http://localhost:8080/updateE',
+            url: 'http://18.233.147.158:8080/updateE',
             method: 'put',
             dataType: 'json',
             data: data,
             success: function (response) { console.log(response) }
 
         });
-        var url = "http://localhost:8080/emp-profile";
+        var url = "http://18.233.147.158:8080/emp-profile";
             $(location).attr('href', url);
         alert('Datos actualizados');
         correo.val("");
@@ -182,23 +182,23 @@ var dr=$('#dir');
         var formdata = new FormData();
         /*var xhr = new XMLHttpRequest();
         
-        xhr.open('POST', 'http://localhost:8080/fotoemp/', true);
+        xhr.open('POST', 'http://18.233.147.158:8080/fotoemp/', true);
         xhr.onreadystatechange = response => console.log(response);
         xhr.send(formdata);
         
-        var url = "http://localhost:8080/emp-profile";
+        var url = "http://18.233.147.158:8080/emp-profile";
             $(location).attr('href', url);*/
 
             formdata.append('file', file[0].files[0]);
 
             $.ajax({
-                url:'http://localhost:8080/fotoemp/',
+                url:'http://18.233.147.158:8080/fotoemp/',
                method:'post',
                data:formdata,
                processData: false,contentType: false,
                success:function(response){
                console.log ("Se mandó");
-               var url = "http://localhost:8080/emp-profile";
+               var url = "http://18.233.147.158:8080/emp-profile";
        $(location).attr('href', url);
                 },error:function(err){console.log(err)}
     

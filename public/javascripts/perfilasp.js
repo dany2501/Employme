@@ -22,14 +22,14 @@ $(document).ready(function(){
       console.log("Comentado");
 
               $.ajax({
-                   url:'http://localhost:8080/curriculum/upload',
+                   url:'http://18.233.147.158:8080/curriculum/upload',
                   method:'post',
                   data:formdata,
                   processData: false,
                   contentType: false,
                   success:function(response){
                     
-                  var url = "http://localhost:8080/perfilasp";
+                  var url = "http://18.233.147.158:8080/perfilasp";
                   $(location).attr('href', url);
                   console.log ("Se mandó");
                    },error:function(err){console.log(err)}
@@ -40,7 +40,7 @@ $(document).ready(function(){
 });
 
 $.ajax({
-  url:'http://localhost:8080/curriculum/showCv',
+  url:'http://18.233.147.158:8080/curriculum/showCv',
   method:'get',
   dataType:'json',
   success:function(response){
@@ -57,7 +57,7 @@ $.ajax({
 
 
   $.ajax({
-              url:'http://localhost:8080/fotoasp',
+              url:'http://18.233.147.158:8080/fotoasp',
               method:'put',
               dataType:'json',
               success:function(response){
@@ -68,7 +68,7 @@ $.ajax({
           });
 
 
-  $.post("http://localhost:8080/perfilasp", function(data)
+  $.post("http://18.233.147.158:8080/perfilasp", function(data)
   {if(data=='Ocurrió un error')
   {
   }else
@@ -90,7 +90,7 @@ $.ajax({
 });
 
   $.ajax({
-    url:'http://localhost:8080/perfilasp',
+    url:'http://18.233.147.158:8080/perfilasp',
     type:'put',
     dataType:'json',
     success : function(json) {

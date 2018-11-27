@@ -58,14 +58,14 @@ $(document).ready(function () {
         var xhr = new XMLHttpRequest();
         console.log(foto[0].files[0])
         formdata.append('file', foto[0].files[0]);
-        xhr.open('POST', 'http://localhost:8080/fotoasp/', true);
+        xhr.open('POST', 'http://18.233.147.158:8080/fotoasp/', true);
         xhr.onreadystatechange = response => console.log(response);
         xhr.send(formdata);
-        var url = "http://localhost:8080/perfilasp";
+        var url = "http://18.233.147.158:8080/perfilasp";
             $(location).attr('href', url);
 
         /*$.ajax({
-            url:'http://localhost:8080/fotoasp/',
+            url:'http://18.233.147.158:8080/fotoasp/',
                     method:'post',
                     dataType:'json',
                     data:fd,
@@ -102,7 +102,7 @@ $(document).ready(function () {
             });
         } else {
             $.ajax({
-                url: 'http://localhost:8080/update',
+                url: 'http://18.233.147.158:8080/update',
                 method: 'post',
                 dataType: 'json',
                 data: {
@@ -116,7 +116,7 @@ $(document).ready(function () {
             form.slideUp("fast", function () {
             });
 
-            var url = "http://localhost:8080/perfilasp";
+            var url = "http://18.233.147.158:8080/perfilasp";
             $(location).attr('href', url);
 
             correo.empty();
@@ -136,7 +136,7 @@ $(document).ready(function () {
         } else {
 
             $.ajax({
-                url: 'http://localhost:8080/portafolio',
+                url: 'http://18.233.147.158:8080/portafolio',
                 method: 'post',
                 dataType: 'json',
                 data: { usuario: usu },
@@ -145,7 +145,7 @@ $(document).ready(function () {
                 }
             });
 
-            var url = "http://localhost:8080/perfilasp";
+            var url = "http://18.233.147.158:8080/perfilasp";
             $(location).attr('href', url);
             u.empty();
             form2.slideUp("fast", function () {
@@ -167,7 +167,7 @@ $(document).ready(function () {
         } else {
 
             $.ajax({
-                url: 'http://localhost:8080/video',
+                url: 'http://18.233.147.158:8080/video',
                 method: 'post',
                 dataType: 'json',
                 data: { video: vid },
@@ -176,7 +176,7 @@ $(document).ready(function () {
                 }
             });
 
-            var url = "http://localhost:8080/perfilasp";
+            var url = "http://18.233.147.158:8080/perfilasp";
             $(location).attr('href', url);
             v.empty();
             form3.slideUp("fast", function () {
