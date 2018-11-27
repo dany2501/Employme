@@ -180,14 +180,27 @@ var dr=$('#dir');
 
     file.on('change', () => {
         var formdata = new FormData();
-        var xhr = new XMLHttpRequest();
+        /*var xhr = new XMLHttpRequest();
         formdata.append('file', file[0].files[0]);
         xhr.open('POST', 'http://18.233.147.158:8080/fotoemp/', true);
         xhr.onreadystatechange = response => console.log(response);
         xhr.send(formdata);
         
         var url = "http://18.233.147.158:8080/emp-profile";
-            $(location).attr('href', url);
+            $(location).attr('href', url);*/
+
+
+
+            $.ajax({
+                url:'http://18.233.147.158:8080/fotoemp/',
+               method:'post',
+               data:formdata,
+               processData: false,contentType: false,
+               success:function(response){
+               console.log ("Se mandó");
+               var url = "http://18.233.147.158:8080/emp-profile";
+       $(location).attr('href', url);
+                },error:function(err){console.log(err)}
     
         });
 
