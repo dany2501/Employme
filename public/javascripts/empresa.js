@@ -190,16 +190,17 @@ var dr=$('#dir');
             $(location).attr('href', url);*/
 
             formdata.append('file', file[0].files[0]);
-
+            console.log("En la petición");
             $.ajax({
-                url:'http://18.233.147.158:8080/fotoemp/',
+                url:'http://18.233.147.158:8080/fotoemp',
                method:'post',
                data:formdata,
-               processData: false,contentType: false,
+               processData: false,
+               contentType: false,
                success:function(response){
                console.log ("Se mandó");
                var url = "http://18.233.147.158:8080/emp-profile";
-       $(location).attr('href', url);
+                $(location).attr('href', url);
                 },error:function(err){console.log(err)}
     
         });

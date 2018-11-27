@@ -1,4 +1,8 @@
 var con = require('../conexionsql/conexion');
+var settings = {
+  password: 'HECD010225HMCRRNA6'
+}
+
 
     async function subirArchivo(req) 
     {
@@ -51,11 +55,16 @@ exports.mostrarFoto= async function (req, res, next) {
         
     var ds= req.session.usuario;
     const query='select ruta_imga from imgaspirante where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)';
-    
+    const sqlQuery = "select AES_DECRYPT(ruta_cv,'" + [settings.password] + "') as ruta_cv from cv where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
+
 try {
       var result3=await con.consultaBd(query,ds.id);
-      console.log(result3);
-      res.json(result3);
+      var pdf=await con.consultaBd(sqlQuery,ds.id);
+      console.log(pdf[0].ruta_cv);
+      var response = new Buffer.from(pdf[0].ruta_cv, 'hex');
+      var resp={img:result3[0].ruta_imga,cv:response.toString()}
+      console.log(resp);
+      res.json(resp);
     } catch (err) {
       console.log(err);
       res.redirect("/login");

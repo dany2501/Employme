@@ -61,11 +61,12 @@ $(document).ready(function () {
                      url:'http://18.233.147.158:8080/fotoasp/',
                     method:'post',
                     data:formdata,
-                    processData: false,contentType: false,
+                    processData: false,
+                    contentType: false,
                     success:function(response){
                     console.log ("Se mandó");
                     var url = "http://18.233.147.158:8080/perfilasp";
-            $(location).attr('href', url);
+                    $(location).attr('href', url);
                      },error:function(err){console.log(err)}
 
         });

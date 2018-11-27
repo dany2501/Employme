@@ -15,7 +15,7 @@ var noSesion = function(req, res, next){
 router.get('/',noSesion,function(req,res,next){
     var obj=req.session.asp;
     console.log(obj);
-     res.render('emp-aspirante',{id:obj.id,nombre:obj.nom,email:obj.email,sex:obj.sexo,f:obj.foto,edad:obj.edad,num:obj.num});
+     res.render('emp-aspirante',{id:obj.id,nombre:obj.nom,email:obj.email,sex:obj.sexo,f:obj.foto,edad:obj.edad,num:obj.num,cv:obj.cv});
 });
 
 router.get('/:id',noSesion,function(req,res,next){

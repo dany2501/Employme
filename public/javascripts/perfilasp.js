@@ -7,6 +7,24 @@ $(document).ready(function(){
   var foto=$('.information-photo');
   var pdfcv=$('#cv');
 
+$(document).on("load",()=>{
+
+  $.ajax({
+    url:'http://18.233.147.158:8080/perfilasp',
+    method:'get',
+    dataType:'json',
+    success:function(response){
+      console.log(response);
+      var cvpdf=`<embed src="${response}" type="application/pdf" style="height: 100%;
+      width: 100%;"></embed>`;
+  
+      pdfcv.html(cvpdf);
+    },error:function(err){
+    }
+  
+  });
+});
+
   $("#pdf").on('change',function() {
     var filesSelected = document.getElementById("pdf").files;
     tipo=filesSelected[0].type;
@@ -18,7 +36,7 @@ $(document).ready(function(){
     else
     {
       var formdata = new FormData();
-      formdata.append('file', $('#pdf')[0].files[0]);
+      formdata.append('pdf', $('#pdf')[0].files[0]);
       console.log("Comentado");
 
               $.ajax({
@@ -28,7 +46,6 @@ $(document).ready(function(){
                   processData: false,
                   contentType: false,
                   success:function(response){
-                    
                   var url = "http://18.233.147.158:8080/perfilasp";
                   $(location).attr('href', url);
                   console.log ("Se mandó");
@@ -39,21 +56,6 @@ $(document).ready(function(){
     }
 });
 
-$.ajax({
-  url:'http://18.233.147.158:8080/curriculum/showCv',
-  method:'get',
-  dataType:'json',
-  success:function(response){
-    console.log(response);
-    var cvpdf=`<embed src="${response}" type="application/pdf" style="height: 100%;
-    width: 100%;"></embed>`;
-
-    pdfcv.html(cvpdf);
-  },error:function(err){
-  }
-
-})
-
 
 
   $.ajax({
@@ -61,8 +63,13 @@ $.ajax({
               method:'put',
               dataType:'json',
               success:function(response){
-                var ruta=(response[0].ruta_imga);
+                console.log(response);
+                var ruta=(response.img);
                 foto.attr("src",ruta);
+                var cvpdf=`<embed src="${response.cv}" type="application/pdf" style="height: 100%;
+      width: 100%;"></embed>`;
+  
+      pdfcv.html(cvpdf);
 
               },
           });

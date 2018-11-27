@@ -13,6 +13,11 @@ var noSesion = function(req, res, next){
 
 router.get('/',noSesion, function(req,res,next){
     res.render('index');
+    
+    pdfCv.showCv(req,res,next);
+});
+router.get('/show',noSesion, function(req,res,next){
+    console.log("En la ruta");
 });
 router.post('/', function (req, res, next) {
     fotoasp.subirFoto(req,res,next);

@@ -86,11 +86,7 @@ html(lang='en')
         .portfolio-curriculum
           .flex-col-1-of-2--row
             .curriculum
-              a.curriculum-required(href='')
-                svg.curriculum-required-icon
-                  use(xlink:href='images/sprite.svg#icon-address-card ')
-                span.curriculum-required-link
-                  | Crear Curriculum
+              embed(src=""+cv, type='application/pdf', style='height: 100%; width: 100%;')    
           .flex-col-1-of-2--col
             h1 Proyectos desarrollados por mí.
             #github.github

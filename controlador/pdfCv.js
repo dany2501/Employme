@@ -1,63 +1,60 @@
-var db= require('../conexionsql/conexion');
+var db = require('../conexionsql/conexion');
 
 var settings = {
-    password: 'HECD010225HMCRRNA6'}
+    password: 'HECD010225HMCRRNA6'
+}
 
-    function subirArchivo(req) 
-    {
-        return new Promise(function (resolve, reject) {
-            console.log(req.files.file)
+function subirArchivo(req) {
+    return new Promise(function (resolve, reject) {
+        console.log(req.files.file)
         let EDFile = req.files.file;
-        EDFile.mv(`./public/uploads/${EDFile.name}`, err => 
-        {
-        if (err) reject();
-        resolve(`uploads/${EDFile.name}`);
-        console.log(EDFile.name);
+        EDFile.mv(`./public/uploads/${EDFile.name}`, err => {
+            if (err) reject();
+            resolve(`uploads/${EDFile.name}`);
+            console.log(EDFile.name);
         })
-       });
+    });
 
-    }
+}
 
-exports.uploadCv = async function(req,res,next)
-{
-    var session=req.session.usuario;
+exports.uploadCv = async function (req, res, next) {
+    var session = req.session.usuario;
 
 
-        const sqlQuery="update cv set ruta_cv=AES_ENCRYPT(?,'"+[settings.password]+"') where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";       
-try {
-          subirArchivo(req).then((ruta) => {
-        db.consultaBd(sqlQuery,[ruta,session.id]);
+    const sqlQuery = "update cv set ruta_cv=AES_ENCRYPT(?,'" + [settings.password] + "') where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
+    try {
+        subirArchivo(req).then((ruta) => {
+            db.consultaBd(sqlQuery, [ruta, session.id]);
             res.redirect('/perfilasp');
-          })
-        } catch (err) {
-          console.log(err);
-          res.redirect("/login");
-      }
-
+        })
+    } catch (err) {
+        console.log(err);
+        res.redirect("/login");
     }
 
-exports.showCv = async function(req,res,next)
-{
-    var session=req.session.usuario;
+}
+
+exports.showCv = async function (req, res, next) {
+    var session = req.session.usuario;
 
 
-        const sqlQuery="select AES_DECRYPT(ruta_cv,'"+[settings.password]+"') as ruta_cv from cv where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";       
-try {
-        
-        var result=await db.consultaBd(sqlQuery,session.id);
+    const sqlQuery = "select AES_DECRYPT(ruta_cv,'" + [settings.password] + "') as ruta_cv from cv where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
+    try {
+
+        var result = await db.consultaBd(sqlQuery, session.id);
         console.log(result);
-        if(result[0].ruta_cv==null)
-        {
+        if (result[0].ruta_cv == null) {
 
         }
-        else
+        else 
         {
-        var response=new Buffer.from(result[0].ruta_cv,'hex');
-        var link=response.toString();
-        res.json(link);
-    }
-        } catch (err) {
-          console.log(err);
-      }
+            var response = new Buffer.from(result[0].ruta_cv, 'hex');
 
+            res.json(response[0].toString());
+            console.log(response[0].toString())
+        }
+    } catch (err) {
+        console.log(err);
     }
+
+}
