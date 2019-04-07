@@ -1,32 +1,31 @@
-$(document).ready(function(){
-  
-    var interes=$('#guardar');
-    var area = $('#github');
-    var error="";
-    var repositories = "";
-    var areav=$('#video');
+$(document).ready(function () {
 
-    interes.on('click',()=>{
-      $.ajax({
-        url:'http://18.233.147.158:8080/aspirantes',
-        type:'post',
-        dataType:'json',success: function(respone){console.log('Se realizó con exito')},error:function(err){console.log(err)}
-      });
+  var interes = $('#guardar');
+  var area = $('#github');
+  var error = "";
+  var repositories = "";
+  var areav = $('#video');
 
-      interes.hide();
+  interes.on('click', () => {
+    $.ajax({
+      url: 'http://localhost:8080/aspirantes',
+      type: 'post',
+      dataType: 'json',
+      success: function (respone) { console.log('Se realizó con exito') }, error: function (err) { console.log(err) }
     });
 
-   $.post("http://18.233.147.158:8080/aspirante", function(data){
-      if(data=='Ocurrió un error')
-      {
-        repositories=`<div class="col-md-6">
+    interes.hide();
+  });
+
+  $.post("http://localhost:8080/aspirante", function (data) {
+    if (data == 'Ocurrió un error') {
+      repositories = `<div class="col-md-6">
         <p>Parece que este usuario no ha enlazado sus repositorios de Github.<br></p>
       </div>`;
       area.html(repositories);
-      }else
-      {
-        data.map((repository)=>{
-          repositories += `
+    } else {
+      data.map((repository) => {
+        repositories += `
           <div class="repo">
           <a href="${repository.html_url}" class="github-element" target="_blank">
           ${repository.name}
@@ -39,26 +38,25 @@ $(document).ready(function(){
         `;
       });
       area.html(repositories)
-      }        
-    });
+    }
+  });
 
 
 
-    $.ajax({
-      url:'http://18.233.147.158:8080/aspirante',
-      type:'put',
-      dataType:'json',
-      success : function(json) {
+  $.ajax({
+    url: 'http://localhost:8080/aspirante',
+    type: 'put',
+    dataType: 'json',
+    success: function (json) {
       var url = json;
-      if(url==null)
-      {
-        error=`<div class="col-md-6">
+      if (url == null) {
+        error = `<div class="col-md-6">
         <p>Parece que este usuario no ha enlazado algún video.<br></p>
       </div>`;
 
         areav.html(error);
       }
-      else{
+      else {
         var player;
         function onYouTubeIframeAPIReady() {
           player = new YT.Player('video', {
@@ -80,46 +78,43 @@ $(document).ready(function(){
             done = true;
           }
         }
-        $(window).on("load",onYouTubeIframeAPIReady());
+        $(window).on("load", onYouTubeIframeAPIReady());
 
 
       }
-      
+
     },
-    error : function(xhr, status) {
-        alert('Existió un problema');
+    error: function (xhr, status) {
+      alert('Existió un problema');
     }
-    });
+  });
 
 
-    //Para saber si ya hubo interés.
-var id=$('#id').val();
-var bandera=false;
-    $.ajax({
-      url:'http://18.233.147.158:8080/aspirantes/know',
-      type:'get',
-      dataType:'json',
-      success : function(json) {console.log(json);
-        
-        for (var i in json)
-        {
-          if(json[i].id_asp==id)
-      {
-        bandera=true;
+  //Para saber si ya hubo interés.
+  var id = $('#id').val();
+  var bandera = false;
+  $.ajax({
+    url: 'http://localhost:8080/aspirantes/know',
+    type: 'get',
+    dataType: 'json',
+    success: function (json) {
+      console.log(json);
 
-      }
+      for (var i in json) {
+        if (json[i].id_asp == id) {
+          bandera = true;
 
         }
-        if(bandera==true)
 
-        {
+      }
+      if (bandera == true) {
         console.log("Ya está interesado");
         interes.hide();
 
-  
-        }
-      
+
       }
-    })
+
+    }
+  })
 
 });

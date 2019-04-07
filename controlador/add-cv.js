@@ -10,14 +10,11 @@ exports.add = async function(req,res,next) {
     try{
         var sqlQuery="update descripcioncv set des_cv=AES_ENCRYPT(?,'"+[settings.password]+"') where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
         var sqlData=[req.body.descripcion,user.id];
-        console.log(req.body.descripcion);
         var result=await db.consultaBd(sqlQuery,sqlData);
-        console.log(result);
 
         var sqlQuery2="update perfilaspirante set dir_pasp=AES_ENCRYPT(?,'"+[settings.password]+"') where id_asp=?";
         var sqlData2=[req.body.direccion,user.id];
         var result2=await db.consultaBd(sqlQuery2,sqlData2);
-        console.log(result2);
         res.redirect('/asp-cv')
 
     }
@@ -36,7 +33,6 @@ exports.addIdiomas = async function(req,res,next)
         var sqlQuery="insert into idiomas (id_pasp,idioma_idio) values((select id_pasp from perfilaspirante where id_asp=?),AES_ENCRYPT(?,'"+[settings.password]+"'))";
         var sqlData=[user.id,req.body.idioma];
         var result=await db.consultaBd(sqlQuery,sqlData);
-        console.log("Registro exitoso")
 
     }
     catch(err){
@@ -54,7 +50,6 @@ exports.addProjects = async function(req,res,next)
         var sqlQuery="insert into proyectos (id_pasp,nom_pro,puesto_pro,emp_pro) values((select id_pasp from perfilaspirante where id_asp=?),AES_ENCRYPT(?,'"+[settings.password]+"'),AES_ENCRYPT(?,'"+[settings.password]+"'),AES_ENCRYPT(?,'"+[settings.password]+"'))";
         var sqlData=[user.id,req.body.nom,req.body.puesto,req.body.emp];
         var result=await db.consultaBd(sqlQuery,sqlData);
-        console.log("Registro exitoso")
 
     }
     catch(err){
@@ -72,7 +67,6 @@ exports.addReferences = async function(req,res,next)
         var sqlQuery="insert into referencias (id_pasp,nom_ref,tel_ref,email_ref) values((select id_pasp from perfilaspirante where id_asp=?),AES_ENCRYPT(?,'"+[settings.password]+"'),AES_ENCRYPT(?,'"+[settings.password]+"'),AES_ENCRYPT(?,'"+[settings.password]+"'))";
         var sqlData=[user.id,req.body.nomRef,req.body.telRef,req.body.emailRef];
         var result=await db.consultaBd(sqlQuery,sqlData);
-        console.log("Registro exitoso")
 
     }
     catch(err){
@@ -90,7 +84,6 @@ exports.addSoftware = async function(req,res,next)
         var sqlQuery="insert into software (id_pasp,nom_soft,manejo_soft) values((select id_pasp from perfilaspirante where id_asp=?),AES_ENCRYPT(?,'"+[settings.password]+"'),?)";
         var sqlData=[user.id,req.body.nomSoft,req.body.manejo];
         var result=await db.consultaBd(sqlQuery,sqlData);
-        console.log("Registro exitoso")
 
     }
     catch(err){
@@ -228,14 +221,14 @@ exports.showDesUbi = async function(req,res,next)
     var name;
     
     try{
-        var sqlQuery="select AES_DECRYPT(des_cv,'"+settings.password+"')as des_cv,AES_DECRYPT(dir_pasp,'"+settings.password+"')as dir_pasp, nom_asp, apt_asp,apm_asp,numtel_asp, email_asp from descripcioncv natural join perfilaspirante natural join datosaspirante where id_asp=?";
+        var sqlQuery="select AES_DECRYPT(des_cv,'"+settings.password+"')as des_cv,AES_DECRYPT(dir_pasp,'"+settings.password+"')as dir_pasp,numtel_asp, email_asp from descripcioncv natural join perfilaspirante natural join datosaspirante where id_asp=?";
         
         var sqlData=[user.id];
         var result=await db.consultaBd(sqlQuery,sqlData);
             name=result[0].nom_asp+" "+result[0].apt_asp+" "+result[0].apm_asp;
             des=new Buffer.from(result[0].des_cv, 'hex');
             ubi=new Buffer.from(result[0].dir_pasp,'hex');
-            data={des:(des.toString()),ubi:(ubi.toString()),nom:name,tel:result[0].numtel_asp, email:result[0].email_asp}
+            data={des:(des.toString()),ubi:(ubi.toString()),nom:name,tel:result[0].numtel_asp, email:result[0].email_asp,nombre:user.nombre}
             
         res.json(data);
     }

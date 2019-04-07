@@ -16,6 +16,6 @@ exports.interesados = async function (req, res, next) {
     }catch(err)
     {
         console.log(err);
-        res.json('Ocurrio un error al registrarse');
+        res.json('Ocurrio un error');
     }
 }

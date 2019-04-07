@@ -4,14 +4,12 @@ var settings = {
     password: 'HECD010225HMCRRNA6'
 }
 
-function subirArchivo(req) {
+async function subirArchivo(req) {
     return new Promise(function (resolve, reject) {
-        console.log(req.files.file)
-        let EDFile = req.files.file;
+        let EDFile = req.files.pdf;
         EDFile.mv(`./public/uploads/${EDFile.name}`, err => {
             if (err) reject();
             resolve(`uploads/${EDFile.name}`);
-            console.log(EDFile.name);
         })
     });
 
@@ -19,7 +17,6 @@ function subirArchivo(req) {
 
 exports.uploadCv = async function (req, res, next) {
     var session = req.session.usuario;
-
 
     const sqlQuery = "update cv set ruta_cv=AES_ENCRYPT(?,'" + [settings.password] + "') where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
     try {
@@ -46,8 +43,7 @@ exports.showCv = async function (req, res, next) {
         if (result[0].ruta_cv == null) {
 
         }
-        else 
-        {
+        else {
             var response = new Buffer.from(result[0].ruta_cv, 'hex');
 
             res.json(response[0].toString());

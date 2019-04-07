@@ -1,4 +1,6 @@
 var con = require('../conexionsql/conexion');
+
+
 var settings = {
   password: 'HECD010225HMCRRNA6'
 }
@@ -41,6 +43,7 @@ var settings = {
         const sqlData=[ds.id];
 try {
           subirArchivo(req).then((ruta) => {
+            console.log(ruta);
           var result= con.consultaBd(sqlQuery,[ruta,ds.id]);
             res.redirect('/perfilasp');
           })
@@ -50,7 +53,7 @@ try {
       }
 
   }
-
+  
 exports.mostrarFoto= async function (req, res, next) {
         
     var ds= req.session.usuario;
@@ -61,8 +64,15 @@ try {
       var result3=await con.consultaBd(query,ds.id);
       var pdf=await con.consultaBd(sqlQuery,ds.id);
       console.log(pdf[0].ruta_cv);
-      var response = new Buffer.from(pdf[0].ruta_cv, 'hex');
-      var resp={img:result3[0].ruta_imga,cv:response.toString()}
+      if (pdf[0].ruta_cv==null)
+      {
+        var resp={img:result3[0].ruta_imga}
+      }
+      else{
+        var response = new Buffer.from(pdf[0].ruta_cv, 'hex');
+        var resp={img:result3[0].ruta_imga,cv:response.toString()}
+      }
+      
       console.log(resp);
       res.json(resp);
     } catch (err) {

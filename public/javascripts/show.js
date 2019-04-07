@@ -1,6 +1,5 @@
 $(document).ready(()=>{
 
-    console.log("Jquery");
     var form=$('#modal1');
     var close=$('#cerrar');
 

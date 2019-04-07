@@ -7,23 +7,6 @@ $(document).ready(function(){
   var foto=$('.information-photo');
   var pdfcv=$('#cv');
 
-$(document).on("load",()=>{
-
-  $.ajax({
-    url:'http://18.233.147.158:8080/perfilasp',
-    method:'get',
-    dataType:'json',
-    success:function(response){
-      console.log(response);
-      var cvpdf=`<embed src="${response}" type="application/pdf" style="height: 100%;
-      width: 100%;"></embed>`;
-  
-      pdfcv.html(cvpdf);
-    },error:function(err){
-    }
-  
-  });
-});
 
   $("#pdf").on('change',function() {
     var filesSelected = document.getElementById("pdf").files;
@@ -35,47 +18,40 @@ $(document).on("load",()=>{
     }
     else
     {
-      var formdata = new FormData();
-      formdata.append('pdf', $('#pdf')[0].files[0]);
-      console.log("Comentado");
+      $("#pdfForm").submit();
+      }
 
-              $.ajax({
-                   url:'http://18.233.147.158:8080/curriculum/upload',
-                  method:'post',
-                  data:formdata,
-                  processData: false,
-                  contentType: false,
-                  success:function(response){
-                  var url = "http://18.233.147.158:8080/perfilasp";
-                  $(location).attr('href', url);
-                  console.log ("Se mandó");
-                   },error:function(err){console.log(err)}
-
-      });
-
-    }
+    
 });
 
 
 
   $.ajax({
-              url:'http://18.233.147.158:8080/fotoasp',
+              url:'http://localhost:8080/fotoasp',
               method:'put',
               dataType:'json',
               success:function(response){
-                console.log(response);
-                var ruta=(response.img);
-                foto.attr("src",ruta);
-                var cvpdf=`<embed src="${response.cv}" type="application/pdf" style="height: 100%;
+                foto.attr("src",response.img);
+
+                console.log(response.img);
+                if(response.cv==undefined)
+      {
+
+      }
+      else{
+        
+      var cvpdf=`<embed src="${response.cv}" type="application/pdf" style="height: 100%;
       width: 100%;"></embed>`;
   
       pdfcv.html(cvpdf);
+
+      }
 
               },
           });
 
 
-  $.post("http://18.233.147.158:8080/perfilasp", function(data)
+  $.post("http://localhost:8080/perfilasp", function(data)
   {if(data=='Ocurrió un error')
   {
   }else
@@ -97,7 +73,7 @@ $(document).on("load",()=>{
 });
 
   $.ajax({
-    url:'http://18.233.147.158:8080/perfilasp',
+    url:'http://localhost:8080/perfilasp',
     type:'put',
     dataType:'json',
     success : function(json) {

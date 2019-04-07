@@ -1,7 +1,7 @@
 var db = require('../conexionsql/conexion');
 var settings = {
     password: 'HECD010225HMCRRNA6'
-}
+}   
 
 exports.aspirantes = async function (req, res, next) {
     var id=req.params.id;
@@ -18,7 +18,21 @@ exports.aspirantes = async function (req, res, next) {
                 const f= 'select DATE_FORMAT((select FN_asp from datosaspirante where id_asp=?)," %d %M %Y ") as fecha;';
                 var result=await db.consultaBd(Query,id);
                 var total;
-                var response = new Buffer.from(result[0].ruta_cv, 'hex');
+                var routecv;
+                if(result[0].ruta_cv==null)
+                {
+                    routecv="null";
+                }
+               
+                else
+                {
+                    var response = new Buffer.from(result[0].ruta_cv, 'hex');
+                    routecv=response.toString();
+                }
+            
+                
+                
+                
                 console.log(response);
                 var fec=await db.consultaBd(f,id);
                 var bd=fec[0].fecha;
@@ -37,13 +51,13 @@ exports.aspirantes = async function (req, res, next) {
                         }else
                         {
                              var edad=(fecha.getFullYear())-(array[3]);
-                             var obj={id:id,nom:nombre,email:result[0].email_asp,sexo:result[0].sex_asp,foto:result[0].ruta_imga,edad:edad,num:result[0].numtel_asp,cv:response.toString()}
+                             var obj={id:id,nom:nombre,email:result[0].email_asp,sexo:result[0].sex_asp,foto:result[0].ruta_imga,edad:edad,num:result[0].numtel_asp,cv:routecv}
                             req.session.asp=obj;
                         }
                     }else
                     {
                         var edad=(fecha.getFullYear())-(array[3]);
-                        var obj={id:id,nom:nombre,email:result[0].email_asp,sexo:result[0].sex_asp,foto:result[0].ruta_imga,edad:edad,num:result[0].numtel_asp,cv:response.toString()}
+                        var obj={id:id,nom:nombre,email:result[0].email_asp,sexo:result[0].sex_asp,foto:result[0].ruta_imga,edad:edad,num:result[0].numtel_asp,cv:routecv}
                         req.session.asp=obj;
                     }
                     res.redirect('/aspirante');

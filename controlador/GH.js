@@ -14,7 +14,6 @@ exports.user=async function(req,res,next)
         }
         else
         {
-
             res.json('error');
         }
     }
@@ -44,7 +43,7 @@ exports.github = async function (req, res, next) {
             }
             else
             {
-                var url = `https://api.github.com/users/${user}/repos?per_page=${repos}&sort=${repos_sort}&client_id=${clientId}&client_secret=${clientSecret}`;
+            var url = `https://api.github.com/users/${user}/repos?per_page=${repos}&sort=${repos_sort}&client_id=${clientId}&client_secret=${clientSecret}`;
             const headers = { 'User-Agent': 'dany2501' };
 
             requests({ url: url, headers: headers, json: true }, (error, response, body) => {

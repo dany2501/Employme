@@ -9,15 +9,17 @@ var noSesion = function(req, res, next){
         res.redirect('/');
     }else{
 
-        interes.interesados(req,res,next);
+        
         next();
     }
 }
 
 
 router.get('/',noSesion, function(req,res,next){
+    
     var ds= req.session.usuario;
-    res.render('asp-profile',{nombre:ds.nombre,email:ds.email,sex:ds.sex,f:ds.ruta,num:ds.numero,fn:ds.fn,num:ds.num});
+    console.log(ds.nombre);
+    res.render('asp-profile',{nombre:ds.nombre,email:ds.email,sex:ds.sex,f:ds.ruta,fn:ds.fn,num:ds.num});
 });
 
 router.put('/',noSesion,video.seleccionarVideo);

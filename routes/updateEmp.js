@@ -6,11 +6,9 @@ var update_empresa = require('../controlador/updateEmp');
 router.route('/')
     .get(function(req, res, next){
         res.render('index');
-        console.log("Aquí");
     });
     
 router.put('/',function(req,res,next){
-    console.log("Ahora aquí");
     	update_empresa.update(req, res, next);
     });
 

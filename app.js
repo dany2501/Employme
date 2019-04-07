@@ -31,6 +31,7 @@ var fail=require('./routes/error');
 var exito=require('./routes/exito');
 var updateE=require('./routes/updateEmp');
 var empProAsp=require('./routes/emp-profile-asp');
+var recuperar = require('./routes/recuperar');
 
 
 var app = express();
@@ -77,6 +78,7 @@ app.use('/update',update);
 app.use('/asp-cv',cv);
 app.use('/add-cv',addcv);
 app.use('/curriculum',pdfCv);
+app.use('/recuperar',recuperar);
 
 
 // catch 404 and forward to error handler

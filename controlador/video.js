@@ -50,7 +50,6 @@ var con = require('../conexionsql/conexion');
         try{
         
             var d = req.session.asp;
-            console.log(d.id);
             const userData=[d.id];
         const sqlQuery= 'select vyt_pasp from perfilaspirante where id_asp=?';
         
