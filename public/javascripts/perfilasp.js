@@ -32,7 +32,7 @@ $(document).ready(function(){
               dataType:'json',
               success:function(response){
                 foto.attr("src",response.img);
-
+console.log(response);
                 console.log(response.img);
                 if(response.cv==undefined)
       {

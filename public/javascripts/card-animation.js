@@ -1,9 +1,19 @@
 $(document).ready(function() {
 
-    var flag=false;
-    var veces;
+    //Se enfoca el 
+    $("#hide").focus();
+    
 
-   
+
+    $("#hide").on("keyup",()=>{
+        if(($("#hide").val()).toLowerCase()=="admin")
+        {
+            alert("Mandar a otra vista");
+        }
+    });
+
+    $('#form1Asp').show();
+    $('#form2Asp').hide();
 
 
     //Para recuperar 

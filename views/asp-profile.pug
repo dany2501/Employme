@@ -47,11 +47,6 @@ html(lang='en')
                 use(xlink:href='images/sprite.svg#icon-address-card')
               span.sidebar-navigation-description Curriculum
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/especialidad')
-              svg.sidebar-navigation-icon
-                use(xlink:href='images/sprite.svg#icon-bookmark')
-              span.sidebar-navigation-description Especialidad
-          li.sidebar-navigation-item
             a.sidebar-navigation-link(href='/cerrarsesion')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-sign-in')
@@ -151,7 +146,7 @@ html(lang='en')
               a.curriculum-required
               form#pdfForm(action='curriculum', method='post' enctype="multipart/form-data")
                 a.curriculum-required
-                  input#pdf.information-photo-select-hidden(type='file', name='pdf', value='Seleccionar Curriculum')
+                  input#pdf.information-photo-select-hidden(type='file', name='pdf')
                   label(for='pdf')
                     svg.curriculum-required-icon
                       use(xlink:href='images/sprite.svg#icon-address-card ')

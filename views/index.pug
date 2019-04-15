@@ -74,6 +74,7 @@ html(lang='en')
         .row
           .col-1-of-2-m
             .card
+              input#hide.form-input.form-input-light(type='text')
               .card-side.card-side--front.card-side--front-company
                 h3.heading-rol.heading-tertiary Empresa
               .card-side.card-side--back.card-side--back-company
@@ -89,11 +90,11 @@ html(lang='en')
                     input#cpassword_e.form-input.form-input-light(type='password', name='cpassword_e', placeholder='Confirmar Contraseña', onkeypress='soloContra(event)')
                     input#email_e.form-input.form-input-light(type='email', name='email_e', placeholder='Email', onkeypress='return soloCorreo(event)')
                     // input.btn.form-btn.form-btn-light(type='button', id="submit_emp" ,value='Registrarse')
-                    button#btnemp.btn.form-btn.form-btn-light(type='submit') Registrarse.
+                    button#btnemp.btn.form-btn.Git.btn.btn-blue(type='submit') Registrarse.
                   form#form2Emp.index-form.index-form-2(action='/loginemp', method='post')
                     input.form-input.form-input-light(type='text', name='usu_e', placeholder='Nombre de usuario', onkeypress='return soloGit(event)')
                     input.form-input.form-input-light(type='password', name='pass_e', placeholder='Contraseña', onkeypress='return soloContra(event)')
-                    button.btn.form-btn.form-btn-light(type='submit', value='Iniciar Sesion')  
+                    button.btn.form-btn.Git.btn.btn-blue(type='submit') Iniciar Sesión.
           .col-1-of-2-m
             .card
               .card-side.card-side--front.card-side--front-employee
@@ -102,8 +103,8 @@ html(lang='en')
                 .form-organizer
                   svg.card-exit.card-exit--employee
                     use(xlink:href='images/sprite.svg#icon-close ')
-                  a#btn-form-1A.btn.btn-form.btn-form-active Inicia Sesion
-                  a#btn-form-2A.btn.btn-form Registrate
+                  a#btn-form-1A.btn.btn-form Inicia Sesion
+                  a#btn-form-2A.btn.btn-form.btn-form-active Registrate
                   form#form1Asp.index-form.index-form-2(action='/regasp', method='post')
                     input#nombre.form-input.form-input-light(type='text', name='nombre', placeholder='Nombre', required='', onkeypress='return soloLetras(event)')
                     input#apt.form-input.form-input-light(type='text', name='apt', placeholder='Apellido Paterno', required='', onkeypress='return soloLetras(event)')
@@ -116,13 +117,13 @@ html(lang='en')
                     input.form-input.form-input-light(type='date', name='fn', placeholder='Día/Mes/Año', required='required')
                     br
                     select#sel.form-input.form-input-light(name='sexo')
-                      option(value='0') Seleccionar sexo.
-                      option(value='Masculino') Masculino
-                      option(value='Femenino') Femenino
+                      option.btn-blue(value='0') Seleccionar sexo.
+                      option.btn-blue(value='Masculino') Masculino
+                      option.btn-blue(value='Femenino') Femenino
                     br
                     br
                     // input.btn.form-btn.form-btn-light(type="button",id='submit', value="Registrarse")
-                    button#btnasp.btn.form-btn.form-btn-light(type='submit') Registrarse.                
+                    button#btnasp.btn.form-btn.Git.btn.btn-blue(type='submit') Registrarse.                
                   form#form2Asp.index-form.index-form-1(action='/loginasp', method='post')
                     input.form-input.form-input-light(type='text', name='usu', placeholder='Usuario o Correo', required='', onkeypress='return soloCorreo(event)')
                     input.form-input.form-input-light(type='password', name='contra', placeholder='Contraseña', require='', onkeypress='return soloContra(event)')

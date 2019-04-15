@@ -1,0 +1,96 @@
+html(lang='en')
+  head
+  body
+    | x   
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    link(rel='stylesheet', href='stylesheets/styles.css')
+    title Employ.me
+    header.profile-header
+      img.logo(src='images/logo.png', alt='Logo')
+      form.search(action='')
+        input.search-input(type='text', placeholder='Buscar')
+        button.search-btn
+          svg.search-icon
+            use(xlink:href='images/sprite.svg#icon-search')
+      nav.header-navigation
+        .header-navigation-icon-box
+          svg.header-navigation-icon
+            use(xlink:href='images/sprite.svg#icon-sign-in')
+    .container
+      nav.sidebar
+        ul.sidebar-navigation
+          li.sidebar-navigation-item
+            a.sidebar-navigation-link(href='com-listasp.html')
+              svg.sidebar-navigation-icon
+                use(xlink:href='images/sprite.svg#icon-address-card')
+              span.sidebar-navigation-description Aspirantes
+          li.sidebar-navigation-item
+            a.sidebar-navigation-link(href='complete-curriculum.html')
+              svg.sidebar-navigation-icon
+                use(xlink:href='images/sprite.svg#icon-group')
+              span.sidebar-navigation-description Empresas
+          li.sidebar-navigation-item
+            a.sidebar-navigation-link(href='')
+              svg.sidebar-navigation-icon
+                use(xlink:href='images/sprite.svg#icon-sign-in')
+              span.sidebar-navigation-description Salir
+      main.asp-container
+        .asp-row
+          .asp
+            .admin-tools
+              svg.admin-tools-icon
+                use(xlink:href='images/sprite.svg#icon-cog', x='', y='')
+            .asp-photo-container
+              img.asp-photo(src='images/employee.jpg', alt='')
+            .asp-name
+              | Rommelillo
+          .asp
+            .admin-tools
+              svg.admin-tools-icon
+                use(xlink:href='images/sprite.svg#icon-cog', x='', y='')
+            .asp-photo-container
+              img.asp-photo(src='images/employee.jpg', alt='')
+            .asp-name
+              | Rommelillo
+          .asp
+            .admin-tools
+              svg.admin-tools-icon
+                use(xlink:href='images/sprite.svg#icon-cog', x='', y='')
+            .asp-photo-container
+              img.asp-photo(src='images/employee.jpg', alt='')
+            .asp-name
+              | Rommelillo
+        .asp-row
+          .asp
+            .admin-tools
+              svg.admin-tools-icon
+                use(xlink:href='images/sprite.svg#icon-cog', x='', y='')
+            .asp-photo-container
+              img.asp-photo(src='images/employee.jpg', alt='')
+            .asp-name
+              | Rommelillo
+          .asp
+            .admin-tools
+              svg.admin-tools-icon
+                use(xlink:href='images/sprite.svg#icon-cog', x='', y='')
+            .asp-photo-container
+              img.asp-photo(src='images/employee.jpg', alt='')
+            .asp-name
+              | Rommelillo
+          .asp
+            | //Esta madre es la que necesita jquery
+            .admin-tools-modal
+              svg.admin-tools-icon
+                use(xlink:href='images/sprite.svg#icon-close', x='', y='')
+              button.btn.btn-admin-tool Ver Perfil
+              button.btn.btn-admin-tool Eliminar
+              button.btn.btn-admin-tool Editar
+            .admin-tools
+              svg.admin-tools-icon
+                use(xlink:href='images/sprite.svg#icon-cog', x='', y='')
+            .asp-photo-container
+              img.asp-photo(src='images/employee.jpg', alt='')
+            .asp-name
+              | Rommelillo

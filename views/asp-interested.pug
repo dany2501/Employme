@@ -1,10 +1,13 @@
 doctype html
 html(lang='en')
   head
+    script(src='https://code.jquery.com/jquery-1.10.2.js')
+    script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
     link(rel='stylesheet', href='stylesheets/styles.css')
+    script(src='javascripts/enterprises.js')
     title Empresas Interesadas
   body
     header.profile-header
@@ -37,30 +40,14 @@ html(lang='en')
                 use(xlink:href='images/sprite.svg#icon-address-card')
               span.sidebar-navigation-description Curriculum
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/especialidad')
-              svg.sidebar-navigation-icon
-                use(xlink:href='images/sprite.svg#icon-bookmark')
-              span.sidebar-navigation-description Especialidad
-          li.sidebar-navigation-item
             a.sidebar-navigation-link(href='/cerrarsesion')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-sign-in')
               span.sidebar-navigation-description Salir
       main.list-asp
-        h1
-          | Empresas Interesadas | Employ.me
+        h1(style='font-size:6rem;') Empresas interesadas en ti.
         .date-separator
           svg.date-separator-icon
-        each empresa in empresas  
-            a.information-tr(href="/empresa/"+empresa.id_emp)
-                .information-td-data
-                    .information-td-data-photo
-                    img.data-user-photo(src='images/user-photo.jpg')
-                    .information-td-data-name=empresa.nom_emp
-                .information-td-email-container
-                    .information-td-email=empresa.email_emp
-                .information-td-location-container
-                    .information-td-location CDMX
-                .information-td-speciality-container
-                    .information-td-speciality
-                    .information-td-tag
+            br
+        div#container
+    

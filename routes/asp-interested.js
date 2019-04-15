@@ -9,15 +9,18 @@ var noSesion = function (req, res, next) {
         console.log("No hay sesión");
     } else {
 
-        interes.interesados(req, res, next);
-        next();
+        
+        next()
 
     }
 }
 
 router.get('/', noSesion, function (req, res, next) {
-    var ds = req.session.empresas;
-    res.render('asp-interested', { empresas: ds });
+    res.render('asp-interested');
+});
+
+router.post("/",noSesion,function(req,res,next){
+    interes.interesados(req, res, next);
 });
 
 module.exports = router; 

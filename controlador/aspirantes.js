@@ -61,20 +61,6 @@ exports.aspirantes = async function (req, res, next) {
                         req.session.asp=obj;
                     }
                     res.redirect('/aspirante');
-                   
-                
-                /*var result=await db.consultaBd(Query,id).then((respuesta)=>{
-                    
-                    var fec=await db.consultaBd(f,respuesta[0].id_asp);
-                    var nombre=respuesta[0].nom_asp+" "+respuesta[0].apt_asp+" "+respuesta[0].apm_asp;
-                    var obj={id:id,nom:nombre,email:respuesta[0].email_asp,sexo:respuesta[0].sex_asp,foto:respuesta[0].ruta_imga}
-                    req.session.asp=obj;
-                    var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-                    var f=new Date();
-                    console.log(f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
-                    res.render('aspirante',{nombre:obj.nom,email:obj.email,sex:obj.sexo,f:obj.foto})
-                    
-                });*/
                 }catch (err) {
                     console.log(err);
                     res.json('Ocurrió un error');

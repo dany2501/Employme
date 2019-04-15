@@ -81,33 +81,21 @@ html(lang='en')
           span.information-th Edad
           span.information-th Sexo
           span.information-th Especialidad
-        h1(style='font-size:6rem;') Tabla 1
+        h1(style='font-size:6rem;') Aspirantes disponibles.
         .information-table-list
         each aspirante in aspirantes
-          .information-tr
-            .information-td-data
-              .information-td-data-photo
-                img.data-user-photo(src='/'+aspirante.ruta_imga, alt=' ')
-              .information-td-data-name=aspirante.nom_asp
-            .information-td-email-container
-              .information-td-email=aspirante.email_asp
-            .information-td-phone-container
-              .information-td-phone
-            .information-td-sex-container
-              .information-td-sex=aspirante.sex_asp
-            .information-td-speciality-container
-                .information-td-tag 
-                  a(href="/aspirante/"+aspirante.id_asp)  Ver perfil.
-        h1(style='font-size:6rem; ') Tabla 2
-        .information-table-block()
-          .information-block 1
-          .information-block 2
-          .information-block 3
-          .information-block 4
-          .information-block 5
-          .information-block 6
-          .information-block 7
-          .information-block 8
-          .information-block 9
-          .information-block 10
-          .information-block 11
+          a(href="/aspirante/"+aspirante.id_asp)         
+           .information-tr
+             .information-td-data
+               .information-td-data-photo
+                 img.data-user-photo(src='/'+aspirante.ruta_imga)
+               .information-td-data-name=aspirante.nom_asp
+             .information-td-email-container
+               .information-td-email=aspirante.email_asp
+             .information-td-phone-container
+               .information-td-phone
+             .information-td-sex-container
+               .information-td-sex=aspirante.sex_asp
+             .information-td-speciality-container
+                 .information-td-tag 
+                  

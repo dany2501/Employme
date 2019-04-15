@@ -1,5 +1,28 @@
-
 $(document).ready(() => {
+
+var imagen =$("#img");
+    //Para descripción
+
+    var btndesc=$("#btndesc");
+    var textArea=$("#desc");
+    var descrip="";
+
+    btndesc.on("click",()=>{
+
+        descrip=textArea.val();
+
+        $.ajax({
+            url: 'http://localhost:8080/add-cv/descripcion',
+            method: 'post',
+            dataType: 'json',
+            data: {
+                descripcion: descrip
+            },
+            success: function (response) { }
+
+        });
+location.reload();
+    });
 
     //Registrar Idiomas que habla
     var nombre 
@@ -9,6 +32,15 @@ $(document).ready(() => {
     var btnIdioma = $('#agregarI');
 
     oidioma.on('click', () => {
+    
+        if (idioma.val()=="0")
+        {
+            alert("Debes elegir un idioma que sepas hablar.")
+            
+        }
+        else
+        {
+            
         idiomas = idioma.val();
         $.ajax({
             url: 'http://localhost:8080/add-cv',
@@ -19,8 +51,11 @@ $(document).ready(() => {
             },
             success: function (response) { }
         });
-        idioma.val('');
-        idioma.focus(0);
+        idioma.val('0');
+
+        location.reload();
+
+        }
     });
 
     //Registrar proyecto en que participó
@@ -52,6 +87,7 @@ $(document).ready(() => {
         emp.val('');
         pos.val('');
         nom.focus();
+        location.reload();
     });
 
 
@@ -84,7 +120,7 @@ $(document).ready(() => {
             },
             success: function (response) { }
         });
-
+        location.reload();
         refName.val('');
         telRef.val('');
         emailRef.val('');
@@ -105,6 +141,14 @@ $(document).ready(() => {
     softBtn.on('click', () => {
         nameSoft = softName.val();
         percentage = softPor.val();
+        console.log(percentage);
+        if (percentage=="")
+        {
+            alert("No hay porcentaje");
+        }
+        else 
+        {
+            
         $.ajax({
             url: 'http://localhost:8080/add-cv/software',
             method: 'post',
@@ -115,10 +159,11 @@ $(document).ready(() => {
             },
             success: function (response) { }
         });
-
-        softName.val('');
+        location.reload();
         softPor.val('');
-        softName.focus();
+        softName.val(0);
+
+        }
 
     });
 
@@ -135,23 +180,24 @@ $(document).ready(() => {
     var du = "";
 
     //Pasando imagen a base 64 para ser mostrada en el cv
-    $("#inputFileToLoad").on('change', function () {
-        var filesSelected = document.getElementById("inputFileToLoad").files;
-        tipo = filesSelected[0].type;
-        if (tipo != 'image/jpeg') {
-            alert("Formato no soportado");
-            this.value = '';
-        } else
-            if (filesSelected.length > 0) {
-                var fileToLoad = filesSelected[0];
-                var fileReader = new FileReader();
-                fileReader.onload = function (fileLoadedEvent) {
-                    var base64value = fileLoadedEvent.target.result;
-                    base = base64value;
-                };
-                fileReader.readAsDataURL(fileToLoad);
-            }
-    });
+
+  
+    async function getBase64Image(imgUrl) {
+        
+        var img = new Image();
+        img.src = imgUrl;
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var dataURL = canvas.toDataURL("image/png");
+        return dataURL;
+    }
+
+    
+      
+
 
 
     cvBtn.on('click', () => {
@@ -167,7 +213,6 @@ $(document).ready(() => {
                 });
             }
             l = await leng();
-            // console.log(l);
 
 
             async function proj() {
@@ -181,7 +226,6 @@ $(document).ready(() => {
                 });
             }
             p = await proj();
-            //console.log(p);
 
 
             async function ref() {
@@ -196,7 +240,6 @@ $(document).ready(() => {
             }
 
             r = await ref();
-            //console.log(r);
 
             async function DU() {
                 return $.ajax({
@@ -224,6 +267,7 @@ $(document).ready(() => {
             }
 
             s = await sof();
+
             await generar(s, p, r, l, du);
             async function generar(s, p, r, l, du) {
 
@@ -234,7 +278,7 @@ $(document).ready(() => {
                 doc.setFillColor(204, 201, 201);
                 doc.rect(0, 20, 230, 26, 'F');
                 doc.setFontSize(22);
-                doc.text(80, 30, `${du.nom}`);
+                doc.text(80, 30, `${du.nombre}`);
 
                 doc.setFontSize(14);
                 doc.text(82, 40, 'PUESTO OCUPADO/BUSCADO');
@@ -257,16 +301,15 @@ $(document).ready(() => {
                 doc.text(10, 70, `Dirección: ${du.ubi}`);
                 doc.text(10, 76, `Telefóno: ${du.tel}`);
                 doc.text(10, 82, `Email: ${du.email}`);
-                doc.text(10, 98, 'Español: Natal');
                 var seg = 104;
                 for (var i in l) {
-                    doc.text(10, seg, `Idioma: ${l[i].idioma}`);
+                    doc.text(10, seg, ``+i+parseInt(1)+`: ${l[i].idioma_idio}`);
                     seg += 6;
 
                 }
                 var se = 144;
                 for (var i in s) {
-                    doc.text(10, se, `${s[i].nombre} al ${s[i].mane}% `);
+                    doc.text(10, se, `${s[i].nom_soft} al ${s[i].niv_soft}% `);
                     se += 6;
                 }
                 var s = 190;
@@ -278,24 +321,6 @@ $(document).ready(() => {
                     doc.text(2, s, `Telefono: ${r[i].tel}`);
                     s += 12;
                 }
-
-
-
-                doc.text(65, 130, 'Año');
-                doc.text(65, 135, 'País,Estado,Ciudad');
-                doc.text(120, 130, 'Título:XXXXXXXXXXXX');
-                doc.text(120, 135, 'Universidad o Institución');
-                doc.text(65, 145, 'Año');
-                doc.text(65, 150, 'País,Estado,Ciudad');
-                doc.text(120, 145, 'Título:XXXXXXXXXXXX');
-                doc.text(120, 150, 'Universidad o Institución');
-                doc.text(65, 160, 'Año');
-                doc.text(65, 165, 'País,Estado,Ciudad');
-                doc.text(120, 160, 'Título:XXXXXXXXXXXX');
-                doc.text(120, 165, 'Universidad o Institución');
-                doc.text(65, 180, 'De XX/XX/XXXX');
-                doc.text(65, 185, 'A XX/XX/XXXX');
-                doc.text(65, 190, 'País, Ciudad');
 
 
                 var sec = 180;
@@ -318,37 +343,34 @@ $(document).ready(() => {
                 doc.text(66, 60, lines);
 
 
-                loremipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id eros turpis. Vivamus tempor urna vitae sapien mollis molestie. Vestibulum in lectus non enim bibendum laoreet at at libero. Etiam malesuada erat sed sem blandit in varius orci porttitor.';
-
-                lines = doc.splitTextToSize(loremipsum, 100);
-                doc.text(110, 225, lines);
-                lines = doc.splitTextToSize(loremipsum, 100);
-                doc.text(110, 260, lines);
-                var imgData = base;
+                l
                 var randomNumber=makeid(100);
-                  
-                function makeid(length) {
-                    var text = "";
-                    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-                  
-                    for (var i = 0; i < length; i++)
-                      text += possible.charAt(Math.floor(Math.random() * possible.length));
-                  
-                    return text;
-                  }
-                  
-                if (tipo == 'image/jpeg') {
-                    doc.addImage(imgData, 'JPEG', 9, 15, 45, 50);
-                    doc.save("'cv_"+nombre+"_'"+randomNumber+"'.pdf");
-                }
+                
+                var base64 =  await getBase64Image(imagen.prop('src'));
+                console.log(base64);
+                    
+
+                doc.addImage(base64, 'JPEG', 9, 15, 45, 50);
+                
+                doc.save("'cv_"+nombre+"_'"+randomNumber+"'.pdf");
 
             }
+            alert("Recuerda que una vez descargado el documento es necesario que lo subas a la plataforma");
 
 
         })();
 
 
     });
+    function makeid(length) {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      
+        for (var i = 0; i < length; i++)
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+      
+        return text;
+      }
 
 
 });

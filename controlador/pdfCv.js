@@ -6,6 +6,7 @@ var settings = {
 
 async function subirArchivo(req) {
     return new Promise(function (resolve, reject) {
+        
         let EDFile = req.files.pdf;
         EDFile.mv(`./public/uploads/${EDFile.name}`, err => {
             if (err) reject();

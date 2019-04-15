@@ -10,6 +10,7 @@ var settings = {
     {
         return new Promise(function (resolve, reject) {
         let EDFile = req.files.file;
+        
         EDFile.mv(`./public/fotosasp/${EDFile.name}`, err => 
         {
   
@@ -59,7 +60,7 @@ exports.mostrarFoto= async function (req, res, next) {
     var ds= req.session.usuario;
     const query='select ruta_imga from imgaspirante where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)';
     const sqlQuery = "select AES_DECRYPT(ruta_cv,'" + [settings.password] + "') as ruta_cv from cv where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
-
+    
 try {
       var result3=await con.consultaBd(query,ds.id);
       var pdf=await con.consultaBd(sqlQuery,ds.id);

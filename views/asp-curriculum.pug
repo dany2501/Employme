@@ -10,6 +10,7 @@ html(lang='en')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
     script(src='javascripts/perfilasp.js')
     script(src='javascripts/cv.js')
+    script(src='javascripts/editCv.js')
     script(src='javascripts/jspdf.min.js')
     title Employ.me
   body
@@ -24,8 +25,7 @@ html(lang='en')
         .header-navigation-icon-box
           svg.header-navigation-icon
             use(xlink:href='images/sprite.svg#icon-comments')
-          span.header-navigation-notification
-            | 9
+          span.header-navigation-notification 9
         .header-navigation-icon-box
           svg.header-navigation-icon
             use(xlink:href='images/sprite.svg#icon-sign-in')
@@ -48,11 +48,6 @@ html(lang='en')
                 use(xlink:href='images/sprite.svg#icon-address-card')
               span.sidebar-navigation-description Curriculum
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='/especialidad')
-              svg.sidebar-navigation-icon
-                use(xlink:href='images/sprite.svg#icon-bookmark')
-              span.sidebar-navigation-description Especialidad
-          li.sidebar-navigation-item
             a.sidebar-navigation-link(href='/cerrarsesion')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-sign-in')
@@ -60,9 +55,8 @@ html(lang='en')
       main.portfolio
         .portfolio-information-users
           .information-photo-container
-            img.information-photo
-          h1.user-name#name
-            | #{nombre}
+            img#img.information-photo
+          h1#name.user-name #{nom}
           .information-map
         .portfolio-information-self
           .information-data-field
@@ -81,54 +75,58 @@ html(lang='en')
             svg.information-data-icon
               use(xlink:href='images/sprite.svg#icon-male')
             span Sexo: #{sex}
-        h5 Selecciona una foto lo más formal posible, esto para que aparezca en tu curriculum
-        input#inputFileToLoad.form-control.form-input.form-input-dark(type='file', placeholder='photo', accept='image/*;capture=camera', name='userPhoto', single='')
-        br
-        br
-        form.start-sign-up(action='/asp-cv' method='post')
-          h5 Escribe una descripción de ti, que sea breve y concisa describiendo las habilidades que tengas.  
-          textarea.form-textarea(name="descripcion",maxlength="1000", placeholder='Descripción...')
-          br
-          br
-          h5 Ahora, habiendo tus datos como correo electrónico y número telefónico, ingresa tu dirección para completar datos de contacto.
-          input.form-input.form-input-dark(type='text', name='direccion',  placeholder='Dirección.')
-          br
-          br
-          input.btn-blue.btn(type='submit', class="botoncito", value="Añadir")
-        br 
-        br  
-        h5 Ingresa los idiomas que hablas.
-        input.form-input.form-input-dark(type='text', id='lenguage', placeholder='Idioma')
-        br
-        input.btn-blue.btn(type='button',id='botn',value="Agregar otro idioma")
-        br
-        br
-        h5 Para complementar, agrega proyectos en los que haz participado, la empresa en la cual fue desarrollado, el puesto que ocupaste.
-        input.form-input.form-input-dark(type='text', id='projectName', placeholder='Nombre del proyecto')
-        br
-        input.form-input.form-input-dark(type='text', id='companyName', placeholder='Nombre de la empresa')
-        br
-        input.form-input.form-input-dark(type='text', id='position', placeholder='Puesto ocupado')
-        br
-        input.btn-blue.btn(type='button', id="pBtn", value="Agregar otro proyecto")
-        br
-        br
-        h5 Agrega referencias de tu trabajao, es decir contactos que puedan respaldar tu trabajo.
-        input.form-input.form-input-dark(type='text', id='refName', placeholder='Nombre de la persona')
-        br
-        input.form-input.form-input-dark(type='text', id='telRef', placeholder='Número telefónico')
-        br
-        input.form-input.form-input-dark(type='text', id='emailRef', placeholder='Correo Electrónico')
-        br
-        input.btn-blue.btn(type='button', id="refBtn", value="Agregar otra referencia")
-        br
-        br
-        h5 Agrega los softwares que sepas usar y en que porcentaje. No ingreses número décimales
-        input.form-input.form-input-dark(type='text', id='softName', placeholder='Nombre del software')
-        br
-        input.form-input.form-input-dark(type='text', id='softPor', placeholder='Porcentaje')
-        br
-        input.btn-blue.btn(type='button', id="softBtn", value="Agregar otra software")
-        br
-        br
-        input.btn-blue.btn(type='button', id="cvBtn", value="Generar curriculum")
+          a.information-edit-btn
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-pencil ')
+        .cv-container
+          .cv-information
+            .left-divided
+              .information-row
+                h1.heading-primary Descripcion:
+                textarea#desc.form-textarea(name='descripcion', maxlength='1000', placeholder='Descripción...')
+                input#btndesc.btn-blue.btn.btn-cv(type='submit', value='Guardar')
+              .information-row
+                h1.heading-primary Idiomas:
+                div#idiomas
+                select#lenguage.form-input.form-input-dark
+                    option.form-input.form-input-dark(value='0') Idioma
+                    option.form-input.form-input-dark(value='13') Inglés
+                    option.form-input.form-input-dark(value='14') Francés
+                    option.form-input.form-input-dark(value='15') Alemán
+                    option.form-input.form-input-dark(value='16') Portugués.
+                input#botn.btn-blue.btn.btn-cv(type='button', value='Agregar')
+              .information-row
+                h1.heading-primary Proyectos:
+                div#projects
+                input#projectName.form-input.form-input-dark(type='text', placeholder='Nombre del proyecto')
+                input#companyName.form-input.form-input-dark(type='text', placeholder='Nombre de la empresa')
+                input#position.form-input.form-input-dark(type='text', placeholder='Puesto ocupado')
+                input#pBtn.btn-blue.btn.btn-cv(type='button', value='Agregar')
+              .information-row
+                h1.heading-primary Referencias: (Opcional)
+                div#refes
+                input#refName.form-input.form-input-dark(type='text', placeholder='Nombre De la persona')
+                input#telRef.form-input.form-input-dark(type='text', placeholder='Número telefónico')
+                input#emailRef.form-input.form-input-dark(type='text', placeholder='Correo Electrónico')
+                input#refBtn.btn-blue.btn.btn-cv(type='button', value='Agregar')
+              .information-row
+                h1.heading-primary Herramientas que usas:
+                div#soft
+                select#softName.form-input.form-input-dark
+                    option.form-input.form-input-dark(value='0') Software
+                    option.form-input.form-input-dark(value='5') Excel
+                    option.form-input.form-input-dark(value='6') MySQL
+                    option.form-input.form-input-dark(value='7') MongoDB
+                    option.form-input.form-input-dark(value='8') Node JS
+                    option.form-input.form-input-dark(value='9') Angular
+                    option.form-input.form-input-dark(value='10') Otro
+                input#softPor.form-input.form-input-dark(type='text', placeholder='Porcentaje De Dominio')
+                input#softBtn.btn-blue.btn.btn-cv(type='button', value='Agregar')
+            .right-divided
+              .information-row
+                form.start-sign-up(action='/asp-cv', method='post')
+              .information-row
+                h1.heading-primary Direccion
+                textarea.form-textarea(name='descripcion', maxlength='1000', placeholder='Dirección')
+                input#DirBtn.btn-blue.btn.btn-cv(type='button', value='Guardar')
+          input#cvBtn.btn-blue.btn.btn-cv(type='button', value='Generar curriculum')

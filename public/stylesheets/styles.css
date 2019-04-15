@@ -405,7 +405,7 @@ body {
 #modal1:target {
   display: block; }
 
-.portfolio-information {
+.portfolio-information .user-name  {
   display: flex; }
   .portfolio-information-users {
     display: flex;
@@ -414,16 +414,17 @@ body {
     justify-content: space-between;
     background-image: url(../images/wall10.jpg);
     background-size: cover; }
-  .portfolio-information-self {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    height: 7rem;
-    padding: 0 3rem;
-    position: relative; }
-    .portfolio-information-self:hover .information-edit-btn {
-      display: flex; }
+    
+    .portfolio-information-self {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      height: 7rem;
+      padding: 0 3rem;
+      position: relative; }
+      .portfolio-information-self:hover .information-edit-btn {
+        display: flex; }
 
 .portfolio-curriculum {
   background-image: linear-gradient(to right, #e0eafc, #cfdef3);
@@ -1135,6 +1136,47 @@ body {
     flex-direction: row; }
     .category-tools-container:not(:last-child) {
       margin-right: 1rem; }
+
+      .btn-cv {
+        font-size: 1.5rem;
+        font-weight: 700; }
+
+        .information-row {
+          display: flex;
+          flex-direction: column; }
+          .information-row:not(:last-child) {
+            margin-bottom: 1.75rem; }
+
+            .right-divided {
+  width: 50%;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around; }
+  .left-divided {
+    width: 50%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem;
+    justify-content: space-around;
+    position: relative; }
+
+.modal-row {
+  display: flex;
+  margin-bottom: 4.75rem;
+  justify-content: space-between; }
+
+  .cv-container {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column; }
+  
+  .cv-information {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3rem; }
 
 .tool {
   background-color: #fff;

@@ -19,7 +19,6 @@ router.get('/',noSesion,function(req,res,next)
 router.post('/',function(req,res,next)
 {
     pdfCv.uploadCv(req,res,next);
-    console.log("En upload")
 });
 
 
