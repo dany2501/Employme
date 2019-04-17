@@ -21,7 +21,6 @@ exports.iniciarSesion = async function (req, res, next) {
             req.session.usuario = obj;
             const Query = "select id_pasp,id_asp,ruta_imga,nom_asp,FN_asp,sex_asp,email_asp from imgaspirante natural join perfilaspirante natural join datosaspirante";
             var asp=await db.consultaBd(Query);
-            console.log(asp);
             req.session.aspirantes=asp;
             res.redirect('/aspirantes');
 

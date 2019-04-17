@@ -1,0 +1,93 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    link(rel='stylesheet', href='stylesheets/styles.css')
+    script#www-widgetapi-script(type='text/javascript', src='https://s.ytimg.com/yts/jsbin/www-widgetapi-vflY6gPjD/www-widgetapi.js', async='')
+    script(src='https://www.youtube.com/iframe_api')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='javascripts/aspirantes.js')
+    title Perfil de #{nombre} | Employ.me
+  body
+    header.profile-header
+      img.logo(src='images/logo.png', alt='Logo')
+      form.search(action='')
+        input.search-input(type='text', placeholder='Buscar')
+        button.search-btn
+          svg.search-icon
+            use(xlink:href='images/sprite.svg#icon-search')
+      nav.header-navigation
+        .header-navigation-icon-box
+          svg.header-navigation-icon
+            use(xlink:href='images/sprite.svg#icon-comments')
+          span.header-navigation-notification
+            | 9
+        .header-navigation-icon-box
+          svg.header-navigation-icon
+            use(xlink:href='images/sprite.svg#icon-sign-in')
+    .container
+      nav.sidebar
+        ul.sidebar-navigation
+          br
+          br
+          li.sidebar-navigation-item
+            a.sidebar-navigation-link(href='/render-emp')
+              svg.sidebar-navigation-icon
+                use(xlink:href='images/sprite.svg#icon-user')
+              span.sidebar-navigation-description Perfil
+          br
+          br
+          li.sidebar-navigation-item
+            a.sidebar-navigation-link(href='/render-emp')
+              svg.sidebar-navigation-icon
+                use(xlink:href='images/sprite.svg#icon-heart')
+              span.sidebar-navigation-description Aspirantes
+          br
+          br
+          li.sidebar-navigation-item
+            a.sidebar-navigation-link(href='/cerrarsesion')
+              svg.sidebar-navigation-icon
+                use(xlink:href='images/sprite.svg#icon-sign-in')
+              span.sidebar-navigation-description Salir
+      main.portfolio
+        .portfolio-information-users
+          input#id(type="text",style="display:none",value=""+id)
+          .information-photo-container
+              img.information-photo(src='/'+f)
+          h1.user-name
+            | #{nombre}
+          .information-map
+            
+        .portfolio-information-self
+          .information-data-field
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-mobile')
+            span #{num}
+          .information-data-field
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-envelope')
+            span #{email}
+          .information-data-field
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-birthday-cake')
+            span Edad:  #{edad} años
+          .information-data-field
+            svg.information-data-icon
+              use(xlink:href='images/sprite.svg#icon-male')
+            span Sexo: #{sex}
+          .information-data-field
+        .specialty-container
+          .specialty-information
+          .specialty-information
+          .specialty-information
+        .portfolio-curriculum
+          .flex-col-1-of-2--row
+            #curriculum.curriculum
+              embed(src=""+cv, type='application/pdf', style='height: 100%; width: 100%;',id="pdf")    
+          .flex-col-1-of-2--col
+            h1 Proyectos desarrollados por mí.
+            #github.github
+            h1 Vídeo presentación.      
+            div#video.digital-potfolio

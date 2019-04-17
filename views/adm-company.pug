@@ -1,12 +1,21 @@
+doctype html
 html(lang='en')
   head
-  body
-    | x   
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(type='text/javascript', src='javascripts/validaciones.js')
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
     link(rel='stylesheet', href='stylesheets/styles.css')
     title Employ.me
+  body
+    
+    #modal-youtube.modal-background
+      .modal
+        svg.modal-exit.card-exit--employee
+          use(xlink:href='images/sprite.svg#icon-close')
+        svg.modal-youtube-icon
+          use(xlink:href='images/sprite.svg#icon-youtube-play')
     header.profile-header
       img.logo(src='images/logo.png', alt='Logo')
       form.search(action='')
@@ -17,80 +26,76 @@ html(lang='en')
       nav.header-navigation
         .header-navigation-icon-box
           svg.header-navigation-icon
+            use(xlink:href='images/sprite.svg#icon-comments')
+          span.header-navigation-notification
+            | 
+        .header-navigation-icon-box
+          svg.header-navigation-icon
             use(xlink:href='images/sprite.svg#icon-sign-in')
     .container
       nav.sidebar
         ul.sidebar-navigation
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='com-listasp.html')
+            a.sidebar-navigation-link(href='/render-emp')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-address-card')
               span.sidebar-navigation-description Aspirantes
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='complete-curriculum.html')
+            a.sidebar-navigation-link(href='/render-emp')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-group')
               span.sidebar-navigation-description Empresas
           li.sidebar-navigation-item
-            a.sidebar-navigation-link(href='')
+            a.sidebar-navigation-link(href='/cerrarsesion')
               svg.sidebar-navigation-icon
                 use(xlink:href='images/sprite.svg#icon-sign-in')
               span.sidebar-navigation-description Salir
-      main.asp-container
-        .asp-row
-          .asp
-            .admin-tools
-              svg.admin-tools-icon
-                use(xlink:href='images/sprite.svg#icon-cog', x='', y='')
-            .asp-photo-container
-              img.asp-photo(src='images/employee.jpg', alt='')
-            .asp-name
-              | Rommelillo
-          .asp
-            .admin-tools
-              svg.admin-tools-icon
-                use(xlink:href='images/sprite.svg#icon-cog', x='', y='')
-            .asp-photo-container
-              img.asp-photo(src='images/employee.jpg', alt='')
-            .asp-name
-              | Rommelillo
-          .asp
-            .admin-tools
-              svg.admin-tools-icon
-                use(xlink:href='images/sprite.svg#icon-cog', x='', y='')
-            .asp-photo-container
-              img.asp-photo(src='images/employee.jpg', alt='')
-            .asp-name
-              | Rommelillo
-        .asp-row
-          .asp
-            .admin-tools
-              svg.admin-tools-icon
-                use(xlink:href='images/sprite.svg#icon-cog', x='', y='')
-            .asp-photo-container
-              img.asp-photo(src='images/employee.jpg', alt='')
-            .asp-name
-              | Rommelillo
-          .asp
-            .admin-tools
-              svg.admin-tools-icon
-                use(xlink:href='images/sprite.svg#icon-cog', x='', y='')
-            .asp-photo-container
-              img.asp-photo(src='images/employee.jpg', alt='')
-            .asp-name
-              | Rommelillo
-          .asp
-            | //Esta madre es la que necesita jquery
-            .admin-tools-modal
-              svg.admin-tools-icon
-                use(xlink:href='images/sprite.svg#icon-close', x='', y='')
-              button.btn.btn-admin-tool Ver Perfil
-              button.btn.btn-admin-tool Eliminar
-              button.btn.btn-admin-tool Editar
-            .admin-tools
-              svg.admin-tools-icon
-                use(xlink:href='images/sprite.svg#icon-cog', x='', y='')
-            .asp-photo-container
-              img.asp-photo(src='images/employee.jpg', alt='')
-            .asp-name
-              | Rommelillo
+      main.portfolio
+        .portfolio-information-users
+          .information-photo-container
+            img.information-photo(src='/'+foto)
+          h1.user-name
+            | #{nombre}
+          .information-map  
+        .specialty-container
+          .specialty-information
+          .specialty-information
+          .specialty-information
+        .specialty-container
+          .specialty-information
+          .specialty-information
+          .specialty-information  
+        .portfolio-curriculum
+          .flex-col-1-of-2--row
+            #enterprise-text.enterprise-text 
+               .info
+                  h1
+                   center Acerca de nosotros como empresa.     
+                   textarea#des.form-textarea(maxlength="1000") #{des}
+          .flex-col-1-of-2--col
+            div
+              .enterprise-info
+                .info
+                  h1
+                   center Contacto.
+                .information-data-field
+                  svg.information-data-icon
+                    use(xlink:href='images/sprite.svg#icon-mobile')
+                  span Telefóno #{tel}
+                    input.form-inputt(type="text",readonly)#num
+                .information-data-field
+                  svg.information-data-icon
+                    use(xlink:href='images/sprite.svg#icon-envelope')
+                  span Email: #{email}
+                    input.form-inputt(type="text", readonly="readonly")#em 
+                .information-data-field
+                  svg.information-data-icon
+                    use(xlink:href='images/sprite.svg#icon-envelope')
+                  span Dirección: #{dir}
+                     input.form-inputt(type="text", readonly="readonly")#ubi
+                .information-data-field
+                  svg.information-data-icon
+                    use(xlink:href='images/sprite.svg#icon-envelope')
+                  span Página web: #{sitio}
+                    input.form-inputt(type="text",readonly)#site
+            

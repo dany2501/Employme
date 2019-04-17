@@ -1,0 +1,20 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    link(rel='stylesheet', href='stylesheets/styles.css')
+    title Employ.me
+  body
+    img.logo(src='images/logo.png', alt='Logo')
+    nav.header-navigation
+      .header-navigation-icon-box
+        svg.header-navigation-icon
+          use(xlink:href='images/sprite.svg#icon-sign-in')
+    main.portfolio-admin
+      form#form2Emp.form-admin(action='/admin' method="post")
+        h1.heading-primary INICIA SESION COMO ADMINISTRADOR
+        input.form-input.form-input-dark(type='text ', name='email', id='', placeholder='Correo ')
+        input.form-input.form-input-dark(type='text ', name='password', id='', placeholder='Contraseña ')
+        button.btn.form-btn.form-btn-dark(type="submit") Iniciar Sesión 

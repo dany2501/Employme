@@ -19,9 +19,10 @@ $(document).ready(function () {
 
   $.post("http://localhost:8080/aspirante", function (data) {
     if (data == 'Ocurrió un error') {
-      repositories = `<div class="col-md-6">
-        <p>Parece que este usuario no ha enlazado sus repositorios de Github.<br></p>
-      </div>`;
+      repositories = `<div class="curriculum-required">
+      <svg class="curriculum-required-icon">
+        <use xlink:href="images/sprite.svg#icon-github-square"></use>
+      </svg><span class="curriculum-required-link">Este usuario no ha vinculado su cuenta de Github</span></div>`;
       area.html(repositories);
     } else {
       data.map((repository) => {
@@ -41,7 +42,12 @@ $(document).ready(function () {
     }
   });
 
+var prevyt =$("#youtube");
 
+prevyt.on("click",function(e){
+  console.log("click")
+e.preventDefault() ;
+});
 
   $.ajax({
     url: 'http://localhost:8080/aspirante',
@@ -50,9 +56,10 @@ $(document).ready(function () {
     success: function (json) {
       var url = json;
       if (url == null) {
-        error = `<div class="col-md-6">
-        <p>Parece que este usuario no ha enlazado algún video.<br></p>
-      </div>`;
+        error = `<div class="curriculum-required" >
+        <svg class="curriculum-required-icon" id="youtube">
+          <use xlink:href="images/sprite.svg#icon-youtube" ></use>
+        </svg><span class="curriculum-required-link">El usuario no ha agregado su vídeo.</span></div>`;
 
         areav.html(error);
       }
@@ -108,13 +115,35 @@ $(document).ready(function () {
 
       }
       if (bandera == true) {
-        console.log("Ya está interesado");
         interes.hide();
 
 
       }
 
     }
-  })
+  });
+
+
+  //Para saber si tiene ruta de pdf
+
+  var embed =$("#pdf");
+
+  var src=embed.prop('src');
+
+  if(src=="http://localhost:8080/null")
+  {
+    $("#curriculum").html(`<div class="curriculum" id="cv"><a class="curriculum-required"></a>
+        <label for="pdf">
+          <svg class="curriculum-required-icon">
+            <use xlink:href="images/sprite.svg#icon-address-card "></use>
+          </svg><span class="curriculum-required-link">El usuario no ha subido su curriculum.</span>
+        </label>
+  </div>`)
+  }
+
+  else 
+  {
+    
+  }
 
 });

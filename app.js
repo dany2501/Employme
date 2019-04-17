@@ -33,6 +33,9 @@ var updateE=require('./routes/updateEmp');
 var empProAsp=require('./routes/emp-profile-asp');
 var recuperar = require('./routes/recuperar');
 var delete_cv=require("./routes/asp-delete-cv");
+var admin = require ("./routes/admin");
+var render = require('./routes/render-admin');
+var admasp = require('./routes/admin-emp');
 
 
 var app = express();
@@ -52,8 +55,10 @@ app.use(cookie ({
   secret: 'TaRoDaSeDo',
   name: 'cookie'
 }));
-
+app.use('/render-emp',admasp);
+app.use('/render',render);
 app.use('/empresa',empProAsp);
+app.use('/admin',admin);
 app.use('/updateE',updateE);
 app.use('/', indexRouter);
 app.use('/exito',exito);

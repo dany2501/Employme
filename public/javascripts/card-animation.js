@@ -8,7 +8,8 @@ $(document).ready(function() {
     $("#hide").on("keyup",()=>{
         if(($("#hide").val()).toLowerCase()=="admin")
         {
-            alert("Mandar a otra vista");
+                var url='http://localhost:8080/admin';
+                window.open(url);
         }
     });
 
