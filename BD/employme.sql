@@ -76,9 +76,7 @@ DROP TABLE IF EXISTS `datosaspirante`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `datosaspirante` (
   `id_asp` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_asp` varchar(50) NOT NULL,
-  `apt_asp` varchar(30) NOT NULL,
-  `apm_asp` varchar(30) NOT NULL,
+  `nom_asp` varchar(200) DEFAULT NULL,
   `email_asp` varchar(50) NOT NULL,
   `usu_asp` varbinary(100) DEFAULT NULL,
   `psw_asp` varbinary(100) DEFAULT NULL,
@@ -95,7 +93,7 @@ CREATE TABLE `datosaspirante` (
 
 LOCK TABLES `datosaspirante` WRITE;
 /*!40000 ALTER TABLE `datosaspirante` DISABLE KEYS */;
-INSERT INTO `datosaspirante` VALUES (87,'Daniel','Hern√°nez','C√°rdenas','dany2501.dhn@gmail.com','ìvú\r\ÊJiF\Ã','\‹˚[\”{∏“æûk\’\‚Å{h¢','2001-02-25','Masculino',5510638023),(88,'Daniel','Hern√°nez','C√°rdenas','dannny2501.dhn@gmail.com','Tâà}¯Ω˘lni\”\‚\œ','\‹˚[\”{∏“æûk\’\‚Å{h¢','2001-02-25','Masculino',5510638023);
+INSERT INTO `datosaspirante` VALUES (87,'Daniel','dany2501.dhn@gmail.com','ìvú\r\ÊJiF\Ã','\‹˚[\”{∏“æûk\’\‚Å{h¢','2001-02-25','Masculino',5510638023),(88,'Daniel','dannny2501.dhn@gmail.com','Tâà}¯Ω˘lni\”\‚\œ','\‹˚[\”{∏“æûk\’\‚Å{h¢','2001-02-25','Masculino',5510638023);
 /*!40000 ALTER TABLE `datosaspirante` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -321,7 +319,7 @@ CREATE TABLE `interes` (
   KEY `id_asp` (`id_asp`),
   CONSTRAINT `interes_ibfk_1` FOREIGN KEY (`id_emp`) REFERENCES `datosempresa` (`id_emp`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `interes_ibfk_2` FOREIGN KEY (`id_asp`) REFERENCES `datosaspirante` (`id_asp`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -613,4 +611,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-17 11:28:38
+-- Dump completed on 2019-04-21 15:05:44
