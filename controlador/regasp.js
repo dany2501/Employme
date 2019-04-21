@@ -37,7 +37,7 @@ exports.registrarAspirante = async function (req, res, next) {
                     }
                 });
 
-                var mailOptions = {
+                var mailOptions = { 
                     from: 'Employme <aurantisoft@outlook.com>',
                     to: req.body.email,
                     subject: 'Prueba de correo',
@@ -50,8 +50,11 @@ exports.registrarAspirante = async function (req, res, next) {
                 });
 
                 var result = await con.consultaBd(sqlQuery, userData);
-                res.redirect('/exito');
 
+                //res.redirect('/exito');
+
+                res.json("Registrado Correctamente");
+                
             } catch (err) {
                 console.log(err);
                 res.json('Ocurrio un error al registrarse');

@@ -10,7 +10,6 @@ router.route('/')
     });
     
 router.post('/',function(req,res,next){
-    console.log("Ahora aquí");
     	registrar_empresa.registrarEmpresa(req, res, next);
     });
    
