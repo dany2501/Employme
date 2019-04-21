@@ -6,10 +6,13 @@ exports.registrarAspirante = async function (req, res, next) {
     var settings = {
         password: 'HECD010225HMCRRNA6'
     }
-    const userData = [req.body.nombre, req.body.apt, req.body.apm, req.body.usuario, req.body.password, req.body.email, req.body.fn, req.body.sexo, req.body.num];
 
-    const sqlQuery = "insert into datosaspirante (nom_asp,apt_asp,apm_asp,usu_asp,psw_asp,email_asp,FN_asp,sex_asp,numtel_asp) values (?,?,?,AES_ENCRYPT(?,'" + [settings.password] + "'),AES_ENCRYPT(?,'" + [settings.password] + "'),?,?,?,?)";
+    var device=req.body.device; 
 
+    console.log(device);
+    const userData = [req.body.nombre,req.body.usuario, req.body.password, req.body.email, req.body.fn, req.body.sexo, req.body.num];
+
+    const sqlQuery = "insert into datosaspirante (nom_asp,usu_asp,psw_asp,email_asp,FN_asp,sex_asp,numtel_asp) values (?,AES_ENCRYPT(?,'" + [settings.password] + "'),AES_ENCRYPT(?,'" + [settings.password] + "'),?,?,?,?)";
     const Query = "select (AES_DECRYPT(usu_asp,'" + settings.password + "')) as usu_asp,email_asp from datosaspirante;";
     var asp = await con.consultaBd(Query);
     var flag = false;
@@ -23,12 +26,37 @@ exports.registrarAspirante = async function (req, res, next) {
         }
 
         if (flag == true) {
+
+            if(device=="Android")
+            {
+                res.json("Usuario o email ya registrado");
+            }
+            else{
+
             console.log("Usuario o email ya registrado");
             res.redirect('/error');
+            }
 
         } else {
 
             try {
+                
+
+                var result = await con.consultaBd(sqlQuery, userData);
+                
+            } catch (err) {
+                console.log(err);
+                res.json('Ocurrio un error al registrarse');
+            }
+
+            if(device=="Android")
+            {
+                
+
+                res.json("Registrado Correctamente");
+
+            }
+            else{
                 var transporter = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
@@ -49,16 +77,10 @@ exports.registrarAspirante = async function (req, res, next) {
                     console.log(err);
                 });
 
-                var result = await con.consultaBd(sqlQuery, userData);
+                res.redirect("/exito");
 
-                //res.redirect('/exito');
-
-                res.json("Registrado Correctamente");
-                
-            } catch (err) {
-                console.log(err);
-                res.json('Ocurrio un error al registrarse');
             }
+            
         }
     }
 
