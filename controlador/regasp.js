@@ -84,8 +84,6 @@ exports.registrarAspirante = async function (req, res, next) {
         }
     }
 
-
-
     else {
         res.render('error')
     }
