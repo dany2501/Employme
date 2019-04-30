@@ -28,32 +28,25 @@ var sqlQuery
 
         sqlQuery = "SELECT id_asp,nom_asp,numtel_asp,FN_asp,sex_asp,email_asp,(AES_DECRYPT(usu_asp,'" + settings.password + "')) as usu_asp,(AES_DECRYPT(psw_asp, '" + settings.password + "')) as psw_asp FROM datosaspirante WHERE usu_asp=AES_ENCRYPT(? ,'" + settings.password + "') AND psw_asp=AES_ENCRYPT(?, '" + settings.password + "')";
     }
-
-    var foto="select ruta_imga from imgaspirante where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
-
+var foto="select ruta_imga from imgaspirante where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
     try {
         var result = await db.consultaBd(sqlQuery, sqlData);
-        var resfoto=await db.consultaBd(foto,result[0].id_asp);
-        
-
-        if (user == result[0].usu_asp || user == result[0].email_asp && req.body.contra == result[0].psw_asp) {
+        var result = await db.consultaBd(      if (user == result[0].usu_asp || user == result[0].email_asp && req.body.contra == result[0].psw_asp) {
 
             if(device=="Android")
             {
-var pass=new Buffer.from(result[0].psw_asp,'hex');
  var response = new Buffer.from(result[0].usu_asp, 'hex');
                  var obj =
                 {
 
                     "id_asp": result[0].id_asp,
-		    "psw_asp":pass.toString(),
                     "nom_asp": result[0].nom_asp,
                     "usu_asp": response.toString(),
                     "fn_asp": moment(result[0].FN_asp).format('LL'),
                     "sex_asp":result[0].sex_asp,
                     "email_asp": result[0].email_asp,
-                    "numtel_asp": result[0].numtel_asp,
-		    "foto_asp":resfoto[0].ruta_imga
+                    "numtel_asp": result[0].numtel_asp
+
                 }
 console.log(obj);
 	res.json(obj);

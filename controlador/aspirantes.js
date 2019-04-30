@@ -14,7 +14,7 @@ exports.aspirantes = async function (req, res, next) {
         else
         {
             try {
-                const Query = "select id_pasp,id_asp,ruta_imga,numtel_asp,nom_asp,apt_asp,apm_asp,FN_asp,sex_asp,email_asp, AES_DECRYPT(ruta_cv,'" + [settings.password] + "') as ruta_cv  from imgaspirante natural join cv natural join perfilaspirante natural join datosaspirante where id_asp= ?";
+                const Query = "select id_pasp,id_asp,ruta_imga,numtel_asp,nom_asp,FN_asp,sex_asp,email_asp, AES_DECRYPT(ruta_cv,'" + [settings.password] + "') as ruta_cv  from imgaspirante natural join cv natural join perfilaspirante natural join datosaspirante where id_asp= ?";
                 const f= 'select DATE_FORMAT((select FN_asp from datosaspirante where id_asp=?)," %d %M %Y ") as fecha;';
                 var result=await db.consultaBd(Query,id);
                 var total;

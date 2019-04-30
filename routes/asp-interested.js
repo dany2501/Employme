@@ -4,14 +4,20 @@ var router = express.Router();
 var interes = require('../controlador/interes');
 
 var noSesion = function (req, res, next) {
-    if (!req.session.usuario) {
-        next();
-        console.log("No hay sesión");
-    } else {
+    if(req.body.device=="Android")
+    {
+next()
+    }
+    else{
 
-        
-        next()
-
+        if (!req.session.usuario) {
+            next();
+            console.log("No hay sesión");
+        } else {
+    
+            next()
+    
+        }
     }
 }
 

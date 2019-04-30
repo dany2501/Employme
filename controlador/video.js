@@ -20,17 +20,34 @@ var con = require('../conexionsql/conexion');
        }
     }
 
-    exports.seleccionarVideo= async function(req,res,next)
+exports.seleccionarVideo= async function(req,res,next)
     {
+        if(req.body.device=="Android")
+        {
+            var id=req.body.id
+        }
+        else
+        {
+            var s=req.session.usuario
+            var id=s.id;
+        }
         try{
-        var id=req.session.usuario;
         if (id != null || id != undefined || id != "") {
-            const userData=[id.id];
+            const userData=[id];
         const sqlQuery= 'select vyt_pasp from perfilaspirante where id_asp=?';
         
             var result= await con.consultaBd(sqlQuery,userData);
             var link=result[0].vyt_pasp;
-            res.json(link);
+            if(req.body.device=="Android")
+            {
+                var obj={"vyt_pasp":link}
+                res.json(obj);
+            }
+            else 
+            {
+                res.json(link);
+            }
+            
         }
         else 
         {
@@ -42,8 +59,7 @@ var con = require('../conexionsql/conexion');
            res.json('Ocurrio un error al consultar el video');
        }
 
-        }
-
+}
 
         exports.mostrarVideo= async function(req,res,next)
     {

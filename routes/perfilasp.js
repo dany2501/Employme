@@ -5,12 +5,20 @@ var video = require('../controlador/video');
 var interes=require('../controlador/empInt');
 
 var noSesion = function(req, res, next){
-    if(!req.session.usuario){
-        res.redirect('/');
-    }else{
+if(req.body.device=="Android")
 
-        
+    {
         next();
+    }else
+    {
+
+        if(!req.session.usuario){
+            res.redirect('/');
+        }else{
+    
+            
+            next();
+        }
     }
 }
 
