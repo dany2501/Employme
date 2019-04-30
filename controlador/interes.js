@@ -57,36 +57,38 @@ exports.intereses = async function (req, res, next) {
     }
 }
 
-    exports.interesados = async function (req, res, next) {
+exports.interesados = async function (req, res, next) {
 
         var device=req.body.device;
         if(device=="Android")
         {
             var e=req.body.id;
+            var sqlQuery= 'select id_emp,nom_emp,email_emp,id_asp from interes natural join datosempresa where id_asp=?';
+            var Query=" select ruta_imge from imgempresa where id_pemp=(select id_pemp from perfilempresa where id_emp=(select id_emp from interes where id_asp=?))"
         }
         else
         {
             var s= req.session.usuario;
             var e=s.id;
+            var sqlQuery= 'select id_emp as iemp,nom_emp as nomemp,email_emp as emaile,id_asp as idasp from interes natural join datosempresa where id_asp=?';
+        var Query=" select ruta_imge as photo from imgempresa where id_pemp=(select id_pemp from perfilempresa where id_emp=(select id_emp from interes where id_asp=?))"
         }
         const userData=[e];
-        const sqlQuery= 'select id_emp as iemp,nom_emp as nomemp,email_emp as emaile,id_asp as idasp from interes natural join datosempresa where id_asp=?';
-        const Query=" select ruta_imge as photo from imgempresa where id_pemp=(select id_pemp from perfilempresa where id_emp=(select id_emp from interes where id_asp=?))"
+        
     
         try{
                 
              var obj= await con.consultaBd(sqlQuery,userData);
              var images = await con.consultaBd(Query,userData);
-             
+console.log(obj);             
              var result = {"datos": obj,"images":images} 
+             console.log(result);
              res.json(result);
-    
+
         }catch(err)
         {
             console.log(err);
             res.json('Ocurrio un error');
         }
     }
-    
-
 
