@@ -3,7 +3,7 @@ $(document).ready(()=>{
 var container =$("#aspirantes");
 var aspirantes="";
 $.ajax({
-    url:"http://localhost:8080/admin/asp",
+    url:"http://3.93.218.234:80/admin/asp",
     type:"get",
     dataType: 'json',
     success:function (response){
