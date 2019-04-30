@@ -24,7 +24,7 @@ exports.interesado = async function (req, res, next) {
             subject: 'Prueba interes',
             text: 'A alguna empresa le haz interesado',
             html: "<h1> La empresa " + req.session.usuario.nom + " ha visitado tu perfil y parece ser que le interesó tu portafolio de trabajos </h1> " +
-                "<a href='http://localhost:8080/empresa' target= '_blank'>Click aquí para saber más</a>"
+                "<a href='http://3.93.218.234:80/empresa' target= '_blank'>Click aquí para saber más</a>"
 
         };
         transporter.sendMail(mailOptions, function (err, info) {
