@@ -60,10 +60,6 @@ exports.seleccionarVideo= async function(req,res,next)
        }
 
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 59f5dbc699fe55795c8f578ae43c3dc6a1939225
 
         exports.mostrarVideo= async function(req,res,next)
     {

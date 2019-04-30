@@ -6,10 +6,6 @@ exports.iniciarSesion = async function (req, res, next) {
 
     var device = req.body.device;
     var flag = false;
-<<<<<<< HEAD
-    
-    const sqlData = [req.body.usu_e, req.body.pass_e];
-=======
     var user=req.body.usu_e;
     var pass =req.body.pass_e;
     const sqlData = [user, pass];
@@ -29,7 +25,6 @@ exports.iniciarSesion = async function (req, res, next) {
             var sqlQuery = "SELECT id_emp,(AES_DECRYPT(usu_emp, '"+settings.password+"')) as usu_emp,(AES_DECRYPT(psw_emp, '"+settings.password+"')) as psw_emp,nom_emp,email_emp FROM datosempresa WHERE (AES_DECRYPT(usu_emp, '"+settings.password+"')) = ? AND (AES_DECRYPT(psw_emp, '"+settings.password+"'))= ?";
         }
     
->>>>>>> 59f5dbc699fe55795c8f578ae43c3dc6a1939225
 
     for (var i = 0; i < req.body.pass_e.length; i++) {
         if (req.body.pass_e[i] == "@") {
@@ -50,19 +45,6 @@ exports.iniciarSesion = async function (req, res, next) {
     try {
         //Se consulta a la bd para buscar el usuario de la empresa 
         var result = await db.consultaBd(sqlQuery, sqlData);
-<<<<<<< HEAD
-        
-        if (req.body.usu_e == result[0].usu_emp || req.body.usu_e == result[0].email_emp && req.body.pass_e == result[0].psw_emp) {
-            var response = new Buffer.from(result[0].usu_emp, 'hex');
-            var obj = {
-                "id": result[0].id_emp,
-                "usuario": response,
-                "nom":result[0].nom_emp,
-                "email":result[0].email_emp
-            }
-            if(device=="Android")
-            {
-=======
 
         if (req.body.usu_e == result[0].usu_emp || req.body.usu_e == result[0].email_emp  && req.body.pass_e == result[0].psw_emp) {
             var response = new Buffer.from(result[0].usu_emp, 'hex');
@@ -77,7 +59,6 @@ var obj = {
             if(device=="Android")
             {
 		console.log(obj);
->>>>>>> 59f5dbc699fe55795c8f578ae43c3dc6a1939225
                 res.json(obj);
             }
             else

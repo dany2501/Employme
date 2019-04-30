@@ -24,7 +24,7 @@ exports.interesado = async function (req, res, next) {
             subject: 'Prueba interes',
             text: 'A alguna empresa le haz interesado',
             html: "<h1> La empresa " + req.session.usuario.nom + " ha visitado tu perfil y parece ser que le interesó tu portafolio de trabajos </h1> " +
-                "<a href='http://34.227.162.181:8080/empresa' target= '_blank'>Click aquí para saber más</a>"
+                "<a href='http://localhost:8080/empresa' target= '_blank'>Click aquí para saber más</a>"
 
         };
         transporter.sendMail(mailOptions, function (err, info) {
@@ -57,11 +57,7 @@ exports.intereses = async function (req, res, next) {
     }
 }
 
-<<<<<<< HEAD
     exports.interesados = async function (req, res, next) {
-=======
-exports.interesados = async function (req, res, next) {
->>>>>>> 59f5dbc699fe55795c8f578ae43c3dc6a1939225
 
         var device=req.body.device;
         if(device=="Android")
@@ -82,16 +78,7 @@ exports.interesados = async function (req, res, next) {
              var obj= await con.consultaBd(sqlQuery,userData);
              var images = await con.consultaBd(Query,userData);
              
-             var result = {"datos": obj,"images":images}
-<<<<<<< HEAD
-             if(device=="Android")
-             {
-                res.json(result);
-                            
-             }
-=======
-           
->>>>>>> 59f5dbc699fe55795c8f578ae43c3dc6a1939225
+             var result = {"datos": obj,"images":images} 
              res.json(result);
     
         }catch(err)
@@ -100,3 +87,6 @@ exports.interesados = async function (req, res, next) {
             res.json('Ocurrio un error');
         }
     }
+    
+
+

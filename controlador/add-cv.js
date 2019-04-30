@@ -200,8 +200,7 @@ exports.showDesUbi = async function (req, res, next) {
         var sqlData = [user.id];
         var result = await db.consultaBd(sqlQuery, sqlData);
         des = new Buffer.from(result[0].des_cv, 'hex');
-        ubi = new Buffer.from(result[0].dir_pasp, 'hex');
-        data = { des: (des.toString()), ubi: (ubi.toString()), tel: result[0].numtel_asp, email: result[0].email_asp, nombre: user.nombre }
+        data = { des: (des.toString()), tel: result[0].numtel_asp, email: result[0].email_asp, nombre: user.nombre }
 
         console.log(data);
         res.json(data);

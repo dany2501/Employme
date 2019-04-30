@@ -21,13 +21,7 @@ exports.user = async function (req, res, next) {
 }
 
 exports.github = async function (req, res, next) {
-<<<<<<< HEAD
-    
-    try {
-=======
-    console.log("En git")
  try {
->>>>>>> 59f5dbc699fe55795c8f578ae43c3dc6a1939225
 
         if(req.body.device=="Android")
         {
