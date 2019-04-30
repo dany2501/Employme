@@ -23,7 +23,17 @@ exports.user = async function (req, res, next) {
 exports.github = async function (req, res, next) {
     
     try {
-        var d = req.session.usuario;
+
+        if(req.body.device=="Android")
+        {
+
+            var d = req.body.id;
+        }
+        else
+        {
+            var session=req.session.usuario;
+            var d =session.id;
+        }
 
         if (d != null || d != undefined || d != "") {
             var sqlQuery = 'select usugh_pasp from perfilaspirante where id_asp=?';
@@ -63,10 +73,19 @@ exports.github = async function (req, res, next) {
 exports.githubAsp = async function (req, res, next) {
     try {
 
-        var d = req.session.asp;
+        if(req.body.device=="Android")
+        {
+
+            var d = req.body.id;
+        }
+        else
+        {
+            var session=req.session.asp;
+            var d = req.session.id;
+        }
         console.log(d.id);
         var sqlQuery = 'select usugh_pasp from perfilaspirante where id_asp=?';
-        var sqlData = [d.id];
+        var sqlData = [d];
         var git_hub = await db.consultaBd(sqlQuery, sqlData);
         const clientId = "1ddb6bf4ad54c50f900a";
         const clientSecret = "4ac9fe6ec91fbbe36e57f68cfbf444361e884483";

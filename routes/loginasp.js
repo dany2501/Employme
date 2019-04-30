@@ -4,10 +4,16 @@ var router = express.Router();
 var loginasp = require('../controlador/loginasp');
 
 var noSesion = function(req, res, next){
-    if(!req.session.usuario){
-        next();
-    }else{
-        res.redirect('/perfilasp');
+    if(req.body.device="Android")
+    {
+        next()
+    }
+    else{
+        if(!req.session.usuario){
+            next();
+        }else{
+            res.redirect('/perfilasp');
+        }
     }
 }
 

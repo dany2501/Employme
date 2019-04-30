@@ -62,20 +62,28 @@ exports.mostrarFoto= async function (req, res, next) {
     const sqlQuery = "select AES_DECRYPT(ruta_cv,'" + [settings.password] + "') as ruta_cv from cv where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
     
 try {
-      var result3=await con.consultaBd(query,ds.id);
-      var pdf=await con.consultaBd(sqlQuery,ds.id);
-      console.log(pdf[0].ruta_cv);
-      if (pdf[0].ruta_cv==null)
-      {
-        var resp={img:result3[0].ruta_imga}
-      }
-      else{
-        var response = new Buffer.from(pdf[0].ruta_cv, 'hex');
-        var resp={img:result3[0].ruta_imga,cv:response.toString()}
-      }
+  if(req.body.device=="Android")
+  {
+    var result3=await con.consultaBd(query,req.body.id);
+    var f={"foto_asp":result3[0].ruta_imga}
+    res.json(f)
+  }
+  else
+  {
+    var result3=await con.consultaBd(query,ds.id);
+    var pdf=await con.consultaBd(sqlQuery,ds.id);
+    console.log(pdf[0].ruta_cv);
+    if (pdf[0].ruta_cv==null)
+    {
+      var resp={img:result3[0].ruta_imga}
+    }
+    else{
+      var response = new Buffer.from(pdf[0].ruta_cv, 'hex');
+      var resp={img:result3[0].ruta_imga,cv:response.toString()}
+    }
+    res.json(resp);
+  }
       
-      console.log(resp);
-      res.json(resp);
     } catch (err) {
       console.log(err);
       res.redirect("/login");

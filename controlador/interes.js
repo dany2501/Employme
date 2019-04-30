@@ -58,16 +58,32 @@ exports.intereses = async function (req, res, next) {
 }
 
     exports.interesados = async function (req, res, next) {
-        var e=req.session.usuario;
-        const userData=[e.id];
-        const sqlQuery= 'select id_emp as iemp,nom_emp as nomemp,email_emp as emaile,id_asp asidasp from interes natural join datosempresa where id_asp=?';
+
+        var device=req.body.device;
+        if(device=="Android")
+        {
+            var e=req.body.id;
+        }
+        else
+        {
+            var s= req.session.usuario;
+            var e=s.id;
+        }
+        const userData=[e];
+        const sqlQuery= 'select id_emp as iemp,nom_emp as nomemp,email_emp as emaile,id_asp as idasp from interes natural join datosempresa where id_asp=?';
         const Query=" select ruta_imge as photo from imgempresa where id_pemp=(select id_pemp from perfilempresa where id_emp=(select id_emp from interes where id_asp=?))"
     
         try{
-    
+                
              var obj= await con.consultaBd(sqlQuery,userData);
              var images = await con.consultaBd(Query,userData);
+             
              var result = {"datos": obj,"images":images}
+             if(device=="Android")
+             {
+                res.json(result);
+                            
+             }
              res.json(result);
     
         }catch(err)

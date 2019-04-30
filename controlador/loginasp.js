@@ -1,11 +1,11 @@
 var db = require('../conexionsql/conexion');
 var moment = require('moment');
+moment.locale('es');
 
 exports.iniciarSesion = async function (req, res, next) {
-    moment.locale('es');
 
+    var device = req.body.device;
     var settings = { password: 'HECD010225HMCRRNA6' }
-
     var user = req.body.usu;
     var contra = req.body.contra;
     var sqlData = [user, contra];
@@ -26,17 +26,41 @@ exports.iniciarSesion = async function (req, res, next) {
 
         sqlQuery = "SELECT id_asp,nom_asp,apt_asp,numtel_asp,apm_asp,FN_asp,sex_asp,email_asp,(AES_DECRYPT(usu_asp,'" + settings.password + "')) as usu_asp,(AES_DECRYPT(psw_asp, '" + settings.password + "')) as psw_asp FROM datosaspirante WHERE usu_asp=AES_ENCRYPT(? ,'" + settings.password + "') AND psw_asp=AES_ENCRYPT(?, '" + settings.password + "')";
     }
+    var foto="select ruta_imga from imgaspirante where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
 
     try {
         var result = await db.consultaBd(sqlQuery, sqlData);
+        var resfoto=await db.consultaBd(foto,result[0].id_asp);
+
 
         if (user == result[0].usu_asp || user == result[0].email_asp && req.body.contra == result[0].psw_asp) {
 
-            var obj =
+            if(device=="Android")
+            {
+                
+        var response = new Buffer.from(result[0].usu_asp, 'hex');
+                var obj =
+                {
+
+                    "id_asp": result[0].id_asp,
+                    "nom_asp": result[0].nom_asp,
+                    "usu_asp": result[0].usu_asp,
+                    "fn_asp": '"'+moment(result[0].FN_asp).format('LL')+'"',
+                    "sex_asp": result[0].sex_asp,
+                    "email_asp": result[0].email_asp,
+                    "numtel_asp": '"'+result[0].numtel_asp+'"'
+
+                }
+                console.log(JSON.parse())
+                res.json(result);
+            }
+            else 
+            {
+                var obj =
                 {
 
                     id: result[0].id_asp,
-                    nombre: result[0].nom_asp + " " + result[0].apt_asp + " " + result[0].apm_asp,
+                    nombre: result[0].nom_asp,
                     usuario: result[0].usu_asp,
                     fn: moment(result[0].FN_asp).format('LL'),
                     sex: result[0].sex_asp,
@@ -45,7 +69,8 @@ exports.iniciarSesion = async function (req, res, next) {
 
                 }
             req.session.usuario = obj;
-            res.redirect('/perfilasp', );
+            res.redirect('/perfilasp');
+            }
         } else if (result[0].usu_asp == undefined || result[0].psw_asp == undefined) {
             res.json('Datos incorrectos')
         }
