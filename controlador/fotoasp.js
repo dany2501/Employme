@@ -56,7 +56,8 @@ try {
   }
   
 exports.mostrarFoto= async function (req, res, next) {
-        
+console.log(req.body.device);
+console.log(req.body.id);        
     var ds= req.session.usuario;
     const query='select ruta_imga from imgaspirante where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)';
     const sqlQuery = "select AES_DECRYPT(ruta_cv,'" + [settings.password] + "') as ruta_cv from cv where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
@@ -90,7 +91,6 @@ try {
   }
 
 }
-
 
 
   exports.subirFotoEmp= async function (req, res, next) {

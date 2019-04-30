@@ -21,8 +21,13 @@ exports.user = async function (req, res, next) {
 }
 
 exports.github = async function (req, res, next) {
+<<<<<<< HEAD
     
     try {
+=======
+    console.log("En git")
+ try {
+>>>>>>> 59f5dbc699fe55795c8f578ae43c3dc6a1939225
 
         if(req.body.device=="Android")
         {
@@ -37,13 +42,14 @@ exports.github = async function (req, res, next) {
 
         if (d != null || d != undefined || d != "") {
             var sqlQuery = 'select usugh_pasp from perfilaspirante where id_asp=?';
-            var sqlData = [d.id];
+            var sqlData = [d];
             var git_hub = await db.consultaBd(sqlQuery, sqlData);
             const clientId = "1ddb6bf4ad54c50f900a";
             const clientSecret = "4ac9fe6ec91fbbe36e57f68cfbf444361e884483";
             const repos = 5;
             const repos_sort = 'created:%20asc';
             var user = git_hub[0].usugh_pasp;
+	console.log(user);
             if (user == null) {
                 res.json('Ocurrió un error');
 

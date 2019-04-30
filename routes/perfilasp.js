@@ -5,7 +5,11 @@ var video = require('../controlador/video');
 var interes=require('../controlador/empInt');
 
 var noSesion = function(req, res, next){
+<<<<<<< HEAD
     if(req.body.device=="Android")
+=======
+if(req.body.device=="Android")
+>>>>>>> 59f5dbc699fe55795c8f578ae43c3dc6a1939225
 
     {
         next();

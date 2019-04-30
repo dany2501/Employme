@@ -57,7 +57,11 @@ exports.intereses = async function (req, res, next) {
     }
 }
 
+<<<<<<< HEAD
     exports.interesados = async function (req, res, next) {
+=======
+exports.interesados = async function (req, res, next) {
+>>>>>>> 59f5dbc699fe55795c8f578ae43c3dc6a1939225
 
         var device=req.body.device;
         if(device=="Android")
@@ -79,11 +83,15 @@ exports.intereses = async function (req, res, next) {
              var images = await con.consultaBd(Query,userData);
              
              var result = {"datos": obj,"images":images}
+<<<<<<< HEAD
              if(device=="Android")
              {
                 res.json(result);
                             
              }
+=======
+           
+>>>>>>> 59f5dbc699fe55795c8f578ae43c3dc6a1939225
              res.json(result);
     
         }catch(err)
@@ -92,6 +100,3 @@ exports.intereses = async function (req, res, next) {
             res.json('Ocurrio un error');
         }
     }
-    
-
-

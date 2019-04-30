@@ -20,7 +20,7 @@ var con = require('../conexionsql/conexion');
        }
     }
 
-    exports.seleccionarVideo= async function(req,res,next)
+exports.seleccionarVideo= async function(req,res,next)
     {
         if(req.body.device=="Android")
         {
@@ -60,7 +60,10 @@ var con = require('../conexionsql/conexion');
        }
 
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 59f5dbc699fe55795c8f578ae43c3dc6a1939225
 
         exports.mostrarVideo= async function(req,res,next)
     {
