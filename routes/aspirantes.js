@@ -2,11 +2,19 @@ var express = require('express');
 var router = express.Router();
 var interes=require('../controlador/interes');
 var noSesion = function(req, res, next){
-    if(!req.session.usuario){
-        res.render('index');
-    }else{ 
-        next();
-    } 
+    if (req.body.device=="Android")
+    {
+next();
+    }
+    else
+    {
+
+        if(!req.session.usuario){
+            res.render('index');
+        }else{ 
+            next();
+        } 
+    }
 }
 router.get('/',noSesion, function(req,res,next){
     var respuesta= req.session.aspirantes;

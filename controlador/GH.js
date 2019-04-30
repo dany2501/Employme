@@ -83,7 +83,6 @@ exports.githubAsp = async function (req, res, next) {
             var session=req.session.asp;
             var d = req.session.id;
         }
-        console.log(d.id);
         var sqlQuery = 'select usugh_pasp from perfilaspirante where id_asp=?';
         var sqlData = [d];
         var git_hub = await db.consultaBd(sqlQuery, sqlData);

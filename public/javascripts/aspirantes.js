@@ -8,7 +8,7 @@ $(document).ready(function () {
 
   interes.on('click', () => {
     $.ajax({
-      url: 'http://3.93.218.234:80/aspirantes',
+      url: 'http://localhost:8080/aspirantes',
       type: 'post',
       dataType: 'json',
       success: function (respone) { console.log('Se realizó con exito') }, error: function (err) { console.log(err) }
@@ -17,7 +17,7 @@ $(document).ready(function () {
     interes.hide();
   });
 
-  $.post("http://3.93.218.234:80/aspirante", function (data) {
+  $.post("http://localhost:8080/aspirante", function (data) {
     if (data == 'Ocurrió un error') {
       repositories = `<div class="curriculum-required">
       <svg class="curriculum-required-icon">
@@ -50,7 +50,7 @@ e.preventDefault() ;
 });
 
   $.ajax({
-    url: 'http://3.93.218.234:80/aspirante',
+    url: 'http://localhost:8080/aspirante',
     type: 'put',
     dataType: 'json',
     success: function (json) {
@@ -101,7 +101,7 @@ e.preventDefault() ;
   var id = $('#id').val();
   var bandera = false;
   $.ajax({
-    url: 'http://3.93.218.234:80/aspirantes/know',
+    url: 'http://localhost:8080/aspirantes/know',
     type: 'get',
     dataType: 'json',
     success: function (json) {
@@ -130,7 +130,7 @@ e.preventDefault() ;
 
   var src=embed.prop('src');
 
-  if(src=="http://3.93.218.234:80/null")
+  if(src=="http://localhost:8080/null")
   {
     $("#curriculum").html(`<div class="curriculum" id="cv"><a class="curriculum-required"></a>
         <label for="pdf">

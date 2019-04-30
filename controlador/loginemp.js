@@ -49,20 +49,27 @@ exports.iniciarSesion = async function (req, res, next) {
         if (req.body.usu_e == result[0].usu_emp || req.body.usu_e == result[0].email_emp  && req.body.pass_e == result[0].psw_emp) {
             var response = new Buffer.from(result[0].usu_emp, 'hex');
 var psw = new Buffer.from(result[0].psw_emp,'hex');            
-var obj = {
-                "id_emp": result[0].id_emp,
-		"psw_emp":psw.toString(),
-                "usu_emp": response.toString(),
-                "nom_emp":result[0].nom_emp,
-                "email_emp":result[0].email_emp
-            }
+
             if(device=="Android")
             {
-		console.log(obj);
+                var obj = {
+                    "id_emp": result[0].id_emp,
+            "psw_emp":psw.toString(),
+                    "usu_emp": response.toString(),
+                    "nom_emp":result[0].nom_emp,
+                    "email_emp":result[0].email_emp
+                }
                 res.json(obj);
             }
             else
             {
+                var obj = {
+                    id: result[0].id_emp,
+                    psw:psw.toString(),
+                    usu: response.toString(),
+                    nom:result[0].nom_emp,
+                    email:result[0].email_emp
+                }
                 req.session.usuario = obj;
                 const Query = "select id_pasp,id_asp,ruta_imga,nom_asp,FN_asp,sex_asp,email_asp from imgaspirante natural join perfilaspirante natural join datosaspirante";
                 var asp=await db.consultaBd(Query);

@@ -24,7 +24,7 @@ exports.interesado = async function (req, res, next) {
             subject: 'Prueba interes',
             text: 'A alguna empresa le haz interesado',
             html: "<h1> La empresa " + req.session.usuario.nom + " ha visitado tu perfil y parece ser que le interesó tu portafolio de trabajos </h1> " +
-                "<a href='http://3.93.218.234:80/empresa' target= '_blank'>Click aquí para saber más</a>"
+                "<a href='http://localhost:8080/empresa' target= '_blank'>Click aquí para saber más</a>"
 
         };
         transporter.sendMail(mailOptions, function (err, info) {
@@ -49,7 +49,6 @@ exports.intereses = async function (req, res, next) {
     try {
         var result = await con.consultaBd(sqlQuery, emp);
         res.json(result);
-        console.log(result);
     }
     catch (err) {
         console.log(err);
@@ -63,15 +62,18 @@ exports.intereses = async function (req, res, next) {
         if(device=="Android")
         {
             var e=req.body.id;
+            var sqlQuery= 'select id_emp,nom_emp,email_emp,id_asp from interes natural join datosempresa where id_asp=?';
+            var Query=" select ruta_imge from imgempresa where id_pemp=(select id_pemp from perfilempresa where id_emp=(select id_emp from interes where id_asp=?))"
         }
         else
         {
             var s= req.session.usuario;
             var e=s.id;
+            var sqlQuery= 'select id_emp as iemp,nom_emp as nomemp,email_emp as emaile,id_asp as idasp from interes natural join datosempresa where id_asp=?';
+        var Query=" select ruta_imge as photo from imgempresa where id_pemp=(select id_pemp from perfilempresa where id_emp=(select id_emp from interes where id_asp=?))"
         }
         const userData=[e];
-        const sqlQuery= 'select id_emp as iemp,nom_emp as nomemp,email_emp as emaile,id_asp as idasp from interes natural join datosempresa where id_asp=?';
-        const Query=" select ruta_imge as photo from imgempresa where id_pemp=(select id_pemp from perfilempresa where id_emp=(select id_emp from interes where id_asp=?))"
+        
     
         try{
                 
