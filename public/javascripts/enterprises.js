@@ -3,7 +3,7 @@ $(document).ready(() => {
     var data = "";
 
     $.ajax({
-        url: 'http://localhost:8080/asp-interested',
+        url: 'http://3.93.218.234:80/asp-interested',
         type: 'post',
         dataType: 'json',
         success: function (respone) {
