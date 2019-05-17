@@ -32,4 +32,9 @@ router.put('/', function (req, res, next) {
 router.get('/foto', function (req, res, next) {
     fotoasp.mostrarFoto(req,res,next);
 });
+
+router.post('/uploadPhoto',function(req,res,next){
+console.log(req.body.foto);    
+fotoasp.uploadAndroid(req,res,next);
+});
 module.exports = router; 

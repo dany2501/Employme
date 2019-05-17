@@ -54,7 +54,7 @@ var psw = new Buffer.from(result[0].psw_emp,'hex');
             {
                 var obj = {
                     "id_emp": result[0].id_emp,
-            "psw_emp":psw.toString(),
+                    "psw_emp":psw.toString(),
                     "usu_emp": response.toString(),
                     "nom_emp":result[0].nom_emp,
                     "email_emp":result[0].email_emp

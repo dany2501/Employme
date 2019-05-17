@@ -1,5 +1,5 @@
 var con = require('../conexionsql/conexion');
-
+var base = require('base64-to-image');
 
 var settings = {
   password: 'HECD010225HMCRRNA6'
@@ -90,6 +90,34 @@ try {
       res.redirect("/login");
   }
 
+}
+
+
+
+exports.uploadAndroid = async function(req,res,next)
+  {
+        console.log("Panson");
+base64toImage(req)
+  }
+
+  function makeid(length) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  
+    for (var i = 0; i < length; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+  
+    return text;
+  }
+
+  async function base64toImage(req)
+{
+  return new Promise(function(resolve,reject){
+   
+	console.log(req.body.Id);
+   var base64=req.body.foto;
+	console.log(base64);
+  });
 }
 
 

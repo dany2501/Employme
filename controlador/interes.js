@@ -62,32 +62,33 @@ exports.interesados = async function (req, res, next) {
         if(device=="Android")
         {
             var e=req.body.id;
-            var sqlQuery= 'select id_emp,nom_emp,email_emp,id_asp from interes natural join datosempresa where id_asp=?';
+            var sqlQuery= 'select id_emp,email_emp,nom_emp,usu_emp,ruta_imge from perfilempresa natural join datosempresa natural join imgempresa where id_emp in (select id_emp from interes where id_asp=?)';
             var Query=" select ruta_imge from imgempresa where id_pemp=(select id_pemp from perfilempresa where id_emp=(select id_emp from interes where id_asp=?))"
         }
         else
         {
             var s= req.session.usuario;
             var e=s.id;
-            var sqlQuery= 'select id_emp as iemp,nom_emp as nomemp,email_emp as emaile,id_asp as idasp from interes natural join datosempresa where id_asp=?';
-        var Query=" select ruta_imge as photo from imgempresa where id_pemp=(select id_pemp from perfilempresa where id_emp=(select id_emp from interes where id_asp=?))"
+            var sqlQuery= 'select id_emp as iemp, ruta_imge as photo ,nom_emp as nomemp,email_emp as emaile from perfilempresa natural join datosempresa natural join imgempresa where id_emp in (select id_emp from interes where id_asp=?)';
+        
         }
         const userData=[e];
         
     
         try{
-                
+                var emps = [];
              var obj= await con.consultaBd(sqlQuery,userData);
-             var images = await con.consultaBd(Query,userData);
-console.log(obj);             
-             var result = {"datos": obj,"images":images} 
-             console.log(result);
-             res.json(result);
-
+             for (var i=0;i<obj.length;i++)
+{
+emps[i]={"nom_emp":obj[i].nom_emp,"foto_emp":obj[i].ruta_imge,"email_emp":obj[i].email_emp,"id_emp":obj[i].id_emp}
+}
+             var result = {obj}
+console.log(result); 
+             res.json(emps);
+    
         }catch(err)
         {
             console.log(err);
             res.json('Ocurrio un error');
         }
     }
-
