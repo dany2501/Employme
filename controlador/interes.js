@@ -62,22 +62,14 @@ exports.interesados = async function (req, res, next) {
         if(device=="Android")
         {
             var e=req.body.id;
-<<<<<<< HEAD
-            var sqlQuery= 'select id_emp,nom_emp, ruta_imge from perfilempresa natural join datosempresa natural join imgempresa where id_emp in (select id_emp from interes where id_asp=?)';
-=======
             var sqlQuery= 'select id_emp,email_emp,nom_emp,usu_emp,ruta_imge from perfilempresa natural join datosempresa natural join imgempresa where id_emp in (select id_emp from interes where id_asp=?)';
->>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
             var Query=" select ruta_imge from imgempresa where id_pemp=(select id_pemp from perfilempresa where id_emp=(select id_emp from interes where id_asp=?))"
         }
         else
         {
             var s= req.session.usuario;
             var e=s.id;
-<<<<<<< HEAD
             var sqlQuery= 'select id_emp as iemp, ruta_imge as photo ,nom_emp as nomemp,email_emp as emaile, ruta_imge as photo from perfilempresa natural join datosempresa natural join imgempresa where id_emp in (select id_emp from interes where id_asp=?)';
-=======
-            var sqlQuery= 'select id_emp as iemp, ruta_imge as photo ,nom_emp as nomemp,email_emp as emaile from perfilempresa natural join datosempresa natural join imgempresa where id_emp in (select id_emp from interes where id_asp=?)';
->>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
         
         }
         const userData=[e];
@@ -86,17 +78,6 @@ exports.interesados = async function (req, res, next) {
         try{
                 var emps = [];
              var obj= await con.consultaBd(sqlQuery,userData);
-<<<<<<< HEAD
-             var emps = {};
-             console.log(obj.length);
-             for (var i=0;i<obj.length;i++)
-             {
-                emps[i]={"nom_emp":obj[i].nomemp,"ruta_imge":obj[i].photo}
-             }
-             console.log(emps)
-             var result = {obj} 
-             res.json(result);
-=======
              for (var i=0;i<obj.length;i++)
 {
 emps[i]={"nom_emp":obj[i].nom_emp,"foto_emp":obj[i].ruta_imge,"email_emp":obj[i].email_emp,"id_emp":obj[i].id_emp}
@@ -104,7 +85,6 @@ emps[i]={"nom_emp":obj[i].nom_emp,"foto_emp":obj[i].ruta_imge,"email_emp":obj[i]
              var result = {obj}
 console.log(result); 
              res.json(emps);
->>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
     
         }catch(err)
         {
@@ -112,8 +92,3 @@ console.log(result);
             res.json('Ocurrio un error');
         }
     }
-<<<<<<< HEAD
-    
-   
-=======
->>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
