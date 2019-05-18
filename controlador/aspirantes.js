@@ -1,7 +1,9 @@
 var db = require('../conexionsql/conexion');
 var settings = {
     password: 'HECD010225HMCRRNA6'
-}   
+}
+var moment = require('moment');
+moment.locale('es');
 
 exports.aspirantes = async function (req, res, next) {
     var id=req.params.id;
@@ -147,6 +149,7 @@ exports.deleteAspirante = async function (req,res,next)
     {console.log(err)}
 
 }
+<<<<<<< HEAD
 
 exports.getAspirantes = async function (req,res,next)
 {
@@ -158,17 +161,38 @@ exports.getAspirantes = async function (req,res,next)
     var asps = {};
              
              for (var i=0;i<asp.length;i++)
+=======
+exports.getAspirantes = async function (req,res,next)
+{
+
+    const Query = "select id_pasp,id_asp,ruta_imga,nom_asp,FN_asp,sex_asp,email_asp,vyt_pasp from imgaspirante natural join perfilaspirante natural join datosaspirante";
+    try{
+        
+    var obj=await db.consultaBd(Query);
+    var asps = [];
+             
+             for (var i=0;i<obj.length;i++)
+>>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
              {
                 asps[i]={"nom_asp":obj[i].nom_asp,
                          "email_asp":obj[i].email_asp,
                          "id_asp":obj[i].id_asp,
                          "foto_asp":obj[i].ruta_imga,
+<<<<<<< HEAD
                          "fn_asp":obj[i].FN_asp,
                          }
              }
              console.log(asps)
              var result = {asps} 
              res.json(result);
+=======
+                         "fn_asp":moment().diff(obj[i].FN_asp, 'years'),
+                         "vyt_pasp":obj[i].vyt_pasp
+                         }
+             }
+             console.log(asps);
+             res.json(asps);
+>>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
 
     }
     catch(err)

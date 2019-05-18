@@ -21,7 +21,8 @@ var noSesion = function(req, res, next){
 }
 
 router.get('/',noSesion,function(req,res,next){
-    var obj=req.session.asp;
+console.log("En ruta");    
+var obj=req.session.asp;
     console.log(obj);
      res.render('emp-aspirante',{id:obj.id,nombre:obj.nom,email:obj.email,sex:obj.sexo,f:obj.foto,edad:obj.edad,num:obj.num,cv:obj.cv});
 });
@@ -34,7 +35,11 @@ asp.aspirantes(req,res);
 
 router.post('/asps',noSesion,function(req,res,next){
     asp.getAspirantes(req,res,next)
+<<<<<<< HEAD
 })
+=======
+});
+>>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
 
 router.put('/',noSesion,video.mostrarVideo);
 router.post('/', noSesion,GitHub.githubAsp);

@@ -26,14 +26,22 @@ var sqlQuery
 
         sqlQuery = "SELECT id_asp,nom_asp,numtel_asp,FN_asp,sex_asp,email_asp,(AES_DECRYPT(usu_asp,'" + settings.password + "')) as usu_asp,(AES_DECRYPT(psw_asp, '" + settings.password + "')) as psw_asp FROM datosaspirante WHERE usu_asp=AES_ENCRYPT(? ,'" + settings.password + "') AND psw_asp=AES_ENCRYPT(?, '" + settings.password + "')";
     }
+<<<<<<< HEAD
     var gh="select usugh_pasp,vyt_pasp from perfilaspirante where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
 
+=======
+var gh="select usugh_pasp,vyt_pasp from perfilaspirante where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
+>>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
     var foto="select ruta_imga from imgaspirante where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";
 
     try {
         
         var result = await db.consultaBd(sqlQuery, sqlData);
+<<<<<<< HEAD
         var userGit=await db.consultaBd(gh,result[0].id_asp);
+=======
+var userGit=await db.consultaBd(gh,result[0].id_asp);
+>>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
         var resfoto=await db.consultaBd(foto,result[0].id_asp);
         
 
@@ -50,8 +58,13 @@ var sqlQuery
 		            "psw_asp":pass.toString(),
                     "nom_asp": result[0].nom_asp,
                     "usu_asp": response.toString(),
+<<<<<<< HEAD
                     "usugh_pasp":userGit[0].usugh_pasp,
                     "vyt_pasp":userGit[0].vyt_pasp,
+=======
+		    "usugh_pasp":userGit[0].usugh_pasp,
+		    "vyt_pasp":userGit[0].vyt_pasp,
+>>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
                     "fn_asp": moment(result[0].FN_asp).format('LL'),
                     "sex_asp":result[0].sex_asp,
                     "email_asp": result[0].email_asp,

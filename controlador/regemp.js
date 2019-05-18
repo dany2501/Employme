@@ -16,9 +16,17 @@ exports.registrarEmpresa = async function (req, res, next) {
 
 
 if(req.body.password_e==req.body.cpassword_e){
-    
+console.log(emp);
+
+console.log(req.body.usuario_e);    
         for (var i in emp) {
-            if (emp[i].usu_emp == req.body.usuario_e || emp[i].email_emp == req.body.email_e) {
+var resp = new Buffer.from(emp[i].usu_emp, 'hex');
+ console.log(resp.toString());
+if(emp[i].email_emp == req.body.usuario_e)
+{
+console.log("Iguales");
+}
+           if(resp.toString() == req.body.usuario_e || emp[i].email_emp == req.body.email_e) {
                 flag = true;
             }
         }

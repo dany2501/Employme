@@ -1,5 +1,10 @@
 var con = require('../conexionsql/conexion');
+<<<<<<< HEAD
 var base = require('base64-to-image');
+=======
+var fs = require('fs');
+var im = require('imagemagick');
+>>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
 var settings = {
   password: 'HECD010225HMCRRNA6'
 }
@@ -112,6 +117,25 @@ try {
   }
 
 }
+
+
+
+
+exports.uploadAndroid = async function (req,res,next)
+  {
+    var ds= req.body.Id;
+    const sqlQuery='update imgaspirante set ruta_imga=? where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)';
+try {
+      subirArchivo(req).then((ruta) => {
+        console.log(ruta);
+      var result= con.consultaBd(sqlQuery,[ruta,ds]);
+        res.json("Foto actualizada");
+      })
+    } catch (err) {
+      console.log(err);
+      res.json("Ocurrió un error");
+  }
+  }
 
 
   exports.subirFotoEmp= async function (req, res, next) {

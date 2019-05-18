@@ -3,21 +3,21 @@ var router = express.Router();
 
 var fotoasp = require('../controlador/fotoasp');
 
-var noSesion = function(req, res, next){
+/*var noSesion = function(req, res, next){
     if(!req.session.usuario){
         next();
     }else{
         res.redirect('/perfilasp');
     }
-}
+}*/
 
-router.get('/',noSesion, function(req,res,next){
+router.get('/',/*noSesion,*/ function(req,res,next){
     res.render('index');
     
     pdfCv.showCv(req,res,next);
 });
 
-router.get('/show',noSesion, function(req,res,next){
+router.get('/show',/*noSesion,*/ function(req,res,next){
     console.log("En la ruta");
 });
 
@@ -34,6 +34,13 @@ router.get('/foto', function (req, res, next) {
 });
 
 router.post('/uploadPhoto',function(req,res,next){
+<<<<<<< HEAD
     fotoasp.uploadAndroid(req,res,next);
 });
 module.exports = router; 
+=======
+console.log(req.files.foto);    
+fotoasp.uploadAndroid(req,res,next);
+});
+module.exports = router; 
+>>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542

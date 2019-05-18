@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var interes=require('../controlador/interes');
+
 var noSesion = function(req, res, next){
     if (req.body.device=="Android")
     {
@@ -16,6 +17,7 @@ next();
         } 
     }
 }
+
 router.get('/',noSesion, function(req,res,next){
     var respuesta= req.session.aspirantes;
     console.log(respuesta);

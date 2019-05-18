@@ -25,6 +25,7 @@ exports.modificarDatos = async function (req, res, next) {
     if(data[0].email_asp==req.body.correo && data[0].numtel_asp==numero)
     {
         console.log("Iguales")
+<<<<<<< HEAD
     }
     else
     {
@@ -66,6 +67,49 @@ exports.modificarDatos = async function (req, res, next) {
                }
             }
     }
+=======
+    }
+    else
+    {
+        const Query = "select (AES_DECRYPT(usu_asp,'" + settings.password + "')) as usu_asp,email_asp,numtel_asp from datosaspirante;";
+        var asp = await con.consultaBd(Query);
+        var flag = false;
+    
+    
+        
+            for (var i in asp) {
+                if (asp[i].email_asp == req.body.correo || asp[i].email_asp == req.body.email || asp[i].numtel_asp ==req.body.numero ) {
+                    flag = true;
+                }
+            }
+    
+            if(flag==true)
+            {
+                res.json("No se pudo actualizar ya que alguno de los datos ya ha sido registrado por otro usuario")
+            }
+    
+            else
+            {
+                try{
+    
+                    var result= await con.consultaBd(sqlQuery,userData);
+                    if(req.body.device=="Android")
+                    {
+                       res.json("Actualizado");
+                    }
+                    else{
+           
+                       res.redirect('/perfilasp');
+                    }
+           
+               }catch(err)
+               {
+                   console.log(err);
+                   res.json('Ocurrio un error al registrarse');
+               }
+            }
+    }
+>>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
     
 
     
