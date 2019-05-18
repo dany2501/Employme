@@ -59,7 +59,7 @@ $(document).ready(function () {
         formdata.append('file', foto[0].files[0]);
         console.log(formdata);
                 $.ajax({
-                     url:'http://3.93.218.234:80/fotoasp/',
+                     url:'http://34.227.162.181/fotoasp/',
                     method:'post',
                     data:formdata,
                     processData: false,
@@ -89,7 +89,7 @@ $(document).ready(function () {
         var n = numero.val();
         var c = correo.val();
             $.ajax({
-                url: 'http://3.93.218.234:80/update',
+                url: 'http://34.227.162.181/update',
                 method: 'post',
                 dataType: 'json',
                 data: {
@@ -103,7 +103,7 @@ $(document).ready(function () {
             form.slideUp("fast", function () {
             });
 
-            var url = "http://3.93.218.234:80/perfilasp";
+            var url = "http://34.227.162.181/perfilasp";
             $(location).attr('href', url);
 
             correo.empty();
@@ -123,7 +123,7 @@ $(document).ready(function () {
         } else {
 
             $.ajax({
-                url: 'http://3.93.218.234:80/portafolio',
+                url: 'http://34.227.162.181/portafolio',
                 method: 'post',
                 dataType: 'json',
                 data: { usuario: usu },
@@ -132,7 +132,7 @@ $(document).ready(function () {
                 }
             });
 
-            var url = "http://3.93.218.234:80/perfilasp";
+            var url = "http://34.227.162.181/perfilasp";
             $(location).attr('href', url);
             u.empty();
             form2.slideUp("fast", function () {
@@ -154,7 +154,7 @@ $(document).ready(function () {
         } else {
 
             $.ajax({
-                url: 'http://3.93.218.234:80/video',
+                url: 'http://34.227.162.181/video',
                 method: 'post',
                 dataType: 'json',
                 data: { video: vid },
@@ -163,7 +163,7 @@ $(document).ready(function () {
                 }
             });
 
-            var url = "http://3.93.218.234:80/perfilasp";
+            var url = "http://34.227.162.181/perfilasp";
             $(location).attr('href', url);
             v.empty();
             form3.slideUp("fast", function () {
@@ -181,7 +181,7 @@ $(document).ready(function () {
     var editYt=$('#editYT');
 
     $.ajax({
-        url:'http://3.93.218.234:80/perfilasp',
+        url:'http://34.227.162.181/perfilasp',
         type:'put',
         dataType:'json',
         success : function(json) {
@@ -201,7 +201,7 @@ $(document).ready(function () {
     });
 
 
-    $.get("http://3.93.218.234:80/perfilasp/user", function(data)
+    $.get("http://34.227.162.181/perfilasp/user", function(data)
     {if(data=='Ocurrió un error')
     {
 

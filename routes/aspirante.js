@@ -5,11 +5,19 @@ var GitHub = require('../controlador/GH');
 var video = require('../controlador/video');
 
 var noSesion = function(req, res, next){
-    if(!req.session.usuario){
+    if(req.body.device=="Android")
+    {
         next();
-    }else{ 
-        next();
-    } 
+    }
+    else
+    {
+        if(!req.session.usuario){
+            next();
+        }else{ 
+            next();
+        } 
+    }
+    
 }
 
 router.get('/',noSesion,function(req,res,next){
@@ -23,6 +31,10 @@ router.get('/:id',noSesion,function(req,res,next){
 asp.aspirantes(req,res);
 
 });
+
+router.post('/asps',noSesion,function(req,res,next){
+    asp.getAspirantes(req,res,next)
+})
 
 router.put('/',noSesion,video.mostrarVideo);
 router.post('/', noSesion,GitHub.githubAsp);

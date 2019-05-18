@@ -1,9 +1,9 @@
 var con = require('../conexionsql/conexion');
-
-
+var base = require('base64-to-image');
 var settings = {
   password: 'HECD010225HMCRRNA6'
 }
+
 
 
     async function subirArchivo(req) 
@@ -17,7 +17,7 @@ var settings = {
         if (err) reject();
         resolve(`fotosasp/${EDFile.name}`);
 
-        })
+        });
        });
 
     }
@@ -32,7 +32,7 @@ var settings = {
         if (err) reject();
         resolve(`fotosemp/${EDFile.name}`);
 
-        })
+        });
        });
 
     }
@@ -54,10 +54,31 @@ try {
       }
 
   }
+
+
+  exports.subirFoto= async function (req, res, next) {
+        
+    
+
+}
+
+  exports.uploadAndroid = async function (req,res,next)
+  {
+    var ds= req.body.Id;
+    const sqlQuery='update imgaspirante set ruta_imga=? where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)';
+try {
+      subirArchivo(req).then((ruta) => {
+        console.log(ruta);
+      var result= con.consultaBd(sqlQuery,[ruta,ds]);
+        res.json("Foto actualizada");
+      })
+    } catch (err) {
+      console.log(err);
+      res.json("Ocurrió un error");
+  }
+  }
   
-exports.mostrarFoto= async function (req, res, next) {
-console.log(req.body.device);
-console.log(req.body.id);        
+exports.mostrarFoto= async function (req, res, next) {  
     var ds= req.session.usuario;
     const query='select ruta_imga from imgaspirante where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)';
     const sqlQuery = "select AES_DECRYPT(ruta_cv,'" + [settings.password] + "') as ruta_cv from cv where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)";

@@ -147,3 +147,32 @@ exports.deleteAspirante = async function (req,res,next)
     {console.log(err)}
 
 }
+
+exports.getAspirantes = async function (req,res,next)
+{
+
+    const Query = "select id_pasp,id_asp,ruta_imga,nom_asp,FN_asp,sex_asp,email_asp from imgaspirante natural join perfilaspirante natural join datosaspirante";
+    try{
+        
+    var asp=await db.consultaBd(Query);
+    var asps = {};
+             
+             for (var i=0;i<asp.length;i++)
+             {
+                asps[i]={"nom_asp":obj[i].nom_asp,
+                         "email_asp":obj[i].email_asp,
+                         "id_asp":obj[i].id_asp,
+                         "foto_asp":obj[i].ruta_imga,
+                         "fn_asp":obj[i].FN_asp,
+                         }
+             }
+             console.log(asps)
+             var result = {asps} 
+             res.json(result);
+
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+}

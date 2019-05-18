@@ -32,7 +32,6 @@ exports.registrarAspirante = async function (req, res, next) {
                 res.json("Usuario o email ya registrado");
             }
             else{
-
             console.log("Usuario o email ya registrado");
             res.redirect('/error');
             }

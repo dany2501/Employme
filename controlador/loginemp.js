@@ -26,22 +26,6 @@ exports.iniciarSesion = async function (req, res, next) {
         }
     
 
-    for (var i = 0; i < req.body.pass_e.length; i++) {
-        if (req.body.pass_e[i] == "@") {
-            flag = true
-        }
-    }
-
-    if( flag==true)
-        {
-            var sqlQuery = "SELECT id_emp,(AES_DECRYPT(usu_emp, '"+settings.password+"')) as usu_emp,(AES_DECRYPT(psw_emp, '"+settings.password+"')) as psw_emp,nom_emp,email_emp FROM datosempresa WHERE email_emp = ? AND (AES_DECRYPT(psw_emp, '"+settings.password+"'))= ?";
-        }
-        else
-        {
-            var sqlQuery = "SELECT id_emp,(AES_DECRYPT(usu_emp, '"+settings.password+"')) as usu_emp,(AES_DECRYPT(psw_emp, '"+settings.password+"')) as psw_emp,nom_emp,email_emp FROM datosempresa WHERE (AES_DECRYPT(usu_emp, '"+settings.password+"')) = ? AND (AES_DECRYPT(psw_emp, '"+settings.password+"'))= ?";
-        }
-    
-
     try {
         //Se consulta a la bd para buscar el usuario de la empresa 
         var result = await db.consultaBd(sqlQuery, sqlData);
