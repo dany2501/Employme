@@ -34,13 +34,6 @@ router.get('/foto', function (req, res, next) {
 });
 
 router.post('/uploadPhoto',function(req,res,next){
-<<<<<<< HEAD
-    fotoasp.uploadAndroid(req,res,next);
-});
-module.exports = router; 
-=======
-console.log(req.files.foto);    
 fotoasp.uploadAndroid(req,res,next);
 });
 module.exports = router; 
->>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542

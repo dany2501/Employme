@@ -12,7 +12,7 @@ var imagen =$("#img");
         descrip=textArea.val();
 
         $.ajax({
-            url: 'http://34.227.162.181/add-cv/descripcion',
+            url: 'http://localhost:8080/add-cv/descripcion',
             method: 'post',
             dataType: 'json',
             data: {
@@ -43,7 +43,7 @@ location.reload();
             
         idiomas = idioma.val();
         $.ajax({
-            url: 'http://34.227.162.181/add-cv',
+            url: 'http://localhost:8080/add-cv',
             method: 'post',
             dataType: 'json',
             data: {
@@ -73,7 +73,7 @@ location.reload();
         puesto = pos.val();
 
         $.ajax({
-            url: 'http://34.227.162.181/add-cv',
+            url: 'http://localhost:8080/add-cv',
             method: 'put',
             dataType: 'json',
             data: {
@@ -110,7 +110,7 @@ location.reload();
         email = emailRef.val();
 
         $.ajax({
-            url: 'http://34.227.162.181/add-cv/referencias',
+            url: 'http://localhost:8080/add-cv/referencias',
             method: 'post',
             dataType: 'json',
             data: {
@@ -150,7 +150,7 @@ location.reload();
         {
             
         $.ajax({
-            url: 'http://34.227.162.181/add-cv/software',
+            url: 'http://localhost:8080/add-cv/software',
             method: 'post',
             dataType: 'json',
             data: {
@@ -204,7 +204,7 @@ location.reload();
         (async () => {
             async function leng() {
                 return $.ajax({
-                    url: 'http://34.227.162.181/add-cv/showLeng',
+                    url: 'http://localhost:8080/add-cv/showLeng',
                     method: 'get',
                     dataType: 'json',
                     success: function (response) {
@@ -217,7 +217,7 @@ location.reload();
 
             async function proj() {
                 return $.ajax({
-                    url: 'http://34.227.162.181/add-cv/showProj',
+                    url: 'http://localhost:8080/add-cv/showProj',
                     method: 'get',
                     dataType: 'json',
                     success: function (response) {
@@ -230,7 +230,7 @@ location.reload();
 
             async function ref() {
                 return $.ajax({
-                    url: 'http://34.227.162.181/add-cv/showRef',
+                    url: 'http://localhost:8080/add-cv/showRef',
                     method: 'get',
                     dataType: 'json',
                     success: function (response) {
@@ -243,7 +243,7 @@ location.reload();
 
             async function DU() {
                 return $.ajax({
-                    url: 'http://34.227.162.181/add-cv/showDU',
+                    url: 'http://localhost:8080/add-cv/showDU',
                     method: 'get',
                     dataType: 'json',
                     success: function (response) {
@@ -257,7 +257,7 @@ location.reload();
 
             async function sof() {
                 return $.ajax({
-                    url: 'http://34.227.162.181/add-cv/showSoft',
+                    url: 'http://localhost:8080/add-cv/showSoft',
                     method: 'get',
                     dataType: 'json',
                     success: function (response) {
