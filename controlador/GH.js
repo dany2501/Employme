@@ -80,14 +80,8 @@ exports.githubAsp = async function (req, res, next) {
         }
         else
         {
-<<<<<<< HEAD
-            var session=req.session.aspirantes;
-            var d = req.session.id;
-=======
             var session=req.session.asp;
-console.log(session);
             var d = session.id;
->>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
         }
         var sqlQuery = 'select usugh_pasp from perfilaspirante where id_asp=?';
         var sqlData = [d];

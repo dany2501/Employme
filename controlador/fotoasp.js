@@ -1,10 +1,5 @@
 var con = require('../conexionsql/conexion');
-<<<<<<< HEAD
-var base = require('base64-to-image');
-=======
 var fs = require('fs');
-var im = require('imagemagick');
->>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
 var settings = {
   password: 'HECD010225HMCRRNA6'
 }
