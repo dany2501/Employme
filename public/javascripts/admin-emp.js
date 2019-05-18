@@ -4,7 +4,7 @@ var empresas="";
 var container=$("#empresas")
 
     $.ajax({
-        url:"http://localhost:8080/admin/emp",
+        url:"http://34.227.162.181/admin/emp",
         type:"get",
         dataType: 'json',
         success:function (response){

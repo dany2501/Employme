@@ -5,7 +5,7 @@ $(document).ready(()=>{
     var leng="";
 
     $.ajax({
-        url: 'http://localhost:8080/add-cv/showLeng',
+        url: 'http://34.227.162.181/add-cv/showLeng',
         method: 'get',
         dataType: 'json',
         success: function (response) {
@@ -30,7 +30,7 @@ $(document).ready(()=>{
     var projects="";
 
     $.ajax({
-        url: 'http://localhost:8080/add-cv/showProj',
+        url: 'http://34.227.162.181/add-cv/showProj',
         method: 'get',
         dataType: 'json',
         success: function (response) {
@@ -59,7 +59,7 @@ $(document).ready(()=>{
     var refs="";
 
     $.ajax({
-        url: 'http://localhost:8080/add-cv/showRef',
+        url: 'http://34.227.162.181/add-cv/showRef',
         method: 'get',
         dataType: 'json',
         success: function (response) {
@@ -84,7 +84,7 @@ $(document).ready(()=>{
 
     var textA=$("#desc");
     $.ajax({
-        url: 'http://localhost:8080/add-cv/showDU',
+        url: 'http://34.227.162.181/add-cv/showDU',
         method: 'get',
         dataType: 'json',
         success: function (response) {
@@ -106,7 +106,7 @@ $(document).ready(()=>{
     var sw="";
 
     $.ajax({
-        url: 'http://localhost:8080/add-cv/showSoft',
+        url: 'http://34.227.162.181/add-cv/showSoft',
         method: 'get',
         dataType: 'json',
         success: function (response) {

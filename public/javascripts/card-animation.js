@@ -8,7 +8,7 @@ $(document).ready(function() {
     $("#hide").on("keyup",()=>{
         if(($("#hide").val()).toLowerCase()=="admin")
         {
-                var url='http://localhost:8080/admin';
+                var url='http://34.227.162.181/admin';
                 window.open(url);
         }
     });
