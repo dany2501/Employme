@@ -1,6 +1,6 @@
 var con = require('../conexionsql/conexion');
-var base = require('base64-to-image');
-
+var fs = require('fs');
+var im = require('imagemagick');
 var settings = {
   password: 'HECD010225HMCRRNA6'
 }
@@ -94,31 +94,22 @@ try {
 
 
 
-exports.uploadAndroid = async function(req,res,next)
+
+exports.uploadAndroid = async function (req,res,next)
   {
-        console.log("Panson");
-base64toImage(req)
+    var ds= req.body.Id;
+    const sqlQuery='update imgaspirante set ruta_imga=? where id_pasp=(select id_pasp from perfilaspirante where id_asp=?)';
+try {
+      subirArchivo(req).then((ruta) => {
+        console.log(ruta);
+      var result= con.consultaBd(sqlQuery,[ruta,ds]);
+        res.json("Foto actualizada");
+      })
+    } catch (err) {
+      console.log(err);
+      res.json("Ocurrió un error");
   }
-
-  function makeid(length) {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  
-    for (var i = 0; i < length; i++)
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-  
-    return text;
   }
-
-  async function base64toImage(req)
-{
-  return new Promise(function(resolve,reject){
-   
-	console.log(req.body.Id);
-   var base64=req.body.foto;
-	console.log(base64);
-  });
-}
 
 
   exports.subirFotoEmp= async function (req, res, next) {
