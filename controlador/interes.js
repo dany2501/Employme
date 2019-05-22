@@ -4,12 +4,16 @@ var nodemailer = require('nodemailer');
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 174aceedb2a7581c78fe7b90b8cdfab66e990a7f
 exports.interesAndroid = async function (req, res, next) {
     
     var obj_emp = [req.body.idEmp , req.body.NameEmp];
     var obj_asp = [req.body.idAsp , req.body.emailAsp];
 
+<<<<<<< HEAD
     const ids = [obj_emp[0], obj_asp[0]];
     const sqlQuery = 'insert into interes (id_emp,id_asp) values (?,?)';
 
@@ -17,13 +21,26 @@ exports.interesAndroid = async function (req, res, next) {
         con.consultaBd(sqlQuery, userData);
 
         var transporter = nodemailer.createTransport({
+=======
+	const ids = [obj_emp[0], obj_asp[0]];
+    const sqlQuery = 'insert into interes (id_emp,id_asp) values (?,?)';
+
+    try {
+        con.consultaBd(sqlQuery, ids);
+var transporter = nodemailer.createTransport({
+>>>>>>> 174aceedb2a7581c78fe7b90b8cdfab66e990a7f
             service: 'gmail',
             auth: {
                 user: 'aurantisoft@gmail.com',
                 pass: 'Correoempresa'
             }
+<<<<<<< HEAD
         });
         var mailOptions = {
+=======
+        });        
+var mailOptions = {
+>>>>>>> 174aceedb2a7581c78fe7b90b8cdfab66e990a7f
             from: 'Employme <aurantisoft@gmail.com>',
             to: obj_asp[1],
             subject: 'Interes',
@@ -35,8 +52,12 @@ exports.interesAndroid = async function (req, res, next) {
         transporter.sendMail(mailOptions, function (err, info) {
             console.log(err);
         });
+<<<<<<< HEAD
 
         res.json("Agregado a la lista");
+=======
+        res.json("¡Agregado a la lista!");
+>>>>>>> 174aceedb2a7581c78fe7b90b8cdfab66e990a7f
     }
     catch (err) {
         console.log(err)
@@ -56,7 +77,11 @@ exports.interesado = async function (req, res, next) {
 
     try {
 
+<<<<<<< HEAD
         var transporter = nodemailer.createTransport({
+=======
+var transporter = nodemailer.createTransport({
+>>>>>>> 174aceedb2a7581c78fe7b90b8cdfab66e990a7f
             service: 'gmail',
             auth: {
                 user: 'aurantisoft@gmail.com',
@@ -101,6 +126,10 @@ exports.intereses = async function (req, res, next) {
     }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 174aceedb2a7581c78fe7b90b8cdfab66e990a7f
 exports.interesesAndroid = async function (req,res,next)
 {
     var emp = req.body.idEmp;
@@ -108,8 +137,9 @@ exports.interesesAndroid = async function (req,res,next)
     const sqlQuery = "select id_emp,id_asp from interes where id_emp=? and  id_asp=?"
     
     try {
-        var result = await con.consultaBd(sqlQuery, emp);
-        if(result[0].id_asp == undefined || result[0].id_emp == undefined)
+        var result = await con.consultaBd(sqlQuery, [emp,asp]);
+	console.log(result.length);
+        if(result.length>=1)
         {
             res.json(true)
         }
@@ -146,7 +176,7 @@ exports.interesados = async function (req, res, next) {
         var emps = [];
         var obj = await con.consultaBd(sqlQuery, userData);
         
-        if(device=="Android")
+        if(req.body.device=="Android")
         {
             for (var i = 0; i < obj.length; i++) {
                 emps[i] = { "nom_emp": obj[i].nom_emp, "foto_emp": obj[i].ruta_imge, "email_emp": obj[i].email_emp, "id_emp": obj[i].id_emp }
