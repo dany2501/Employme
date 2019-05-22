@@ -29,7 +29,7 @@ $(document).ready(()=>{
 
     //Petición AJAX 
     $.ajax({
-        url:'http://34.227.162.181/fotoemp/foto',
+        url:'http://3.93.218.234/fotoemp/foto',
         method:'post',
         dataType:'json',
         success:function(response){
@@ -41,7 +41,7 @@ $(document).ready(()=>{
     
     $.ajax({
 
-        url: 'http://34.227.162.181/updateE/show',
+        url: 'http://3.93.218.234/updateE/show',
         method: 'get',
         dataType: 'json',
         success: function (response) {
@@ -114,14 +114,14 @@ $(document).ready(()=>{
         console.log(txtarea.val());
         $.ajax({
 
-            url: 'http://34.227.162.181/updateE/add',
+            url: 'http://3.93.218.234/updateE/add',
             method: 'put',
             dataType: 'json',
             data: {desc:txtarea.val()},
             success: function (response) { console.log(response) }
 
         });
-        var url = "http://34.227.162.181/emp-profile";
+        var url = "http://3.93.218.234/emp-profile";
             $(location).attr('href', url);
         alert('Datos actualizados');
 
@@ -156,14 +156,14 @@ var dr=$('#dir');
         else {
         $.ajax({
 
-            url: 'http://34.227.162.181/updateE',
+            url: 'http://3.93.218.234/updateE',
             method: 'put',
             dataType: 'json',
             data: data,
             success: function (response) { console.log(response) }
 
         });
-        var url = "http://34.227.162.181/emp-profile";
+        var url = "http://3.93.218.234/emp-profile";
             $(location).attr('href', url);
         alert('Datos actualizados');
         correo.val("");

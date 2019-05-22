@@ -25,7 +25,7 @@ var mailOptions = {
             subject: 'Interes',
             text: 'A alguna empresa le haz interesado',
             html: "<h1> La empresa " + obj_emp[1] + " ha visitado tu perfil y parece ser que le interesó tu portafolio de trabajos </h1> " +
-                "<a href='http://34.227.162.181/empresa' target= '_blank'>Click aquí para saber más</a>"
+                "<a href='http://3.93.218.234/empresa' target= '_blank'>Click aquí para saber más</a>"
 
         };
         transporter.sendMail(mailOptions, function (err, info) {
@@ -64,7 +64,7 @@ var transporter = nodemailer.createTransport({
             subject: 'Interes',
             text: 'A alguna empresa le haz interesado',
             html: "<h1> La empresa " + req.session.usuario.nom + " ha visitado tu perfil y parece ser que le interesó tu portafolio de trabajos </h1> " +
-                "<a href='http://34.227.162.181/empresa' target= '_blank'>Click aquí para saber más</a>"
+                "<a href='http://3.93.218.234/empresa' target= '_blank'>Click aquí para saber más</a>"
 
         };
         transporter.sendMail(mailOptions, function (err, info) {

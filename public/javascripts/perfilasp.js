@@ -27,7 +27,7 @@ $(document).ready(function(){
 
 
   $.ajax({
-              url:'http://34.227.162.181/fotoasp',
+              url:'http://3.93.218.234/fotoasp',
               method:'put',
               dataType:'json',
               success:function(response){
@@ -50,7 +50,7 @@ $(document).ready(function(){
           });
 
 
-  $.post("http://34.227.162.181/perfilasp", function(data)
+  $.post("http://3.93.218.234/perfilasp", function(data)
   {if(data=='Ocurrió un error')
   {
   }else
@@ -72,7 +72,7 @@ $(document).ready(function(){
 });
 
   $.ajax({
-    url:'http://34.227.162.181/perfilasp',
+    url:'http://3.93.218.234/perfilasp',
     type:'put',
     dataType:'json',
     success : function(json) {
