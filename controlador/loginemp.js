@@ -27,9 +27,11 @@ exports.iniciarSesion = async function (req, res, next) {
     
 
     try {
+	 var foto="select ruta_imge from imgempresa where id_pemp=(select id_pemp from perfilempresa where id_emp=?)";
         //Se consulta a la bd para buscar el usuario de la empresa 
         var result = await db.consultaBd(sqlQuery, sqlData);
 
+ var resfoto=await db.consultaBd(foto,result[0].id_emp);
         if (req.body.usu_e == result[0].usu_emp || req.body.usu_e == result[0].email_emp  && req.body.pass_e == result[0].psw_emp) {
             var response = new Buffer.from(result[0].usu_emp, 'hex');
 var psw = new Buffer.from(result[0].psw_emp,'hex');            
@@ -38,6 +40,7 @@ var psw = new Buffer.from(result[0].psw_emp,'hex');
             {
                 var obj = {
                     "id_emp": result[0].id_emp,
+		    "foto_emp":resfoto[0].ruta_imge,
                     "psw_emp":psw.toString(),
                     "usu_emp": response.toString(),
                     "nom_emp":result[0].nom_emp,

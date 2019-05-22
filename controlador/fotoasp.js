@@ -151,15 +151,34 @@ try {
 }
 
 
-
 exports.mostrarFotoEmp= async function (req, res, next) {
+
+  if(req.body.device=="Android")
+  {
+    var ds = req.body.id;
+  }
+
+  else
+  {
         
-  var ds= req.session.usuario;
+    var dl= req.session.usuario;
+    var ds=dl.id;
+
+  }
   const query='select ruta_imge from imgempresa where id_pemp=(select id_pemp from perfilempresa where id_emp=?)';
   
 try {
-    var result3=await con.consultaBd(query,ds.id);
+  
+  var result3=await con.consultaBd(query,ds);
+  if(req.body.device="Android")
+  {
+    res.json(result3[0].ruta_imge);
+  }
+  else
+  {
     res.json(result3);
+  }
+    
   } catch (err) {
     console.log(err);
     res.redirect("/login");

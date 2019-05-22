@@ -32,6 +32,18 @@ router.get('/',noSesion, function(req,res,next){
 
 router.post('/',noSesion,interes.interesado);
 
+router.post('/interesAndroid',noSesion,function(req,res,next){
+
+    interes.interesAndroid(req,res,next);
+
+});
+
+
+router.post('/knowAndroid',noSesion,function(req,res,next){
+interes.interesesAndroid(req,res,next);
+
+});
+
 router.get('/know',noSesion,function(req,res,next){
 
     interes.intereses(req,res,next);
