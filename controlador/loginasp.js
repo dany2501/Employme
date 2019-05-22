@@ -49,15 +49,14 @@ var userGit=await db.consultaBd(gh,result[0].id_asp);
 		            "psw_asp":pass.toString(),
                     "nom_asp": result[0].nom_asp,
                     "usu_asp": response.toString(),
-		    "usugh_pasp":userGit[0].usugh_pasp,
-		    "vyt_pasp":userGit[0].vyt_pasp,
+		            "usugh_pasp":userGit[0].usugh_pasp,
+		            "vyt_pasp":userGit[0].vyt_pasp,
                     "fn_asp": moment(result[0].FN_asp).format('LL'),
                     "sex_asp":result[0].sex_asp,
                     "email_asp": result[0].email_asp,
                     "numtel_asp": result[0].numtel_asp,
 		            "foto_asp":resfoto[0].ruta_imga
                 }
-console.log(obj);
 	res.json(obj);
             }
             else 

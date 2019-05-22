@@ -54,25 +54,6 @@ $(document).ready(function () {
     });
 
 
-    /*foto.on('change', () => {
-        var formdata = new FormData();
-        formdata.append('file', foto[0].files[0]);
-        console.log(formdata);
-                $.ajax({
-                     url:'http://34.227.162.181/fotoasp/',
-                    method:'post',
-                    data:formdata,
-                    processData: false,
-                    contentType: false,
-                    success:function(response){
-                     },error:function(err){console.log(err)}
-
-        });
-
-    });
-*/
-
-
     git.on('click', () => {
 
         form2.slideDown("slow", function () {

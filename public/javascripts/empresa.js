@@ -6,6 +6,8 @@ $(document).ready(()=>{
     var modal=$('#modal1');
     var save=$('#guardar');
     var close=$('#cerrar')
+    var file=$('#file')
+    var pic=$("#picure");
 
     //Campos de texto y valores
 
@@ -22,14 +24,17 @@ $(document).ready(()=>{
         });
     });
 
+    
+    var foto=$('.information-photo');
+
     //Petición AJAX 
     $.ajax({
         url:'http://34.227.162.181/fotoemp/foto',
         method:'post',
         dataType:'json',
         success:function(response){
-          var ruta=(response[0].ruta_imge);
-          foto.attr("src",ruta);
+            console.log(response);
+            foto.attr("src",response);
 
         },
     });
@@ -65,6 +70,7 @@ $(document).ready(()=>{
                 $('#dir').attr("value",response[0].ubi_pemp)
              }
              //Tel
+             console.log(response[0].numtel_pemp);
              if(response[0].numtel_pemp==null)
              {
                 $('#num').val(" Agregar");
@@ -175,39 +181,10 @@ var dr=$('#dir');
 
     //Para fotos.
 
-    var file=$('#file')
-    var foto=$('.information-photo');
+   
 
-    file.on('change', () => {
-        var formdata = new FormData();
-        /*var xhr = new XMLHttpRequest();
-        
-        xhr.open('POST', 'http://34.227.162.181/fotoemp/', true);
-        xhr.onreadystatechange = response => console.log(response);
-        xhr.send(formdata);
-        
-        var url = "http://34.227.162.181/emp-profile";
-            $(location).attr('href', url);*/
-
-            formdata.append('file', file[0].files[0]);
-            console.log("En la petición");
-            $.ajax({
-                url:'http://34.227.162.181/fotoemp',
-               method:'post',
-               data:formdata,
-               processData: false,
-               contentType: false,
-               success:function(response){
-               console.log ("Se mandó");
-               var url = "http://34.227.162.181/emp-profile";
-                $(location).attr('href', url);
-                },error:function(err){console.log(err)}
-    
-        });
-
-        
-
-
+    file.on('change', ()=>{
+        $("#picture").submit();
     });
         
     });

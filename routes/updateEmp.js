@@ -16,6 +16,10 @@ router.get('/show',function(req,res,next){
         update_empresa.show(req, res, next);
     });
 
+router.post("/show",function(req,res,next){
+        update_empresa.showAndroid(req,res,next);
+    });
+
 router.put('/add',function(req,res,next){
     update_empresa.addDes(req, res, next);
 });

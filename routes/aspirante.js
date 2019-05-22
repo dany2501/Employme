@@ -35,11 +35,7 @@ asp.aspirantes(req,res);
 
 router.post('/asps',noSesion,function(req,res,next){
     asp.getAspirantes(req,res,next)
-<<<<<<< HEAD
-})
-=======
 });
->>>>>>> da855c086b0fba65ffd57624efd00a6b3401e542
 
 router.put('/',noSesion,video.mostrarVideo);
 router.post('/', noSesion,GitHub.githubAsp);
